@@ -60,8 +60,6 @@ Overview
 
 A toolset for prover independent premise selection. Template generated with cookiecutter-pylibrary.
 
-* Free software: BSD 2-Clause License
-
 Installation
 ============
 
