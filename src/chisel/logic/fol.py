@@ -1,21 +1,35 @@
 from enum import Enum
 
 
+
 class FOLElement:
     pass
 
-
 class Quantifier(Enum):
+
+    __visit_name__ = "quantifier"
+
     UNIVERSAL = 0
     EXISTENTIAL = 1
 
+    def is_universal(self):
+        return self == Quantifier.UNIVERSAL
+
+    def is_existential(self):
+        return self == Quantifier.EXISTENTIAL
+
     def __repr__(self):
-        if self == Quantifier.UNIVERSAL:
+        if self.is_universal():
             return u"\u2200"
-        elif self == Quantifier.EXISTENTIAL:
+        elif self.is_existential():
             return u"\u2203"
+        else:
+            raise NotImplementedError
 
 class FormulaRole(Enum):
+
+    __visit_name__ = "formula_role"
+
     AXIOM = 0
     HYPOTHESIS = 1
     DEFINITION = 2
@@ -38,6 +52,9 @@ class FormulaRole(Enum):
 
 
 class BinaryConnective(Enum):
+
+    __visit_name__ = "binary_connective"
+
     CONJUNCTION = 0
     DISJUNCTION = 1
     BIIMPLICATION = 2
@@ -93,6 +110,9 @@ class BinaryConnective(Enum):
             return '>'
 
 class DefinedPredicate(Enum):
+
+    __visit_name__ = "defined_predicate"
+
     DISTINCT = 0
     LESS = 1
     LESS_EQ = 2
@@ -114,6 +134,9 @@ class DefinedPredicate(Enum):
 
 
 class UnaryConnective(Enum):
+
+    __visit_name__ = "unary_connective"
+
     NEGATION = 0
     def __repr__(self):
         if self == UnaryConnective.NEGATION:
@@ -121,6 +144,9 @@ class UnaryConnective(Enum):
 
 
 class UnaryFormula(FOLElement):
+
+    __visit_name__ = "unary_formula"
+
     def __init__(self, connective, formula):
         self.connective = connective
         self.formula = formula
@@ -132,6 +158,9 @@ class UnaryFormula(FOLElement):
 
 
 class QuantifiedFormula(FOLElement):
+
+    __visit_name__ = "quantified_formula"
+
     def __init__(self, quantifier, variables, formula):
         self.quantifier = quantifier
         self.variables = variables
@@ -145,19 +174,19 @@ class QuantifiedFormula(FOLElement):
 
 
 class AnnotatedFormula(FOLElement):
+
+    __visit_name__ = "annotated_formula"
+
     def __init__(self, name, role: FormulaRole, formula):
         self.name = name
         self.role = role
         self.formula = formula
 
-    def __str__(self):
-        return '%s_%s: %s'%(
-            repr(self.role),
-            self.name,
-            self.formula)
-
 
 class BinaryFormula(FOLElement):
+
+    __visit_name__ = "binary_formula"
+
     def __init__(self, left, operator, right):
         self.left = left
         self.right = right
@@ -169,7 +198,11 @@ class BinaryFormula(FOLElement):
             repr(self.operator),
             self.right)
 
+
 class FunctorExpression(FOLElement):
+
+    __visit_name__ = "functor_expression"
+
     def __init__(self, functor, arguments):
         self.functor = functor
         self.arguments = arguments
@@ -182,6 +215,9 @@ class FunctorExpression(FOLElement):
 
 
 class PredicateExpression(FOLElement):
+
+    __visit_name__ = "predicate_expression"
+
     def __init__(self, predicate, arguments):
         self.predicate = predicate
         self.arguments = arguments
@@ -193,34 +229,52 @@ class PredicateExpression(FOLElement):
 
 
 class TypedVariable(FOLElement):
+
+    __visit_name__ = "typed_variable"
+
     def __init__(self, name, vtype):
         self.name = name
         self.vtype = vtype
 
 
 class Conditional(FOLElement):
+
+    __visit_name__ = "conditional"
+
     def __init__(self, if_clause, then_clause, else_clause):
         self.if_clause = if_clause
         self.then_clause = then_clause
         self.else_clause = else_clause
 
 class Let(FOLElement):
+
+    __visit_name__ = "let"
+
     def __init__(self, types, definitions, formula):
         self.types = types
         self.definitions = definitions
         self.formula = formula
 
 class Subtype(FOLElement):
+
+    __visit_name__ = "subtype"
+
     def __init__(self, left, right):
         self.left = left
         self.right = right
 
 class QuantifiedType(FOLElement):
+
+    __visit_name__ = "quantified_type"
+
     def __init__(self, variables, vtype):
         self.variables = variables
         self.vtype = vtype
 
 class Import(FOLElement):
+
+    __visit_name__ = "import"
+
     def __init__(self, path):
         self.path=path.replace('\'', '')
 

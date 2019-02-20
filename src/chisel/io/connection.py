@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from settings import DB_CONNECTION
+from chisel.settings import DB_CONNECTION
 
 def get_engine():
 
