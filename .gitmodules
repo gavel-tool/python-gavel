@@ -1,0 +1,3 @@
+[submodule "chisel/language/tptp/parser/base"]
+	path = chisel/language/tptp/parser/base
+	url = https://github.com/TobiasGleissner/TPTP-ANTLR4-Grammar.git
