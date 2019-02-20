@@ -19,6 +19,8 @@ from setuptools import find_packages
 from setuptools import setup
 from setuptools.command.build_ext import build_ext
 
+import subprocess
+import sys
 
 def read(*names, **kwargs):
     with io.open(
@@ -57,6 +59,14 @@ class optional_build_ext(build_ext):
         print('')
         print('    ' + repr(e))
         print('*' * 80)
+
+if 'sdist' in sys.argv:
+    cwd = os.getcwd()
+    os.chdir('src/chisel/language/tptp/parser/base')
+    result = subprocess.call("antlr4 -o .. -Dlanguage=Python3 -no-listener -visitor tptp_v7_0_0_0.g4", shell=True)
+    if result != 0:
+        exit(1)
+    os.chdir(cwd)
 
 
 setup(
@@ -110,6 +120,7 @@ setup(
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
     install_requires=[
         # eg: 'aspectlib==1.1.1', 'six>=1.7',
+        'sqlalchemy>=1.2', 'antlr4-python3-runtime', 'psycopg2'
     ],
     extras_require={
         # eg:
