@@ -60,13 +60,12 @@ class optional_build_ext(build_ext):
         print('    ' + repr(e))
         print('*' * 80)
 
-if 'sdist' in sys.argv:
-    cwd = os.getcwd()
-    os.chdir('src/chisel/language/tptp/parser/base')
-    result = subprocess.call("antlr4 -o .. -Dlanguage=Python3 -no-listener -visitor tptp_v7_0_0_0.g4", shell=True)
-    if result != 0:
-        exit(1)
-    os.chdir(cwd)
+cwd = os.getcwd()
+os.chdir('src/chisel/language/tptp/parser/base')
+result = subprocess.call("antlr4 -o .. -Dlanguage=Python3 -no-listener -visitor tptp_v7_0_0_0.g4", shell=True)
+if result != 0:
+    exit(1)
+os.chdir(cwd)
 
 
 setup(
