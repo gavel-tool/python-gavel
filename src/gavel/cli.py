@@ -16,7 +16,7 @@ Why does this file exist, and why not put this in __main__?
 """
 
 import click
-import gavel.io.structures as db
+import gavel.io.structures as fol_db
 import gavel.language.tptp.build as build_tptp
 import gavel.settings as settings
 
@@ -27,14 +27,9 @@ def db():
 
 
 @click.command()
-def cleardb():
-    db.drop_tables()
-
-
-@click.command()
 def initdb():
     """Create tables for storage of formulas"""
-    db.create_tables()
+    fol_db.create_tables()
 
 
 @click.command()
@@ -47,7 +42,7 @@ def store_tptp(p):
 @click.command()
 def cleardb():
     """Drop tables created gy initdb"""
-    db.drop_tables()
+    fol_db.drop_tables()
 
 
 db.add_command(initdb)
