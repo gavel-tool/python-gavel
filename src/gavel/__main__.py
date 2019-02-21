@@ -1,5 +1,5 @@
 """
-Entrypoint module, in case you use `python -mchisel`.
+Entrypoint module, in case you use `python -mgavel`.
 
 
 Why does this file exist, and why __main__? For more info, read:

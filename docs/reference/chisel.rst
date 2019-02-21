@@ -1,9 +1,9 @@
-chisel
+gavel
 ======
 
 .. testsetup::
 
-    from chisel import *
+    from gavel import *
 
-.. automodule:: chisel
+.. automodule:: gavel
     :members:

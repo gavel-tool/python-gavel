@@ -63,7 +63,7 @@ static struct PyMethodDef module_functions[] = {
 #if PY_MAJOR_VERSION >= 3
 static struct PyModuleDef moduledef = {
     PyModuleDef_HEAD_INIT,
-    "chisel._chisel", /* m_name */
+    "gavel._gavel", /* m_name */
     NULL,             /* m_doc */
     -1,               /* m_size */
     module_functions, /* m_methods */
@@ -80,7 +80,7 @@ static PyObject* moduleinit(void) {
 #if PY_MAJOR_VERSION >= 3
     module = PyModule_Create(&moduledef);
 #else
-    module = Py_InitModule3("chisel._chisel", module_functions, NULL);
+    module = Py_InitModule3("gavel._gavel", module_functions, NULL);
 #endif
 
     if (module == NULL)
@@ -90,11 +90,11 @@ static PyObject* moduleinit(void) {
 }
 
 #if PY_MAJOR_VERSION < 3
-PyMODINIT_FUNC init_chisel(void) {
+PyMODINIT_FUNC init_gavel(void) {
     moduleinit();
 }
 #else
-PyMODINIT_FUNC PyInit__chisel(void) {
+PyMODINIT_FUNC PyInit__gavel(void) {
     return moduleinit();
 }
 #endif

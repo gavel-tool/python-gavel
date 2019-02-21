@@ -4,4 +4,4 @@ Installation
 
 At the command line::
 
-    pip install chisel
+    pip install gavel
