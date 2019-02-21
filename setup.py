@@ -64,16 +64,6 @@ class optional_build_ext(build_ext):
         print("*" * 80)
 
 
-cwd = os.getcwd()
-os.chdir("src/gavel/language/tptp/parser/base")
-result = subprocess.call(
-    "antlr4 -o .. -Dlanguage=Python3 -no-listener -visitor tptp_v7_0_0_0.g4", shell=True
-)
-if result != 0:
-    exit(1)
-os.chdir(cwd)
-
-
 setup(
     name="gavel",
     version="0.0.0",
