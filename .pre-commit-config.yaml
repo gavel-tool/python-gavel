@@ -1,0 +1,6 @@
+repos:
+-   repo: git@github.com:MGlauer/python-gavel.git
+    rev: master
+    hooks:
+    - id: black
+      language_version: python3.6
