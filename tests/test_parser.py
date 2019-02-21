@@ -1,8 +1,8 @@
 import pytest as pt
 
-from chisel.language.tptp.build import Processor
-from chisel.language.base.compiler import Compiler
-from chisel.language.tptp.run import all_axioms
+from gavel.language.tptp.build import Processor
+from gavel.language.base.compiler import Compiler
+from gavel.language.tptp.run import all_axioms
 
 
 class TestProcessor(Processor):

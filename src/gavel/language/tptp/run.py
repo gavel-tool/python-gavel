@@ -1,6 +1,6 @@
-from chisel.language.tptp import build
-from chisel.io import structures as db
-from chisel.io.connection import get_engine
+from gavel.language.tptp import build
+from gavel.io import structures as db
+from gavel.io.connection import get_engine
 from sqlalchemy.orm.session import sessionmaker
 import os
 import multiprocessing as mp

@@ -61,7 +61,7 @@ class optional_build_ext(build_ext):
         print('*' * 80)
 
 cwd = os.getcwd()
-os.chdir('src/chisel/language/tptp/parser/base')
+os.chdir('src/gavel/language/tptp/parser/base')
 result = subprocess.call("antlr4 -o .. -Dlanguage=Python3 -no-listener -visitor tptp_v7_0_0_0.g4", shell=True)
 if result != 0:
     exit(1)
@@ -69,7 +69,7 @@ os.chdir(cwd)
 
 
 setup(
-    name='chisel',
+    name='gavel',
     version='0.0.0',
     license='BSD 2-Clause License',
     description='A toolset for prover independent premise selection. Template generated with cookiecutter-pylibrary.',
@@ -79,7 +79,7 @@ setup(
     ),
     author='Martin Glauer',
     author_email='glauer@iks.cs.ovgu.de',
-    url='https://github.com/MGlauer/python-chisel',
+    url='https://github.com/MGlauer/python-gavel',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
@@ -109,9 +109,9 @@ setup(
         'Topic :: Utilities',
     ],
     project_urls={
-        'Documentation': 'https://python-chisel.readthedocs.io/',
-        'Changelog': 'https://python-chisel.readthedocs.io/en/latest/changelog.html',
-        'Issue Tracker': 'https://github.com/MGlauer/python-chisel/issues',
+        'Documentation': 'https://python-gavel.readthedocs.io/',
+        'Changelog': 'https://python-gavel.readthedocs.io/en/latest/changelog.html',
+        'Issue Tracker': 'https://github.com/MGlauer/python-gavel/issues',
     },
     keywords=[
         # eg: 'keyword1', 'keyword2', 'keyword3',
@@ -119,7 +119,7 @@ setup(
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
     install_requires=[
         # eg: 'aspectlib==1.1.1', 'six>=1.7',
-        'sqlalchemy>=1.2', 'antlr4-python3-runtime', 'psycopg2'
+        'click', 'sqlalchemy>=1.2', 'antlr4-python3-runtime', 'psycopg2'
     ],
     extras_require={
         # eg:
@@ -128,7 +128,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'chisel = chisel.cli:main',
+            'gavel = gavel.cli:main',
         ]
     },
     cmdclass={'build_ext': optional_build_ext},

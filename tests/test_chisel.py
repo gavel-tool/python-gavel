@@ -1,4 +1,4 @@
-from chisel.cli import main
+from gavel.cli import main
 
 
 def test_main():

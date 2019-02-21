@@ -8,19 +8,26 @@ Why does this file exist, and why not put this in __main__?
 
   - When you run `python -mchisel` python will execute
     ``__main__.py`` as a script. That means there won't be any
-    ``chisel.__main__`` in ``sys.modules``.
+    ``gavel.__main__`` in ``sys.modules``.
   - When you import __main__ it will get executed again (as a module) because
-    there's no ``chisel.__main__`` in ``sys.modules``.
+    there's no ``gavel.__main__`` in ``sys.modules``.
 
   Also see (1) from http://click.pocoo.org/5/setuptools/#setuptools-integration
 """
-import argparse
 
-parser = argparse.ArgumentParser(description='Command description.')
-parser.add_argument('names', metavar='NAME', nargs=argparse.ZERO_OR_MORE,
-                    help="A name of something.")
+import click
 
+@click.group()
+def cli():
+    pass
 
-def main(args=None):
-    args = parser.parse_args(args=args)
-    print(args.names)
+@click.command('initdb')
+def build_db(filename):
+    pass
+
+@click.command('initdb')
+def build_db(filename):
+    pass
+
+if __name__=='__main__':
+    cli()

@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from chisel.settings import DB_CONNECTION
+from gavel.settings import DB_CONNECTION
 
 def get_engine():
 

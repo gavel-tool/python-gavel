@@ -1,4 +1,4 @@
-import chisel.logic.fol as fol
+import gavel.logic.fol as fol
 
 class Compiler:
 

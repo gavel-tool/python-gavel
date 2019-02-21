@@ -1,7 +1,7 @@
 # Generated from tptp_v7_0_0_0.g4 by ANTLR 4.5.1
-import chisel.logic.fol as structures
-from chisel.language.tptp.parser.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
-from chisel.language.tptp.parser.tptp_v7_0_0_0Visitor import tptp_v7_0_0_0Visitor
+import gavel.logic.fol as structures
+from gavel.language.tptp.parser.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
+from gavel.language.tptp.parser.tptp_v7_0_0_0Visitor import tptp_v7_0_0_0Visitor
 
 # This class defines a complete generic visitor for a parse tree produced by tptp_v7_0_0_0Parser.
 

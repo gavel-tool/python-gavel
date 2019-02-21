@@ -3,12 +3,12 @@ from antlr4 import *
 from .parser.tptp_v7_0_0_0Lexer import tptp_v7_0_0_0Lexer
 from .parser.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
 from .parser.flattening import FOFFlatteningVisitor
-import chisel.io.structures as db
-from chisel.logic import fol
+import gavel.io.structures as db
+from gavel.logic import fol
 import pickle as pkl
 import sys
-from chisel.language.base.compiler import Compiler
-from chisel.io.connection import get_or_create, with_session, get_engine
+from gavel.language.base.compiler import Compiler
+from gavel.io.connection import get_or_create, with_session, get_engine
 from sqlalchemy.orm.session import sessionmaker
 
 sys.setrecursionlimit(10000)
