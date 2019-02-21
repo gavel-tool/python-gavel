@@ -1,3 +1,6 @@
 [submodule "src/gavel/language/tptp/parser/base"]
 	path = src/gavel/language/tptp/parser/base
 	url = https://github.com/TobiasGleissner/TPTP-ANTLR4-Grammar.git
+[submodule "TPTP-ANTLR4-Grammar"]
+	path = TPTP-ANTLR4-Grammar
+	url = https://github.com/TobiasGleissner/TPTP-ANTLR4-Grammar.git
