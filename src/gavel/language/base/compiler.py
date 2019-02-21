@@ -2,6 +2,15 @@ import gavel.logic.fol as fol
 
 
 class Compiler:
+    def parenthesise(self, element: fol.FOLElement):
+        if isinstance(element, str):
+            return element
+        result = self.visit(element)
+        if element.requires_parens:
+            return "(" + result + ")"
+        else:
+            return result
+
     def visit(self, obj):
         if isinstance(obj, str):
             return obj
@@ -82,7 +91,7 @@ class Compiler:
         elif connective == fol.BinaryConnective.ASSIGN:
             return ":="
         elif connective == fol.BinaryConnective.ARROW:
-            return "~>"
+            return ">"
         else:
             raise NotImplementedError
 
@@ -132,10 +141,10 @@ class Compiler:
         )
 
     def visit_quantified_formula(self, formula: fol.QuantifiedFormula):
-        return "{}[{}]:({})".format(
+        return "{}[{}]:{}".format(
             self.visit(formula.quantifier),
             ",".join(map(self.visit, formula.variables)),
-            self.visit(formula.formula),
+            self.parenthesise(formula.formula),
         )
 
     def visit_annotated_formula(self, anno: fol.AnnotatedFormula):
@@ -145,9 +154,9 @@ class Compiler:
 
     def visit_binary_formula(self, formula: fol.BinaryFormula):
         return "{}{}{}".format(
-            self.visit(formula.left),
+            self.parenthesise(formula.left),
             self.visit(formula.operator),
-            self.visit(formula.right),
+            self.parenthesise(formula.right),
         )
 
     def visit_functor_expression(self, expression: fol.FunctorExpression):

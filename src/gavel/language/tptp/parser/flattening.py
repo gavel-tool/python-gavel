@@ -442,7 +442,11 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#tff_typed_atom.
     def visitTff_typed_atom(self, ctx: tptp_v7_0_0_0Parser.Tff_typed_atomContext):
-        return self.visitChildren(ctx)
+        left = self.visit(ctx.children[0])
+        if left == "(":
+            return self.visit(ctx.children[1])
+        else:
+            return structures.TypedVariable(left, self.visit(ctx.children[2]))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#tff_subtype.
     def visitTff_subtype(self, ctx: tptp_v7_0_0_0Parser.Tff_subtypeContext):

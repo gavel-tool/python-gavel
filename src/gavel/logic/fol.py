@@ -4,6 +4,8 @@ from enum import Enum
 class FOLElement:
     __visit_name__ = "undefined"
 
+    requires_parens = False
+
 
 class Quantifier(Enum):
 
@@ -186,6 +188,8 @@ class AnnotatedFormula(FOLElement):
 class BinaryFormula(FOLElement):
 
     __visit_name__ = "binary_formula"
+
+    requires_parens = True
 
     def __init__(self, left, operator, right):
         self.left = left
