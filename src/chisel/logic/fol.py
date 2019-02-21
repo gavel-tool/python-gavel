@@ -2,7 +2,8 @@ from enum import Enum
 
 
 class FOLElement:
-    pass
+    __visit_name__ = 'undefined'
+
 
 class Quantifier(Enum):
 
@@ -95,8 +96,6 @@ class BinaryConnective(Enum):
             return '!='
         if self == BinaryConnective.APPLY:
             return '@'
-        if self == BinaryConnective.MAPPING:
-            return '>'
         if self == BinaryConnective.PRODUCT:
             return '*'
         if self == BinaryConnective.UNION:
@@ -237,6 +236,15 @@ class TypedVariable(FOLElement):
         self.vtype = vtype
 
 
+class TypeFormula(FOLElement):
+
+    __visit_name__ = "type_formula"
+
+    def __init__(self, name, type_expression):
+        self.name = name
+        self.type = type_expression
+
+
 class Conditional(FOLElement):
 
     __visit_name__ = "conditional"
@@ -277,6 +285,15 @@ class Import(FOLElement):
 
     def __init__(self, path):
         self.path=path.replace('\'', '')
+
+class MappingType(FOLElement):
+
+    __visit_name__ = "mapping_type"
+
+    def __init__(self, left, right):
+        self.left = left
+        self.right = right
+
 
 class EOFException(Exception):
     pass

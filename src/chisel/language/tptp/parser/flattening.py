@@ -115,13 +115,12 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_quantified_formula.
     def visitThf_quantified_formula(self, ctx:tptp_v7_0_0_0Parser.Thf_quantified_formulaContext):
         return structures.QuantifiedFormula(
-            self.visit(ctx.children[0].children[0]),
-            self.visit(ctx.children[0].children[1]),
+            *self.visit(ctx.children[0]),
             self.visit(ctx.children[1]))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_quantification.
     def visitThf_quantification(self, ctx:tptp_v7_0_0_0Parser.Thf_quantificationContext):
-        raise NotImplementedError
+        return self.visit(ctx.children[0]), self.visit(ctx.children[1])
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_variable_list.
     def visitThf_variable_list(self, ctx:tptp_v7_0_0_0Parser.Thf_variable_listContext):
@@ -178,11 +177,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_type_formula.
     def visitThf_type_formula(self, ctx:tptp_v7_0_0_0Parser.Thf_type_formulaContext):
-        if len(ctx.children) == 1:
-            return self.visit_first(ctx)
-        elif len(ctx.children) == 3:
-            return self.visit(ctx.children[1])
-        raise NotImplementedError
+        return structures.TypeFormula(self.visit(ctx.children[0]), self.visit(ctx.children[2]))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_typeable_formula.
     def visitThf_typeable_formula(self, ctx:tptp_v7_0_0_0Parser.Thf_typeable_formulaContext):
@@ -212,9 +207,8 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_mapping_type.
     def visitThf_mapping_type(self, ctx:tptp_v7_0_0_0Parser.Thf_mapping_typeContext):
-        return structures.BinaryFormula(
+        return structures.MappingType(
             self.visit(ctx.children[0]),
-            structures.BinaryConnective.MAPPING,
             self.visit(ctx.children[2]))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_xprod_type.

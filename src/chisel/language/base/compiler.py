@@ -70,7 +70,7 @@ class Compiler:
         elif connective == fol.BinaryConnective.NEQ:
             return '!='
         elif connective == fol.BinaryConnective.APPLY:
-            return '>'
+            return '@'
         elif connective == fol.BinaryConnective.MAPPING:
             return ':'
         elif connective == fol.BinaryConnective.PRODUCT:
@@ -166,6 +166,12 @@ class Compiler:
             self.visit(variable.vtype)
         )
 
+    def visit_type_formula(self, formula: fol.TypeFormula):
+        return '({}):{}'.format(
+            self.visit(formula.name),
+            self.visit(formula.type)
+        )
+
     def visit_conditional(self, conditional: fol.Conditional):
         return 'if ({}) then ({}) else ({})'.format(
             self.visit(conditional.if_clause),
@@ -186,10 +192,16 @@ class Compiler:
             self.visit(expression.right))
 
     def visit_quantified_type(self, expression: fol.QuantifiedType):
-        return '{}[{}]:{}'.format(
+        return '>![{}]:{}'.format(
             self.visit(fol.Quantifier.EXISTENTIAL),
             self.visit(expression.variables),
             self.visit(expression.vtype))
 
     def visit_import(self, imp: fol.Import):
         return 'import(%s)'%imp.path
+
+
+    def visit_mapping_type(self, expression: fol.Subtype):
+        return '{}>{}'.format(
+            self.visit(expression.left),
+            self.visit(expression.right))
