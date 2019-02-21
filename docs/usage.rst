@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use chisel  in a project::
+To use gavel  in a project::
 
-	import chisel
+	import gavel
