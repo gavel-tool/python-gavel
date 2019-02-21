@@ -36,8 +36,7 @@ class Processor:
             yield self.formula_processor(item, *args, **kwargs)
 
     def formula_processor(self, formula, *args, **kwargs):
-        compiler = Compiler()
-        return compiler.visit(formula)
+        return formula
 
     def load_expressions_from_file(self, path, *args, **kwargs):
         print(path)

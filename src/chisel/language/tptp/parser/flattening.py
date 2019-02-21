@@ -28,6 +28,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitAnnotated_formula(self, ctx:tptp_v7_0_0_0Parser.Annotated_formulaContext):
         annotated = ctx.children[0]
         return structures.AnnotatedFormula(
+            self.visit(annotated.children[0]).replace('(',''),
             self.visit(annotated.children[1]),  # name
             self.visit(annotated.children[3]),  # role
             self.visit(annotated.children[5]))  # formula

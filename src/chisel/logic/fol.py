@@ -1,7 +1,6 @@
 from enum import Enum
 
 
-
 class FOLElement:
     pass
 
@@ -177,7 +176,8 @@ class AnnotatedFormula(FOLElement):
 
     __visit_name__ = "annotated_formula"
 
-    def __init__(self, name, role: FormulaRole, formula):
+    def __init__(self, logic, name, role: FormulaRole, formula):
+        self.logic = logic
         self.name = name
         self.role = role
         self.formula = formula

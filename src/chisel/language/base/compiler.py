@@ -10,9 +10,9 @@ class Compiler:
 
     def visit_quantifier(self, quantifier: fol.Quantifier):
         if quantifier.is_universal():
-            return u"\u2200"
+            return '!'
         else:
-            return u"\u2203"
+            return '?'
 
     def visit_formula_role(self, role: fol.FormulaRole):
         if role == fol.FormulaRole.AXIOM:
@@ -70,7 +70,7 @@ class Compiler:
         elif connective == fol.BinaryConnective.NEQ:
             return '!='
         elif connective == fol.BinaryConnective.APPLY:
-            return '$'
+            return '>'
         elif connective == fol.BinaryConnective.MAPPING:
             return ':'
         elif connective == fol.BinaryConnective.PRODUCT:
@@ -122,26 +122,30 @@ class Compiler:
 
     def visit_unary_connective(self, predicate: fol.UnaryConnective):
         if predicate == fol.UnaryConnective.NEGATION:
-            return '!'
+            return '~'
         else:
             raise NotImplementedError
 
     def visit_unary_formula(self, formula: fol.UnaryFormula):
-        return '{}({})'.format(
+        return '{}{}'.format(
             self.visit(formula.connective),
             self.visit(formula.formula))
 
     def visit_quantified_formula(self, formula: fol.QuantifiedFormula):
-        return '{}[{}]:{}'.format(
+        return '{}[{}]:({})'.format(
             self.visit(formula.quantifier),
             ','.join(map(self.visit, formula.variables)),
             self.visit(formula.formula))
 
-    def visit_annotated_formula(self, formula: fol.AnnotatedFormula):
-        return self.visit(formula.formula)
+    def visit_annotated_formula(self, anno: fol.AnnotatedFormula):
+        return '{}({},{},({})).'.format(
+            anno.logic,
+            anno.name,
+            self.visit(anno.role),
+            self.visit(anno.formula))
 
     def visit_binary_formula(self, formula: fol.BinaryFormula):
-        return '{} {} {}'.format(
+        return '{}{}{}'.format(
             self.visit(formula.left),
             self.visit(formula.operator),
             self.visit(formula.right))
@@ -149,12 +153,12 @@ class Compiler:
     def visit_functor_expression(self, expression: fol.FunctorExpression):
         return '{}({})'.format(
             self.visit(expression.functor),
-            ', '.join(map(self.visit, expression.arguments)))
+            ','.join(map(self.visit, expression.arguments)))
 
     def visit_predicate_expression(self, expression: fol.PredicateExpression):
         return '{}({})'.format(
             self.visit(expression.predicate),
-            ', '.join(map(self.visit, expression.arguments)))
+            ','.join(map(self.visit, expression.arguments)))
 
     def visit_typed_variable(self, variable: fol.TypedVariable):
         return '{}:{}'.format(
