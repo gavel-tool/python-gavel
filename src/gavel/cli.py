@@ -16,18 +16,46 @@ Why does this file exist, and why not put this in __main__?
 """
 
 import click
+import gavel.io.structures as db
+import gavel.language.tptp.build as build_tptp
+import gavel.settings as settings
+
 
 @click.group()
-def cli():
+def db():
     pass
 
-@click.command('initdb')
-def build_db(filename):
-    pass
 
-@click.command('initdb')
-def build_db(filename):
-    pass
+@click.command()
+def cleardb():
+    db.drop_tables()
 
-if __name__=='__main__':
-    cli()
+
+@click.command()
+def initdb():
+    """Create tables for storage of formulas"""
+    db.create_tables()
+
+
+@click.command()
+@click.option("-p", default=settings.TPTP_ROOT)
+def store_tptp(p):
+    settings.TPTP_ROOT = p
+    build_tptp.store_tptp()
+
+
+@click.command()
+def cleardb():
+    """Drop tables created gy initdb"""
+    db.drop_tables()
+
+
+db.add_command(initdb)
+db.add_command(cleardb)
+db.add_command(store_tptp)
+
+cli = click.CommandCollection(sources=[db])
+
+
+if __name__ == "__main__":
+    db()

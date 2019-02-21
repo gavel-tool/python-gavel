@@ -1,4 +1,6 @@
+import os
 
+TPTP_ROOT = os.environ.get('TPTP_ROOT')
 
 DB_CONNECTION = dict(
   user='username',

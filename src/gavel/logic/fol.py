@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class FOLElement:
-    __visit_name__ = 'undefined'
+    __visit_name__ = "undefined"
 
 
 class Quantifier(Enum):
@@ -26,6 +26,7 @@ class Quantifier(Enum):
         else:
             raise NotImplementedError
 
+
 class FormulaRole(Enum):
 
     __visit_name__ = "formula_role"
@@ -48,7 +49,6 @@ class FormulaRole(Enum):
 
     def __repr__(self):
         return self.name
-
 
 
 class BinaryConnective(Enum):
@@ -75,37 +75,38 @@ class BinaryConnective(Enum):
 
     def __repr__(self):
         if self == BinaryConnective.CONJUNCTION:
-            return '&'
+            return "&"
         if self == BinaryConnective.DISJUNCTION:
-            return '|'
+            return "|"
         if self == BinaryConnective.BIIMPLICATION:
-            return '<=>'
+            return "<=>"
         if self == BinaryConnective.IMPLICATION:
-            return '=>'
+            return "=>"
         if self == BinaryConnective.REVERSE_IMPLICATION:
-            return '<='
+            return "<="
         if self == BinaryConnective.SIMILARITY:
-            return '<~>'
+            return "<~>"
         if self == BinaryConnective.NEGATED_CONJUNCTION:
-            return '~&'
+            return "~&"
         if self == BinaryConnective.NEGATED_DISJUNCTION:
-            return '~|'
+            return "~|"
         if self == BinaryConnective.EQ:
-            return '='
+            return "="
         if self == BinaryConnective.NEQ:
-            return '!='
+            return "!="
         if self == BinaryConnective.APPLY:
-            return '@'
+            return "@"
         if self == BinaryConnective.PRODUCT:
-            return '*'
+            return "*"
         if self == BinaryConnective.UNION:
-            return '+'
+            return "+"
         if self == BinaryConnective.GENTZEN_ARROW:
-            return '-->'
+            return "-->"
         if self == BinaryConnective.ASSIGN:
-            return ':='
+            return ":="
         if self == BinaryConnective.ARROW:
-            return '>'
+            return ">"
+
 
 class DefinedPredicate(Enum):
 
@@ -136,9 +137,10 @@ class UnaryConnective(Enum):
     __visit_name__ = "unary_connective"
 
     NEGATION = 0
+
     def __repr__(self):
         if self == UnaryConnective.NEGATION:
-            return '~'
+            return "~"
 
 
 class UnaryFormula(FOLElement):
@@ -150,9 +152,7 @@ class UnaryFormula(FOLElement):
         self.formula = formula
 
     def __str__(self):
-        return '%s(%s)'%(
-            repr(self.connective),
-            self.formula)
+        return "%s(%s)" % (repr(self.connective), self.formula)
 
 
 class QuantifiedFormula(FOLElement):
@@ -165,10 +165,11 @@ class QuantifiedFormula(FOLElement):
         self.formula = formula
 
     def __str__(self):
-        return '%s[%s]: %s'%(
+        return "%s[%s]: %s" % (
             repr(self.quantifier),
-            ', '.join(self.variables),
-            self.formula)
+            ", ".join(self.variables),
+            self.formula,
+        )
 
 
 class AnnotatedFormula(FOLElement):
@@ -192,10 +193,7 @@ class BinaryFormula(FOLElement):
         self.operator = operator
 
     def __str__(self):
-        return '(%s) %s (%s)'%(
-            self.left,
-            repr(self.operator),
-            self.right)
+        return "(%s) %s (%s)" % (self.left, repr(self.operator), self.right)
 
 
 class FunctorExpression(FOLElement):
@@ -207,10 +205,7 @@ class FunctorExpression(FOLElement):
         self.arguments = arguments
 
     def __str__(self):
-        return '%s(%s)'%(
-            self.functor,
-            ', '.join(map(str, self.arguments)))
-
+        return "%s(%s)" % (self.functor, ", ".join(map(str, self.arguments)))
 
 
 class PredicateExpression(FOLElement):
@@ -222,9 +217,7 @@ class PredicateExpression(FOLElement):
         self.arguments = arguments
 
     def __str__(self):
-        return '%s(%s)'%(
-            self.predicate,
-            ', '.join(self.arguments))
+        return "%s(%s)" % (self.predicate, ", ".join(self.arguments))
 
 
 class TypedVariable(FOLElement):
@@ -254,6 +247,7 @@ class Conditional(FOLElement):
         self.then_clause = then_clause
         self.else_clause = else_clause
 
+
 class Let(FOLElement):
 
     __visit_name__ = "let"
@@ -263,6 +257,7 @@ class Let(FOLElement):
         self.definitions = definitions
         self.formula = formula
 
+
 class Subtype(FOLElement):
 
     __visit_name__ = "subtype"
@@ -270,6 +265,7 @@ class Subtype(FOLElement):
     def __init__(self, left, right):
         self.left = left
         self.right = right
+
 
 class QuantifiedType(FOLElement):
 
@@ -279,12 +275,14 @@ class QuantifiedType(FOLElement):
         self.variables = variables
         self.vtype = vtype
 
+
 class Import(FOLElement):
 
     __visit_name__ = "import"
 
     def __init__(self, path):
-        self.path=path.replace('\'', '')
+        self.path = path.replace("'", "")
+
 
 class MappingType(FOLElement):
 
