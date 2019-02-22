@@ -123,6 +123,7 @@ setup(
         "antlr4-python3-runtime",
         "psycopg2",
         "pre-commit",
+        "pytest"
     ],
     extras_require={
         # eg:
