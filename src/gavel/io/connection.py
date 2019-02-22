@@ -10,7 +10,7 @@ def get_engine():
             cred = "{user}:{password}".format(**DB_CONNECTION)
         else:
             cred = "{user}".format(**DB_CONNECTION)
-        __ENGINE = create_engine(
+        __ENGINE__ = create_engine(
             "postgresql://{cred}@{host}:{port}/{database}".format(
                 cred=cred, **DB_CONNECTION
             )
