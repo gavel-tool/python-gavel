@@ -5,6 +5,7 @@ from gavel.settings import DB_CONNECTION
 __ENGINE__ = None
 
 def get_engine():
+    global __ENGINE__
     if __ENGINE__ is None:
         if "password" in DB_CONNECTION:
             cred = "{user}:{password}".format(**DB_CONNECTION)
