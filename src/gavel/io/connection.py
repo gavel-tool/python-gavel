@@ -2,18 +2,20 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from gavel.settings import DB_CONNECTION
 
+__ENGINE__ = None
 
 def get_engine():
-
-    if "password" in DB_CONNECTION:
-        cred = "{user}:{password}".format(**DB_CONNECTION)
-    else:
-        cred = "{user}".format(**DB_CONNECTION)
-    return create_engine(
-        "postgresql://{cred}@{host}:{port}/{database}".format(
-            cred=cred, **DB_CONNECTION
+    if __ENGINE__ is None:
+        if "password" in DB_CONNECTION:
+            cred = "{user}:{password}".format(**DB_CONNECTION)
+        else:
+            cred = "{user}".format(**DB_CONNECTION)
+        __ENGINE = create_engine(
+            "postgresql://{cred}@{host}:{port}/{database}".format(
+                cred=cred, **DB_CONNECTION
+            )
         )
-    )
+    return __ENGINE__
 
 
 def with_session(wrapped_function):
