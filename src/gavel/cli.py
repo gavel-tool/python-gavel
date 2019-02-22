@@ -45,8 +45,8 @@ def clear_db():
     fol_db.drop_tables()
 
 
-db.add_command(initdb)
-db.add_command(cleardb)
+db.add_command(init_db)
+db.add_command(clear_db)
 db.add_command(store_tptp)
 
 cli = click.CommandCollection(sources=[db])
