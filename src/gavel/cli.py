@@ -27,7 +27,7 @@ def db():
 
 
 @click.command()
-def initdb():
+def init_db():
     """Create tables for storage of formulas"""
     fol_db.create_tables()
 
@@ -40,8 +40,8 @@ def store_tptp(p):
 
 
 @click.command()
-def cleardb():
-    """Drop tables created gy initdb"""
+def clear_db():
+    """Drop tables created gy init-db"""
     fol_db.drop_tables()
 
 
