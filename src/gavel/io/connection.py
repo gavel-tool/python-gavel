@@ -36,10 +36,14 @@ def with_session(wrapped_function):
 
 
 def get_or_create(session, cls, *args, **kwargs):
-    obj = session.query(cls).filter_by(**kwargs).first()
+    obj = get_or_None(session, cls, *args, **kwargs)
     created = False
     if not obj:
         obj = cls(*args, **kwargs)
         session.add(obj)
         created = True
     return obj, created
+
+
+def get_or_None(session, cls, *args, **kwargs):
+    return session.query(cls).filter_by(**kwargs).first()

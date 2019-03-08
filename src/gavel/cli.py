@@ -40,17 +40,35 @@ def store_tptp(p):
 
 
 @click.command()
-def clear_db():
+@click.option("-p", default=settings.TPTP_ROOT)
+def store_solutions(p):
+    """Drop tables created gy init-db"""
+    build_tptp.all_solution(p)
+
+
+@click.command()
+def drop_db():
     """Drop tables created gy init-db"""
     fol_db.drop_tables()
 
 
+@click.command()
+@click.option("-p", default=settings.TPTP_ROOT)
+def clear_db(p):
+    """Drop tables created gy init-db and recreate them"""
+    fol_db.drop_tables()
+    fol_db.create_tables()
+
+
 db.add_command(init_db)
+db.add_command(drop_db)
 db.add_command(clear_db)
 db.add_command(store_tptp)
+db.add_command(store_solutions)
+
 
 cli = click.CommandCollection(sources=[db])
 
 
 if __name__ == "__main__":
-    db()
+    cli()

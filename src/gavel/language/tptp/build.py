@@ -9,11 +9,14 @@ import pickle as pkl
 import sys
 import gavel.settings as settings
 from gavel.language.base.compiler import Compiler
-from gavel.io.connection import get_or_create, with_session, get_engine
+from gavel.io.connection import get_or_create, with_session, get_or_None
 from sqlalchemy.orm.session import sessionmaker
+import requests
+import re
 
 sys.setrecursionlimit(10000)
 
+form_expression = re.compile(r'^(?!%|\n)(?P<logic>[^(]*)\([^.]*\)\.\S*$')
 
 class Processor:
     def folder_processor(self, path, file_processor, *args, **kwargs):
@@ -43,26 +46,27 @@ class Processor:
         return formula
 
     def load_expressions_from_file(self, path, *args, **kwargs):
-        print(path)
         tptp_root = kwargs.get("tptp_root", settings.TPTP_ROOT)
-        input = FileStream(os.path.join(tptp_root, path), encoding="utf8")
-        lexer = tptp_v7_0_0_0Lexer(input)
-        stream = CommonTokenStream(lexer)
-        parser = tptp_v7_0_0_0Parser(stream)
         visitor = FOFFlatteningVisitor()
-        # result = visitor.visit(parser.tptp_file())
-        tree = parser.tptp_input()
-        i = 0
-        while tree:
-            i += 1
-            if i % 10000 == 0:
-                print(i, tree.getText())
-            try:
-                yield self.syntax_tree_processor(tree, visitor, *args, **kwargs)
-            except fol.EOFException:
-                tree = None
-            else:
-                tree = parser.tptp_input()
+        #input = FileStream(os.path.join(tptp_root, path), encoding="utf8")
+        with open(os.path.join(tptp_root, path), 'r', encoding='utf8') as f:
+            buffer = ""
+            for line in f.readlines():
+                if not line.startswith('%') and not line.startswith('\n'):
+                    buffer += line.strip().replace(' ','')
+                    if buffer.endswith('.'):
+                        input = InputStream(buffer)
+                        lexer = tptp_v7_0_0_0Lexer(input)
+                        stream = CommonTokenStream(lexer)
+                        parser = tptp_v7_0_0_0Parser(stream)
+                        # result = visitor.visit(parser.tptp_file())
+                        tree = parser.annotated_formula()
+                        yield self.syntax_tree_processor(tree, visitor, *args, **kwargs)
+                        if tree.getText() != buffer:
+                            raise Exception('unprocessed content:\n"""%s"""\n"""%s"""'%(tree.getText(),buffer))
+                        buffer = ''
+            if buffer:
+                raise Exception('Unprocessed input: """%s"""'%buffer)
 
     def syntax_tree_processor(self, tree, visitor, *args, **kwargs):
         return visitor.visit(tree)
@@ -80,8 +84,10 @@ class StorageProcessor(Processor):
     def problem_processor(self, path, *args, **kwargs):
         session = kwargs.get("session")
         source, s_created = get_or_create(session, db.Source, path=path)
-        problem, p_create = get_or_create(session, db.Problem, source=source.id)
-        if p_create:
+        problem = get_or_None(session, db.Problem, source=source.id)
+        premises = []
+        conjectures = []
+        if problem is None:
             for line in self.load_expressions_from_file(path):
                 if isinstance(line, fol.Import):
                     imported_source = (
@@ -91,23 +97,26 @@ class StorageProcessor(Processor):
                         for axiom in session.query(db.Formula).filter_by(
                             source=imported_source.id
                         ):
-                            problem.premises.append(axiom)
+                            premises.append(axiom)
                     else:
                         raise Exception("Source (%s) not found" % line.path)
                 elif isinstance(line, fol.AnnotatedFormula):
-                    if line.role == fol.FormulaRole.CONJECTURE:
+                    if line.role in (fol.FormulaRole.CONJECTURE,
+                                     fol.FormulaRole.NEGATED_CONJECTURE):
                         conjecture = self.formula_processor(
                             line, *args, source=source, **kwargs
                         )
-                        problem.conjecture = conjecture.id
+                        conjectures.append(conjecture.id)
                     else:
-                        axiom = self.formula_processor(
+                        premise = self.formula_processor(
                             line, *args, source=source, **kwargs
                         )
-                        problem.premises.append(axiom)
+                        premises.append(premise.id)
                 else:
                     raise NotImplementedError
-            session.add(problem)
+            for conjecture in conjectures:
+                problem = db.Problem(premises=premises, source=source, conjecture=conjecture.id)
+                session.add(problem)
             session.commit()
 
     def formula_processor(self, formula: fol.AnnotatedFormula, *args, **kwargs):
@@ -189,7 +198,7 @@ def all_axioms(processor):
         "Axioms/GEO006+3.ax",
         "Axioms/HWV001-1.ax",
         "Axioms/GEO004+3.ax",
-        "Axioms/MAT001^0.ax",
+        #"Axioms/MAT001^0.ax",
         "Axioms/MSC001-2.ax",
         "Axioms/GRP004-2.ax",
         "Axioms/RNG003-0.ax",
@@ -1360,6 +1369,22 @@ def all_problems(processor):
     files = get_all_files("Problems")
     for f in files:
         return processor.problem_processor(f)
+
+
+def all_solution(path, system=''):
+    path = os.path.join(path,'Problems')
+    files = get_all_files(path)
+    for file in files:
+        domain, problem = os.path.normpath(file).split(os.sep)[-2:]
+        response = requests.get(
+            "http://www.tptp.org/cgi-bin/SeeTPTP?Category=Solutions"
+            "&Domain={domain}"
+            "&File={problem}"
+            "&System=Vampire---4.3.THM-Ref.s".format(
+                domain=domain,
+                problem=problem[:-2]
+            ))
+        print(response)
 
 
 def store_tptp():
