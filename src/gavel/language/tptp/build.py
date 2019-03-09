@@ -69,6 +69,7 @@ class Processor:
         pool = mp.Pool(mp.cpu_count()-1)
         for tree in pool.map(self.process_formula_line, self.stream_formula_lines_from_file(path,**kwargs)):
             yield tree
+        pool.close()
 
     def syntax_tree_processor(self, tree, *args, **kwargs):
         return self.visitor.visit(tree)
