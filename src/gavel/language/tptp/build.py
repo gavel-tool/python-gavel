@@ -13,12 +13,15 @@ from gavel.io.connection import get_or_create, with_session, get_or_None
 from sqlalchemy.orm.session import sessionmaker
 import requests
 import re
+import multiprocessing as mp
 
 sys.setrecursionlimit(10000)
 
 form_expression = re.compile(r'^(?!%|\n)(?P<logic>[^(]*)\([^.]*\)\.\S*$')
 
 class Processor:
+    visitor = FOFFlatteningVisitor()
+
     def folder_processor(self, path, file_processor, *args, **kwargs):
         for root, dirs, files in os.walk(path):
             for file in files:
@@ -45,31 +48,30 @@ class Processor:
     def formula_processor(self, formula, *args, **kwargs):
         return formula
 
-    def load_expressions_from_file(self, path, *args, **kwargs):
+    def stream_formula_lines_from_file(self, path, **kwargs):
         tptp_root = kwargs.get("tptp_root", settings.TPTP_ROOT)
-        visitor = FOFFlatteningVisitor()
-        #input = FileStream(os.path.join(tptp_root, path), encoding="utf8")
+        print(path)
         with open(os.path.join(tptp_root, path), 'r', encoding='utf8') as f:
             buffer = ""
             for line in f.readlines():
                 if not line.startswith('%') and not line.startswith('\n'):
-                    buffer += line.strip().replace(' ','')
+                    buffer += line.strip().replace(' ', '')
                     if buffer.endswith('.'):
-                        input = InputStream(buffer)
-                        lexer = tptp_v7_0_0_0Lexer(input)
-                        stream = CommonTokenStream(lexer)
-                        parser = tptp_v7_0_0_0Parser(stream)
-                        # result = visitor.visit(parser.tptp_file())
-                        tree = parser.annotated_formula()
-                        yield self.syntax_tree_processor(tree, visitor, *args, **kwargs)
-                        if tree.getText() != buffer:
-                            raise Exception('unprocessed content:\n"""%s"""\n"""%s"""'%(tree.getText(),buffer))
-                        buffer = ''
+                        yield buffer
+                        buffer = ""
             if buffer:
-                raise Exception('Unprocessed input: """%s"""'%buffer)
+                raise Exception('Unprocessed input: """%s"""' % buffer)
 
-    def syntax_tree_processor(self, tree, visitor, *args, **kwargs):
-        return visitor.visit(tree)
+    def process_formula_line(self, buffer, *args, **kwargs):
+        return self.syntax_tree_processor(tptp_v7_0_0_0Parser(CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(buffer)))).annotated_formula())
+
+    def load_expressions_from_file(self, path, *args, **kwargs):
+        pool = mp.Pool(mp.cpu_count()-1)
+        for tree in pool.map(self.process_formula_line, self.stream_formula_lines_from_file(path,**kwargs)):
+            yield tree
+
+    def syntax_tree_processor(self, tree, *args, **kwargs):
+        return self.visitor.visit(tree)
 
     def file_processor(self, path, *args, **kwargs):
         return self.load_expressions_from_file(path, *args, **kwargs)
