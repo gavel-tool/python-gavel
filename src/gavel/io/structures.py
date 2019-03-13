@@ -1,6 +1,6 @@
 import enum
 import sqlalchemy as sqla
-from sqlalchemy.orm import relation
+from sqlalchemy.orm import relation, relationship
 from sqlalchemy.types import Enum
 from sqlalchemy.ext.declarative import declarative_base
 from .connection import get_engine
@@ -19,42 +19,53 @@ class Formula(Base):
     __tablename__ = "formula"
     id = sqla.Column(sqla.Integer, primary_key=True)
     name = sqla.Column(sqla.Text)
-    source = sqla.Column(sqla.Integer, sqla.ForeignKey(Source.id))
+    source_id = sqla.Column(sqla.Integer, sqla.ForeignKey(Source.id), nullable=False)
+    source = relationship(Source)
+    original = sqla.Column(sqla.Text, nullable=False)
     blob = sqla.Column(sqla.Binary)
     __table_args__ = (
-        sqla.UniqueConstraint("name", "source", name="_form_name_source"),
+        sqla.UniqueConstraint("name", "source_id", name="_form_name_source"),
     )
 
 
 association_premises = sqla.Table(
     "association",
     Base.metadata,
-    sqla.Column("left_id", sqla.Integer, sqla.ForeignKey("problem.id")),
-    sqla.Column("right_id", sqla.Integer, sqla.ForeignKey("formula.id")),
+    sqla.Column("left_id", sqla.Integer, sqla.ForeignKey("problem.id"), nullable=False),
+    sqla.Column("right_id", sqla.Integer, sqla.ForeignKey("formula.id"), nullable=False),
 )
 
 
 class SolutionItem(Base):
     id = sqla.Column(sqla.Integer, primary_key=True)
     __tablename__ = "solution_item"
-    solution = sqla.Column(sqla.Integer, sqla.ForeignKey("solution.id"))
-    premise = sqla.Column(sqla.Integer, sqla.ForeignKey(Formula.id))
+    solution_id = sqla.Column(sqla.Integer, sqla.ForeignKey("solution.id"), nullable=False)
+    solution = relationship("Solution")
+    premise_id = sqla.Column(sqla.Integer, sqla.ForeignKey(Formula.id), nullable=False)
+    premise = relationship(Formula)
     used = sqla.Column(sqla.Boolean)
 
 
 class Problem(Base):
     __tablename__ = "problem"
     id = sqla.Column(sqla.Integer, primary_key=True)
-    source = sqla.Column(sqla.Integer, sqla.ForeignKey(Source.id))
-    conjecture = sqla.Column(sqla.Integer, sqla.ForeignKey(Formula.id))
+    source_id = sqla.Column(sqla.Integer, sqla.ForeignKey(Source.id), nullable=False)
+    source = relationship(Source)
+    conjecture_id = sqla.Column(sqla.Integer, sqla.ForeignKey(Formula.id), nullable=False)
+    conjecture = relationship(Formula)
     premises = relation(Formula, secondary=association_premises)
     solutions = relation("Solution")
 
+    def create_problem_file(self):
+        for premise in self.premises:
+            print(premise.name)
+        print(self.conjecture.name)
 
 class Solution(Base):
     __tablename__ = "solution"
     id = sqla.Column(sqla.Integer, primary_key=True)
-    problem = sqla.Column(sqla.Integer, sqla.ForeignKey("problem.id"))
+    problem_id = sqla.Column(sqla.Integer, sqla.ForeignKey("problem.id"))
+    problem = relationship(Problem)
     premises = relation(SolutionItem)
 
 

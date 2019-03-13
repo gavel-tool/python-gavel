@@ -10,6 +10,7 @@ import sys
 import gavel.settings as settings
 from gavel.language.base.compiler import Compiler
 from gavel.io.connection import get_or_create, with_session, get_or_None
+from gavel.settings import TPTP_ROOT
 from sqlalchemy.orm.session import sessionmaker
 import requests
 import re
@@ -45,13 +46,11 @@ class Processor:
         for item in self.load_expressions_from_file(path):
             yield self.formula_processor(item, *args, **kwargs)
 
-    def formula_processor(self, formula, *args, **kwargs):
+    def formula_processor(self, formula, *args, orig=None, **kwargs):
         return formula
 
     def stream_formula_lines_from_file(self, path, **kwargs):
-        tptp_root = kwargs.get("tptp_root", settings.TPTP_ROOT)
-        print(path)
-        with open(os.path.join(tptp_root, path), 'r', encoding='utf8') as f:
+        with open(path, 'r', encoding='utf8') as f:
             buffer = ""
             for line in f.readlines():
                 if not line.startswith('%') and not line.startswith('\n'):
@@ -63,12 +62,12 @@ class Processor:
                 raise Exception('Unprocessed input: """%s"""' % buffer)
 
     def process_formula_line(self, buffer, *args, **kwargs):
-        return self.syntax_tree_processor(tptp_v7_0_0_0Parser(CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(buffer)))).annotated_formula())
+        return self.syntax_tree_processor(tptp_v7_0_0_0Parser(CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(buffer)))).tptp_input()), buffer
 
     def load_expressions_from_file(self, path, *args, **kwargs):
         pool = mp.Pool(mp.cpu_count()-1)
-        for tree in pool.map(self.process_formula_line, self.stream_formula_lines_from_file(path,**kwargs)):
-            yield tree
+        for tree, orig in pool.map(self.process_formula_line, self.stream_formula_lines_from_file(path,**kwargs)):
+            yield tree, orig
         pool.close()
 
     def syntax_tree_processor(self, tree, *args, **kwargs):
@@ -87,59 +86,74 @@ class StorageProcessor(Processor):
     def problem_processor(self, path, *args, **kwargs):
         session = kwargs.get("session")
         source, s_created = get_or_create(session, db.Source, path=path)
-        problem = get_or_None(session, db.Problem, source=source.id)
+        #problem = get_or_None(session, db.Problem, source=source.id)
+        problems = []
         premises = []
         conjectures = []
-        if problem is None:
-            for line in self.load_expressions_from_file(path):
+        if s_created:
+            for line, orig in self.load_expressions_from_file(path):
                 if isinstance(line, fol.Import):
                     imported_source = (
                         session.query(db.Source).filter_by(path=line.path).first()
                     )
                     if imported_source:
-                        for axiom in session.query(db.Formula).filter_by(
-                            source=imported_source.id
-                        ):
-                            premises.append(axiom)
+                        axiomset = session.query(db.Formula).filter_by(source=imported_source).all()
                     else:
-                        raise Exception("Source (%s) not found" % line.path)
+                        axiomset = self.axiomset_processor(os.path.join(TPTP_ROOT,line.path), session=session, commit=False)
+                        # raise Exception("Source (%s) not found" % line.path)
+                    for axiom in axiomset:
+                        premises.append(axiom)
                 elif isinstance(line, fol.AnnotatedFormula):
                     if line.role in (fol.FormulaRole.CONJECTURE,
                                      fol.FormulaRole.NEGATED_CONJECTURE):
                         conjecture = self.formula_processor(
-                            line, *args, source=source, **kwargs
+                            line, *args, source=source, orig=orig, force_creation=True, **kwargs
                         )
-                        conjectures.append(conjecture.id)
+                        session.add(conjecture)
+                        conjectures.append(conjecture)
                     else:
                         premise = self.formula_processor(
-                            line, *args, source=source, **kwargs
+                            line, *args, source=source, orig=orig, force_creation=True, **kwargs
                         )
-                        premises.append(premise.id)
+                        session.add(premise)
+                        premises.append(premise)
                 else:
                     raise NotImplementedError
             for conjecture in conjectures:
-                problem = db.Problem(premises=premises, source=source, conjecture=conjecture.id)
+                problem = db.Problem(premises=premises, source=source, conjecture=conjecture)
                 session.add(problem)
+                problems.append(problem)
             session.commit()
+            return problems
+        else:
+            return session.query(db.Problem).filter_by(source=source).all()
 
-    def formula_processor(self, formula: fol.AnnotatedFormula, *args, **kwargs):
+
+    def formula_processor(self, formula: fol.AnnotatedFormula, *args, orig=None, force_creation=False, **kwargs):
         source = kwargs.get("source")
         session = kwargs.get("session")
-        formula_obj, created = get_or_create(
-            session, db.Formula, name=formula.name, source=source.id
-        )
-        if created:
-            formula_obj.blob = pkl.dumps(formula)
+        if force_creation or source.id is None:
+            formula_obj = db.Formula(name=formula.name, source=source, blob=pkl.dumps(formula), original=orig)
+            session.add(formula_obj)
+        else:
+            formula_obj = get_or_None(session, db.Formula, name=formula.name, source=source)
+            if formula_obj is None:
+                raise Exception
         return formula_obj
 
     @with_session
     def axiomset_processor(self, path, *args, **kwargs):
         session = kwargs.get("session")
         source, created = get_or_create(session, db.Source, path=path)
+        commit = kwargs.get('commit', False)
         if created:
-            for item in self.load_expressions_from_file(path):
-                self.formula_processor(item, source=source, *args, **kwargs)
-            session.commit()
+            result = [self.formula_processor(item, source=source, *args, orig=orig, **kwargs)
+                      for item, orig in self.load_expressions_from_file(path)]
+            if commit:
+                session.commit()
+            return result
+        else:
+            return session.query(db.Formula).filter_by(source=source).all()
 
 
 def all_axioms(processor):
@@ -1338,8 +1352,8 @@ def all_axioms(processor):
         "Axioms/SET007/SET007+74.ax",
         "Axioms/SET007/SET007+365.ax",
         "Axioms/GEO010+0.ax",
-        # , 'Axioms/CSR002+5.ax',
-        "Axioms/CSR003+2.ax",
+        #'Axioms/CSR002+5.ax',
+        #"Axioms/CSR003+2.ax",
         "Axioms/CSR001+2.ax",
         "Axioms/CSR001+3.ax",
         "Axioms/CSR004+0.ax",
@@ -1358,8 +1372,8 @@ def all_axioms(processor):
         "Axioms/MED002+0.ax",
     ]
     for f in files:
-        yield processor.axiomset_processor(f)
-
+        print(f)
+        processor.axiomset_processor(os.path.join(TPTP_ROOT,f))
 
 def get_all_files(path):
     for root, dirs, files in os.walk(path):
@@ -1369,9 +1383,10 @@ def get_all_files(path):
 
 
 def all_problems(processor):
-    files = get_all_files("Problems")
-    for f in files:
-        return processor.problem_processor(f)
+    for f in get_all_files(os.path.join(TPTP_ROOT,"Problems")):
+        print(f)
+        for problem in processor.problem_processor(f):
+            print('done')
 
 
 def all_solution(path, system=''):
@@ -1390,9 +1405,11 @@ def all_solution(path, system=''):
         print(response)
 
 
-def store_tptp():
+def store_problems():
     processor = StorageProcessor()
-    for _ in all_axioms(processor):
-        pass
-    for _ in all_problems(processor):
-        pass
+    all_problems(processor)
+
+
+def store_axioms():
+    processor = StorageProcessor()
+    all_axioms(processor)

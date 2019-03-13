@@ -36,7 +36,15 @@ def init_db():
 @click.option("-p", default=settings.TPTP_ROOT)
 def store_tptp(p):
     settings.TPTP_ROOT = p
-    build_tptp.store_tptp()
+    build_tptp.store_axioms()
+    build_tptp.store_problems()
+
+
+@click.command()
+@click.option("-p", default=settings.TPTP_ROOT)
+def store_problems(p):
+    settings.TPTP_ROOT = p
+    build_tptp.store_problems()
 
 
 @click.command()
@@ -63,6 +71,7 @@ def clear_db(p):
 db.add_command(init_db)
 db.add_command(drop_db)
 db.add_command(clear_db)
+db.add_command(store_problems)
 db.add_command(store_tptp)
 db.add_command(store_solutions)
 

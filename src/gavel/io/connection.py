@@ -21,17 +21,19 @@ def get_engine():
 
 def with_session(wrapped_function):
     def inside(*args, **kwargs):
-        engine = get_engine()
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        try:
-            wrapped_function(*args, session=session, **kwargs)
-        except:
-            session.rollback()
-            raise
-        finally:
-            session.close()
-
+        if 'session' not in kwargs:
+            engine = get_engine()
+            Session = sessionmaker(bind=engine,)
+            session = Session()
+            try:
+                return wrapped_function(*args, session=session, **kwargs)
+            except:
+                session.rollback()
+                raise
+            finally:
+                session.close()
+        else:
+            return wrapped_function(*args, **kwargs)
     return inside
 
 
