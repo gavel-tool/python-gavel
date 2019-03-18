@@ -54,7 +54,7 @@ class Processor:
             buffer = ""
             for line in f.readlines():
                 if not line.startswith('%') and not line.startswith('\n'):
-                    buffer += line.strip().replace(' ', '')
+                    buffer += line.strip()
                     if buffer.endswith('.'):
                         yield buffer
                         buffer = ""
@@ -65,10 +65,10 @@ class Processor:
         return self.syntax_tree_processor(tptp_v7_0_0_0Parser(CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(buffer)))).tptp_input()), buffer
 
     def load_expressions_from_file(self, path, *args, **kwargs):
-        pool = mp.Pool(mp.cpu_count()-1)
-        for tree, orig in pool.map(self.process_formula_line, self.stream_formula_lines_from_file(path,**kwargs)):
+        #pool = mp.Pool(mp.cpu_count()-1)
+        for tree, orig in map(self.process_formula_line, self.stream_formula_lines_from_file(path,**kwargs)):
             yield tree, orig
-        pool.close()
+        #pool.close()
 
     def syntax_tree_processor(self, tree, *args, **kwargs):
         return self.visitor.visit(tree)
