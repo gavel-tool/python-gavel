@@ -43,8 +43,9 @@ class Processor:
         )
 
     def axiomset_processor(self, path, *args, **kwargs):
-        for item in self.load_expressions_from_file(path):
-            yield self.formula_processor(item, *args, **kwargs)
+        if get_or_None(kwargs['session'], db.Source, path=path) is None:
+            for item in self.load_expressions_from_file(path):
+                yield self.formula_processor(item, *args, **kwargs)
 
     def formula_processor(self, formula, *args, orig=None, **kwargs):
         return formula
@@ -155,6 +156,10 @@ class StorageProcessor(Processor):
         else:
             return session.query(db.Formula).filter_by(source=source).all()
 
+
+class AutoencoderProcessor(Processor):
+    def formula_processor(self, formula, *args, orig=None, **kwargs):
+        return formula
 
 def all_axioms(processor):
     files = [
