@@ -54,7 +54,7 @@ def single_axiom(axiom):
 def test_single_line():
     processor = TestProcessor()
 
-    for _ in processor.load_expressions_from_file('single_line.txt'):
+    for _ in processor.load_expressions_from_file('single_line_thf.txt'):
         pass
 
 class TestAxioms:
