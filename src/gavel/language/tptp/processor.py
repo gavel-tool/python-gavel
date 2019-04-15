@@ -46,9 +46,8 @@ class Processor:
         )
 
     def axiomset_processor(self, path, *args, **kwargs):
-        if get_or_None(kwargs["session"], db.Source, path=path) is None:
-            for item in self.load_expressions_from_file(path):
-                yield self.formula_processor(item, *args, **kwargs)
+        for item in self.load_expressions_from_file(path):
+            yield self.formula_processor(item, *args, **kwargs)
 
     def formula_processor(self, formula, *args, orig=None, **kwargs):
         return formula
