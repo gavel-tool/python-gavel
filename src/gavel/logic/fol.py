@@ -1,14 +1,11 @@
 from enum import Enum
 from itertools import chain
 from typing import Iterable
+from gavel.logic.base import LogicElement
 
-class FOLElement:
-    __visit_name__ = "undefined"
 
-    requires_parens = False
-
-    def symbols(self) -> Iterable:
-        return []
+class FOLElement(LogicElement):
+    pass
 
 
 class Quantifier(Enum):
@@ -181,8 +178,9 @@ class QuantifiedFormula(FOLElement):
         )
 
     def symbols(self):
-        for symbol in self.variables:
-            yield symbol.symbols()
+        for variable in self.variables:
+            for symbol in variable.symbols():
+                yield symbol
         for symbol in self.formula.symbols():
             yield symbol
 
@@ -290,6 +288,18 @@ class Conditional(FOLElement):
         return chain(self.if_clause.symbols(),
                      self.then_clause.symbols(),
                      self.else_clause.symbols())
+
+
+class Variable(FOLElement):
+
+    __visit_name__ = "variable"
+
+    def __init__(self, symbol):
+        self.symbol = symbol
+
+    def symbols(self):
+        return {self.symbol}
+
 
 class Let(FOLElement):
 

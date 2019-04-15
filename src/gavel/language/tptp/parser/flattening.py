@@ -25,7 +25,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#annotated_formula.
-    def visitAnnotated_formula(self, ctx: tptp_v7_0_0_0Parser.Annotated_formulaContext):
+    def visitAnnotated_formula(self, ctx: tptp_v7_0_0_0Parser.Annotated_formulaContext) -> structures.AnnotatedFormula:
         annotated = ctx.children[0]
         return structures.AnnotatedFormula(
             self.visit(annotated.children[0]).replace("(", ""),
@@ -947,7 +947,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#variable.
     def visitVariable(self, ctx: tptp_v7_0_0_0Parser.VariableContext):
-        return self.visit_first(ctx)
+        return structures.Variable(self.visit_first(ctx))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#source.
     def visitSource(self, ctx: tptp_v7_0_0_0Parser.SourceContext):

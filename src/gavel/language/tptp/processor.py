@@ -8,13 +8,15 @@ from gavel.logic import fol
 import pickle as pkl
 import sys
 import gavel.settings as settings
-from gavel.language.base.compiler import Compiler
+from gavel.logic.base import LogicElement
 from gavel.io.connection import get_or_create, with_session, get_or_None
 from gavel.settings import TPTP_ROOT
 from sqlalchemy.orm.session import sessionmaker
 import requests
 import re
 import multiprocessing as mp
+
+from typing import Iterable, Tuple
 
 sys.setrecursionlimit(10000)
 
@@ -62,16 +64,16 @@ class Processor:
             if buffer:
                 raise Exception('Unprocessed input: """%s"""' % buffer)
 
-    def process_formula_line(self, buffer, *args, **kwargs):
+    def process_formula_line(self, buffer, *args, **kwargs) -> Tuple[LogicElement, str]:
         return self.syntax_tree_processor(tptp_v7_0_0_0Parser(CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(buffer)))).tptp_input()), buffer
 
-    def load_expressions_from_file(self, path, *args, **kwargs):
+    def load_expressions_from_file(self, path, *args, **kwargs) -> Iterable[Tuple[LogicElement, str]]:
         pool = mp.Pool(mp.cpu_count()-1)
         for tree, orig in pool.map(self.process_formula_line, self.stream_formula_lines_from_file(path,**kwargs)):
             yield tree, orig
         pool.close()
 
-    def syntax_tree_processor(self, tree, *args, **kwargs):
+    def syntax_tree_processor(self, tree, *args, **kwargs) -> LogicElement:
         return self.visitor.visit(tree)
 
     def file_processor(self, path, *args, **kwargs):
