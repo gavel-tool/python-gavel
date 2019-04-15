@@ -30,6 +30,8 @@ before_install:
   - python --version
   - uname -a
   - lsb_release -a
+  - sudo apt-get update
+  - sudo apt-get install antlr4
 install:
   - pip install tox
   - virtualenv --version
