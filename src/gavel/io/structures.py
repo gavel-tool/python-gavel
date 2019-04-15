@@ -32,14 +32,18 @@ association_premises = sqla.Table(
     "association",
     Base.metadata,
     sqla.Column("left_id", sqla.Integer, sqla.ForeignKey("problem.id"), nullable=False),
-    sqla.Column("right_id", sqla.Integer, sqla.ForeignKey("formula.id"), nullable=False),
+    sqla.Column(
+        "right_id", sqla.Integer, sqla.ForeignKey("formula.id"), nullable=False
+    ),
 )
 
 
 class SolutionItem(Base):
     id = sqla.Column(sqla.Integer, primary_key=True)
     __tablename__ = "solution_item"
-    solution_id = sqla.Column(sqla.Integer, sqla.ForeignKey("solution.id"), nullable=False)
+    solution_id = sqla.Column(
+        sqla.Integer, sqla.ForeignKey("solution.id"), nullable=False
+    )
     solution = relationship("Solution")
     premise_id = sqla.Column(sqla.Integer, sqla.ForeignKey(Formula.id), nullable=False)
     premise = relationship(Formula)
@@ -51,7 +55,9 @@ class Problem(Base):
     id = sqla.Column(sqla.Integer, primary_key=True)
     source_id = sqla.Column(sqla.Integer, sqla.ForeignKey(Source.id), nullable=False)
     source = relationship(Source)
-    conjecture_id = sqla.Column(sqla.Integer, sqla.ForeignKey(Formula.id), nullable=False)
+    conjecture_id = sqla.Column(
+        sqla.Integer, sqla.ForeignKey(Formula.id), nullable=False
+    )
     conjecture = relationship(Formula)
     premises = relation(Formula, secondary=association_premises)
     solutions = relation("Solution")
@@ -60,6 +66,7 @@ class Problem(Base):
         for premise in self.premises:
             print(premise.name)
         print(self.conjecture.name)
+
 
 class Solution(Base):
     __tablename__ = "solution"

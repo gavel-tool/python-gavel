@@ -4,6 +4,7 @@ from gavel.settings import DB_CONNECTION
 
 __ENGINE__ = None
 
+
 def get_engine():
     global __ENGINE__
     if __ENGINE__ is None:
@@ -21,9 +22,9 @@ def get_engine():
 
 def with_session(wrapped_function):
     def inside(*args, **kwargs):
-        if 'session' not in kwargs:
+        if "session" not in kwargs:
             engine = get_engine()
-            Session = sessionmaker(bind=engine,)
+            Session = sessionmaker(bind=engine)
             session = Session()
             try:
                 return wrapped_function(*args, session=session, **kwargs)
@@ -34,6 +35,7 @@ def with_session(wrapped_function):
                 session.close()
         else:
             return wrapped_function(*args, **kwargs)
+
     return inside
 
 

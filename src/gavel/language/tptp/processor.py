@@ -20,7 +20,8 @@ from typing import Iterable, Tuple
 
 sys.setrecursionlimit(10000)
 
-form_expression = re.compile(r'^(?!%|\n)(?P<logic>[^(]*)\([^.]*\)\.\S*$')
+form_expression = re.compile(r"^(?!%|\n)(?P<logic>[^(]*)\([^.]*\)\.\S*$")
+
 
 class Processor:
     visitor = FOFFlatteningVisitor()
@@ -45,7 +46,7 @@ class Processor:
         )
 
     def axiomset_processor(self, path, *args, **kwargs):
-        if get_or_None(kwargs['session'], db.Source, path=path) is None:
+        if get_or_None(kwargs["session"], db.Source, path=path) is None:
             for item in self.load_expressions_from_file(path):
                 yield self.formula_processor(item, *args, **kwargs)
 
@@ -53,23 +54,35 @@ class Processor:
         return formula
 
     def stream_formula_lines_from_file(self, path, **kwargs):
-        with open(path, 'r', encoding='utf8') as f:
+        with open(path, "r", encoding="utf8") as f:
             buffer = ""
             for line in f.readlines():
-                if not line.startswith('%') and not line.startswith('\n'):
+                if not line.startswith("%") and not line.startswith("\n"):
                     buffer += line.strip()
-                    if buffer.endswith('.'):
+                    if buffer.endswith("."):
                         yield buffer
                         buffer = ""
             if buffer:
                 raise Exception('Unprocessed input: """%s"""' % buffer)
 
     def process_formula_line(self, buffer, *args, **kwargs) -> Tuple[LogicElement, str]:
-        return self.syntax_tree_processor(tptp_v7_0_0_0Parser(CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(buffer)))).tptp_input()), buffer
+        return (
+            self.syntax_tree_processor(
+                tptp_v7_0_0_0Parser(
+                    CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(buffer)))
+                ).tptp_input()
+            ),
+            buffer,
+        )
 
-    def load_expressions_from_file(self, path, *args, **kwargs) -> Iterable[Tuple[LogicElement, str]]:
-        pool = mp.Pool(mp.cpu_count()-1)
-        for tree, orig in pool.map(self.process_formula_line, self.stream_formula_lines_from_file(path,**kwargs)):
+    def load_expressions_from_file(
+        self, path, *args, **kwargs
+    ) -> Iterable[Tuple[LogicElement, str]]:
+        pool = mp.Pool(mp.cpu_count() - 1)
+        for tree, orig in pool.map(
+            self.process_formula_line,
+            self.stream_formula_lines_from_file(path, **kwargs),
+        ):
             yield tree, orig
         pool.close()
 
@@ -89,7 +102,7 @@ class StorageProcessor(Processor):
     def problem_processor(self, path, *args, **kwargs):
         session = kwargs.get("session")
         source, s_created = get_or_create(session, db.Source, path=path)
-        #problem = get_or_None(session, db.Problem, source=source.id)
+        # problem = get_or_None(session, db.Problem, source=source.id)
         problems = []
         premises = []
         conjectures = []
@@ -100,30 +113,52 @@ class StorageProcessor(Processor):
                         session.query(db.Source).filter_by(path=line.path).first()
                     )
                     if imported_source:
-                        axiomset = session.query(db.Formula).filter_by(source=imported_source).all()
+                        axiomset = (
+                            session.query(db.Formula)
+                            .filter_by(source=imported_source)
+                            .all()
+                        )
                     else:
-                        axiomset = self.axiomset_processor(os.path.join(TPTP_ROOT,line.path), session=session, commit=False)
+                        axiomset = self.axiomset_processor(
+                            os.path.join(TPTP_ROOT, line.path),
+                            session=session,
+                            commit=False,
+                        )
                         # raise Exception("Source (%s) not found" % line.path)
                     for axiom in axiomset:
                         premises.append(axiom)
                 elif isinstance(line, fol.AnnotatedFormula):
-                    if line.role in (fol.FormulaRole.CONJECTURE,
-                                     fol.FormulaRole.NEGATED_CONJECTURE):
+                    if line.role in (
+                        fol.FormulaRole.CONJECTURE,
+                        fol.FormulaRole.NEGATED_CONJECTURE,
+                    ):
                         conjecture = self.formula_processor(
-                            line, *args, source=source, orig=orig, force_creation=True, **kwargs
+                            line,
+                            *args,
+                            source=source,
+                            orig=orig,
+                            force_creation=True,
+                            **kwargs
                         )
                         session.add(conjecture)
                         conjectures.append(conjecture)
                     else:
                         premise = self.formula_processor(
-                            line, *args, source=source, orig=orig, force_creation=True, **kwargs
+                            line,
+                            *args,
+                            source=source,
+                            orig=orig,
+                            force_creation=True,
+                            **kwargs
                         )
                         session.add(premise)
                         premises.append(premise)
                 else:
                     raise NotImplementedError
             for conjecture in conjectures:
-                problem = db.Problem(premises=premises, source=source, conjecture=conjecture)
+                problem = db.Problem(
+                    premises=premises, source=source, conjecture=conjecture
+                )
                 session.add(problem)
                 problems.append(problem)
             session.commit()
@@ -131,15 +166,25 @@ class StorageProcessor(Processor):
         else:
             return session.query(db.Problem).filter_by(source=source).all()
 
-
-    def formula_processor(self, formula: fol.AnnotatedFormula, *args, orig=None, force_creation=False, **kwargs):
+    def formula_processor(
+        self,
+        formula: fol.AnnotatedFormula,
+        *args,
+        orig=None,
+        force_creation=False,
+        **kwargs
+    ):
         source = kwargs.get("source")
         session = kwargs.get("session")
         if force_creation or source.id is None:
-            formula_obj = db.Formula(name=formula.name, source=source, blob=pkl.dumps(formula), original=orig)
+            formula_obj = db.Formula(
+                name=formula.name, source=source, blob=pkl.dumps(formula), original=orig
+            )
             session.add(formula_obj)
         else:
-            formula_obj = get_or_None(session, db.Formula, name=formula.name, source=source)
+            formula_obj = get_or_None(
+                session, db.Formula, name=formula.name, source=source
+            )
             if formula_obj is None:
                 raise Exception
         return formula_obj
@@ -148,10 +193,12 @@ class StorageProcessor(Processor):
     def axiomset_processor(self, path, *args, **kwargs):
         session = kwargs.get("session")
         source, created = get_or_create(session, db.Source, path=path)
-        commit = kwargs.get('commit', False)
+        commit = kwargs.get("commit", False)
         if created:
-            result = [self.formula_processor(item, source=source, *args, orig=orig, **kwargs)
-                      for item, orig in self.load_expressions_from_file(path)]
+            result = [
+                self.formula_processor(item, source=source, *args, orig=orig, **kwargs)
+                for item, orig in self.load_expressions_from_file(path)
+            ]
             if commit:
                 session.commit()
             return result
@@ -162,6 +209,7 @@ class StorageProcessor(Processor):
 class AutoencoderProcessor(Processor):
     def formula_processor(self, formula, *args, orig=None, **kwargs):
         return formula
+
 
 def all_axioms(processor):
     files = [
@@ -222,7 +270,7 @@ def all_axioms(processor):
         "Axioms/GEO006+3.ax",
         "Axioms/HWV001-1.ax",
         "Axioms/GEO004+3.ax",
-        #"Axioms/MAT001^0.ax",
+        # "Axioms/MAT001^0.ax",
         "Axioms/MSC001-2.ax",
         "Axioms/GRP004-2.ax",
         "Axioms/RNG003-0.ax",
@@ -1360,7 +1408,7 @@ def all_axioms(processor):
         "Axioms/SET007/SET007+365.ax",
         "Axioms/GEO010+0.ax",
         #'Axioms/CSR002+5.ax',
-        #"Axioms/CSR003+2.ax",
+        # "Axioms/CSR003+2.ax",
         "Axioms/CSR001+2.ax",
         "Axioms/CSR001+3.ax",
         "Axioms/CSR004+0.ax",
@@ -1380,7 +1428,8 @@ def all_axioms(processor):
     ]
     for f in files:
         print(f)
-        processor.axiomset_processor(os.path.join(TPTP_ROOT,f))
+        processor.axiomset_processor(os.path.join(TPTP_ROOT, f))
+
 
 def get_all_files(path):
     for root, dirs, files in os.walk(path):
@@ -1390,14 +1439,14 @@ def get_all_files(path):
 
 
 def all_problems(processor):
-    for f in get_all_files(os.path.join(TPTP_ROOT,"Problems")):
+    for f in get_all_files(os.path.join(TPTP_ROOT, "Problems")):
         print(f)
         for problem in processor.problem_processor(f):
-            print('done')
+            print("done")
 
 
-def all_solution(path, system=''):
-    path = os.path.join(path,'Problems')
+def all_solution(path, system=""):
+    path = os.path.join(path, "Problems")
     files = get_all_files(path)
     for file in files:
         domain, problem = os.path.normpath(file).split(os.sep)[-2:]
@@ -1406,9 +1455,9 @@ def all_solution(path, system=''):
             "&Domain={domain}"
             "&File={problem}"
             "&System=Vampire---4.3.THM-Ref.s".format(
-                domain=domain,
-                problem=problem[:-2]
-            ))
+                domain=domain, problem=problem[:-2]
+            )
+        )
         print(response)
 
 

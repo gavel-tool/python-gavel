@@ -205,7 +205,7 @@ class BinaryFormula(FOLElement):
 
     requires_parens = True
 
-    def __init__(self, left:FOLElement, operator, right:FOLElement):
+    def __init__(self, left: FOLElement, operator, right: FOLElement):
         self.left = left
         self.right = right
         self.operator = operator
@@ -231,6 +231,7 @@ class FunctorExpression(FOLElement):
     def symbols(self):
         yield self.functor
         return chain(*map(lambda x: x.symbols(), self.arguments))
+
 
 class PredicateExpression(FOLElement):
 
@@ -259,6 +260,7 @@ class TypedVariable(FOLElement):
     def symbols(self):
         yield self.name
 
+
 class TypeFormula(FOLElement):
 
     __visit_name__ = "type_formula"
@@ -270,24 +272,25 @@ class TypeFormula(FOLElement):
     def symbols(self):
         yield self.name
 
+
 class Conditional(FOLElement):
 
     __visit_name__ = "conditional"
 
     def __init__(
-        self,
-        if_clause: FOLElement,
-        then_clause: FOLElement,
-        else_clause: FOLElement):
+        self, if_clause: FOLElement, then_clause: FOLElement, else_clause: FOLElement
+    ):
 
         self.if_clause = if_clause
         self.then_clause = then_clause
         self.else_clause = else_clause
 
     def symbols(self):
-        return chain(self.if_clause.symbols(),
-                     self.then_clause.symbols(),
-                     self.else_clause.symbols())
+        return chain(
+            self.if_clause.symbols(),
+            self.then_clause.symbols(),
+            self.else_clause.symbols(),
+        )
 
 
 class Variable(FOLElement):
