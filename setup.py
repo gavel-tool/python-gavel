@@ -124,7 +124,8 @@ setup(
         "psycopg2",
         "pre-commit",
         "pytest",
-        "requests"
+        "requests",
+        "tensorflow"
     ],
     extras_require={
         # eg:
