@@ -66,6 +66,7 @@ before_script:
   - wget "http://www.tptp.org/TPTP/Archive/TPTP-v7.0.0.tgz"
   - mkdir "$HOME/TPTP"
   - tar -xf TPTP-v7.0.0.tgz -C "$HOME/TPTP" --strip-components 1
+  - python setup.py antlr
 
 script:
   - tox -v
