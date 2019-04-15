@@ -1,0 +1,4 @@
+thf('2d.def-vec-unary-minus_axiom',axiom,(
+    ! [V_v: '2d.Vector'] :
+      ( ( '2d.v-/1' @ V_v )
+      = ( '2d.sv*/2' @ -1.0 @ V_v ) ) )).
