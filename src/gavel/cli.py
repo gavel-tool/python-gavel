@@ -17,7 +17,7 @@ Why does this file exist, and why not put this in __main__?
 
 import click
 import gavel.io.structures as fol_db
-import gavel.language.tptp.build as build_tptp
+import gavel.language.tptp.processor as build_tptp
 import gavel.settings as settings
 
 

@@ -1,10 +1,14 @@
 from enum import Enum
-
+from itertools import chain
+from typing import Iterable
 
 class FOLElement:
     __visit_name__ = "undefined"
 
     requires_parens = False
+
+    def symbols(self) -> Iterable:
+        return []
 
 
 class Quantifier(Enum):
@@ -149,12 +153,15 @@ class UnaryFormula(FOLElement):
 
     __visit_name__ = "unary_formula"
 
-    def __init__(self, connective, formula):
+    def __init__(self, connective, formula: FOLElement):
         self.connective = connective
         self.formula = formula
 
     def __str__(self):
         return "%s(%s)" % (repr(self.connective), self.formula)
+
+    def symbols(self):
+        return self.formula.symbols()
 
 
 class QuantifiedFormula(FOLElement):
@@ -173,6 +180,12 @@ class QuantifiedFormula(FOLElement):
             self.formula,
         )
 
+    def symbols(self):
+        for symbol in self.variables:
+            yield symbol.symbols()
+        for symbol in self.formula.symbols():
+            yield symbol
+
 
 class AnnotatedFormula(FOLElement):
 
@@ -184,6 +197,9 @@ class AnnotatedFormula(FOLElement):
         self.role = role
         self.formula = formula
 
+    def symbols(self):
+        return self.formula.symbols()
+
 
 class BinaryFormula(FOLElement):
 
@@ -191,7 +207,7 @@ class BinaryFormula(FOLElement):
 
     requires_parens = True
 
-    def __init__(self, left, operator, right):
+    def __init__(self, left:FOLElement, operator, right:FOLElement):
         self.left = left
         self.right = right
         self.operator = operator
@@ -199,18 +215,24 @@ class BinaryFormula(FOLElement):
     def __str__(self):
         return "(%s) %s (%s)" % (self.left, repr(self.operator), self.right)
 
+    def symbols(self):
+        return chain(self.left.symbols(), self.right.symbols())
+
 
 class FunctorExpression(FOLElement):
 
     __visit_name__ = "functor_expression"
 
-    def __init__(self, functor, arguments):
+    def __init__(self, functor, arguments: Iterable[FOLElement]):
         self.functor = functor
         self.arguments = arguments
 
     def __str__(self):
         return "%s(%s)" % (self.functor, ", ".join(map(str, self.arguments)))
 
+    def symbols(self):
+        yield self.functor
+        return chain(*map(lambda x: x.symbols(), self.arguments))
 
 class PredicateExpression(FOLElement):
 
@@ -223,6 +245,10 @@ class PredicateExpression(FOLElement):
     def __str__(self):
         return "%s(%s)" % (self.predicate, ", ".join(self.arguments))
 
+    def symbols(self):
+        yield self.predicate
+        return chain(*map(lambda x: x.symbols(), self.arguments))
+
 
 class TypedVariable(FOLElement):
 
@@ -232,6 +258,8 @@ class TypedVariable(FOLElement):
         self.name = name
         self.vtype = vtype
 
+    def symbols(self):
+        yield self.name
 
 class TypeFormula(FOLElement):
 
@@ -241,16 +269,27 @@ class TypeFormula(FOLElement):
         self.name = name
         self.type = type_expression
 
+    def symbols(self):
+        yield self.name
 
 class Conditional(FOLElement):
 
     __visit_name__ = "conditional"
 
-    def __init__(self, if_clause, then_clause, else_clause):
+    def __init__(
+        self,
+        if_clause: FOLElement,
+        then_clause: FOLElement,
+        else_clause: FOLElement):
+
         self.if_clause = if_clause
         self.then_clause = then_clause
         self.else_clause = else_clause
 
+    def symbols(self):
+        return chain(self.if_clause.symbols(),
+                     self.then_clause.symbols(),
+                     self.else_clause.symbols())
 
 class Let(FOLElement):
 
@@ -260,6 +299,9 @@ class Let(FOLElement):
         self.types = types
         self.definitions = definitions
         self.formula = formula
+
+    def symbols(self):
+        return self.formula.symbols()
 
 
 class Subtype(FOLElement):
