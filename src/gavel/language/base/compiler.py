@@ -216,3 +216,6 @@ class Compiler:
 
     def visit_mapping_type(self, expression: fol.Subtype):
         return "{}>{}".format(self.visit(expression.left), self.visit(expression.right))
+
+    def visit_variable(self, variable: fol.Variable):
+        return variable.symbol
