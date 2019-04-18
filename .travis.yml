@@ -1,10 +1,13 @@
 language: python
 cache: pip
+addons:
+  postgresql: "11.1"
+
 env:
   global:
     - LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
     - SEGFAULT_SIGNALS=all
-    - TPTP_ROOT="$HOME/TPTP"
+    - OEP_DB_USER="postgres" GAVEL_DB_PASSWORD="postgres" GAVEL_DB_NAME="postgres" TPTP_ROOT="$HOME/TPTP"
   matrix:
     - TOXENV=check
     - TOXENV=docs
@@ -70,6 +73,7 @@ before_script:
   - wget "http://www.tptp.org/TPTP/Archive/TPTP-v7.0.0.tgz"
   - mkdir "$HOME/TPTP"
   - tar -xf TPTP-v7.0.0.tgz -C "$HOME/TPTP" --strip-components 1
+  - cp src/gavel/settings.py.default src/gavel/settings.py
 script:
   - tox -v
 after_failure:

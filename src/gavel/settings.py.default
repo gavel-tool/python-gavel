@@ -3,9 +3,9 @@ import os
 TPTP_ROOT = os.environ.get('TPTP_ROOT', '')
 
 DB_CONNECTION = dict(
-  user='username',
-  password='password',
-  database='databasename',
-  host='localhost',
-  port='5432',
+  user=os.environ.get('GAVEL_DB_USER'),
+  password=os.environ.get('GAVEL_DB_PASSWORD'),
+  database=os.environ.get('GAVEL_DB_NAME'),
+  host=os.environ.get('GAVEL_DB_HOST', 'localhost'),
+  port=os.environ.get('GABEL_DB_PORT', 5432),
 )
