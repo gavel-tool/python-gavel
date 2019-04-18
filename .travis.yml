@@ -1,7 +1,5 @@
 language: python
 cache: pip
-addons:
-  postgresql: "11.1"
 
 env:
   global:
