@@ -15,6 +15,14 @@ class Compiler:
         if isinstance(obj, str):
             return obj
         meth = getattr(self, "visit_%s" % obj.__visit_name__, None)
+
+        if meth is None:
+            raise Exception(
+                "Compiler '{name}' not found for {cls}".format(
+                    name=obj.__visit_name__,
+                    cls=type(obj)
+                )
+            )
         return meth(obj)
 
     def visit_quantifier(self, quantifier: fol.Quantifier):
