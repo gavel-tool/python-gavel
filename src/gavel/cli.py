@@ -78,6 +78,7 @@ db.add_command(store_solutions)
 
 cli = click.CommandCollection(sources=[db])
 
+main = cli
 
 if __name__ == "__main__":
     cli()
