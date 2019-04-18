@@ -8,6 +8,8 @@ from os.path import join
 
 import cProfile, pstats
 
+import unittest
+
 class TestProcessor(Processor):
     compiler = Compiler()
 
@@ -37,6 +39,8 @@ problems = [
     'NUN/NUN030^1.p'
 ]
 
+
+
 @with_session
 def single_problem(problem,session):
     processor = StorageProcessor()
@@ -51,15 +55,22 @@ def single_axiom(axiom):
         pass
     p.disable()
     p.print_stats(sort=pstats.SortKey.TIME)
-def test_single_line():
-    processor = TestProcessor()
 
-    for _ in processor.load_expressions_from_file('files/single_line_thf.txt'):
-        pass
+class TestParser(unittest.TestCase):
+    def test_single_line(self):
+        processor = TestProcessor()
 
-class TestAxioms:
-    def test_MATH001_0(self):
-        single_axiom('MAT001^0.ax')
+        for _ in processor.load_expressions_from_file('tests/files/single_line_thf.txt'):
+            pass
+
+class TestAxiomsCNF(unittest.TestCase):
+    def test_RNG001_0(self):
+        single_axiom('RNG001-0.ax')
+
+
+class TestAxiomsFOF(unittest.TestCase):
+    def test_AGT001_0(self):
+        single_axiom('AGT001+0.ax')
 
 
 class TestProblems:
@@ -68,18 +79,3 @@ class TestProblems:
 
     def test_ALG001_1(self):
         single_problem('ALG/ALG001-1.p')
-
-
-#@with_session
-#def test_single_problem(session):
-#    processor = StorageProcessor()
-#    for problem in processor.problem_processor(join(TPTP_ROOT,'Problems/ALG/ALG001-1.p'), session=session):
-#        problem.create_problem_file()
-
-
-if __name__ == "__main__":
-    pass
-    #test_single_axiom()
-    #TestProblems()
-    #test_single_problem()
-    #test_axiom_parser()
