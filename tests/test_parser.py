@@ -1,8 +1,6 @@
-import pytest as pt
-
-from gavel.language.tptp.processor import Processor, StorageProcessor, all_axioms
-from gavel.language.base.compiler import Compiler
-from gavel.io.connection import with_session
+from gavel.dialects.tptp.tptpparser import TPTPParser, StorageProcessor
+from gavel.dialects.tptp.compiler import Compiler
+from gavel.dialects.db.connection import with_session
 from gavel.settings import TPTP_ROOT
 from os.path import join
 
@@ -10,10 +8,10 @@ import cProfile, pstats
 
 import unittest
 
-class TestProcessor(Processor):
+class TestProcessor(TPTPParser):
     compiler = Compiler()
 
-    def syntax_tree_processor(self, tree, *args, **kwargs):
+    def parse(self, tree, *args, **kwargs):
         original = tree.getText()
         internal = self.visitor.visit(tree)
         if internal.logic != "thf":

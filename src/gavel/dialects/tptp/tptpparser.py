@@ -1,29 +1,37 @@
+import multiprocessing as mp
 import os
-from antlr4 import CommonTokenStream, InputStream
+import pickle as pkl
+import re
+import sys
+from typing import Iterable
+from typing import Tuple
+
+import requests
+from antlr4 import CommonTokenStream
+from antlr4 import InputStream
+
+import gavel.dialects.db.structures as db
+import gavel.settings as settings
+from gavel.dialects.base.parser import LogicParser
+from gavel.dialects.db.connection import get_or_create
+from gavel.dialects.db.connection import get_or_None
+from gavel.dialects.db.connection import with_session
+from gavel.logic import fol
+from gavel.logic.base import LogicElement
+from gavel.logic.base import Problem
+from gavel.logic.fol import FormulaRole
+from gavel.settings import TPTP_ROOT
+
+from .antlr4.flattening import FOFFlatteningVisitor
 from .antlr4.tptp_v7_0_0_0Lexer import tptp_v7_0_0_0Lexer
 from .antlr4.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
-from .antlr4.flattening import FOFFlatteningVisitor
-import gavel.dialects.db.structures as db
-from gavel.logic import fol
-import pickle as pkl
-import sys
-import gavel.settings as settings
-from gavel.logic.base import LogicElement
-from gavel.dialects.db.connection import get_or_create, with_session, get_or_None
-from gavel.settings import TPTP_ROOT
-import requests
-import re
-import multiprocessing as mp
-
-from gavel.dialects.base.parser import LogicParser
-
-from typing import Iterable, Tuple
 
 sys.setrecursionlimit(10000)
 
 form_expression = re.compile(r"^(?!%|\n)(?P<logic>[^(]*)\([^.]*\)\.\S*$")
 
-class Processor(LogicParser):
+
+class TPTPParser(LogicParser):
     visitor = FOFFlatteningVisitor()
 
     def folder_processor(self, path, file_processor, *args, **kwargs):
@@ -52,40 +60,38 @@ class Processor(LogicParser):
     def formula_processor(self, formula, *args, orig=None, **kwargs):
         return formula
 
-    def stream_formula_lines_from_file(self, path, **kwargs):
-        with open(path, "r", encoding="utf8") as f:
-            buffer = ""
-            for line in f.readlines():
-                if not line.startswith("%") and not line.startswith("\n"):
-                    buffer += line.strip()
-                    if buffer.endswith("."):
-                        yield buffer
-                        buffer = ""
-            if buffer:
-                raise Exception('Unprocessed input: """%s"""' % buffer)
-
-    def process_formula_line(self, buffer, *args, **kwargs) -> Tuple[LogicElement, str]:
-        return (
-            self.parse(
-
-            ),
-            buffer,
-        )
+    def stream_formula_lines(self, lines: Iterable[str], **kwargs):
+        buffer = ""
+        for line in lines:
+            if not line.startswith("%") and not line.startswith("\n"):
+                buffer += line.strip()
+                if buffer.endswith("."):
+                    yield buffer
+                    buffer = ""
+        if buffer:
+            raise Exception('Unprocessed input: """%s"""' % buffer)
 
     def load_string(self, string: str, *args, **kwargs):
         return tptp_v7_0_0_0Parser(
-                    CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(string)))
-                ).tptp_input()
+            CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(string)))
+        ).tptp_input()
+
     def load_expressions_from_file(
         self, path, *args, **kwargs
     ) -> Iterable[Tuple[LogicElement, str]]:
-        pool = mp.Pool(mp.cpu_count() - 1)
-        for tree, orig in pool.map(
-            self.process_formula_line,
-            self.stream_formula_lines_from_file(path, **kwargs),
+        with open(path) as infile:
+            lines = infile.readlines()
+            return self.load_expressions(lines)
+
+    def load_expressions(
+        self, lines: Iterable[str], *args, **kwargs
+    ) -> Iterable[Tuple[LogicElement, str]]:
+        # pool = mp.Pool(mp.cpu_count() - 1)
+        for tree in map(
+            self.parse_from_string, self.stream_formula_lines(lines, **kwargs)
         ):
-            yield tree, orig
-        pool.close()
+            yield tree
+        # pool.close()
 
     def parse(self, tree, *args, **kwargs) -> LogicElement:
         return self.visitor.visit(tree)
@@ -93,12 +99,34 @@ class Processor(LogicParser):
     def file_processor(self, path, *args, **kwargs):
         return self.load_expressions_from_file(path, *args, **kwargs)
 
-    def problem_processor(self, path, *args, **kwargs):
-        for line in self.load_expressions_from_file(path, *args, **kwargs):
-            yield self.formula_processor(line)
+    def problem_processor(self, path, *args, load_imports=False, **kwargs):
+        axioms = []
+        imports = []
+        conjectures = []
+        for raw_line in self.load_expressions_from_file(path, *args, **kwargs):
+            line = self.formula_processor(raw_line)
+            if isinstance(line, fol.Import):
+                imports.append(line)
+            elif isinstance(line, fol.AnnotatedFormula):
+                if line.role in (
+                    FormulaRole.CONJECTURE,
+                    FormulaRole.NEGATED_CONJECTURE,
+                ):
+                    conjectures.append(line)
+                else:
+                    axioms.append(line)
+
+        for im in imports:
+            for imported_axiom in self.file_processor(
+                os.path.join(TPTP_ROOT, im.path), *args, **kwargs
+            ):
+                axioms.append(imported_axiom)
+
+        for conjecture in conjectures:
+            yield Problem(premises=axioms, imports=imports, conjecture=conjecture)
 
 
-class StorageProcessor(Processor):
+class StorageProcessor(TPTPParser):
     @with_session
     def problem_processor(self, path, *args, **kwargs):
         session = kwargs.get("session")
@@ -207,7 +235,7 @@ class StorageProcessor(Processor):
             return session.query(db.Formula).filter_by(source=source).all()
 
 
-class AutoencoderProcessor(Processor):
+class AutoencoderProcessor(TPTPParser):
     def formula_processor(self, formula, *args, orig=None, **kwargs):
         return formula
 

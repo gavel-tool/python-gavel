@@ -16,9 +16,13 @@ Why does this file exist, and why not put this in __main__?
 """
 
 import click
-import gavel.io.structures as fol_db
-import gavel.language.tptp.processor as build_tptp
+
+import gavel.dialects.db.structures as fol_db
+import gavel.dialects.tptp.tptpparser as build_tptp
 import gavel.settings as settings
+from gavel.dialects.tptp.compiler import TPTPCompiler
+from gavel.dialects.tptp.tptpparser import TPTPParser
+from gavel.prover.hets.proof import HetsProve
 
 
 @click.group()
@@ -68,6 +72,17 @@ def clear_db(p):
     fol_db.create_tables()
 
 
+@click.command()
+@click.argument("f")
+def prove(f):
+    processor = TPTPParser()
+    hp = HetsProve()
+    problems = list(processor.problem_processor(f))
+    compiler = TPTPCompiler()
+    for problem in problems:
+        hp.prove(problem, compiler)
+
+
 db.add_command(init_db)
 db.add_command(drop_db)
 db.add_command(clear_db)
@@ -75,6 +90,7 @@ db.add_command(store_problems)
 db.add_command(store_tptp)
 db.add_command(store_solutions)
 
+db.add_command(prove)
 
 cli = click.CommandCollection(sources=[db])
 

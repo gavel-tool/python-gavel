@@ -2,6 +2,7 @@ from gavel.dialects.base.compiler import Compiler
 from gavel.dialects.base.parser import ProblemParser
 from gavel.logic.base import Problem
 
+
 class Dialect:
     _problem_parser = ProblemParser
     _compiler = Compiler

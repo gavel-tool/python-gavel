@@ -1,6 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from gavel.settings import DB_CONNECTION, DBMS
+
+from gavel.settings import DB_CONNECTION
+from gavel.settings import DBMS
 
 __ENGINE__ = None
 
@@ -12,11 +14,11 @@ def get_engine():
         if cred:
             if "password" in DB_CONNECTION:
                 cred += "{user}:{password}".format(**DB_CONNECTION)
-            cred += '@'
+            cred += "@"
 
         location = DB_CONNECTION.get("host", "")
-        if 'port' in DB_CONNECTION:
-            location += ':' + DB_CONNECTION['port']
+        if "port" in DB_CONNECTION:
+            location += ":" + DB_CONNECTION["port"]
         else:
             __ENGINE__ = create_engine(
                 "{dbms}://{cred}{location}/{database}".format(

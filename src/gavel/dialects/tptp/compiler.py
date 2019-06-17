@@ -1,7 +1,8 @@
 import gavel.logic.fol as fol
+from gavel.dialects.base.compiler import Compiler
 
 
-class Compiler:
+class TPTPCompiler(Compiler):
     def parenthesise(self, element: fol.FOLElement):
         if isinstance(element, str):
             return element
@@ -11,7 +12,7 @@ class Compiler:
         else:
             return result
 
-    def visit(self, obj):
+    def visit(self, obj, **kwargs):
         if isinstance(obj, str):
             return obj
         meth = getattr(self, "visit_%s" % obj.__visit_name__, None)
@@ -19,11 +20,10 @@ class Compiler:
         if meth is None:
             raise Exception(
                 "Compiler '{name}' not found for {cls}".format(
-                    name=obj.__visit_name__,
-                    cls=type(obj)
+                    name=obj.__visit_name__, cls=type(obj)
                 )
             )
-        return meth(obj)
+        return meth(obj, **kwargs)
 
     def visit_quantifier(self, quantifier: fol.Quantifier):
         if quantifier.is_universal():
@@ -160,12 +160,26 @@ class Compiler:
             anno.logic, anno.name, self.visit(anno.role), self.visit(anno.formula)
         )
 
-    def visit_binary_formula(self, formula: fol.BinaryFormula):
-        return "{}{}{}".format(
-            self.parenthesise(formula.left),
-            self.visit(formula.operator),
-            self.parenthesise(formula.right),
-        )
+    def visit_binary_formula(self, formula: fol.BinaryFormula, parent_operand=None):
+        if formula.operator.is_associative and isinstance(
+            formula.left, fol.BinaryFormula
+        ):
+            lhr = self.visit(formula.left, parent_operand=formula.operator)
+        else:
+            lhr = self.parenthesise(formula.left)
+
+        if formula.operator.is_associative and isinstance(
+            formula.right, fol.BinaryFormula
+        ):
+            rhr = self.visit(formula.right, parent_operand=formula.operator)
+        else:
+            rhr = self.parenthesise(formula.right)
+
+        s = "{}{}{}".format(lhr, self.visit(formula.operator), rhr)
+        if parent_operand is None or parent_operand == formula.operator:
+            return s
+        else:
+            return "(" + s + ")"
 
     def visit_functor_expression(self, expression: fol.FunctorExpression):
         return "{}({})".format(
@@ -219,3 +233,8 @@ class Compiler:
 
     def visit_variable(self, variable: fol.Variable):
         return variable.symbol
+
+    def visit_problem(self, problem: fol.Problem):
+        L = [self.visit(axiom) for axiom in problem.premises]
+        L.append(self.visit(problem.conjecture))
+        return "\n".join(L)

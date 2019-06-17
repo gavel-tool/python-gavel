@@ -10,8 +10,7 @@ class Compiler:
         if meth is None:
             raise Exception(
                 "Compiler '{name}' not found for {cls}".format(
-                    name=obj.__visit_name__,
-                    cls=type(obj)
+                    name=obj.__visit_name__, cls=type(obj)
                 )
             )
         return meth(obj)

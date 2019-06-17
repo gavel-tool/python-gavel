@@ -1,10 +1,9 @@
-import enum
 import sqlalchemy as sqla
-from sqlalchemy.orm import relation, relationship
-from sqlalchemy.types import Enum
 from sqlalchemy.ext.declarative import declarative_base
-from .connection import get_engine
+from sqlalchemy.orm import relation
+from sqlalchemy.orm import relationship
 
+from gavel.dialects.db.connection import get_engine
 
 Base = declarative_base()
 

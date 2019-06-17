@@ -1,11 +1,11 @@
-from gavel.language.tptp.parser import tptp_v7_0_0_0Parser
-from gavel.language.tptp.processor import Processor
+from gavel.dialects.tptp.antlr4 import tptp_v7_0_0_0Parser
+from gavel.dialects.tptp.tptpparser import TPTPParser
 import unittest
 
 
 class TestFOL(unittest.TestCase):
     def test_symbols(self):
-        processor = Processor()
+        processor = TPTPParser()
         result = list(processor.load_expressions_from_file('tests/files/single_line_fof.txt'))
         self.assertEqual(len(result), 1, "Single line was not parsed as single line")
         line, _ = result[0]

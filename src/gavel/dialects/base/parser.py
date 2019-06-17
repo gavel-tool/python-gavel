@@ -1,9 +1,13 @@
-from typing import TypeVar, Generic, Iterable
+from typing import Generic
+from typing import Iterable
+from typing import TypeVar
 
-from gavel.logic.base import LogicElement, Problem
+from gavel.logic.base import LogicElement
+from gavel.logic.base import Problem
 
 Parseable = TypeVar("Parseable")
 Target = TypeVar("Target")
+
 
 class Parser(Generic[Parseable, Target]):
     def parse(self, structure: Parseable, *args, **kwargs) -> Target:
@@ -90,8 +94,10 @@ class Parser(Generic[Parseable, Target]):
     def is_file_valid(self, *args, **kwargs):
         return self.is_valid(self.__unpack_file(*args, **kwargs))
 
+
 class ProblemParser(Parser[Parseable, Problem]):
     pass
+
 
 class LogicParser(Parser[Parseable, Iterable[LogicElement]]):
     pass

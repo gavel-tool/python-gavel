@@ -34,6 +34,9 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
             self.visit(annotated.children[1]),  # name
             self.visit(annotated.children[3]),  # role
             self.visit(annotated.children[5]),
+            annotation=self.visit(annotated.children[6])
+            if len(annotated.children) > 5
+            else None,
         )  # formula
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#tpi_formula.

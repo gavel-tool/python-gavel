@@ -1,6 +1,10 @@
 from itertools import chain
-from typing import Iterable, Set, List
-from gavel.logic.fol import AnnotatedFormula, FOLElement
+from typing import Iterable
+from typing import List
+from typing import Set
+
+from gavel.logic.fol import AnnotatedFormula
+from gavel.logic.fol import FOLElement
 
 
 class Selector:

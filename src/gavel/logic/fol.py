@@ -1,7 +1,9 @@
 from enum import Enum
 from itertools import chain
 from typing import Iterable
+
 from gavel.logic.base import LogicElement
+from gavel.logic.base import Problem
 
 
 class FOLElement(LogicElement):
@@ -75,6 +77,13 @@ class BinaryConnective(Enum):
     GENTZEN_ARROW = 14
     ASSIGN = 15
     ARROW = 16
+
+    def is_associative(self):
+        return self in (
+            BinaryConnective.DISJUNCTION,
+            BinaryConnective.CONJUNCTION,
+            BinaryConnective.EQ,
+        )
 
     def __repr__(self):
         if self == BinaryConnective.CONJUNCTION:
@@ -189,11 +198,12 @@ class AnnotatedFormula(FOLElement):
 
     __visit_name__ = "annotated_formula"
 
-    def __init__(self, logic, name, role: FormulaRole, formula):
+    def __init__(self, logic, name, role: FormulaRole, formula, annotation=None):
         self.logic = logic
         self.name = name
         self.role = role
         self.formula = formula
+        self.annotation = None
 
     def symbols(self):
         return self.formula.symbols()
