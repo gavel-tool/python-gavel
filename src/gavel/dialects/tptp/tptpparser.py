@@ -1,20 +1,21 @@
 import os
-from antlr4 import *
-from .parser.tptp_v7_0_0_0Lexer import tptp_v7_0_0_0Lexer
-from .parser.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
-from .parser.flattening import FOFFlatteningVisitor
-import gavel.io.structures as db
+from antlr4 import CommonTokenStream, InputStream
+from .antlr4.tptp_v7_0_0_0Lexer import tptp_v7_0_0_0Lexer
+from .antlr4.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
+from .antlr4.flattening import FOFFlatteningVisitor
+import gavel.dialects.db.structures as db
 from gavel.logic import fol
 import pickle as pkl
 import sys
 import gavel.settings as settings
 from gavel.logic.base import LogicElement
-from gavel.io.connection import get_or_create, with_session, get_or_None
+from gavel.dialects.db.connection import get_or_create, with_session, get_or_None
 from gavel.settings import TPTP_ROOT
-from sqlalchemy.orm.session import sessionmaker
 import requests
 import re
 import multiprocessing as mp
+
+from gavel.dialects.base.parser import LogicParser
 
 from typing import Iterable, Tuple
 
@@ -22,8 +23,7 @@ sys.setrecursionlimit(10000)
 
 form_expression = re.compile(r"^(?!%|\n)(?P<logic>[^(]*)\([^.]*\)\.\S*$")
 
-
-class Processor:
+class Processor(LogicParser):
     visitor = FOFFlatteningVisitor()
 
     def folder_processor(self, path, file_processor, *args, **kwargs):
@@ -66,14 +66,16 @@ class Processor:
 
     def process_formula_line(self, buffer, *args, **kwargs) -> Tuple[LogicElement, str]:
         return (
-            self.syntax_tree_processor(
-                tptp_v7_0_0_0Parser(
-                    CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(buffer)))
-                ).tptp_input()
+            self.parse(
+
             ),
             buffer,
         )
 
+    def load_string(self, string: str, *args, **kwargs):
+        return tptp_v7_0_0_0Parser(
+                    CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(string)))
+                ).tptp_input()
     def load_expressions_from_file(
         self, path, *args, **kwargs
     ) -> Iterable[Tuple[LogicElement, str]]:
@@ -85,7 +87,7 @@ class Processor:
             yield tree, orig
         pool.close()
 
-    def syntax_tree_processor(self, tree, *args, **kwargs) -> LogicElement:
+    def parse(self, tree, *args, **kwargs) -> LogicElement:
         return self.visitor.visit(tree)
 
     def file_processor(self, path, *args, **kwargs):

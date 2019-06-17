@@ -62,10 +62,9 @@ class Problem(Base):
     premises = relation(Formula, secondary=association_premises)
     solutions = relation("Solution")
 
-    def create_problem_file(self):
+    def create_problem_file(self, file):
         for premise in self.premises:
-            print(premise.name)
-        print(self.conjecture.name)
+            file.write(premise.original)
 
 
 class Solution(Base):
