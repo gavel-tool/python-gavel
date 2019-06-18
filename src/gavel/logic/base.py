@@ -9,6 +9,8 @@ class LogicElement:
     def symbols(self) -> Iterable:
         return []
 
+class Inference(LogicElement):
+    pass
 
 class Problem:
     def __init__(

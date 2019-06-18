@@ -4,7 +4,6 @@ import pickle as pkl
 import re
 import sys
 from typing import Iterable
-from typing import Tuple
 
 import requests
 from antlr4 import CommonTokenStream
@@ -78,14 +77,14 @@ class TPTPParser(LogicParser):
 
     def load_expressions_from_file(
         self, path, *args, **kwargs
-    ) -> Iterable[Tuple[LogicElement, str]]:
+    ) -> Iterable[LogicElement]:
         with open(path) as infile:
             lines = infile.readlines()
             return self.load_expressions(lines)
 
     def load_expressions(
         self, lines: Iterable[str], *args, **kwargs
-    ) -> Iterable[Tuple[LogicElement, str]]:
+    ) -> Iterable[LogicElement]:
         # pool = mp.Pool(mp.cpu_count() - 1)
         for tree in map(
             self.parse_from_string, self.stream_formula_lines(lines, **kwargs)

@@ -203,7 +203,7 @@ class AnnotatedFormula(FOLElement):
         self.name = name
         self.role = role
         self.formula = formula
-        self.annotation = None
+        self.annotation = annotation
 
     def symbols(self):
         return self.formula.symbols()

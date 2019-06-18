@@ -35,7 +35,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
             self.visit(annotated.children[3]),  # role
             self.visit(annotated.children[5]),
             annotation=self.visit(annotated.children[6])
-            if len(annotated.children) > 5
+            if len(annotated.children) > 7
             else None,
         )  # formula
 
@@ -45,7 +45,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#annotations.
     def visitAnnotations(self, ctx: tptp_v7_0_0_0Parser.AnnotationsContext):
-        return self.visitChildren(ctx)
+        return self.visit(ctx.children[1])
 
     _ROLE_MAP = {
         "axiom": structures.FormulaRole.AXIOM,
@@ -956,11 +956,14 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#source.
     def visitSource(self, ctx: tptp_v7_0_0_0Parser.SourceContext):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#sources.
     def visitSources(self, ctx: tptp_v7_0_0_0Parser.SourcesContext):
-        return self.visitChildren(ctx)
+        if len(ctx.children) == 1:
+            return [self.visit(ctx.children[0])]
+        elif len(ctx.children) == 3:
+            return [self.visit(ctx.children[0])] + self.visit(ctx.children[2])
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#dag_source.
     def visitDag_source(self, ctx: tptp_v7_0_0_0Parser.Dag_sourceContext):
@@ -1004,7 +1007,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#file_source.
     def visitFile_source(self, ctx: tptp_v7_0_0_0Parser.File_sourceContext):
-        return self.visitChildren(ctx)
+        return (self.visit(ctx.children[1]), self.visit(ctx.children[2]))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#file_info.
     def visitFile_info(self, ctx: tptp_v7_0_0_0Parser.File_infoContext):
