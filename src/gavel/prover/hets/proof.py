@@ -23,7 +23,8 @@ class HetsProve(HetsCall, ProverInterface):
                 iri,
                 json=dict(
                     format="json",
-                    goals=[dict(node=node, reasonerConfiguration=dict(timeLimit=100))],
+
+                    goals=[dict(node=node, reasonerConfiguration=dict(timeLimit=100, reasoner="Vampire"))],
                 ),
             )
             if response.status_code == 200:

@@ -1,5 +1,6 @@
 # Generated from tptp_v7_0_0_0.g4 by ANTLR 4.5.1
 import gavel.logic.fol as structures
+import gavel.dialects.tptp.sources as sources
 from gavel.dialects.tptp.antlr4.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
 from gavel.dialects.tptp.antlr4.tptp_v7_0_0_0Visitor import tptp_v7_0_0_0Visitor
 
@@ -7,6 +8,16 @@ from gavel.dialects.tptp.antlr4.tptp_v7_0_0_0Visitor import tptp_v7_0_0_0Visitor
 
 
 class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
+
+    def defaultResult(self):
+        return None
+
+    def aggregateResult(self, aggregate, nextResult):
+        if aggregate is None:
+            aggregate = []
+        aggregate.append(nextResult)
+        return aggregate
+
     def visitTerminal(self, node):
         return node.symbol.text
 
@@ -15,6 +26,12 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
             raise structures.EOFException
         assert len(ctx.children) == 1
         return self.visit(ctx.children[0])
+
+    def visit_list(self, ctx):
+        if len(ctx.children) == 1:
+            return [self.visit(ctx.children[0])]
+        else:
+            return [self.visit(ctx.children[i*2]) for i in range(len(ctx.children)//2+1)]
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#tptp_file.
     def visitTptp_file(self, ctx: tptp_v7_0_0_0Parser.Tptp_fileContext):
@@ -967,11 +984,14 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#dag_source.
     def visitDag_source(self, ctx: tptp_v7_0_0_0Parser.Dag_sourceContext):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#inference_record.
     def visitInference_record(self, ctx: tptp_v7_0_0_0Parser.Inference_recordContext):
-        return self.visitChildren(ctx)
+        return sources.InferenceSource(
+            self.visit(ctx.children[1]),
+            self.visit(ctx.children[3]),
+            self.visit(ctx.children[5]))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#inference_rule.
     def visitInference_rule(self, ctx: tptp_v7_0_0_0Parser.Inference_ruleContext):
@@ -979,11 +999,14 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#inference_parents.
     def visitInference_parents(self, ctx: tptp_v7_0_0_0Parser.Inference_parentsContext):
-        return self.visitChildren(ctx)
+        if len(ctx.children) == 2:
+            return []
+        else:
+            return self.visit(ctx.children[1])
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#parent_list.
     def visitParent_list(self, ctx: tptp_v7_0_0_0Parser.Parent_listContext):
-        return self.visitChildren(ctx)
+        return self.visit_list(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#parent_info.
     def visitParent_info(self, ctx: tptp_v7_0_0_0Parser.Parent_infoContext):
@@ -995,7 +1018,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#internal_source.
     def visitInternal_source(self, ctx: tptp_v7_0_0_0Parser.Internal_sourceContext):
-        return self.visitChildren(ctx)
+        return sources.InternalSource(self.visit(ctx.children[1]), self.visit(ctx.children[2]))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#intro_type.
     def visitIntro_type(self, ctx: tptp_v7_0_0_0Parser.Intro_typeContext):
@@ -1003,11 +1026,11 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#external_source.
     def visitExternal_source(self, ctx: tptp_v7_0_0_0Parser.External_sourceContext):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#file_source.
     def visitFile_source(self, ctx: tptp_v7_0_0_0Parser.File_sourceContext):
-        return (self.visit(ctx.children[1]), self.visit(ctx.children[2]))
+        return sources.FileSource(self.visit(ctx.children[1]), self.visit(ctx.children[2]))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#file_info.
     def visitFile_info(self, ctx: tptp_v7_0_0_0Parser.File_infoContext):
@@ -1031,23 +1054,26 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#optional_info.
     def visitOptional_info(self, ctx: tptp_v7_0_0_0Parser.Optional_infoContext):
-        return self.visitChildren(ctx)
+        return self.visit(ctx.children[1])
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#useful_info.
     def visitUseful_info(self, ctx: tptp_v7_0_0_0Parser.Useful_infoContext):
-        return self.visitChildren(ctx)
+        if len(ctx.children) <= 2:
+            return []
+        else:
+            return self.visit(ctx.children[1])
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#info_items.
     def visitInfo_items(self, ctx: tptp_v7_0_0_0Parser.Info_itemsContext):
-        return self.visitChildren(ctx)
+        return self.visit_list(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#info_item.
     def visitInfo_item(self, ctx: tptp_v7_0_0_0Parser.Info_itemContext):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#formula_item.
     def visitFormula_item(self, ctx: tptp_v7_0_0_0Parser.Formula_itemContext):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#description_item.
     def visitDescription_item(self, ctx: tptp_v7_0_0_0Parser.Description_itemContext):
@@ -1059,7 +1085,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#inference_item.
     def visitInference_item(self, ctx: tptp_v7_0_0_0Parser.Inference_itemContext):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#inference_status.
     def visitInference_status(self, ctx: tptp_v7_0_0_0Parser.Inference_statusContext):
@@ -1129,7 +1155,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#general_terms.
     def visitGeneral_terms(self, ctx: tptp_v7_0_0_0Parser.General_termsContext):
-        return self.visitChildren(ctx)
+        return self.visit_list(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#name.
     def visitName(self, ctx: tptp_v7_0_0_0Parser.NameContext):
