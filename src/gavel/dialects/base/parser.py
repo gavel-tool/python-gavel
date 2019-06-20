@@ -2,7 +2,7 @@ from typing import Generic
 from typing import Iterable
 from typing import TypeVar
 
-from gavel.logic.base import LogicElement
+from gavel.logic.base import LogicElement, Sentence
 from gavel.logic.base import Problem
 
 Parseable = TypeVar("Parseable")
@@ -37,6 +37,10 @@ class Parser(Generic[Parseable, Target]):
         -------
         """
         raise NotImplementedError
+
+    def load_many(self, string: Iterable[str])->Iterable[Parseable]:
+        raise NotImplementedError
+
 
     def parse_from_string(
         self,
@@ -95,9 +99,24 @@ class Parser(Generic[Parseable, Target]):
         return self.is_valid(self.__unpack_file(*args, **kwargs))
 
 
-class ProblemParser(Parser[Parseable, Problem]):
-    pass
-
-
 class LogicParser(Parser[Parseable, Iterable[LogicElement]]):
     pass
+
+
+class ProblemParser(Parser[Parseable, Problem]):
+    logic_parser_cls = LogicParser
+
+    def __init__(self, *args, **kwargs):
+        self.logic_parser = LogicParser(*args, **kwargs)
+
+    def parse(self, structure: Parseable, *args, **kwargs):
+        premises = []
+        conjectures = []
+        for s in self.logic_parser.parse(structure):
+            if isinstance(s, Sentence):
+                if s.is_conjecture():
+                    conjectures.append(s)
+                else:
+                    premises.append(s)
+        for c in conjectures:
+            yield Problem(premises, c)

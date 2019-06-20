@@ -2,7 +2,7 @@ from enum import Enum
 from itertools import chain
 from typing import Iterable
 
-from gavel.logic.base import LogicElement
+from gavel.logic.base import LogicElement, Sentence
 from gavel.logic.base import Problem
 
 
@@ -194,7 +194,7 @@ class QuantifiedFormula(FOLElement):
             yield symbol
 
 
-class AnnotatedFormula(FOLElement):
+class AnnotatedFormula(FOLElement, Sentence):
 
     __visit_name__ = "annotated_formula"
 
@@ -207,6 +207,9 @@ class AnnotatedFormula(FOLElement):
 
     def symbols(self):
         return self.formula.symbols()
+
+    def is_conjecture(self):
+        return self.role in (FormulaRole.CONJECTURE, FormulaRole.NEGATED_CONJECTURE)
 
 
 class BinaryFormula(FOLElement):

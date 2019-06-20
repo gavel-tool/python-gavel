@@ -9,14 +9,15 @@ class LogicElement:
     def symbols(self) -> Iterable:
         return []
 
-class Inference(LogicElement):
-    pass
+class Sentence(LogicElement):
+    def is_conjecture(self):
+        raise NotImplementedError
 
 class Problem:
     def __init__(
         self,
-        premises: Iterable[LogicElement],
-        conjecture: Iterable[LogicElement],
+        premises: Iterable[Sentence],
+        conjecture: Iterable[Sentence],
         imports=None,
     ):
         self.premises = premises

@@ -22,8 +22,8 @@ import gavel.dialects.tptp.tptpparser as build_tptp
 import gavel.settings as settings
 from gavel.dialects.tptp.compiler import TPTPCompiler
 from gavel.dialects.tptp.tptpparser import TPTPParser
-from gavel.prover.hets.proof import HetsProve
-
+from gavel.prover.hets.interface import HetsProve
+from gavel.prover.vampire.interface import VampireInterface
 
 @click.group()
 def db():
@@ -76,11 +76,13 @@ def clear_db(p):
 @click.argument("f")
 def prove(f):
     processor = TPTPParser()
-    hp = HetsProve()
+    vp = VampireInterface()
+    hp = HetsProve(vp)
     problems = list(processor.problem_processor(f))
     compiler = TPTPCompiler()
     for problem in problems:
-        hp.prove(problem, compiler)
+        for goal_result in hp.prove(problem, compiler):
+            print(goal_result)
 
 
 db.add_command(init_db)

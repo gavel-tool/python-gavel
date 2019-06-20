@@ -11,7 +11,7 @@ from antlr4 import InputStream
 
 import gavel.dialects.db.structures as db
 import gavel.settings as settings
-from gavel.dialects.base.parser import LogicParser
+from gavel.dialects.base.parser import LogicParser, ProblemParser
 from gavel.dialects.db.connection import get_or_create
 from gavel.dialects.db.connection import get_or_None
 from gavel.dialects.db.connection import with_session
@@ -80,9 +80,9 @@ class TPTPParser(LogicParser):
     ) -> Iterable[LogicElement]:
         with open(path) as infile:
             lines = infile.readlines()
-            return self.load_expressions(lines)
+            return self.load_many(lines)
 
-    def load_expressions(
+    def load_many(
         self, lines: Iterable[str], *args, **kwargs
     ) -> Iterable[LogicElement]:
         # pool = mp.Pool(mp.cpu_count() - 1)
@@ -1457,6 +1457,10 @@ def all_axioms(processor):
     for f in files:
         print(f)
         processor.axiomset_processor(os.path.join(TPTP_ROOT, f))
+
+
+class TPTPProblemParser(ProblemParser):
+    logic_parser_cls = TPTPParser
 
 
 def get_all_files(path):
