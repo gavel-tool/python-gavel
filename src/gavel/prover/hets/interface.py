@@ -7,7 +7,7 @@ import requests as req
 
 from urllib.parse import quote
 from gavel.dialects.base.compiler import Compiler
-from gavel.dialects.tptp.tptpparser import TPTPParser
+from gavel.dialects.tptp.parser import TPTPParser
 from gavel.logic.fol import Problem
 from gavel.prover.base.interface import BaseProverInterface
 

@@ -18,10 +18,10 @@ Why does this file exist, and why not put this in __main__?
 import click
 
 import gavel.dialects.db.structures as fol_db
-import gavel.dialects.tptp.tptpparser as build_tptp
+import gavel.dialects.tptp.parser as build_tptp
 import gavel.settings as settings
 from gavel.dialects.tptp.compiler import TPTPCompiler
-from gavel.dialects.tptp.tptpparser import TPTPParser
+from gavel.dialects.tptp.parser import TPTPParser
 from gavel.prover.hets.interface import HetsProve
 from gavel.prover.vampire.interface import VampireInterface
 
