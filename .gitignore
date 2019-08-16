@@ -66,5 +66,3 @@ docs/_build
 
 # Mypy Cache
 .mypy_cache/
-
-src/gavel/settings.py
