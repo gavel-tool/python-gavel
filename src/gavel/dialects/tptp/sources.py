@@ -1,12 +1,13 @@
 from typing import Iterable
 
 
-class Annotation():
+class Annotation:
     pass
 
 
-class Source():
+class Source:
     pass
+
 
 class InternalSource(Source):
     def __init__(self, rule, info):
@@ -15,7 +16,7 @@ class InternalSource(Source):
 
 
 class InferenceSource(Source):
-    def __init__(self, rule, info, parents:Iterable[Source]):
+    def __init__(self, rule, info, parents: Iterable[Source]):
         self.rule = rule
         self.info = info
         self.parents = parents

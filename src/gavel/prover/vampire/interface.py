@@ -18,8 +18,7 @@ class VampireInterface(BaseProverInterface):
     def get_used_axioms(self, output):
         logic_parser = self.dialect._problem_parser_cls.logic_parser_cls()
         for goal in jsn["goals"]:
-            for formula in logic_parser.load_many(
-                goal["prover_output"].split("\n")):
+            for formula in logic_parser.load_many(goal["prover_output"].split("\n")):
                 if isinstance(sources.FileSource, formula.annotation):
                     print(formula.annotation.info)
 

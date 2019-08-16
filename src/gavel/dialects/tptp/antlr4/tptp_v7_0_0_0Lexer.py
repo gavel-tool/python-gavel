@@ -14,8 +14,8 @@ def serializedATN():
         buf.write("\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23")
         buf.write("\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30")
         buf.write("\4\31\t\31\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36")
-        buf.write("\t\36\4\37\t\37\4 \t \4!\t!\4\"\t\"\4#\t#\4$\t$\4%\t%")
-        buf.write("\4&\t&\4\'\t\'\4(\t(\4)\t)\4*\t*\4+\t+\4,\t,\4-\t-\4.")
+        buf.write('\t\36\4\37\t\37\4 \t \4!\t!\4"\t"\4#\t#\4$\t$\4%\t%')
+        buf.write("\4&\t&\4'\t'\4(\t(\4)\t)\4*\t*\4+\t+\4,\t,\4-\t-\4.")
         buf.write("\t.\4/\t/\4\60\t\60\4\61\t\61\4\62\t\62\4\63\t\63\4\64")
         buf.write("\t\64\4\65\t\65\4\66\t\66\4\67\t\67\48\t8\49\t9\4:\t:")
         buf.write("\4;\t;\4<\t<\4=\t=\4>\t>\4?\t?\4@\t@\4A\tA\4B\tB\4C\t")
@@ -38,11 +38,11 @@ def serializedATN():
         buf.write("\3\34\3\34\3\34\3\35\3\35\3\35\3\35\3\35\3\35\3\35\3\35")
         buf.write("\3\35\3\35\3\35\3\35\3\36\3\36\3\36\3\36\3\36\3\36\3\37")
         buf.write("\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3 \3 \3 \3 \3 \3 ")
-        buf.write("\3 \3 \3 \3!\3!\3!\3!\3!\3!\3!\3!\3!\3!\3!\3!\3!\3\"\3")
-        buf.write("\"\3\"\3\"\3\"\3\"\3\"\3\"\3#\3#\3#\3#\3#\3#\3#\3#\3$")
+        buf.write('\3 \3 \3 \3!\3!\3!\3!\3!\3!\3!\3!\3!\3!\3!\3!\3!\3"\3')
+        buf.write('"\3"\3"\3"\3"\3"\3"\3#\3#\3#\3#\3#\3#\3#\3#\3$')
         buf.write("\3$\3$\3$\3$\3$\3$\3$\3$\3$\3$\3$\3$\3%\3%\3%\3%\3%\3")
         buf.write("%\3%\3%\3%\3%\3%\3%\3&\3&\3&\3&\3&\3&\3&\3&\3&\3&\3&\3")
-        buf.write("&\3&\3\'\3\'\3\'\3\'\3\'\3\'\3\'\3\'\3\'\3(\3(\3(\3(\3")
+        buf.write("&\3&\3'\3'\3'\3'\3'\3'\3'\3'\3'\3(\3(\3(\3(\3")
         buf.write("(\3(\3)\3)\3)\3)\3)\3)\3*\3*\3*\3*\3*\3*\3+\3+\3+\3+\3")
         buf.write("+\3+\3,\3,\3,\3,\3,\3,\3-\3-\3-\5-\u01f3\n-\3.\3.\3.\5")
         buf.write(".\u01f8\n.\3/\3/\3\60\3\60\3\61\3\61\3\62\3\62\3\63\3")
@@ -64,23 +64,23 @@ def serializedATN():
         buf.write("\16k\u02d2\3k\3k\3l\3l\7l\u02d9\nl\fl\16l\u02dc\13l\3")
         buf.write("l\3l\3m\3m\3m\3m\7m\u02e4\nm\fm\16m\u02e7\13m\3m\3m\3")
         buf.write("m\3m\3m\3\u02e5\2n\3\3\5\4\7\5\t\6\13\7\r\b\17\t\21\n")
-        buf.write("\23\13\25\f\27\r\31\16\33\17\35\20\37\21!\22#\23%\24\'")
+        buf.write("\23\13\25\f\27\r\31\16\33\17\35\20\37\21!\22#\23%\24'")
         buf.write("\25)\26+\27-\30/\31\61\32\63\33\65\34\67\359\36;\37= ")
-        buf.write("?!A\"C#E$G%I&K\'M(O)Q*S+U,W-Y\2[\2]\2_\2a\2c\2e\2g\2i")
+        buf.write("?!A\"C#E$G%I&K'M(O)Q*S+U,W-Y\2[\2]\2_\2a\2c\2e\2g\2i")
         buf.write("\2k.m/o\60q\61s\62u\63w\64y\65{\66}\67\1778\u00819\u0083")
         buf.write(":\u0085;\u0087<\u0089=\u008b>\u008d?\u008f@\u0091A\u0093")
         buf.write("B\u0095C\u0097D\u0099E\u009bF\u009dG\u009fH\u00a1I\u00a3")
         buf.write("J\u00a5K\u00a7L\u00a9M\u00abN\u00adO\u00afP\u00b1Q\u00b3")
         buf.write("R\u00b5S\u00b7T\u00b9U\u00bbV\u00bdW\u00bfX\u00c1Y\u00c3")
         buf.write("Z\u00c5[\u00c7\\\u00c9]\u00cb^\u00cd_\u00cf`\u00d1a\u00d3")
-        buf.write("b\u00d5c\u00d7d\u00d9e\3\2\16\5\2\"#%]_\u0080\4\2$$^^")
-        buf.write("\5\2\"(*]_\u0080\4\2))^^\4\2--//\4\2GGgg\3\2\63;\3\2\62")
-        buf.write(";\3\2c|\3\2C\\\5\2\13\f\17\17\"\"\4\2\f\f\17\17\2\u02f9")
+        buf.write('b\u00d5c\u00d7d\u00d9e\3\2\16\5\2"#%]_\u0080\4\2$$^^')
+        buf.write('\5\2"(*]_\u0080\4\2))^^\4\2--//\4\2GGgg\3\2\63;\3\2\62')
+        buf.write(';\3\2c|\3\2C\\\5\2\13\f\17\17""\4\2\f\f\17\17\2\u02f9')
         buf.write("\2\3\3\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2\2\13")
         buf.write("\3\2\2\2\2\r\3\2\2\2\2\17\3\2\2\2\2\21\3\2\2\2\2\23\3")
         buf.write("\2\2\2\2\25\3\2\2\2\2\27\3\2\2\2\2\31\3\2\2\2\2\33\3\2")
         buf.write("\2\2\2\35\3\2\2\2\2\37\3\2\2\2\2!\3\2\2\2\2#\3\2\2\2\2")
-        buf.write("%\3\2\2\2\2\'\3\2\2\2\2)\3\2\2\2\2+\3\2\2\2\2-\3\2\2\2")
+        buf.write("%\3\2\2\2\2'\3\2\2\2\2)\3\2\2\2\2+\3\2\2\2\2-\3\2\2\2")
         buf.write("\2/\3\2\2\2\2\61\3\2\2\2\2\63\3\2\2\2\2\65\3\2\2\2\2\67")
         buf.write("\3\2\2\2\29\3\2\2\2\2;\3\2\2\2\2=\3\2\2\2\2?\3\2\2\2\2")
         buf.write("A\3\2\2\2\2C\3\2\2\2\2E\3\2\2\2\2G\3\2\2\2\2I\3\2\2\2")
@@ -106,7 +106,7 @@ def serializedATN():
         buf.write("\3\2\2\2\23\u00fe\3\2\2\2\25\u0103\3\2\2\2\27\u0105\3")
         buf.write("\2\2\2\31\u0107\3\2\2\2\33\u0109\3\2\2\2\35\u010b\3\2")
         buf.write("\2\2\37\u010d\3\2\2\2!\u0113\3\2\2\2#\u0119\3\2\2\2%\u011c")
-        buf.write("\3\2\2\2\'\u011f\3\2\2\2)\u0121\3\2\2\2+\u0123\3\2\2\2")
+        buf.write("\3\2\2\2'\u011f\3\2\2\2)\u0121\3\2\2\2+\u0123\3\2\2\2")
         buf.write("-\u012b\3\2\2\2/\u0134\3\2\2\2\61\u013d\3\2\2\2\63\u0145")
         buf.write("\3\2\2\2\65\u014e\3\2\2\2\67\u0157\3\2\2\29\u0162\3\2")
         buf.write("\2\2;\u016e\3\2\2\2=\u0174\3\2\2\2?\u017c\3\2\2\2A\u0185")
@@ -155,7 +155,7 @@ def serializedATN():
         buf.write("\7&\2\2\u010e\u010f\7k\2\2\u010f\u0110\7v\2\2\u0110\u0111")
         buf.write("\7g\2\2\u0111\u0112\7*\2\2\u0112 \3\2\2\2\u0113\u0114")
         buf.write("\7&\2\2\u0114\u0115\7n\2\2\u0115\u0116\7g\2\2\u0116\u0117")
-        buf.write("\7v\2\2\u0117\u0118\7*\2\2\u0118\"\3\2\2\2\u0119\u011a")
+        buf.write('\7v\2\2\u0117\u0118\7*\2\2\u0118"\3\2\2\2\u0119\u011a')
         buf.write("\7]\2\2\u011a\u011b\7_\2\2\u011b$\3\2\2\2\u011c\u011d")
         buf.write("\7}\2\2\u011d\u011e\7\177\2\2\u011e&\3\2\2\2\u011f\u0120")
         buf.write("\7}\2\2\u0120(\3\2\2\2\u0121\u0122\7\177\2\2\u0122*\3")
@@ -316,7 +316,7 @@ def serializedATN():
         buf.write("\u02ce\7$\2\2\u02ce\u00d4\3\2\2\2\u02cf\u02d1\t\f\2\2")
         buf.write("\u02d0\u02cf\3\2\2\2\u02d1\u02d2\3\2\2\2\u02d2\u02d0\3")
         buf.write("\2\2\2\u02d2\u02d3\3\2\2\2\u02d3\u02d4\3\2\2\2\u02d4\u02d5")
-        buf.write("\bk\2\2\u02d5\u00d6\3\2\2\2\u02d6\u02da\7\'\2\2\u02d7")
+        buf.write("\bk\2\2\u02d5\u00d6\3\2\2\2\u02d6\u02da\7'\2\2\u02d7")
         buf.write("\u02d9\n\r\2\2\u02d8\u02d7\3\2\2\2\u02d9\u02dc\3\2\2\2")
         buf.write("\u02da\u02d8\3\2\2\2\u02da\u02db\3\2\2\2\u02db\u02dd\3")
         buf.write("\2\2\2\u02dc\u02da\3\2\2\2\u02dd\u02de\bl\2\2\u02de\u00d8")
@@ -336,7 +336,7 @@ class tptp_v7_0_0_0Lexer(Lexer):
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
+    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
 
     T__0 = 1
     T__1 = 2
@@ -438,65 +438,265 @@ class tptp_v7_0_0_0Lexer(Lexer):
     Line_comment = 98
     Block_comment = 99
 
-    channelNames = [ u"DEFAULT_TOKEN_CHANNEL", u"HIDDEN" ]
+    channelNames = [u"DEFAULT_TOKEN_CHANNEL", u"HIDDEN"]
 
-    modeNames = [ "DEFAULT_MODE" ]
+    modeNames = ["DEFAULT_MODE"]
 
-    literalNames = [ "<INVALID>",
-            "'tpi('", "','", "').'", "'thf('", "'tfx('", "'tff('", "'tcf('", 
-            "'fof('", "'cnf('", "'('", "')'", "'['", "']'", "':'", "'$ite('", 
-            "'$let('", "'[]'", "'{}'", "'{'", "'}'", "'$ite_f('", "'$let_tf('", 
-            "'$let_ff('", "'$ite_t('", "'$let_ft('", "'$let_tt('", "'inference('", 
-            "'introduced('", "'file('", "'theory('", "'creator('", "'description('", 
-            "'iquote('", "'status('", "'assumptions('", "'refutation('", 
-            "'new_symbols('", "'include('", "'$thf('", "'$tff('", "'$fof('", 
-            "'$cnf('", "'$fot('", "'|'", "'&'", "'<=>'", "'=>'", "'<='", 
-            "'<~>'", "'~|'", "'~&'", "'~'", "'!!'", "'!>'", "'!='", "'='", 
-            "'!'", "'??'", "'?*'", "'?'", "'^'", "'@@+'", "'@+'", "'@@-'", 
-            "'@-'", "'@='", "'@'", "':='", "'>'", "'*'", "'+'", "'<<'", 
-            "'-->'" ]
+    literalNames = [
+        "<INVALID>",
+        "'tpi('",
+        "','",
+        "').'",
+        "'thf('",
+        "'tfx('",
+        "'tff('",
+        "'tcf('",
+        "'fof('",
+        "'cnf('",
+        "'('",
+        "')'",
+        "'['",
+        "']'",
+        "':'",
+        "'$ite('",
+        "'$let('",
+        "'[]'",
+        "'{}'",
+        "'{'",
+        "'}'",
+        "'$ite_f('",
+        "'$let_tf('",
+        "'$let_ff('",
+        "'$ite_t('",
+        "'$let_ft('",
+        "'$let_tt('",
+        "'inference('",
+        "'introduced('",
+        "'file('",
+        "'theory('",
+        "'creator('",
+        "'description('",
+        "'iquote('",
+        "'status('",
+        "'assumptions('",
+        "'refutation('",
+        "'new_symbols('",
+        "'include('",
+        "'$thf('",
+        "'$tff('",
+        "'$fof('",
+        "'$cnf('",
+        "'$fot('",
+        "'|'",
+        "'&'",
+        "'<=>'",
+        "'=>'",
+        "'<='",
+        "'<~>'",
+        "'~|'",
+        "'~&'",
+        "'~'",
+        "'!!'",
+        "'!>'",
+        "'!='",
+        "'='",
+        "'!'",
+        "'??'",
+        "'?*'",
+        "'?'",
+        "'^'",
+        "'@@+'",
+        "'@+'",
+        "'@@-'",
+        "'@-'",
+        "'@='",
+        "'@'",
+        "':='",
+        "'>'",
+        "'*'",
+        "'+'",
+        "'<<'",
+        "'-->'",
+    ]
 
-    symbolicNames = [ "<INVALID>",
-            "Or", "And", "Iff", "Impl", "If", "Niff", "Nor", "Nand", "Not", 
-            "ForallComb", "TyForall", "Infix_inequality", "Infix_equality", 
-            "Forall", "ExistsComb", "TyExists", "Exists", "Lambda", "ChoiceComb", 
-            "Choice", "DescriptionComb", "Description", "EqComb", "App", 
-            "Assignment", "Arrow", "Star", "Plus", "Subtype_sign", "Gentzen_arrow", 
-            "Real", "Signed_real", "Unsigned_real", "Rational", "Signed_rational", 
-            "Unsigned_rational", "Integer", "Signed_integer", "Unsigned_integer", 
-            "Decimal", "Positive_decimal", "Decimal_exponent", "Decimal_fraction", 
-            "Dot_decimal", "Exp_integer", "Signed_exp_integer", "Unsigned_exp_integer", 
-            "Dollar_word", "Dollar_dollar_word", "Upper_word", "Lower_word", 
-            "Single_quoted", "Distinct_object", "WS", "Line_comment", "Block_comment" ]
+    symbolicNames = [
+        "<INVALID>",
+        "Or",
+        "And",
+        "Iff",
+        "Impl",
+        "If",
+        "Niff",
+        "Nor",
+        "Nand",
+        "Not",
+        "ForallComb",
+        "TyForall",
+        "Infix_inequality",
+        "Infix_equality",
+        "Forall",
+        "ExistsComb",
+        "TyExists",
+        "Exists",
+        "Lambda",
+        "ChoiceComb",
+        "Choice",
+        "DescriptionComb",
+        "Description",
+        "EqComb",
+        "App",
+        "Assignment",
+        "Arrow",
+        "Star",
+        "Plus",
+        "Subtype_sign",
+        "Gentzen_arrow",
+        "Real",
+        "Signed_real",
+        "Unsigned_real",
+        "Rational",
+        "Signed_rational",
+        "Unsigned_rational",
+        "Integer",
+        "Signed_integer",
+        "Unsigned_integer",
+        "Decimal",
+        "Positive_decimal",
+        "Decimal_exponent",
+        "Decimal_fraction",
+        "Dot_decimal",
+        "Exp_integer",
+        "Signed_exp_integer",
+        "Unsigned_exp_integer",
+        "Dollar_word",
+        "Dollar_dollar_word",
+        "Upper_word",
+        "Lower_word",
+        "Single_quoted",
+        "Distinct_object",
+        "WS",
+        "Line_comment",
+        "Block_comment",
+    ]
 
-    ruleNames = [ "T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", 
-                  "T__7", "T__8", "T__9", "T__10", "T__11", "T__12", "T__13", 
-                  "T__14", "T__15", "T__16", "T__17", "T__18", "T__19", 
-                  "T__20", "T__21", "T__22", "T__23", "T__24", "T__25", 
-                  "T__26", "T__27", "T__28", "T__29", "T__30", "T__31", 
-                  "T__32", "T__33", "T__34", "T__35", "T__36", "T__37", 
-                  "T__38", "T__39", "T__40", "T__41", "T__42", "Do_char", 
-                  "Sq_char", "Sign", "Exponent", "Non_zero_numeric", "Numeric", 
-                  "Lower_alpha", "Upper_alpha", "Alpha_numeric", "Or", "And", 
-                  "Iff", "Impl", "If", "Niff", "Nor", "Nand", "Not", "ForallComb", 
-                  "TyForall", "Infix_inequality", "Infix_equality", "Forall", 
-                  "ExistsComb", "TyExists", "Exists", "Lambda", "ChoiceComb", 
-                  "Choice", "DescriptionComb", "Description", "EqComb", 
-                  "App", "Assignment", "Arrow", "Star", "Plus", "Subtype_sign", 
-                  "Gentzen_arrow", "Real", "Signed_real", "Unsigned_real", 
-                  "Rational", "Signed_rational", "Unsigned_rational", "Integer", 
-                  "Signed_integer", "Unsigned_integer", "Decimal", "Positive_decimal", 
-                  "Decimal_exponent", "Decimal_fraction", "Dot_decimal", 
-                  "Exp_integer", "Signed_exp_integer", "Unsigned_exp_integer", 
-                  "Dollar_word", "Dollar_dollar_word", "Upper_word", "Lower_word", 
-                  "Single_quoted", "Distinct_object", "WS", "Line_comment", 
-                  "Block_comment" ]
+    ruleNames = [
+        "T__0",
+        "T__1",
+        "T__2",
+        "T__3",
+        "T__4",
+        "T__5",
+        "T__6",
+        "T__7",
+        "T__8",
+        "T__9",
+        "T__10",
+        "T__11",
+        "T__12",
+        "T__13",
+        "T__14",
+        "T__15",
+        "T__16",
+        "T__17",
+        "T__18",
+        "T__19",
+        "T__20",
+        "T__21",
+        "T__22",
+        "T__23",
+        "T__24",
+        "T__25",
+        "T__26",
+        "T__27",
+        "T__28",
+        "T__29",
+        "T__30",
+        "T__31",
+        "T__32",
+        "T__33",
+        "T__34",
+        "T__35",
+        "T__36",
+        "T__37",
+        "T__38",
+        "T__39",
+        "T__40",
+        "T__41",
+        "T__42",
+        "Do_char",
+        "Sq_char",
+        "Sign",
+        "Exponent",
+        "Non_zero_numeric",
+        "Numeric",
+        "Lower_alpha",
+        "Upper_alpha",
+        "Alpha_numeric",
+        "Or",
+        "And",
+        "Iff",
+        "Impl",
+        "If",
+        "Niff",
+        "Nor",
+        "Nand",
+        "Not",
+        "ForallComb",
+        "TyForall",
+        "Infix_inequality",
+        "Infix_equality",
+        "Forall",
+        "ExistsComb",
+        "TyExists",
+        "Exists",
+        "Lambda",
+        "ChoiceComb",
+        "Choice",
+        "DescriptionComb",
+        "Description",
+        "EqComb",
+        "App",
+        "Assignment",
+        "Arrow",
+        "Star",
+        "Plus",
+        "Subtype_sign",
+        "Gentzen_arrow",
+        "Real",
+        "Signed_real",
+        "Unsigned_real",
+        "Rational",
+        "Signed_rational",
+        "Unsigned_rational",
+        "Integer",
+        "Signed_integer",
+        "Unsigned_integer",
+        "Decimal",
+        "Positive_decimal",
+        "Decimal_exponent",
+        "Decimal_fraction",
+        "Dot_decimal",
+        "Exp_integer",
+        "Signed_exp_integer",
+        "Unsigned_exp_integer",
+        "Dollar_word",
+        "Dollar_dollar_word",
+        "Upper_word",
+        "Lower_word",
+        "Single_quoted",
+        "Distinct_object",
+        "WS",
+        "Line_comment",
+        "Block_comment",
+    ]
 
     grammarFileName = "tptp_v7_0_0_0.g4"
 
-    def __init__(self, input=None, output:TextIO = sys.stdout):
+    def __init__(self, input=None, output: TextIO = sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.7.2")
-        self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
+        self._interp = LexerATNSimulator(
+            self, self.atn, self.decisionsToDFA, PredictionContextCache()
+        )
         self._actions = None
         self._predicates = None

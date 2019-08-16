@@ -11,7 +11,6 @@ class BaseProverInterface:
     def __init__(self, *args, **kwargs):
         self.dialect = self._dialect_cls(*args, **kwargs)
 
-
     def prove(self, problem: Problem, *args, **kwargs):
         """
         Attempt to prove a problem specified in `file`
@@ -19,6 +18,7 @@ class BaseProverInterface:
         :return:
         """
         raise NotImplementedError
+
 
 class BaseResultHandler:
     def get_used_axioms(self):

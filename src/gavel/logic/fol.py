@@ -26,9 +26,9 @@ class Quantifier(Enum):
 
     def __repr__(self):
         if self.is_universal():
-            return u"\u2200"
+            return "\u2200"
         elif self.is_existential():
-            return u"\u2203"
+            return "\u2203"
         else:
             raise NotImplementedError
 
@@ -188,8 +188,11 @@ class QuantifiedFormula(FOLElement):
         )
 
     def symbols(self):
-        variables = {symbol for variable in self.variables for symbol in variable.symbols()}
+        variables = {
+            symbol for variable in self.variables for symbol in variable.symbols()
+        }
         return set(self.formula.symbols()).difference(variables)
+
 
 class AnnotatedFormula(FOLElement, Sentence):
 
@@ -339,6 +342,7 @@ class Constant(FOLElement):
 
     def symbols(self):
         return {self.symbol}
+
 
 class Let(FOLElement):
 

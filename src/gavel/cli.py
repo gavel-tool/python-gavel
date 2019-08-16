@@ -86,10 +86,10 @@ def prove(f, s):
     compiler = TPTPCompiler()
     for problem in problems:
         if s is not None:
-            selector = Sine(premises=problem.premises,
-                            conjecture=problem.conjecture, max_depth=10)
-            problem = Problem(premises=selector.select(),
-                              conjecture=problem.conjecture)
+            selector = Sine(
+                premises=problem.premises, conjecture=problem.conjecture, max_depth=10
+            )
+            problem = Problem(premises=selector.select(), conjecture=problem.conjecture)
         for goal_result in hp.prove(problem, compiler):
             print(goal_result)
 
@@ -99,7 +99,9 @@ def prove(f, s):
 def select(f):
     processor = TPTPParser()
     problem = list(processor.problem_processor(f))[0]
-    selector = Sine(premises=problem.premises, conjecture=problem.conjecture, max_depth=10)
+    selector = Sine(
+        premises=problem.premises, conjecture=problem.conjecture, max_depth=10
+    )
     smaller_problem = Problem(premises=selector.select(), conjecture=problem.conjecture)
     for prem in list(smaller_problem.premises):
         print(prem)

@@ -8,7 +8,6 @@ from gavel.dialects.tptp.antlr4.tptp_v7_0_0_0Visitor import tptp_v7_0_0_0Visitor
 
 
 class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
-
     def defaultResult(self):
         return None
 
@@ -31,7 +30,10 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         if len(ctx.children) == 1:
             return [self.visit(ctx.children[0])]
         else:
-            return [self.visit(ctx.children[i*2]) for i in range(len(ctx.children)//2+1)]
+            return [
+                self.visit(ctx.children[i * 2])
+                for i in range(len(ctx.children) // 2 + 1)
+            ]
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#tptp_file.
     def visitTptp_file(self, ctx: tptp_v7_0_0_0Parser.Tptp_fileContext):
@@ -991,7 +993,8 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         return sources.InferenceSource(
             self.visit(ctx.children[1]),
             self.visit(ctx.children[3]),
-            self.visit(ctx.children[5]))
+            self.visit(ctx.children[5]),
+        )
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#inference_rule.
     def visitInference_rule(self, ctx: tptp_v7_0_0_0Parser.Inference_ruleContext):
@@ -1018,7 +1021,9 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#internal_source.
     def visitInternal_source(self, ctx: tptp_v7_0_0_0Parser.Internal_sourceContext):
-        return sources.InternalSource(self.visit(ctx.children[1]), self.visit(ctx.children[2]))
+        return sources.InternalSource(
+            self.visit(ctx.children[1]), self.visit(ctx.children[2])
+        )
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#intro_type.
     def visitIntro_type(self, ctx: tptp_v7_0_0_0Parser.Intro_typeContext):
@@ -1030,7 +1035,9 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#file_source.
     def visitFile_source(self, ctx: tptp_v7_0_0_0Parser.File_sourceContext):
-        return sources.FileSource(self.visit(ctx.children[1]), self.visit(ctx.children[2]))
+        return sources.FileSource(
+            self.visit(ctx.children[1]), self.visit(ctx.children[2])
+        )
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#file_info.
     def visitFile_info(self, ctx: tptp_v7_0_0_0Parser.File_infoContext):

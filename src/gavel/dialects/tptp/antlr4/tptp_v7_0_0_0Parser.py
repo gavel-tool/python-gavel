@@ -15,8 +15,8 @@ def serializedATN():
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
         buf.write("\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31")
         buf.write("\t\31\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36")
-        buf.write("\4\37\t\37\4 \t \4!\t!\4\"\t\"\4#\t#\4$\t$\4%\t%\4&\t")
-        buf.write("&\4\'\t\'\4(\t(\4)\t)\4*\t*\4+\t+\4,\t,\4-\t-\4.\t.\4")
+        buf.write('\4\37\t\37\4 \t \4!\t!\4"\t"\4#\t#\4$\t$\4%\t%\4&\t')
+        buf.write("&\4'\t'\4(\t(\4)\t)\4*\t*\4+\t+\4,\t,\4-\t-\4.\t.\4")
         buf.write("/\t/\4\60\t\60\4\61\t\61\4\62\t\62\4\63\t\63\4\64\t\64")
         buf.write("\4\65\t\65\4\66\t\66\4\67\t\67\48\t8\49\t9\4:\t:\4;\t")
         buf.write(";\4<\t<\4=\t=\4>\t>\4?\t?\4@\t@\4A\tA\4B\tB\4C\tC\4D\t")
@@ -72,9 +72,9 @@ def serializedATN():
         buf.write("\35\3\35\3\35\3\36\3\36\3\36\3\36\5\36\u026d\n\36\3\37")
         buf.write("\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37")
         buf.write("\3\37\3\37\3\37\3\37\5\37\u027f\n\37\3 \3 \3 \5 \u0284")
-        buf.write("\n \3!\3!\3!\3!\3!\3!\3!\3!\3\"\3\"\3\"\3\"\3\"\3\"\3")
+        buf.write('\n \3!\3!\3!\3!\3!\3!\3!\3!\3"\3"\3"\3"\3"\3"\3')
         buf.write("#\3#\3$\3$\3$\3$\3%\3%\3%\3%\3%\5%\u029f\n%\3&\3&\3&\3")
-        buf.write("&\3\'\3\'\3\'\5\'\u02a8\n\'\3(\3(\3)\3)\3*\3*\3*\5*\u02b1")
+        buf.write("&\3'\3'\3'\5'\u02a8\n'\3(\3(\3)\3)\3*\3*\3*\5*\u02b1")
         buf.write("\n*\3+\3+\3+\3+\3+\3+\3+\3+\5+\u02bb\n+\3,\3,\3,\3,\3")
         buf.write(",\3,\3,\3,\7,\u02c5\n,\f,\16,\u02c8\13,\3-\3-\3-\3-\3")
         buf.write("-\3-\3-\3-\7-\u02d2\n-\f-\16-\u02d5\13-\3.\3.\3.\3.\3")
@@ -176,7 +176,7 @@ def serializedATN():
         buf.write("\n\u00c5\3\u00c6\3\u00c6\3\u00c7\3\u00c7\3\u00c8\3\u00c8")
         buf.write("\3\u00c9\3\u00c9\3\u00ca\3\u00ca\3\u00ca\2\r&(*VXnp\u00ac")
         buf.write("\u00be\u00c0\u00f6\u00cb\2\4\6\b\n\f\16\20\22\24\26\30")
-        buf.write("\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\\^`b")
+        buf.write('\32\34\36 "$&(*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\\^`b')
         buf.write("dfhjlnprtvxz|~\u0080\u0082\u0084\u0086\u0088\u008a\u008c")
         buf.write("\u008e\u0090\u0092\u0094\u0096\u0098\u009a\u009c\u009e")
         buf.write("\u00a0\u00a2\u00a4\u00a6\u00a8\u00aa\u00ac\u00ae\u00b0")
@@ -199,7 +199,7 @@ def serializedATN():
         buf.write("\3\2\2\2\16\u01c1\3\2\2\2\20\u01cc\3\2\2\2\22\u01d7\3")
         buf.write("\2\2\2\24\u01e2\3\2\2\2\26\u01ed\3\2\2\2\30\u01f8\3\2")
         buf.write("\2\2\32\u01fd\3\2\2\2\34\u0201\3\2\2\2\36\u0207\3\2\2")
-        buf.write("\2 \u020c\3\2\2\2\"\u020e\3\2\2\2$\u0215\3\2\2\2&\u0217")
+        buf.write('\2 \u020c\3\2\2\2"\u020e\3\2\2\2$\u0215\3\2\2\2&\u0217')
         buf.write("\3\2\2\2(\u0224\3\2\2\2*\u0231\3\2\2\2,\u0248\3\2\2\2")
         buf.write(".\u024a\3\2\2\2\60\u024d\3\2\2\2\62\u0253\3\2\2\2\64\u025d")
         buf.write("\3\2\2\2\66\u025f\3\2\2\28\u0263\3\2\2\2:\u026c\3\2\2")
@@ -313,7 +313,7 @@ def serializedATN():
         buf.write("\u0200\3\2\2\2\u0202\35\3\2\2\2\u0203\u0208\5 \21\2\u0204")
         buf.write("\u0208\5,\27\2\u0205\u0208\5F$\2\u0206\u0208\5J&\2\u0207")
         buf.write("\u0203\3\2\2\2\u0207\u0204\3\2\2\2\u0207\u0205\3\2\2\2")
-        buf.write("\u0207\u0206\3\2\2\2\u0208\37\3\2\2\2\u0209\u020d\5\"")
+        buf.write('\u0207\u0206\3\2\2\2\u0208\37\3\2\2\2\u0209\u020d\5"')
         buf.write("\22\2\u020a\u020d\5$\23\2\u020b\u020d\5R*\2\u020c\u0209")
         buf.write("\3\2\2\2\u020c\u020a\3\2\2\2\u020c\u020b\3\2\2\2\u020d")
         buf.write("!\3\2\2\2\u020e\u020f\5,\27\2\u020f\u0210\5\u0100\u0081")
@@ -324,7 +324,7 @@ def serializedATN():
         buf.write("\u021a\7.\2\2\u021a\u021b\5,\27\2\u021b\u0221\3\2\2\2")
         buf.write("\u021c\u021d\f\3\2\2\u021d\u021e\7.\2\2\u021e\u0220\5")
         buf.write(",\27\2\u021f\u021c\3\2\2\2\u0220\u0223\3\2\2\2\u0221\u021f")
-        buf.write("\3\2\2\2\u0221\u0222\3\2\2\2\u0222\'\3\2\2\2\u0223\u0221")
+        buf.write("\3\2\2\2\u0221\u0222\3\2\2\2\u0222'\3\2\2\2\u0223\u0221")
         buf.write("\3\2\2\2\u0224\u0225\b\25\1\2\u0225\u0226\5,\27\2\u0226")
         buf.write("\u0227\7/\2\2\u0227\u0228\5,\27\2\u0228\u022e\3\2\2\2")
         buf.write("\u0229\u022a\f\3\2\2\u022a\u022b\7/\2\2\u022b\u022d\5")
@@ -336,7 +336,7 @@ def serializedATN():
         buf.write(",\27\2\u0239\u0236\3\2\2\2\u023a\u023d\3\2\2\2\u023b\u0239")
         buf.write("\3\2\2\2\u023b\u023c\3\2\2\2\u023c+\3\2\2\2\u023d\u023b")
         buf.write("\3\2\2\2\u023e\u0249\5.\30\2\u023f\u0249\58\35\2\u0240")
-        buf.write("\u0249\5:\36\2\u0241\u0249\5@!\2\u0242\u0249\5B\"\2\u0243")
+        buf.write('\u0249\5:\36\2\u0241\u0249\5@!\2\u0242\u0249\5B"\2\u0243')
         buf.write("\u0249\5\\/\2\u0244\u0245\7\f\2\2\u0245\u0246\5\36\20")
         buf.write("\2\u0246\u0247\7\r\2\2\u0247\u0249\3\2\2\2\u0248\u023e")
         buf.write("\3\2\2\2\u0248\u023f\3\2\2\2\u0248\u0240\3\2\2\2\u0248")
@@ -351,7 +351,7 @@ def serializedATN():
         buf.write("\3\2\2\2\u025b\u025e\5\66\34\2\u025c\u025e\5\u0130\u0099")
         buf.write("\2\u025d\u025b\3\2\2\2\u025d\u025c\3\2\2\2\u025e\65\3")
         buf.write("\2\2\2\u025f\u0260\5\u0130\u0099\2\u0260\u0261\7\20\2")
-        buf.write("\2\u0261\u0262\5L\'\2\u0262\67\3\2\2\2\u0263\u0264\5\u0102")
+        buf.write("\2\u0261\u0262\5L'\2\u0262\67\3\2\2\2\u0263\u0264\5\u0102")
         buf.write("\u0082\2\u0264\u0265\7\f\2\2\u0265\u0266\5\36\20\2\u0266")
         buf.write("\u0267\7\r\2\2\u02679\3\2\2\2\u0268\u026d\5<\37\2\u0269")
         buf.write("\u026d\5\u0130\u0099\2\u026a\u026d\5\u012e\u0098\2\u026b")
@@ -374,7 +374,7 @@ def serializedATN():
         buf.write("\u028f\5,\27\2\u028f\u0290\7\4\2\2\u0290\u0291\5\34\17")
         buf.write("\2\u0291\u0292\7\r\2\2\u0292C\3\2\2\2\u0293\u0294\5^\60")
         buf.write("\2\u0294E\3\2\2\2\u0295\u0296\5H%\2\u0296\u0297\7\20\2")
-        buf.write("\2\u0297\u0298\5L\'\2\u0298G\3\2\2\2\u0299\u029f\5:\36")
+        buf.write("\2\u0297\u0298\5L'\2\u0298G\3\2\2\2\u0299\u029f\5:\36")
         buf.write("\2\u029a\u029b\7\f\2\2\u029b\u029c\5\36\20\2\u029c\u029d")
         buf.write("\7\r\2\2\u029d\u029f\3\2\2\2\u029e\u0299\3\2\2\2\u029e")
         buf.write("\u029a\3\2\2\2\u029fI\3\2\2\2\u02a0\u02a1\5:\36\2\u02a1")
@@ -734,7 +734,7 @@ def serializedATN():
         buf.write("\2\u05c9\u05c8\3\2\2\2\u05ca\u015d\3\2\2\2\u05cb\u05ce")
         buf.write("\5\u0160\u00b1\2\u05cc\u05ce\5\u0162\u00b2\2\u05cd\u05cb")
         buf.write("\3\2\2\2\u05cd\u05cc\3\2\2\2\u05ce\u015f\3\2\2\2\u05cf")
-        buf.write("\u05d0\7\"\2\2\u05d0\u05d1\5\u018a\u00c6\2\u05d1\u05d2")
+        buf.write('\u05d0\7"\2\2\u05d0\u05d1\5\u018a\u00c6\2\u05d1\u05d2')
         buf.write("\7\r\2\2\u05d2\u0161\3\2\2\2\u05d3\u05d4\7#\2\2\u05d4")
         buf.write("\u05d5\5\u018a\u00c6\2\u05d5\u05d6\7\r\2\2\u05d6\u0163")
         buf.write("\3\2\2\2\u05d7\u05dc\5\u0166\u00b4\2\u05d8\u05dc\5\u016c")
@@ -752,7 +752,7 @@ def serializedATN():
         buf.write("\5\u017a\u00be\2\u05f0\u05f1\7\17\2\2\u05f1\u05f2\7\r")
         buf.write("\2\2\u05f2\u016d\3\2\2\2\u05f3\u05f4\7&\2\2\u05f4\u05f5")
         buf.write("\5\u014a\u00a6\2\u05f5\u05f6\7\r\2\2\u05f6\u016f\3\2\2")
-        buf.write("\2\u05f7\u05f8\7\'\2\2\u05f8\u05f9\5\u018a\u00c6\2\u05f9")
+        buf.write("\2\u05f7\u05f8\7'\2\2\u05f8\u05f9\5\u018a\u00c6\2\u05f9")
         buf.write("\u05fa\7\4\2\2\u05fa\u05fb\7\16\2\2\u05fb\u05fc\5\u0172")
         buf.write("\u00ba\2\u05fc\u05fd\7\17\2\2\u05fd\u05fe\7\r\2\2\u05fe")
         buf.write("\u0171\3\2\2\2\u05ff\u0604\5\u0174\u00bb\2\u0600\u0601")
@@ -821,56 +821,195 @@ def serializedATN():
         return buf.getvalue()
 
 
-class tptp_v7_0_0_0Parser ( Parser ):
+class tptp_v7_0_0_0Parser(Parser):
 
     grammarFileName = "tptp_v7_0_0_0.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
+    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "'tpi('", "','", "').'", "'thf('", "'tfx('", 
-                     "'tff('", "'tcf('", "'fof('", "'cnf('", "'('", "')'", 
-                     "'['", "']'", "':'", "'$ite('", "'$let('", "'[]'", 
-                     "'{}'", "'{'", "'}'", "'$ite_f('", "'$let_tf('", "'$let_ff('", 
-                     "'$ite_t('", "'$let_ft('", "'$let_tt('", "'inference('", 
-                     "'introduced('", "'file('", "'theory('", "'creator('", 
-                     "'description('", "'iquote('", "'status('", "'assumptions('", 
-                     "'refutation('", "'new_symbols('", "'include('", "'$thf('", 
-                     "'$tff('", "'$fof('", "'$cnf('", "'$fot('", "'|'", 
-                     "'&'", "'<=>'", "'=>'", "'<='", "'<~>'", "'~|'", "'~&'", 
-                     "'~'", "'!!'", "'!>'", "'!='", "'='", "'!'", "'??'", 
-                     "'?*'", "'?'", "'^'", "'@@+'", "'@+'", "'@@-'", "'@-'", 
-                     "'@='", "'@'", "':='", "'>'", "'*'", "'+'", "'<<'", 
-                     "'-->'" ]
+    literalNames = [
+        "<INVALID>",
+        "'tpi('",
+        "','",
+        "').'",
+        "'thf('",
+        "'tfx('",
+        "'tff('",
+        "'tcf('",
+        "'fof('",
+        "'cnf('",
+        "'('",
+        "')'",
+        "'['",
+        "']'",
+        "':'",
+        "'$ite('",
+        "'$let('",
+        "'[]'",
+        "'{}'",
+        "'{'",
+        "'}'",
+        "'$ite_f('",
+        "'$let_tf('",
+        "'$let_ff('",
+        "'$ite_t('",
+        "'$let_ft('",
+        "'$let_tt('",
+        "'inference('",
+        "'introduced('",
+        "'file('",
+        "'theory('",
+        "'creator('",
+        "'description('",
+        "'iquote('",
+        "'status('",
+        "'assumptions('",
+        "'refutation('",
+        "'new_symbols('",
+        "'include('",
+        "'$thf('",
+        "'$tff('",
+        "'$fof('",
+        "'$cnf('",
+        "'$fot('",
+        "'|'",
+        "'&'",
+        "'<=>'",
+        "'=>'",
+        "'<='",
+        "'<~>'",
+        "'~|'",
+        "'~&'",
+        "'~'",
+        "'!!'",
+        "'!>'",
+        "'!='",
+        "'='",
+        "'!'",
+        "'??'",
+        "'?*'",
+        "'?'",
+        "'^'",
+        "'@@+'",
+        "'@+'",
+        "'@@-'",
+        "'@-'",
+        "'@='",
+        "'@'",
+        "':='",
+        "'>'",
+        "'*'",
+        "'+'",
+        "'<<'",
+        "'-->'",
+    ]
 
-    symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "Or", "And", "Iff", "Impl", "If", "Niff", "Nor", "Nand", 
-                      "Not", "ForallComb", "TyForall", "Infix_inequality", 
-                      "Infix_equality", "Forall", "ExistsComb", "TyExists", 
-                      "Exists", "Lambda", "ChoiceComb", "Choice", "DescriptionComb", 
-                      "Description", "EqComb", "App", "Assignment", "Arrow", 
-                      "Star", "Plus", "Subtype_sign", "Gentzen_arrow", "Real", 
-                      "Signed_real", "Unsigned_real", "Rational", "Signed_rational", 
-                      "Unsigned_rational", "Integer", "Signed_integer", 
-                      "Unsigned_integer", "Decimal", "Positive_decimal", 
-                      "Decimal_exponent", "Decimal_fraction", "Dot_decimal", 
-                      "Exp_integer", "Signed_exp_integer", "Unsigned_exp_integer", 
-                      "Dollar_word", "Dollar_dollar_word", "Upper_word", 
-                      "Lower_word", "Single_quoted", "Distinct_object", 
-                      "WS", "Line_comment", "Block_comment" ]
+    symbolicNames = [
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "Or",
+        "And",
+        "Iff",
+        "Impl",
+        "If",
+        "Niff",
+        "Nor",
+        "Nand",
+        "Not",
+        "ForallComb",
+        "TyForall",
+        "Infix_inequality",
+        "Infix_equality",
+        "Forall",
+        "ExistsComb",
+        "TyExists",
+        "Exists",
+        "Lambda",
+        "ChoiceComb",
+        "Choice",
+        "DescriptionComb",
+        "Description",
+        "EqComb",
+        "App",
+        "Assignment",
+        "Arrow",
+        "Star",
+        "Plus",
+        "Subtype_sign",
+        "Gentzen_arrow",
+        "Real",
+        "Signed_real",
+        "Unsigned_real",
+        "Rational",
+        "Signed_rational",
+        "Unsigned_rational",
+        "Integer",
+        "Signed_integer",
+        "Unsigned_integer",
+        "Decimal",
+        "Positive_decimal",
+        "Decimal_exponent",
+        "Decimal_fraction",
+        "Dot_decimal",
+        "Exp_integer",
+        "Signed_exp_integer",
+        "Unsigned_exp_integer",
+        "Dollar_word",
+        "Dollar_dollar_word",
+        "Upper_word",
+        "Lower_word",
+        "Single_quoted",
+        "Distinct_object",
+        "WS",
+        "Line_comment",
+        "Block_comment",
+    ]
 
     RULE_tptp_file = 0
     RULE_tptp_input = 1
@@ -1074,224 +1213,377 @@ class tptp_v7_0_0_0Parser ( Parser ):
     RULE_number = 199
     RULE_file_name = 200
 
-    ruleNames =  [ "tptp_file", "tptp_input", "annotated_formula", "tpi_annotated", 
-                   "tpi_formula", "thf_annotated", "tfx_annotated", "tff_annotated", 
-                   "tcf_annotated", "fof_annotated", "cnf_annotated", "annotations", 
-                   "formula_role", "thf_formula", "thf_logic_formula", "thf_binary_formula", 
-                   "thf_binary_pair", "thf_binary_tuple", "thf_or_formula", 
-                   "thf_and_formula", "thf_apply_formula", "thf_unitary_formula", 
-                   "thf_quantified_formula", "thf_quantification", "thf_variable_list", 
-                   "thf_variable", "thf_typed_variable", "thf_unary_formula", 
-                   "thf_atom", "thf_function", "thf_conn_term", "thf_conditional", 
-                   "thf_let", "thf_arguments", "thf_type_formula", "thf_typeable_formula", 
-                   "thf_subtype", "thf_top_level_type", "thf_unitary_type", 
-                   "thf_apply_type", "thf_binary_type", "thf_mapping_type", 
-                   "thf_xprod_type", "thf_union_type", "thf_sequent", "thf_tuple", 
-                   "thf_formula_list", "tfx_formula", "tfx_logic_formula", 
-                   "tff_formula", "tff_logic_formula", "tff_binary_formula", 
-                   "tff_binary_nonassoc", "tff_binary_assoc", "tff_or_formula", 
-                   "tff_and_formula", "tff_unitary_formula", "tff_quantified_formula", 
-                   "tff_variable_list", "tff_variable", "tff_typed_variable", 
-                   "tff_unary_formula", "tff_atomic_formula", "tff_conditional", 
-                   "tff_let", "tff_let_term_defns", "tff_let_term_list", 
-                   "tff_let_term_defn", "tff_let_term_binding", "tff_let_formula_defns", 
-                   "tff_let_formula_list", "tff_let_formula_defn", "tff_let_formula_binding", 
-                   "tff_sequent", "tff_formula_tuple", "tff_formula_tuple_list", 
-                   "tff_typed_atom", "tff_subtype", "tff_top_level_type", 
-                   "tf1_quantified_type", "tff_monotype", "tff_unitary_type", 
-                   "tff_atomic_type", "tff_type_arguments", "tff_mapping_type", 
-                   "tff_xprod_type", "tcf_formula", "tcf_logic_formula", 
-                   "tcf_quantified_formula", "fof_formula", "fof_logic_formula", 
-                   "fof_binary_formula", "fof_binary_nonassoc", "fof_binary_assoc", 
-                   "fof_or_formula", "fof_and_formula", "fof_unitary_formula", 
-                   "fof_quantified_formula", "fof_variable_list", "fof_unary_formula", 
-                   "fof_infix_unary", "fof_atomic_formula", "fof_plain_atomic_formula", 
-                   "fof_defined_atomic_formula", "fof_defined_plain_formula", 
-                   "fof_defined_infix_formula", "fof_system_atomic_formula", 
-                   "fof_plain_term", "fof_defined_term", "fof_defined_atomic_term", 
-                   "fof_defined_plain_term", "fof_system_term", "fof_arguments", 
-                   "fof_term", "fof_function_term", "tff_conditional_term", 
-                   "tff_let_term", "tff_tuple_term", "fof_sequent", "fof_formula_tuple", 
-                   "fof_formula_tuple_list", "cnf_formula", "cnf_disjunction", 
-                   "cnf_literal", "thf_quantifier", "th0_quantifier", "th1_quantifier", 
-                   "thf_pair_connective", "thf_unary_connective", "th1_unary_connective", 
-                   "tff_pair_connective", "fof_quantifier", "binary_connective", 
-                   "assoc_connective", "unary_connective", "type_constant", 
-                   "type_functor", "defined_type", "system_type", "atom", 
-                   "untyped_atom", "defined_proposition", "defined_predicate", 
-                   "defined_infix_pred", "constant", "functor", "system_constant", 
-                   "system_functor", "defined_constant", "defined_functor", 
-                   "defined_term", "variable", "source", "sources", "dag_source", 
-                   "inference_record", "inference_rule", "inference_parents", 
-                   "parent_list", "parent_info", "parent_details", "internal_source", 
-                   "intro_type", "external_source", "file_source", "file_info", 
-                   "theory", "theory_name", "creator_source", "creator_name", 
-                   "optional_info", "useful_info", "info_items", "info_item", 
-                   "formula_item", "description_item", "iquote_item", "inference_item", 
-                   "inference_status", "status_value", "inference_info", 
-                   "assumptions_record", "refutation", "new_symbol_record", 
-                   "new_symbol_list", "principal_symbol", "include", "formula_selection", 
-                   "name_list", "general_term", "general_data", "general_function", 
-                   "formula_data", "general_list", "general_terms", "name", 
-                   "atomic_word", "atomic_defined_word", "atomic_system_word", 
-                   "number", "file_name" ]
+    ruleNames = [
+        "tptp_file",
+        "tptp_input",
+        "annotated_formula",
+        "tpi_annotated",
+        "tpi_formula",
+        "thf_annotated",
+        "tfx_annotated",
+        "tff_annotated",
+        "tcf_annotated",
+        "fof_annotated",
+        "cnf_annotated",
+        "annotations",
+        "formula_role",
+        "thf_formula",
+        "thf_logic_formula",
+        "thf_binary_formula",
+        "thf_binary_pair",
+        "thf_binary_tuple",
+        "thf_or_formula",
+        "thf_and_formula",
+        "thf_apply_formula",
+        "thf_unitary_formula",
+        "thf_quantified_formula",
+        "thf_quantification",
+        "thf_variable_list",
+        "thf_variable",
+        "thf_typed_variable",
+        "thf_unary_formula",
+        "thf_atom",
+        "thf_function",
+        "thf_conn_term",
+        "thf_conditional",
+        "thf_let",
+        "thf_arguments",
+        "thf_type_formula",
+        "thf_typeable_formula",
+        "thf_subtype",
+        "thf_top_level_type",
+        "thf_unitary_type",
+        "thf_apply_type",
+        "thf_binary_type",
+        "thf_mapping_type",
+        "thf_xprod_type",
+        "thf_union_type",
+        "thf_sequent",
+        "thf_tuple",
+        "thf_formula_list",
+        "tfx_formula",
+        "tfx_logic_formula",
+        "tff_formula",
+        "tff_logic_formula",
+        "tff_binary_formula",
+        "tff_binary_nonassoc",
+        "tff_binary_assoc",
+        "tff_or_formula",
+        "tff_and_formula",
+        "tff_unitary_formula",
+        "tff_quantified_formula",
+        "tff_variable_list",
+        "tff_variable",
+        "tff_typed_variable",
+        "tff_unary_formula",
+        "tff_atomic_formula",
+        "tff_conditional",
+        "tff_let",
+        "tff_let_term_defns",
+        "tff_let_term_list",
+        "tff_let_term_defn",
+        "tff_let_term_binding",
+        "tff_let_formula_defns",
+        "tff_let_formula_list",
+        "tff_let_formula_defn",
+        "tff_let_formula_binding",
+        "tff_sequent",
+        "tff_formula_tuple",
+        "tff_formula_tuple_list",
+        "tff_typed_atom",
+        "tff_subtype",
+        "tff_top_level_type",
+        "tf1_quantified_type",
+        "tff_monotype",
+        "tff_unitary_type",
+        "tff_atomic_type",
+        "tff_type_arguments",
+        "tff_mapping_type",
+        "tff_xprod_type",
+        "tcf_formula",
+        "tcf_logic_formula",
+        "tcf_quantified_formula",
+        "fof_formula",
+        "fof_logic_formula",
+        "fof_binary_formula",
+        "fof_binary_nonassoc",
+        "fof_binary_assoc",
+        "fof_or_formula",
+        "fof_and_formula",
+        "fof_unitary_formula",
+        "fof_quantified_formula",
+        "fof_variable_list",
+        "fof_unary_formula",
+        "fof_infix_unary",
+        "fof_atomic_formula",
+        "fof_plain_atomic_formula",
+        "fof_defined_atomic_formula",
+        "fof_defined_plain_formula",
+        "fof_defined_infix_formula",
+        "fof_system_atomic_formula",
+        "fof_plain_term",
+        "fof_defined_term",
+        "fof_defined_atomic_term",
+        "fof_defined_plain_term",
+        "fof_system_term",
+        "fof_arguments",
+        "fof_term",
+        "fof_function_term",
+        "tff_conditional_term",
+        "tff_let_term",
+        "tff_tuple_term",
+        "fof_sequent",
+        "fof_formula_tuple",
+        "fof_formula_tuple_list",
+        "cnf_formula",
+        "cnf_disjunction",
+        "cnf_literal",
+        "thf_quantifier",
+        "th0_quantifier",
+        "th1_quantifier",
+        "thf_pair_connective",
+        "thf_unary_connective",
+        "th1_unary_connective",
+        "tff_pair_connective",
+        "fof_quantifier",
+        "binary_connective",
+        "assoc_connective",
+        "unary_connective",
+        "type_constant",
+        "type_functor",
+        "defined_type",
+        "system_type",
+        "atom",
+        "untyped_atom",
+        "defined_proposition",
+        "defined_predicate",
+        "defined_infix_pred",
+        "constant",
+        "functor",
+        "system_constant",
+        "system_functor",
+        "defined_constant",
+        "defined_functor",
+        "defined_term",
+        "variable",
+        "source",
+        "sources",
+        "dag_source",
+        "inference_record",
+        "inference_rule",
+        "inference_parents",
+        "parent_list",
+        "parent_info",
+        "parent_details",
+        "internal_source",
+        "intro_type",
+        "external_source",
+        "file_source",
+        "file_info",
+        "theory",
+        "theory_name",
+        "creator_source",
+        "creator_name",
+        "optional_info",
+        "useful_info",
+        "info_items",
+        "info_item",
+        "formula_item",
+        "description_item",
+        "iquote_item",
+        "inference_item",
+        "inference_status",
+        "status_value",
+        "inference_info",
+        "assumptions_record",
+        "refutation",
+        "new_symbol_record",
+        "new_symbol_list",
+        "principal_symbol",
+        "include",
+        "formula_selection",
+        "name_list",
+        "general_term",
+        "general_data",
+        "general_function",
+        "formula_data",
+        "general_list",
+        "general_terms",
+        "name",
+        "atomic_word",
+        "atomic_defined_word",
+        "atomic_system_word",
+        "number",
+        "file_name",
+    ]
 
     EOF = Token.EOF
-    T__0=1
-    T__1=2
-    T__2=3
-    T__3=4
-    T__4=5
-    T__5=6
-    T__6=7
-    T__7=8
-    T__8=9
-    T__9=10
-    T__10=11
-    T__11=12
-    T__12=13
-    T__13=14
-    T__14=15
-    T__15=16
-    T__16=17
-    T__17=18
-    T__18=19
-    T__19=20
-    T__20=21
-    T__21=22
-    T__22=23
-    T__23=24
-    T__24=25
-    T__25=26
-    T__26=27
-    T__27=28
-    T__28=29
-    T__29=30
-    T__30=31
-    T__31=32
-    T__32=33
-    T__33=34
-    T__34=35
-    T__35=36
-    T__36=37
-    T__37=38
-    T__38=39
-    T__39=40
-    T__40=41
-    T__41=42
-    T__42=43
-    Or=44
-    And=45
-    Iff=46
-    Impl=47
-    If=48
-    Niff=49
-    Nor=50
-    Nand=51
-    Not=52
-    ForallComb=53
-    TyForall=54
-    Infix_inequality=55
-    Infix_equality=56
-    Forall=57
-    ExistsComb=58
-    TyExists=59
-    Exists=60
-    Lambda=61
-    ChoiceComb=62
-    Choice=63
-    DescriptionComb=64
-    Description=65
-    EqComb=66
-    App=67
-    Assignment=68
-    Arrow=69
-    Star=70
-    Plus=71
-    Subtype_sign=72
-    Gentzen_arrow=73
-    Real=74
-    Signed_real=75
-    Unsigned_real=76
-    Rational=77
-    Signed_rational=78
-    Unsigned_rational=79
-    Integer=80
-    Signed_integer=81
-    Unsigned_integer=82
-    Decimal=83
-    Positive_decimal=84
-    Decimal_exponent=85
-    Decimal_fraction=86
-    Dot_decimal=87
-    Exp_integer=88
-    Signed_exp_integer=89
-    Unsigned_exp_integer=90
-    Dollar_word=91
-    Dollar_dollar_word=92
-    Upper_word=93
-    Lower_word=94
-    Single_quoted=95
-    Distinct_object=96
-    WS=97
-    Line_comment=98
-    Block_comment=99
+    T__0 = 1
+    T__1 = 2
+    T__2 = 3
+    T__3 = 4
+    T__4 = 5
+    T__5 = 6
+    T__6 = 7
+    T__7 = 8
+    T__8 = 9
+    T__9 = 10
+    T__10 = 11
+    T__11 = 12
+    T__12 = 13
+    T__13 = 14
+    T__14 = 15
+    T__15 = 16
+    T__16 = 17
+    T__17 = 18
+    T__18 = 19
+    T__19 = 20
+    T__20 = 21
+    T__21 = 22
+    T__22 = 23
+    T__23 = 24
+    T__24 = 25
+    T__25 = 26
+    T__26 = 27
+    T__27 = 28
+    T__28 = 29
+    T__29 = 30
+    T__30 = 31
+    T__31 = 32
+    T__32 = 33
+    T__33 = 34
+    T__34 = 35
+    T__35 = 36
+    T__36 = 37
+    T__37 = 38
+    T__38 = 39
+    T__39 = 40
+    T__40 = 41
+    T__41 = 42
+    T__42 = 43
+    Or = 44
+    And = 45
+    Iff = 46
+    Impl = 47
+    If = 48
+    Niff = 49
+    Nor = 50
+    Nand = 51
+    Not = 52
+    ForallComb = 53
+    TyForall = 54
+    Infix_inequality = 55
+    Infix_equality = 56
+    Forall = 57
+    ExistsComb = 58
+    TyExists = 59
+    Exists = 60
+    Lambda = 61
+    ChoiceComb = 62
+    Choice = 63
+    DescriptionComb = 64
+    Description = 65
+    EqComb = 66
+    App = 67
+    Assignment = 68
+    Arrow = 69
+    Star = 70
+    Plus = 71
+    Subtype_sign = 72
+    Gentzen_arrow = 73
+    Real = 74
+    Signed_real = 75
+    Unsigned_real = 76
+    Rational = 77
+    Signed_rational = 78
+    Unsigned_rational = 79
+    Integer = 80
+    Signed_integer = 81
+    Unsigned_integer = 82
+    Decimal = 83
+    Positive_decimal = 84
+    Decimal_exponent = 85
+    Decimal_fraction = 86
+    Dot_decimal = 87
+    Exp_integer = 88
+    Signed_exp_integer = 89
+    Unsigned_exp_integer = 90
+    Dollar_word = 91
+    Dollar_dollar_word = 92
+    Upper_word = 93
+    Lower_word = 94
+    Single_quoted = 95
+    Distinct_object = 96
+    WS = 97
+    Line_comment = 98
+    Block_comment = 99
 
-    def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
+    def __init__(self, input: TokenStream, output: TextIO = sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.7.2")
-        self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
+        self._interp = ParserATNSimulator(
+            self, self.atn, self.decisionsToDFA, self.sharedContextCache
+        )
         self._predicates = None
 
-
-
     class Tptp_fileContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def EOF(self):
             return self.getToken(tptp_v7_0_0_0Parser.EOF, 0)
 
-        def tptp_input(self, i:int=None):
+        def tptp_input(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Tptp_inputContext)
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tptp_inputContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Tptp_inputContext, i
+                )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tptp_file
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTptp_file" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTptp_file"):
                 listener.enterTptp_file(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTptp_file" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTptp_file"):
                 listener.exitTptp_file(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTptp_file" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTptp_file"):
                 return visitor.visitTptp_file(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tptp_file(self):
 
         localctx = tptp_v7_0_0_0Parser.Tptp_fileContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_tptp_file)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 405
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << tptp_v7_0_0_0Parser.T__0) | (1 << tptp_v7_0_0_0Parser.T__3) | (1 << tptp_v7_0_0_0Parser.T__4) | (1 << tptp_v7_0_0_0Parser.T__5) | (1 << tptp_v7_0_0_0Parser.T__6) | (1 << tptp_v7_0_0_0Parser.T__7) | (1 << tptp_v7_0_0_0Parser.T__8) | (1 << tptp_v7_0_0_0Parser.T__37))) != 0):
+            while ((_la) & ~0x3F) == 0 and (
+                (1 << _la)
+                & (
+                    (1 << tptp_v7_0_0_0Parser.T__0)
+                    | (1 << tptp_v7_0_0_0Parser.T__3)
+                    | (1 << tptp_v7_0_0_0Parser.T__4)
+                    | (1 << tptp_v7_0_0_0Parser.T__5)
+                    | (1 << tptp_v7_0_0_0Parser.T__6)
+                    | (1 << tptp_v7_0_0_0Parser.T__7)
+                    | (1 << tptp_v7_0_0_0Parser.T__8)
+                    | (1 << tptp_v7_0_0_0Parser.T__37)
+                )
+            ) != 0:
                 self.state = 402
                 self.tptp_input()
                 self.state = 407
@@ -1309,38 +1601,36 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tptp_inputContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def annotated_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Annotated_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Annotated_formulaContext, 0
+            )
 
         def include(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.IncludeContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.IncludeContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tptp_input
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTptp_input" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTptp_input"):
                 listener.enterTptp_input(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTptp_input" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTptp_input"):
                 listener.exitTptp_input(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTptp_input" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTptp_input"):
                 return visitor.visitTptp_input(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tptp_input(self):
 
@@ -1350,7 +1640,15 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 412
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.T__0, tptp_v7_0_0_0Parser.T__3, tptp_v7_0_0_0Parser.T__4, tptp_v7_0_0_0Parser.T__5, tptp_v7_0_0_0Parser.T__6, tptp_v7_0_0_0Parser.T__7, tptp_v7_0_0_0Parser.T__8]:
+            if token in [
+                tptp_v7_0_0_0Parser.T__0,
+                tptp_v7_0_0_0Parser.T__3,
+                tptp_v7_0_0_0Parser.T__4,
+                tptp_v7_0_0_0Parser.T__5,
+                tptp_v7_0_0_0Parser.T__6,
+                tptp_v7_0_0_0Parser.T__7,
+                tptp_v7_0_0_0Parser.T__8,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 410
                 self.annotated_formula()
@@ -1372,62 +1670,55 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Annotated_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_annotated(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_annotatedContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_annotatedContext, 0)
 
         def tfx_annotated(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tfx_annotatedContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tfx_annotatedContext, 0)
 
         def tff_annotated(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_annotatedContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_annotatedContext, 0)
 
         def tcf_annotated(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tcf_annotatedContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tcf_annotatedContext, 0)
 
         def fof_annotated(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_annotatedContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_annotatedContext, 0)
 
         def cnf_annotated(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Cnf_annotatedContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Cnf_annotatedContext, 0)
 
         def tpi_annotated(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tpi_annotatedContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tpi_annotatedContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_annotated_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAnnotated_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAnnotated_formula"):
                 listener.enterAnnotated_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAnnotated_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAnnotated_formula"):
                 listener.exitAnnotated_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAnnotated_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAnnotated_formula"):
                 return visitor.visitAnnotated_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def annotated_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Annotated_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Annotated_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 4, self.RULE_annotated_formula)
         try:
             self.state = 421
@@ -1480,52 +1771,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tpi_annotatedContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def name(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext, 0)
 
         def formula_role(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_roleContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_roleContext, 0)
 
         def tpi_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tpi_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tpi_formulaContext, 0)
 
         def annotations(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AnnotationsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AnnotationsContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tpi_annotated
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTpi_annotated" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTpi_annotated"):
                 listener.enterTpi_annotated(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTpi_annotated" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTpi_annotated"):
                 listener.exitTpi_annotated(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTpi_annotated" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTpi_annotated"):
                 return visitor.visitTpi_annotated(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tpi_annotated(self):
 
         localctx = tptp_v7_0_0_0Parser.Tpi_annotatedContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_tpi_annotated)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 423
@@ -1543,10 +1828,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 430
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==tptp_v7_0_0_0Parser.T__1:
+            if _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 429
                 self.annotations()
-
 
             self.state = 432
             self.match(tptp_v7_0_0_0Parser.T__2)
@@ -1559,34 +1843,31 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tpi_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_formulaContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tpi_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTpi_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTpi_formula"):
                 listener.enterTpi_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTpi_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTpi_formula"):
                 listener.exitTpi_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTpi_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTpi_formula"):
                 return visitor.visitTpi_formula(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tpi_formula(self):
 
@@ -1605,52 +1886,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_annotatedContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def name(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext, 0)
 
         def formula_role(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_roleContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_roleContext, 0)
 
         def thf_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_formulaContext, 0)
 
         def annotations(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AnnotationsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AnnotationsContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_annotated
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_annotated" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_annotated"):
                 listener.enterThf_annotated(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_annotated" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_annotated"):
                 listener.exitThf_annotated(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_annotated" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_annotated"):
                 return visitor.visitThf_annotated(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def thf_annotated(self):
 
         localctx = tptp_v7_0_0_0Parser.Thf_annotatedContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_thf_annotated)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 436
@@ -1668,10 +1943,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 443
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==tptp_v7_0_0_0Parser.T__1:
+            if _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 442
                 self.annotations()
-
 
             self.state = 445
             self.match(tptp_v7_0_0_0Parser.T__2)
@@ -1684,52 +1958,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tfx_annotatedContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def name(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext, 0)
 
         def formula_role(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_roleContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_roleContext, 0)
 
         def tfx_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tfx_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tfx_formulaContext, 0)
 
         def annotations(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AnnotationsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AnnotationsContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tfx_annotated
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTfx_annotated" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTfx_annotated"):
                 listener.enterTfx_annotated(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTfx_annotated" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTfx_annotated"):
                 listener.exitTfx_annotated(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTfx_annotated" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTfx_annotated"):
                 return visitor.visitTfx_annotated(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tfx_annotated(self):
 
         localctx = tptp_v7_0_0_0Parser.Tfx_annotatedContext(self, self._ctx, self.state)
         self.enterRule(localctx, 12, self.RULE_tfx_annotated)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 447
@@ -1747,10 +2015,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 454
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==tptp_v7_0_0_0Parser.T__1:
+            if _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 453
                 self.annotations()
-
 
             self.state = 456
             self.match(tptp_v7_0_0_0Parser.T__2)
@@ -1763,52 +2030,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_annotatedContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def name(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext, 0)
 
         def formula_role(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_roleContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_roleContext, 0)
 
         def tff_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_formulaContext, 0)
 
         def annotations(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AnnotationsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AnnotationsContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_annotated
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_annotated" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_annotated"):
                 listener.enterTff_annotated(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_annotated" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_annotated"):
                 listener.exitTff_annotated(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_annotated" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_annotated"):
                 return visitor.visitTff_annotated(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tff_annotated(self):
 
         localctx = tptp_v7_0_0_0Parser.Tff_annotatedContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_tff_annotated)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 458
@@ -1826,10 +2087,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 465
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==tptp_v7_0_0_0Parser.T__1:
+            if _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 464
                 self.annotations()
-
 
             self.state = 467
             self.match(tptp_v7_0_0_0Parser.T__2)
@@ -1842,52 +2102,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tcf_annotatedContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def name(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext, 0)
 
         def formula_role(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_roleContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_roleContext, 0)
 
         def tcf_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tcf_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tcf_formulaContext, 0)
 
         def annotations(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AnnotationsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AnnotationsContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tcf_annotated
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTcf_annotated" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTcf_annotated"):
                 listener.enterTcf_annotated(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTcf_annotated" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTcf_annotated"):
                 listener.exitTcf_annotated(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTcf_annotated" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTcf_annotated"):
                 return visitor.visitTcf_annotated(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tcf_annotated(self):
 
         localctx = tptp_v7_0_0_0Parser.Tcf_annotatedContext(self, self._ctx, self.state)
         self.enterRule(localctx, 16, self.RULE_tcf_annotated)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 469
@@ -1905,10 +2159,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 476
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==tptp_v7_0_0_0Parser.T__1:
+            if _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 475
                 self.annotations()
-
 
             self.state = 478
             self.match(tptp_v7_0_0_0Parser.T__2)
@@ -1921,52 +2174,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_annotatedContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def name(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext, 0)
 
         def formula_role(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_roleContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_roleContext, 0)
 
         def fof_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_formulaContext, 0)
 
         def annotations(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AnnotationsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AnnotationsContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_annotated
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_annotated" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_annotated"):
                 listener.enterFof_annotated(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_annotated" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_annotated"):
                 listener.exitFof_annotated(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_annotated" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_annotated"):
                 return visitor.visitFof_annotated(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def fof_annotated(self):
 
         localctx = tptp_v7_0_0_0Parser.Fof_annotatedContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_fof_annotated)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 480
@@ -1984,10 +2231,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 487
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==tptp_v7_0_0_0Parser.T__1:
+            if _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 486
                 self.annotations()
-
 
             self.state = 489
             self.match(tptp_v7_0_0_0Parser.T__2)
@@ -2000,52 +2246,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Cnf_annotatedContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def name(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext, 0)
 
         def formula_role(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_roleContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_roleContext, 0)
 
         def cnf_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Cnf_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Cnf_formulaContext, 0)
 
         def annotations(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AnnotationsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AnnotationsContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_cnf_annotated
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterCnf_annotated" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterCnf_annotated"):
                 listener.enterCnf_annotated(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitCnf_annotated" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitCnf_annotated"):
                 listener.exitCnf_annotated(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCnf_annotated" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitCnf_annotated"):
                 return visitor.visitCnf_annotated(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def cnf_annotated(self):
 
         localctx = tptp_v7_0_0_0Parser.Cnf_annotatedContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_cnf_annotated)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 491
@@ -2063,10 +2303,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 498
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==tptp_v7_0_0_0Parser.T__1:
+            if _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 497
                 self.annotations()
-
 
             self.state = 500
             self.match(tptp_v7_0_0_0Parser.T__2)
@@ -2079,44 +2318,40 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class AnnotationsContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def source(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.SourceContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.SourceContext, 0)
 
         def optional_info(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Optional_infoContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Optional_infoContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_annotations
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAnnotations" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAnnotations"):
                 listener.enterAnnotations(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAnnotations" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAnnotations"):
                 listener.exitAnnotations(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAnnotations" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAnnotations"):
                 return visitor.visitAnnotations(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def annotations(self):
 
         localctx = tptp_v7_0_0_0Parser.AnnotationsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 22, self.RULE_annotations)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 502
@@ -2126,10 +2361,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 505
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==tptp_v7_0_0_0Parser.T__1:
+            if _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 504
                 self.optional_info()
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2140,8 +2374,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Formula_roleContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2151,22 +2386,19 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_formula_role
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFormula_role" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFormula_role"):
                 listener.enterFormula_role(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFormula_role" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFormula_role"):
                 listener.exitFormula_role(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFormula_role" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFormula_role"):
                 return visitor.visitFormula_role(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def formula_role(self):
 
@@ -2185,38 +2417,36 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_logic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_logic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_logic_formulaContext, 0
+            )
 
         def thf_sequent(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_sequentContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_sequentContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_formula"):
                 listener.enterThf_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_formula"):
                 listener.exitThf_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_formula"):
                 return visitor.visitThf_formula(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def thf_formula(self):
 
@@ -2225,7 +2455,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
         try:
             self.state = 511
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,11,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 11, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 509
@@ -2238,7 +2468,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.thf_sequent()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -2248,55 +2477,57 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_logic_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_binary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_binary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_binary_formulaContext, 0
+            )
 
         def thf_unitary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unitary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_unitary_formulaContext, 0
+            )
 
         def thf_type_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_type_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_type_formulaContext, 0
+            )
 
         def thf_subtype(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_subtypeContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_subtypeContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_logic_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_logic_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_logic_formula"):
                 listener.enterThf_logic_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_logic_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_logic_formula"):
                 listener.exitThf_logic_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_logic_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_logic_formula"):
                 return visitor.visitThf_logic_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_logic_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_logic_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_logic_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 28, self.RULE_thf_logic_formula)
         try:
             self.state = 517
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,12,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 12, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 513
@@ -2321,7 +2552,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.thf_subtype()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -2331,51 +2561,54 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_binary_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_binary_pair(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_binary_pairContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_binary_pairContext, 0
+            )
 
         def thf_binary_tuple(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_binary_tupleContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_binary_tupleContext, 0
+            )
 
         def thf_binary_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_binary_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_binary_typeContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_binary_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_binary_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_binary_formula"):
                 listener.enterThf_binary_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_binary_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_binary_formula"):
                 listener.exitThf_binary_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_binary_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_binary_formula"):
                 return visitor.visitThf_binary_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_binary_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_binary_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_binary_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 30, self.RULE_thf_binary_formula)
         try:
             self.state = 522
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,13,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 13, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 519
@@ -2394,7 +2627,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.thf_binary_type()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -2404,45 +2636,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_binary_pairContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def thf_unitary_formula(self, i:int=None):
+        def thf_unitary_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Thf_unitary_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Thf_unitary_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unitary_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Thf_unitary_formulaContext, i
+                )
 
         def thf_pair_connective(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_pair_connectiveContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_pair_connectiveContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_binary_pair
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_binary_pair" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_binary_pair"):
                 listener.enterThf_binary_pair(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_binary_pair" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_binary_pair"):
                 listener.exitThf_binary_pair(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_binary_pair" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_binary_pair"):
                 return visitor.visitThf_binary_pair(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_binary_pair(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_binary_pairContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_binary_pairContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 32, self.RULE_thf_binary_pair)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -2461,51 +2697,54 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_binary_tupleContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_or_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_or_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_or_formulaContext, 0
+            )
 
         def thf_and_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_and_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_and_formulaContext, 0
+            )
 
         def thf_apply_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_apply_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_apply_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_binary_tuple
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_binary_tuple" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_binary_tuple"):
                 listener.enterThf_binary_tuple(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_binary_tuple" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_binary_tuple"):
                 listener.exitThf_binary_tuple(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_binary_tuple" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_binary_tuple"):
                 return visitor.visitThf_binary_tuple(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_binary_tuple(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_binary_tupleContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_binary_tupleContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 34, self.RULE_thf_binary_tuple)
         try:
             self.state = 531
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,14,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 14, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 528
@@ -2524,7 +2763,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.thf_apply_formula(0)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -2534,48 +2772,53 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_or_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def thf_unitary_formula(self, i:int=None):
+        def thf_unitary_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Thf_unitary_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Thf_unitary_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unitary_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Thf_unitary_formulaContext, i
+                )
 
         def Or(self):
             return self.getToken(tptp_v7_0_0_0Parser.Or, 0)
 
         def thf_or_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_or_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_or_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_or_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_or_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_or_formula"):
                 listener.enterThf_or_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_or_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_or_formula"):
                 listener.exitThf_or_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_or_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_or_formula"):
                 return visitor.visitThf_or_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-    def thf_or_formula(self, _p:int=0):
+    def thf_or_formula(self, _p: int = 0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = tptp_v7_0_0_0Parser.Thf_or_formulaContext(self, self._ctx, _parentState)
+        localctx = tptp_v7_0_0_0Parser.Thf_or_formulaContext(
+            self, self._ctx, _parentState
+        )
         _prevctx = localctx
         _startState = 36
         self.enterRecursionRule(localctx, 36, self.RULE_thf_or_formula, _p)
@@ -2590,25 +2833,32 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self._ctx.stop = self._input.LT(-1)
             self.state = 543
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,15,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 15, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = tptp_v7_0_0_0Parser.Thf_or_formulaContext(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_thf_or_formula)
+                    localctx = tptp_v7_0_0_0Parser.Thf_or_formulaContext(
+                        self, _parentctx, _parentState
+                    )
+                    self.pushNewRecursionContext(
+                        localctx, _startState, self.RULE_thf_or_formula
+                    )
                     self.state = 538
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
+
+                        raise FailedPredicateException(
+                            self, "self.precpred(self._ctx, 1)"
+                        )
                     self.state = 539
                     self.match(tptp_v7_0_0_0Parser.Or)
                     self.state = 540
-                    self.thf_unitary_formula() 
+                    self.thf_unitary_formula()
                 self.state = 545
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,15,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 15, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2619,48 +2869,53 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_and_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def thf_unitary_formula(self, i:int=None):
+        def thf_unitary_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Thf_unitary_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Thf_unitary_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unitary_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Thf_unitary_formulaContext, i
+                )
 
         def And(self):
             return self.getToken(tptp_v7_0_0_0Parser.And, 0)
 
         def thf_and_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_and_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_and_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_and_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_and_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_and_formula"):
                 listener.enterThf_and_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_and_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_and_formula"):
                 listener.exitThf_and_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_and_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_and_formula"):
                 return visitor.visitThf_and_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-    def thf_and_formula(self, _p:int=0):
+    def thf_and_formula(self, _p: int = 0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = tptp_v7_0_0_0Parser.Thf_and_formulaContext(self, self._ctx, _parentState)
+        localctx = tptp_v7_0_0_0Parser.Thf_and_formulaContext(
+            self, self._ctx, _parentState
+        )
         _prevctx = localctx
         _startState = 38
         self.enterRecursionRule(localctx, 38, self.RULE_thf_and_formula, _p)
@@ -2675,25 +2930,32 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self._ctx.stop = self._input.LT(-1)
             self.state = 556
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,16,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 16, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = tptp_v7_0_0_0Parser.Thf_and_formulaContext(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_thf_and_formula)
+                    localctx = tptp_v7_0_0_0Parser.Thf_and_formulaContext(
+                        self, _parentctx, _parentState
+                    )
+                    self.pushNewRecursionContext(
+                        localctx, _startState, self.RULE_thf_and_formula
+                    )
                     self.state = 551
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
+
+                        raise FailedPredicateException(
+                            self, "self.precpred(self._ctx, 1)"
+                        )
                     self.state = 552
                     self.match(tptp_v7_0_0_0Parser.And)
                     self.state = 553
-                    self.thf_unitary_formula() 
+                    self.thf_unitary_formula()
                 self.state = 558
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,16,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 16, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2704,48 +2966,53 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_apply_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def thf_unitary_formula(self, i:int=None):
+        def thf_unitary_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Thf_unitary_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Thf_unitary_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unitary_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Thf_unitary_formulaContext, i
+                )
 
         def App(self):
             return self.getToken(tptp_v7_0_0_0Parser.App, 0)
 
         def thf_apply_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_apply_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_apply_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_apply_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_apply_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_apply_formula"):
                 listener.enterThf_apply_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_apply_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_apply_formula"):
                 listener.exitThf_apply_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_apply_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_apply_formula"):
                 return visitor.visitThf_apply_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-    def thf_apply_formula(self, _p:int=0):
+    def thf_apply_formula(self, _p: int = 0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = tptp_v7_0_0_0Parser.Thf_apply_formulaContext(self, self._ctx, _parentState)
+        localctx = tptp_v7_0_0_0Parser.Thf_apply_formulaContext(
+            self, self._ctx, _parentState
+        )
         _prevctx = localctx
         _startState = 40
         self.enterRecursionRule(localctx, 40, self.RULE_thf_apply_formula, _p)
@@ -2760,25 +3027,32 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self._ctx.stop = self._input.LT(-1)
             self.state = 569
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,17,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 17, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = tptp_v7_0_0_0Parser.Thf_apply_formulaContext(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_thf_apply_formula)
+                    localctx = tptp_v7_0_0_0Parser.Thf_apply_formulaContext(
+                        self, _parentctx, _parentState
+                    )
+                    self.pushNewRecursionContext(
+                        localctx, _startState, self.RULE_thf_apply_formula
+                    )
                     self.state = 564
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
+
+                        raise FailedPredicateException(
+                            self, "self.precpred(self._ctx, 1)"
+                        )
                     self.state = 565
                     self.match(tptp_v7_0_0_0Parser.App)
                     self.state = 566
-                    self.thf_unitary_formula() 
+                    self.thf_unitary_formula()
                 self.state = 571
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,17,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 17, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2789,67 +3063,68 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_unitary_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_quantified_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_quantified_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_quantified_formulaContext, 0
+            )
 
         def thf_unary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_unary_formulaContext, 0
+            )
 
         def thf_atom(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_atomContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_atomContext, 0)
 
         def thf_conditional(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_conditionalContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_conditionalContext, 0
+            )
 
         def thf_let(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_letContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_letContext, 0)
 
         def thf_tuple(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_tupleContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_tupleContext, 0)
 
         def thf_logic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_logic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_logic_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_unitary_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_unitary_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_unitary_formula"):
                 listener.enterThf_unitary_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_unitary_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_unitary_formula"):
                 listener.exitThf_unitary_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_unitary_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_unitary_formula"):
                 return visitor.visitThf_unitary_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_unitary_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_unitary_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_unitary_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 42, self.RULE_thf_unitary_formula)
         try:
             self.state = 582
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 18, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 572
@@ -2896,7 +3171,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.match(tptp_v7_0_0_0Parser.T__10)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -2906,42 +3180,44 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_quantified_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_quantification(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_quantificationContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_quantificationContext, 0
+            )
 
         def thf_unitary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unitary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_unitary_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_quantified_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_quantified_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_quantified_formula"):
                 listener.enterThf_quantified_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_quantified_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_quantified_formula"):
                 listener.exitThf_quantified_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_quantified_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_quantified_formula"):
                 return visitor.visitThf_quantified_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_quantified_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_quantified_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_quantified_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 44, self.RULE_thf_quantified_formula)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -2958,42 +3234,44 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_quantificationContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_quantifier(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_quantifierContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_quantifierContext, 0
+            )
 
         def thf_variable_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_variable_listContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_variable_listContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_quantification
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_quantification" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_quantification"):
                 listener.enterThf_quantification(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_quantification" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_quantification"):
                 listener.exitThf_quantification(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_quantification" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_quantification"):
                 return visitor.visitThf_quantification(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_quantification(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_quantificationContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_quantificationContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 46, self.RULE_thf_quantification)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -3016,43 +3294,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_variable_listContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def thf_variable(self, i:int=None):
+        def thf_variable(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Thf_variableContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Thf_variableContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_variableContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Thf_variableContext, i
+                )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_variable_list
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_variable_list" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_variable_list"):
                 listener.enterThf_variable_list(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_variable_list" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_variable_list"):
                 listener.exitThf_variable_list(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_variable_list" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_variable_list"):
                 return visitor.visitThf_variable_list(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_variable_list(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_variable_listContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_variable_listContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 48, self.RULE_thf_variable_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 593
@@ -3060,7 +3341,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 598
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 594
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 595
@@ -3078,38 +3359,36 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_variableContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_typed_variable(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_typed_variableContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_typed_variableContext, 0
+            )
 
         def variable(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_variable
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_variable" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_variable"):
                 listener.enterThf_variable(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_variable" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_variable"):
                 listener.exitThf_variable(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_variable" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_variable"):
                 return visitor.visitThf_variable(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def thf_variable(self):
 
@@ -3118,7 +3397,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
         try:
             self.state = 603
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 20, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 601
@@ -3131,7 +3410,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.variable()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -3141,42 +3419,42 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_typed_variableContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def variable(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext, 0)
 
         def thf_top_level_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_top_level_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_top_level_typeContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_typed_variable
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_typed_variable" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_typed_variable"):
                 listener.enterThf_typed_variable(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_typed_variable" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_typed_variable"):
                 listener.exitThf_typed_variable(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_typed_variable" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_typed_variable"):
                 return visitor.visitThf_typed_variable(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_typed_variable(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_typed_variableContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_typed_variableContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 52, self.RULE_thf_typed_variable)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -3195,42 +3473,44 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_unary_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_unary_connective(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unary_connectiveContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_unary_connectiveContext, 0
+            )
 
         def thf_logic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_logic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_logic_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_unary_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_unary_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_unary_formula"):
                 listener.enterThf_unary_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_unary_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_unary_formula"):
                 listener.exitThf_unary_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_unary_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_unary_formula"):
                 return visitor.visitThf_unary_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_unary_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_unary_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_unary_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 54, self.RULE_thf_unary_formula)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -3251,46 +3531,40 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_atomContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_function(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_functionContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_functionContext, 0)
 
         def variable(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext, 0)
 
         def defined_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Defined_termContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Defined_termContext, 0)
 
         def thf_conn_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_conn_termContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_conn_termContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_atom
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_atom" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_atom"):
                 listener.enterThf_atom(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_atom" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_atom"):
                 listener.exitThf_atom(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_atom" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_atom"):
                 return visitor.visitThf_atom(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def thf_atom(self):
 
@@ -3300,7 +3574,12 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 618
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Dollar_word, tptp_v7_0_0_0Parser.Dollar_dollar_word, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.Dollar_word,
+                tptp_v7_0_0_0Parser.Dollar_dollar_word,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 614
                 self.thf_function()
@@ -3310,12 +3589,35 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.state = 615
                 self.variable()
                 pass
-            elif token in [tptp_v7_0_0_0Parser.Real, tptp_v7_0_0_0Parser.Rational, tptp_v7_0_0_0Parser.Integer, tptp_v7_0_0_0Parser.Distinct_object]:
+            elif token in [
+                tptp_v7_0_0_0Parser.Real,
+                tptp_v7_0_0_0Parser.Rational,
+                tptp_v7_0_0_0Parser.Integer,
+                tptp_v7_0_0_0Parser.Distinct_object,
+            ]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 616
                 self.defined_term()
                 pass
-            elif token in [tptp_v7_0_0_0Parser.Or, tptp_v7_0_0_0Parser.And, tptp_v7_0_0_0Parser.Iff, tptp_v7_0_0_0Parser.Impl, tptp_v7_0_0_0Parser.If, tptp_v7_0_0_0Parser.Niff, tptp_v7_0_0_0Parser.Nor, tptp_v7_0_0_0Parser.Nand, tptp_v7_0_0_0Parser.Not, tptp_v7_0_0_0Parser.ForallComb, tptp_v7_0_0_0Parser.Infix_inequality, tptp_v7_0_0_0Parser.Infix_equality, tptp_v7_0_0_0Parser.ExistsComb, tptp_v7_0_0_0Parser.ChoiceComb, tptp_v7_0_0_0Parser.DescriptionComb, tptp_v7_0_0_0Parser.EqComb, tptp_v7_0_0_0Parser.Assignment]:
+            elif token in [
+                tptp_v7_0_0_0Parser.Or,
+                tptp_v7_0_0_0Parser.And,
+                tptp_v7_0_0_0Parser.Iff,
+                tptp_v7_0_0_0Parser.Impl,
+                tptp_v7_0_0_0Parser.If,
+                tptp_v7_0_0_0Parser.Niff,
+                tptp_v7_0_0_0Parser.Nor,
+                tptp_v7_0_0_0Parser.Nand,
+                tptp_v7_0_0_0Parser.Not,
+                tptp_v7_0_0_0Parser.ForallComb,
+                tptp_v7_0_0_0Parser.Infix_inequality,
+                tptp_v7_0_0_0Parser.Infix_equality,
+                tptp_v7_0_0_0Parser.ExistsComb,
+                tptp_v7_0_0_0Parser.ChoiceComb,
+                tptp_v7_0_0_0Parser.DescriptionComb,
+                tptp_v7_0_0_0Parser.EqComb,
+                tptp_v7_0_0_0Parser.Assignment,
+            ]:
                 self.enterOuterAlt(localctx, 4)
                 self.state = 617
                 self.thf_conn_term()
@@ -3332,50 +3634,47 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_functionContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def atom(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AtomContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AtomContext, 0)
 
         def functor(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.FunctorContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.FunctorContext, 0)
 
         def thf_arguments(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_argumentsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_argumentsContext, 0)
 
         def defined_functor(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Defined_functorContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Defined_functorContext, 0
+            )
 
         def system_functor(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.System_functorContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.System_functorContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_function
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_function" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_function"):
                 listener.enterThf_function(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_function" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_function"):
                 listener.exitThf_function(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_function" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_function"):
                 return visitor.visitThf_function(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def thf_function(self):
 
@@ -3384,7 +3683,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
         try:
             self.state = 636
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,22,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 22, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 620
@@ -3427,7 +3726,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.match(tptp_v7_0_0_0Parser.T__10)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -3437,42 +3735,43 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_conn_termContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_pair_connective(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_pair_connectiveContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_pair_connectiveContext, 0
+            )
 
         def assoc_connective(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Assoc_connectiveContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Assoc_connectiveContext, 0
+            )
 
         def thf_unary_connective(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unary_connectiveContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_unary_connectiveContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_conn_term
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_conn_term" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_conn_term"):
                 listener.enterThf_conn_term(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_conn_term" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_conn_term"):
                 listener.exitThf_conn_term(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_conn_term" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_conn_term"):
                 return visitor.visitThf_conn_term(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def thf_conn_term(self):
 
@@ -3482,7 +3781,17 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 641
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Iff, tptp_v7_0_0_0Parser.Impl, tptp_v7_0_0_0Parser.If, tptp_v7_0_0_0Parser.Niff, tptp_v7_0_0_0Parser.Nor, tptp_v7_0_0_0Parser.Nand, tptp_v7_0_0_0Parser.Infix_inequality, tptp_v7_0_0_0Parser.Infix_equality, tptp_v7_0_0_0Parser.Assignment]:
+            if token in [
+                tptp_v7_0_0_0Parser.Iff,
+                tptp_v7_0_0_0Parser.Impl,
+                tptp_v7_0_0_0Parser.If,
+                tptp_v7_0_0_0Parser.Niff,
+                tptp_v7_0_0_0Parser.Nor,
+                tptp_v7_0_0_0Parser.Nand,
+                tptp_v7_0_0_0Parser.Infix_inequality,
+                tptp_v7_0_0_0Parser.Infix_equality,
+                tptp_v7_0_0_0Parser.Assignment,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 638
                 self.thf_pair_connective()
@@ -3492,7 +3801,14 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.state = 639
                 self.assoc_connective()
                 pass
-            elif token in [tptp_v7_0_0_0Parser.Not, tptp_v7_0_0_0Parser.ForallComb, tptp_v7_0_0_0Parser.ExistsComb, tptp_v7_0_0_0Parser.ChoiceComb, tptp_v7_0_0_0Parser.DescriptionComb, tptp_v7_0_0_0Parser.EqComb]:
+            elif token in [
+                tptp_v7_0_0_0Parser.Not,
+                tptp_v7_0_0_0Parser.ForallComb,
+                tptp_v7_0_0_0Parser.ExistsComb,
+                tptp_v7_0_0_0Parser.ChoiceComb,
+                tptp_v7_0_0_0Parser.DescriptionComb,
+                tptp_v7_0_0_0Parser.EqComb,
+            ]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 640
                 self.thf_unary_connective()
@@ -3509,41 +3825,44 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_conditionalContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def thf_logic_formula(self, i:int=None):
+        def thf_logic_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Thf_logic_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Thf_logic_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_logic_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Thf_logic_formulaContext, i
+                )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_conditional
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_conditional" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_conditional"):
                 listener.enterThf_conditional(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_conditional" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_conditional"):
                 listener.exitThf_conditional(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_conditional" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_conditional"):
                 return visitor.visitThf_conditional(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_conditional(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_conditionalContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_conditionalContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 62, self.RULE_thf_conditional)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -3570,38 +3889,36 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_letContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_unitary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unitary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_unitary_formulaContext, 0
+            )
 
         def thf_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_formulaContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_let
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_let" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_let"):
                 listener.enterThf_let(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_let" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_let"):
                 listener.exitThf_let(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_let" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_let"):
                 return visitor.visitThf_let(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def thf_let(self):
 
@@ -3628,34 +3945,33 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_argumentsContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_formula_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_formula_listContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_formula_listContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_arguments
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_arguments" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_arguments"):
                 listener.enterThf_arguments(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_arguments" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_arguments"):
                 listener.exitThf_arguments(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_arguments" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_arguments"):
                 return visitor.visitThf_arguments(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def thf_arguments(self):
 
@@ -3674,42 +3990,44 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_type_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_typeable_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_typeable_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_typeable_formulaContext, 0
+            )
 
         def thf_top_level_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_top_level_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_top_level_typeContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_type_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_type_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_type_formula"):
                 listener.enterThf_type_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_type_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_type_formula"):
                 listener.exitThf_type_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_type_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_type_formula"):
                 return visitor.visitThf_type_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_type_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_type_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_type_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 68, self.RULE_thf_type_formula)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -3728,48 +4046,75 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_typeable_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_atom(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_atomContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_atomContext, 0)
 
         def thf_logic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_logic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_logic_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_typeable_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_typeable_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_typeable_formula"):
                 listener.enterThf_typeable_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_typeable_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_typeable_formula"):
                 listener.exitThf_typeable_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_typeable_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_typeable_formula"):
                 return visitor.visitThf_typeable_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_typeable_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_typeable_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_typeable_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 70, self.RULE_thf_typeable_formula)
         try:
             self.state = 668
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Or, tptp_v7_0_0_0Parser.And, tptp_v7_0_0_0Parser.Iff, tptp_v7_0_0_0Parser.Impl, tptp_v7_0_0_0Parser.If, tptp_v7_0_0_0Parser.Niff, tptp_v7_0_0_0Parser.Nor, tptp_v7_0_0_0Parser.Nand, tptp_v7_0_0_0Parser.Not, tptp_v7_0_0_0Parser.ForallComb, tptp_v7_0_0_0Parser.Infix_inequality, tptp_v7_0_0_0Parser.Infix_equality, tptp_v7_0_0_0Parser.ExistsComb, tptp_v7_0_0_0Parser.ChoiceComb, tptp_v7_0_0_0Parser.DescriptionComb, tptp_v7_0_0_0Parser.EqComb, tptp_v7_0_0_0Parser.Assignment, tptp_v7_0_0_0Parser.Real, tptp_v7_0_0_0Parser.Rational, tptp_v7_0_0_0Parser.Integer, tptp_v7_0_0_0Parser.Dollar_word, tptp_v7_0_0_0Parser.Dollar_dollar_word, tptp_v7_0_0_0Parser.Upper_word, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted, tptp_v7_0_0_0Parser.Distinct_object]:
+            if token in [
+                tptp_v7_0_0_0Parser.Or,
+                tptp_v7_0_0_0Parser.And,
+                tptp_v7_0_0_0Parser.Iff,
+                tptp_v7_0_0_0Parser.Impl,
+                tptp_v7_0_0_0Parser.If,
+                tptp_v7_0_0_0Parser.Niff,
+                tptp_v7_0_0_0Parser.Nor,
+                tptp_v7_0_0_0Parser.Nand,
+                tptp_v7_0_0_0Parser.Not,
+                tptp_v7_0_0_0Parser.ForallComb,
+                tptp_v7_0_0_0Parser.Infix_inequality,
+                tptp_v7_0_0_0Parser.Infix_equality,
+                tptp_v7_0_0_0Parser.ExistsComb,
+                tptp_v7_0_0_0Parser.ChoiceComb,
+                tptp_v7_0_0_0Parser.DescriptionComb,
+                tptp_v7_0_0_0Parser.EqComb,
+                tptp_v7_0_0_0Parser.Assignment,
+                tptp_v7_0_0_0Parser.Real,
+                tptp_v7_0_0_0Parser.Rational,
+                tptp_v7_0_0_0Parser.Integer,
+                tptp_v7_0_0_0Parser.Dollar_word,
+                tptp_v7_0_0_0Parser.Dollar_dollar_word,
+                tptp_v7_0_0_0Parser.Upper_word,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+                tptp_v7_0_0_0Parser.Distinct_object,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 663
                 self.thf_atom()
@@ -3795,17 +4140,17 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_subtypeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def thf_atom(self, i:int=None):
+        def thf_atom(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Thf_atomContext)
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_atomContext,i)
-
+                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_atomContext, i)
 
         def Subtype_sign(self):
             return self.getToken(tptp_v7_0_0_0Parser.Subtype_sign, 0)
@@ -3813,22 +4158,19 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_subtype
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_subtype" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_subtype"):
                 listener.enterThf_subtype(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_subtype" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_subtype"):
                 listener.exitThf_subtype(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_subtype" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_subtype"):
                 return visitor.visitThf_subtype(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def thf_subtype(self):
 
@@ -3851,51 +4193,54 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_top_level_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_unitary_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unitary_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_unitary_typeContext, 0
+            )
 
         def thf_mapping_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_mapping_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_mapping_typeContext, 0
+            )
 
         def thf_apply_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_apply_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_apply_typeContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_top_level_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_top_level_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_top_level_type"):
                 listener.enterThf_top_level_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_top_level_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_top_level_type"):
                 listener.exitThf_top_level_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_top_level_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_top_level_type"):
                 return visitor.visitThf_top_level_type(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_top_level_type(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_top_level_typeContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_top_level_typeContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 74, self.RULE_thf_top_level_type)
         try:
             self.state = 677
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,25,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 25, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 674
@@ -3914,7 +4259,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.thf_apply_type()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -3924,38 +4268,39 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_unitary_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_unitary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unitary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_unitary_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_unitary_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_unitary_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_unitary_type"):
                 listener.enterThf_unitary_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_unitary_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_unitary_type"):
                 listener.exitThf_unitary_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_unitary_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_unitary_type"):
                 return visitor.visitThf_unitary_type(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_unitary_type(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_unitary_typeContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_unitary_typeContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 76, self.RULE_thf_unitary_type)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -3970,38 +4315,39 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_apply_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_apply_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_apply_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_apply_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_apply_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_apply_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_apply_type"):
                 listener.enterThf_apply_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_apply_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_apply_type"):
                 listener.exitThf_apply_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_apply_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_apply_type"):
                 return visitor.visitThf_apply_type(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_apply_type(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_apply_typeContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_apply_typeContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 78, self.RULE_thf_apply_type)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -4016,51 +4362,54 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_binary_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_mapping_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_mapping_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_mapping_typeContext, 0
+            )
 
         def thf_xprod_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_xprod_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_xprod_typeContext, 0
+            )
 
         def thf_union_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_union_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_union_typeContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_binary_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_binary_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_binary_type"):
                 listener.enterThf_binary_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_binary_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_binary_type"):
                 listener.exitThf_binary_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_binary_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_binary_type"):
                 return visitor.visitThf_binary_type(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_binary_type(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_binary_typeContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_binary_typeContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 80, self.RULE_thf_binary_type)
         try:
             self.state = 686
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,26,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 26, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 683
@@ -4079,7 +4428,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.thf_union_type(0)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4089,53 +4437,57 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_mapping_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def thf_unitary_type(self, i:int=None):
+        def thf_unitary_type(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Thf_unitary_typeContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Thf_unitary_typeContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unitary_typeContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Thf_unitary_typeContext, i
+                )
 
         def Arrow(self):
             return self.getToken(tptp_v7_0_0_0Parser.Arrow, 0)
 
         def thf_mapping_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_mapping_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_mapping_typeContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_mapping_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_mapping_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_mapping_type"):
                 listener.enterThf_mapping_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_mapping_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_mapping_type"):
                 listener.exitThf_mapping_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_mapping_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_mapping_type"):
                 return visitor.visitThf_mapping_type(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_mapping_type(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_mapping_typeContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_mapping_typeContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 82, self.RULE_thf_mapping_type)
         try:
             self.state = 696
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,27,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 27, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 688
@@ -4156,7 +4508,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.thf_mapping_type()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4166,48 +4517,53 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_xprod_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def thf_unitary_type(self, i:int=None):
+        def thf_unitary_type(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Thf_unitary_typeContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Thf_unitary_typeContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unitary_typeContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Thf_unitary_typeContext, i
+                )
 
         def Star(self):
             return self.getToken(tptp_v7_0_0_0Parser.Star, 0)
 
         def thf_xprod_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_xprod_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_xprod_typeContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_xprod_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_xprod_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_xprod_type"):
                 listener.enterThf_xprod_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_xprod_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_xprod_type"):
                 listener.exitThf_xprod_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_xprod_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_xprod_type"):
                 return visitor.visitThf_xprod_type(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-    def thf_xprod_type(self, _p:int=0):
+    def thf_xprod_type(self, _p: int = 0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = tptp_v7_0_0_0Parser.Thf_xprod_typeContext(self, self._ctx, _parentState)
+        localctx = tptp_v7_0_0_0Parser.Thf_xprod_typeContext(
+            self, self._ctx, _parentState
+        )
         _prevctx = localctx
         _startState = 84
         self.enterRecursionRule(localctx, 84, self.RULE_thf_xprod_type, _p)
@@ -4222,25 +4578,32 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self._ctx.stop = self._input.LT(-1)
             self.state = 708
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,28,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 28, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = tptp_v7_0_0_0Parser.Thf_xprod_typeContext(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_thf_xprod_type)
+                    localctx = tptp_v7_0_0_0Parser.Thf_xprod_typeContext(
+                        self, _parentctx, _parentState
+                    )
+                    self.pushNewRecursionContext(
+                        localctx, _startState, self.RULE_thf_xprod_type
+                    )
                     self.state = 703
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
+
+                        raise FailedPredicateException(
+                            self, "self.precpred(self._ctx, 1)"
+                        )
                     self.state = 704
                     self.match(tptp_v7_0_0_0Parser.Star)
                     self.state = 705
-                    self.thf_unitary_type() 
+                    self.thf_unitary_type()
                 self.state = 710
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,28,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 28, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -4251,48 +4614,53 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_union_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def thf_unitary_type(self, i:int=None):
+        def thf_unitary_type(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Thf_unitary_typeContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Thf_unitary_typeContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_unitary_typeContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Thf_unitary_typeContext, i
+                )
 
         def Plus(self):
             return self.getToken(tptp_v7_0_0_0Parser.Plus, 0)
 
         def thf_union_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_union_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_union_typeContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_union_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_union_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_union_type"):
                 listener.enterThf_union_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_union_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_union_type"):
                 listener.exitThf_union_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_union_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_union_type"):
                 return visitor.visitThf_union_type(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-    def thf_union_type(self, _p:int=0):
+    def thf_union_type(self, _p: int = 0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = tptp_v7_0_0_0Parser.Thf_union_typeContext(self, self._ctx, _parentState)
+        localctx = tptp_v7_0_0_0Parser.Thf_union_typeContext(
+            self, self._ctx, _parentState
+        )
         _prevctx = localctx
         _startState = 86
         self.enterRecursionRule(localctx, 86, self.RULE_thf_union_type, _p)
@@ -4307,25 +4675,32 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self._ctx.stop = self._input.LT(-1)
             self.state = 721
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,29,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 29, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = tptp_v7_0_0_0Parser.Thf_union_typeContext(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_thf_union_type)
+                    localctx = tptp_v7_0_0_0Parser.Thf_union_typeContext(
+                        self, _parentctx, _parentState
+                    )
+                    self.pushNewRecursionContext(
+                        localctx, _startState, self.RULE_thf_union_type
+                    )
                     self.state = 716
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
+
+                        raise FailedPredicateException(
+                            self, "self.precpred(self._ctx, 1)"
+                        )
                     self.state = 717
                     self.match(tptp_v7_0_0_0Parser.Plus)
                     self.state = 718
-                    self.thf_unitary_type() 
+                    self.thf_unitary_type()
                 self.state = 723
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,29,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 29, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -4336,44 +4711,40 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_sequentContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def thf_tuple(self, i:int=None):
+        def thf_tuple(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Thf_tupleContext)
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_tupleContext,i)
-
+                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_tupleContext, i)
 
         def Gentzen_arrow(self):
             return self.getToken(tptp_v7_0_0_0Parser.Gentzen_arrow, 0)
 
         def thf_sequent(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_sequentContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_sequentContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_sequent
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_sequent" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_sequent"):
                 listener.enterThf_sequent(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_sequent" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_sequent"):
                 listener.exitThf_sequent(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_sequent" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_sequent"):
                 return visitor.visitThf_sequent(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def thf_sequent(self):
 
@@ -4383,7 +4754,12 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 732
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.T__11, tptp_v7_0_0_0Parser.T__16, tptp_v7_0_0_0Parser.T__17, tptp_v7_0_0_0Parser.T__18]:
+            if token in [
+                tptp_v7_0_0_0Parser.T__11,
+                tptp_v7_0_0_0Parser.T__16,
+                tptp_v7_0_0_0Parser.T__17,
+                tptp_v7_0_0_0Parser.T__18,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 724
                 self.thf_tuple()
@@ -4413,34 +4789,33 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_tupleContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_formula_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_formula_listContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_formula_listContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_tuple
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_tuple" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_tuple"):
                 listener.enterThf_tuple(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_tuple" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_tuple"):
                 listener.exitThf_tuple(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_tuple" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_tuple"):
                 return visitor.visitThf_tuple(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def thf_tuple(self):
 
@@ -4490,43 +4865,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_formula_listContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def thf_logic_formula(self, i:int=None):
+        def thf_logic_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Thf_logic_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Thf_logic_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_logic_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Thf_logic_formulaContext, i
+                )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_formula_list
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_formula_list" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_formula_list"):
                 listener.enterThf_formula_list(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_formula_list" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_formula_list"):
                 listener.exitThf_formula_list(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_formula_list" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_formula_list"):
                 return visitor.visitThf_formula_list(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_formula_list(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_formula_listContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_formula_listContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 92, self.RULE_thf_formula_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 746
@@ -4534,7 +4912,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 751
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 747
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 748
@@ -4552,38 +4930,36 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tfx_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tfx_logic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tfx_logic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tfx_logic_formulaContext, 0
+            )
 
         def thf_sequent(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_sequentContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_sequentContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tfx_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTfx_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTfx_formula"):
                 listener.enterTfx_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTfx_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTfx_formula"):
                 listener.exitTfx_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTfx_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTfx_formula"):
                 return visitor.visitTfx_formula(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tfx_formula(self):
 
@@ -4592,7 +4968,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
         try:
             self.state = 756
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,33,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 33, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 754
@@ -4605,7 +4981,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.thf_sequent()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4615,38 +4990,39 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tfx_logic_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_logic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_logic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Thf_logic_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tfx_logic_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTfx_logic_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTfx_logic_formula"):
                 listener.enterTfx_logic_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTfx_logic_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTfx_logic_formula"):
                 listener.exitTfx_logic_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTfx_logic_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTfx_logic_formula"):
                 return visitor.visitTfx_logic_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tfx_logic_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tfx_logic_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tfx_logic_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 96, self.RULE_tfx_logic_formula)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -4661,42 +5037,41 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_logic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_logic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_logic_formulaContext, 0
+            )
 
         def tff_typed_atom(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_typed_atomContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_typed_atomContext, 0
+            )
 
         def tff_sequent(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_sequentContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_sequentContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_formula"):
                 listener.enterTff_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_formula"):
                 listener.exitTff_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_formula"):
                 return visitor.visitTff_formula(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tff_formula(self):
 
@@ -4705,7 +5080,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
         try:
             self.state = 763
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,34,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 34, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 760
@@ -4724,7 +5099,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.tff_sequent()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4734,51 +5108,52 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_logic_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_binary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_binary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_binary_formulaContext, 0
+            )
 
         def tff_unitary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_unitary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_unitary_formulaContext, 0
+            )
 
         def tff_subtype(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_subtypeContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_subtypeContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_logic_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_logic_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_logic_formula"):
                 listener.enterTff_logic_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_logic_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_logic_formula"):
                 listener.exitTff_logic_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_logic_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_logic_formula"):
                 return visitor.visitTff_logic_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_logic_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_logic_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_logic_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 100, self.RULE_tff_logic_formula)
         try:
             self.state = 768
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,35,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 35, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 765
@@ -4797,7 +5172,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.tff_subtype()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4807,47 +5181,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_binary_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_binary_nonassoc(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_binary_nonassocContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_binary_nonassocContext, 0
+            )
 
         def tff_binary_assoc(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_binary_assocContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_binary_assocContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_binary_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_binary_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_binary_formula"):
                 listener.enterTff_binary_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_binary_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_binary_formula"):
                 listener.exitTff_binary_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_binary_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_binary_formula"):
                 return visitor.visitTff_binary_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_binary_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_binary_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_binary_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 102, self.RULE_tff_binary_formula)
         try:
             self.state = 772
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,36,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 36, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 770
@@ -4860,7 +5236,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.tff_binary_assoc()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4870,45 +5245,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_binary_nonassocContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def tff_unitary_formula(self, i:int=None):
+        def tff_unitary_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Tff_unitary_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Tff_unitary_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_unitary_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Tff_unitary_formulaContext, i
+                )
 
         def binary_connective(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Binary_connectiveContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Binary_connectiveContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_binary_nonassoc
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_binary_nonassoc" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_binary_nonassoc"):
                 listener.enterTff_binary_nonassoc(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_binary_nonassoc" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_binary_nonassoc"):
                 listener.exitTff_binary_nonassoc(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_binary_nonassoc" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_binary_nonassoc"):
                 return visitor.visitTff_binary_nonassoc(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_binary_nonassoc(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_binary_nonassocContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_binary_nonassocContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 104, self.RULE_tff_binary_nonassoc)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -4927,47 +5306,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_binary_assocContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_or_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_or_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_or_formulaContext, 0
+            )
 
         def tff_and_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_and_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_and_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_binary_assoc
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_binary_assoc" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_binary_assoc"):
                 listener.enterTff_binary_assoc(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_binary_assoc" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_binary_assoc"):
                 listener.exitTff_binary_assoc(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_binary_assoc" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_binary_assoc"):
                 return visitor.visitTff_binary_assoc(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_binary_assoc(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_binary_assocContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_binary_assocContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 106, self.RULE_tff_binary_assoc)
         try:
             self.state = 780
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,37,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 37, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 778
@@ -4980,7 +5361,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.tff_and_formula(0)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4990,48 +5370,53 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_or_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def tff_unitary_formula(self, i:int=None):
+        def tff_unitary_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Tff_unitary_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Tff_unitary_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_unitary_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Tff_unitary_formulaContext, i
+                )
 
         def Or(self):
             return self.getToken(tptp_v7_0_0_0Parser.Or, 0)
 
         def tff_or_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_or_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_or_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_or_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_or_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_or_formula"):
                 listener.enterTff_or_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_or_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_or_formula"):
                 listener.exitTff_or_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_or_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_or_formula"):
                 return visitor.visitTff_or_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-    def tff_or_formula(self, _p:int=0):
+    def tff_or_formula(self, _p: int = 0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = tptp_v7_0_0_0Parser.Tff_or_formulaContext(self, self._ctx, _parentState)
+        localctx = tptp_v7_0_0_0Parser.Tff_or_formulaContext(
+            self, self._ctx, _parentState
+        )
         _prevctx = localctx
         _startState = 108
         self.enterRecursionRule(localctx, 108, self.RULE_tff_or_formula, _p)
@@ -5046,25 +5431,32 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self._ctx.stop = self._input.LT(-1)
             self.state = 792
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,38,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 38, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = tptp_v7_0_0_0Parser.Tff_or_formulaContext(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_tff_or_formula)
+                    localctx = tptp_v7_0_0_0Parser.Tff_or_formulaContext(
+                        self, _parentctx, _parentState
+                    )
+                    self.pushNewRecursionContext(
+                        localctx, _startState, self.RULE_tff_or_formula
+                    )
                     self.state = 787
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
+
+                        raise FailedPredicateException(
+                            self, "self.precpred(self._ctx, 1)"
+                        )
                     self.state = 788
                     self.match(tptp_v7_0_0_0Parser.Or)
                     self.state = 789
-                    self.tff_unitary_formula() 
+                    self.tff_unitary_formula()
                 self.state = 794
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,38,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 38, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -5075,48 +5467,53 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_and_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def tff_unitary_formula(self, i:int=None):
+        def tff_unitary_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Tff_unitary_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Tff_unitary_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_unitary_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Tff_unitary_formulaContext, i
+                )
 
         def And(self):
             return self.getToken(tptp_v7_0_0_0Parser.And, 0)
 
         def tff_and_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_and_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_and_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_and_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_and_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_and_formula"):
                 listener.enterTff_and_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_and_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_and_formula"):
                 listener.exitTff_and_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_and_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_and_formula"):
                 return visitor.visitTff_and_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-    def tff_and_formula(self, _p:int=0):
+    def tff_and_formula(self, _p: int = 0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = tptp_v7_0_0_0Parser.Tff_and_formulaContext(self, self._ctx, _parentState)
+        localctx = tptp_v7_0_0_0Parser.Tff_and_formulaContext(
+            self, self._ctx, _parentState
+        )
         _prevctx = localctx
         _startState = 110
         self.enterRecursionRule(localctx, 110, self.RULE_tff_and_formula, _p)
@@ -5131,25 +5528,32 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self._ctx.stop = self._input.LT(-1)
             self.state = 805
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,39,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 39, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = tptp_v7_0_0_0Parser.Tff_and_formulaContext(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_tff_and_formula)
+                    localctx = tptp_v7_0_0_0Parser.Tff_and_formulaContext(
+                        self, _parentctx, _parentState
+                    )
+                    self.pushNewRecursionContext(
+                        localctx, _startState, self.RULE_tff_and_formula
+                    )
                     self.state = 800
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
+
+                        raise FailedPredicateException(
+                            self, "self.precpred(self._ctx, 1)"
+                        )
                     self.state = 801
                     self.match(tptp_v7_0_0_0Parser.And)
                     self.state = 802
-                    self.tff_unitary_formula() 
+                    self.tff_unitary_formula()
                 self.state = 807
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,39,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 39, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -5160,63 +5564,67 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_unitary_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_quantified_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_quantified_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_quantified_formulaContext, 0
+            )
 
         def tff_unary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_unary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_unary_formulaContext, 0
+            )
 
         def tff_atomic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_atomic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_atomic_formulaContext, 0
+            )
 
         def tff_conditional(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_conditionalContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_conditionalContext, 0
+            )
 
         def tff_let(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_letContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_letContext, 0)
 
         def tff_logic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_logic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_logic_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_unitary_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_unitary_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_unitary_formula"):
                 listener.enterTff_unitary_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_unitary_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_unitary_formula"):
                 listener.exitTff_unitary_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_unitary_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_unitary_formula"):
                 return visitor.visitTff_unitary_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_unitary_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_unitary_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_unitary_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 112, self.RULE_tff_unitary_formula)
         try:
             self.state = 817
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,40,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 40, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 808
@@ -5257,7 +5665,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.match(tptp_v7_0_0_0Parser.T__10)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -5267,46 +5674,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_quantified_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_quantifier(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_quantifierContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_quantifierContext, 0
+            )
 
         def tff_variable_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_variable_listContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_variable_listContext, 0
+            )
 
         def tff_unitary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_unitary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_unitary_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_quantified_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_quantified_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_quantified_formula"):
                 listener.enterTff_quantified_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_quantified_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_quantified_formula"):
                 listener.exitTff_quantified_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_quantified_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_quantified_formula"):
                 return visitor.visitTff_quantified_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_quantified_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_quantified_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_quantified_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 114, self.RULE_tff_quantified_formula)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -5331,43 +5741,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_variable_listContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def tff_variable(self, i:int=None):
+        def tff_variable(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Tff_variableContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Tff_variableContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_variableContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Tff_variableContext, i
+                )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_variable_list
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_variable_list" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_variable_list"):
                 listener.enterTff_variable_list(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_variable_list" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_variable_list"):
                 listener.exitTff_variable_list(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_variable_list" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_variable_list"):
                 return visitor.visitTff_variable_list(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_variable_list(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_variable_listContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_variable_listContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 116, self.RULE_tff_variable_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 826
@@ -5375,7 +5788,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 831
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 827
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 828
@@ -5393,38 +5806,36 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_variableContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_typed_variable(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_typed_variableContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_typed_variableContext, 0
+            )
 
         def variable(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_variable
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_variable" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_variable"):
                 listener.enterTff_variable(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_variable" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_variable"):
                 listener.exitTff_variable(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_variable" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_variable"):
                 return visitor.visitTff_variable(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tff_variable(self):
 
@@ -5433,7 +5844,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
         try:
             self.state = 836
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,42,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 42, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 834
@@ -5446,7 +5857,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.variable()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -5456,42 +5866,42 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_typed_variableContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def variable(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext, 0)
 
         def tff_atomic_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_atomic_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_atomic_typeContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_typed_variable
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_typed_variable" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_typed_variable"):
                 listener.enterTff_typed_variable(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_typed_variable" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_typed_variable"):
                 listener.exitTff_typed_variable(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_typed_variable" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_typed_variable"):
                 return visitor.visitTff_typed_variable(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_typed_variable(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_typed_variableContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_typed_variableContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 120, self.RULE_tff_typed_variable)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -5510,46 +5920,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_unary_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def unary_connective(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Unary_connectiveContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Unary_connectiveContext, 0
+            )
 
         def tff_unitary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_unitary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_unitary_formulaContext, 0
+            )
 
         def fof_infix_unary(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_infix_unaryContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_infix_unaryContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_unary_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_unary_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_unary_formula"):
                 listener.enterTff_unary_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_unary_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_unary_formula"):
                 listener.exitTff_unary_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_unary_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_unary_formula"):
                 return visitor.visitTff_unary_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_unary_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_unary_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_unary_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 122, self.RULE_tff_unary_formula)
         try:
             self.state = 846
@@ -5562,7 +5975,22 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.state = 843
                 self.tff_unitary_formula()
                 pass
-            elif token in [tptp_v7_0_0_0Parser.T__17, tptp_v7_0_0_0Parser.T__18, tptp_v7_0_0_0Parser.T__23, tptp_v7_0_0_0Parser.T__24, tptp_v7_0_0_0Parser.T__25, tptp_v7_0_0_0Parser.Real, tptp_v7_0_0_0Parser.Rational, tptp_v7_0_0_0Parser.Integer, tptp_v7_0_0_0Parser.Dollar_word, tptp_v7_0_0_0Parser.Dollar_dollar_word, tptp_v7_0_0_0Parser.Upper_word, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted, tptp_v7_0_0_0Parser.Distinct_object]:
+            elif token in [
+                tptp_v7_0_0_0Parser.T__17,
+                tptp_v7_0_0_0Parser.T__18,
+                tptp_v7_0_0_0Parser.T__23,
+                tptp_v7_0_0_0Parser.T__24,
+                tptp_v7_0_0_0Parser.T__25,
+                tptp_v7_0_0_0Parser.Real,
+                tptp_v7_0_0_0Parser.Rational,
+                tptp_v7_0_0_0Parser.Integer,
+                tptp_v7_0_0_0Parser.Dollar_word,
+                tptp_v7_0_0_0Parser.Dollar_dollar_word,
+                tptp_v7_0_0_0Parser.Upper_word,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+                tptp_v7_0_0_0Parser.Distinct_object,
+            ]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 845
                 self.fof_infix_unary()
@@ -5579,38 +6007,39 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_atomic_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_atomic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_atomic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_atomic_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_atomic_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_atomic_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_atomic_formula"):
                 listener.enterTff_atomic_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_atomic_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_atomic_formula"):
                 listener.exitTff_atomic_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_atomic_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_atomic_formula"):
                 return visitor.visitTff_atomic_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_atomic_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_atomic_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_atomic_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 124, self.RULE_tff_atomic_formula)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -5625,41 +6054,44 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_conditionalContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def tff_logic_formula(self, i:int=None):
+        def tff_logic_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Tff_logic_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Tff_logic_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_logic_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Tff_logic_formulaContext, i
+                )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_conditional
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_conditional" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_conditional"):
                 listener.enterTff_conditional(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_conditional" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_conditional"):
                 listener.exitTff_conditional(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_conditional" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_conditional"):
                 return visitor.visitTff_conditional(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_conditional(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_conditionalContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_conditionalContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 126, self.RULE_tff_conditional)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -5686,42 +6118,41 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_letContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_let_term_defns(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_term_defnsContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_let_term_defnsContext, 0
+            )
 
         def tff_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_formulaContext, 0)
 
         def tff_let_formula_defns(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_formula_defnsContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_let_formula_defnsContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_let
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_let" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_let"):
                 listener.enterTff_let(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_let" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_let"):
                 listener.exitTff_let(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_let" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_let"):
                 return visitor.visitTff_let(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tff_let(self):
 
@@ -5769,48 +6200,55 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_let_term_defnsContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_let_term_defn(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_term_defnContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_let_term_defnContext, 0
+            )
 
         def tff_let_term_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_term_listContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_let_term_listContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_let_term_defns
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_let_term_defns" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_let_term_defns"):
                 listener.enterTff_let_term_defns(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_let_term_defns" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_let_term_defns"):
                 listener.exitTff_let_term_defns(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_let_term_defns" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_let_term_defns"):
                 return visitor.visitTff_let_term_defns(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_let_term_defns(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_let_term_defnsContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_let_term_defnsContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 130, self.RULE_tff_let_term_defns)
         try:
             self.state = 877
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.T__9, tptp_v7_0_0_0Parser.Forall, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.T__9,
+                tptp_v7_0_0_0Parser.Forall,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 872
                 self.tff_let_term_defn()
@@ -5836,43 +6274,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_let_term_listContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def tff_let_term_defn(self, i:int=None):
+        def tff_let_term_defn(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Tff_let_term_defnContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Tff_let_term_defnContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_term_defnContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Tff_let_term_defnContext, i
+                )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_let_term_list
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_let_term_list" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_let_term_list"):
                 listener.enterTff_let_term_list(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_let_term_list" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_let_term_list"):
                 listener.exitTff_let_term_list(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_let_term_list" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_let_term_list"):
                 return visitor.visitTff_let_term_list(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_let_term_list(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_let_term_listContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_let_term_listContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 132, self.RULE_tff_let_term_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 879
@@ -5880,7 +6321,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 884
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 880
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 881
@@ -5898,8 +6339,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_let_term_defnContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -5907,40 +6349,42 @@ class tptp_v7_0_0_0Parser ( Parser ):
             return self.getToken(tptp_v7_0_0_0Parser.Forall, 0)
 
         def tff_variable_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_variable_listContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_variable_listContext, 0
+            )
 
         def tff_let_term_defn(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_term_defnContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_let_term_defnContext, 0
+            )
 
         def tff_let_term_binding(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_term_bindingContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_let_term_bindingContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_let_term_defn
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_let_term_defn" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_let_term_defn"):
                 listener.enterTff_let_term_defn(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_let_term_defn" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_let_term_defn"):
                 listener.exitTff_let_term_defn(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_let_term_defn" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_let_term_defn"):
                 return visitor.visitTff_let_term_defn(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_let_term_defn(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_let_term_defnContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_let_term_defnContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 134, self.RULE_tff_let_term_defn)
         try:
             self.state = 895
@@ -5961,7 +6405,11 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.state = 892
                 self.tff_let_term_defn()
                 pass
-            elif token in [tptp_v7_0_0_0Parser.T__9, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            elif token in [
+                tptp_v7_0_0_0Parser.T__9,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 894
                 self.tff_let_term_binding()
@@ -5978,55 +6426,59 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_let_term_bindingContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_plain_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_plain_termContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_plain_termContext, 0
+            )
 
         def Infix_equality(self):
             return self.getToken(tptp_v7_0_0_0Parser.Infix_equality, 0)
 
         def fof_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_termContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_termContext, 0)
 
         def tff_let_term_binding(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_term_bindingContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_let_term_bindingContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_let_term_binding
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_let_term_binding" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_let_term_binding"):
                 listener.enterTff_let_term_binding(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_let_term_binding" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_let_term_binding"):
                 listener.exitTff_let_term_binding(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_let_term_binding" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_let_term_binding"):
                 return visitor.visitTff_let_term_binding(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_let_term_binding(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_let_term_bindingContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_let_term_bindingContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 136, self.RULE_tff_let_term_binding)
         try:
             self.state = 905
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 897
                 self.fof_plain_term()
@@ -6056,48 +6508,55 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_let_formula_defnsContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_let_formula_defn(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_formula_defnContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_let_formula_defnContext, 0
+            )
 
         def tff_let_formula_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_formula_listContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_let_formula_listContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_let_formula_defns
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_let_formula_defns" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_let_formula_defns"):
                 listener.enterTff_let_formula_defns(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_let_formula_defns" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_let_formula_defns"):
                 listener.exitTff_let_formula_defns(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_let_formula_defns" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_let_formula_defns"):
                 return visitor.visitTff_let_formula_defns(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_let_formula_defns(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_let_formula_defnsContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_let_formula_defnsContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 138, self.RULE_tff_let_formula_defns)
         try:
             self.state = 912
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.T__9, tptp_v7_0_0_0Parser.Forall, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.T__9,
+                tptp_v7_0_0_0Parser.Forall,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 907
                 self.tff_let_formula_defn()
@@ -6123,43 +6582,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_let_formula_listContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def tff_let_formula_defn(self, i:int=None):
+        def tff_let_formula_defn(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Tff_let_formula_defnContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Tff_let_formula_defnContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_formula_defnContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Tff_let_formula_defnContext, i
+                )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_let_formula_list
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_let_formula_list" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_let_formula_list"):
                 listener.enterTff_let_formula_list(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_let_formula_list" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_let_formula_list"):
                 listener.exitTff_let_formula_list(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_let_formula_list" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_let_formula_list"):
                 return visitor.visitTff_let_formula_list(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_let_formula_list(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_let_formula_listContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_let_formula_listContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 140, self.RULE_tff_let_formula_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 914
@@ -6167,7 +6629,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 919
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 915
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 916
@@ -6185,8 +6647,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_let_formula_defnContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -6194,40 +6657,42 @@ class tptp_v7_0_0_0Parser ( Parser ):
             return self.getToken(tptp_v7_0_0_0Parser.Forall, 0)
 
         def tff_variable_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_variable_listContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_variable_listContext, 0
+            )
 
         def tff_let_formula_defn(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_formula_defnContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_let_formula_defnContext, 0
+            )
 
         def tff_let_formula_binding(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_formula_bindingContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_let_formula_bindingContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_let_formula_defn
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_let_formula_defn" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_let_formula_defn"):
                 listener.enterTff_let_formula_defn(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_let_formula_defn" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_let_formula_defn"):
                 listener.exitTff_let_formula_defn(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_let_formula_defn" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_let_formula_defn"):
                 return visitor.visitTff_let_formula_defn(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_let_formula_defn(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_let_formula_defnContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_let_formula_defnContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 142, self.RULE_tff_let_formula_defn)
         try:
             self.state = 930
@@ -6248,7 +6713,11 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.state = 927
                 self.tff_let_formula_defn()
                 pass
-            elif token in [tptp_v7_0_0_0Parser.T__9, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            elif token in [
+                tptp_v7_0_0_0Parser.T__9,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 929
                 self.tff_let_formula_binding()
@@ -6265,55 +6734,61 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_let_formula_bindingContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_plain_atomic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_plain_atomic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_plain_atomic_formulaContext, 0
+            )
 
         def Iff(self):
             return self.getToken(tptp_v7_0_0_0Parser.Iff, 0)
 
         def tff_unitary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_unitary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_unitary_formulaContext, 0
+            )
 
         def tff_let_formula_binding(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_formula_bindingContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_let_formula_bindingContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_let_formula_binding
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_let_formula_binding" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_let_formula_binding"):
                 listener.enterTff_let_formula_binding(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_let_formula_binding" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_let_formula_binding"):
                 listener.exitTff_let_formula_binding(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_let_formula_binding" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_let_formula_binding"):
                 return visitor.visitTff_let_formula_binding(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_let_formula_binding(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_let_formula_bindingContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_let_formula_bindingContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 144, self.RULE_tff_let_formula_binding)
         try:
             self.state = 940
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 932
                 self.fof_plain_atomic_formula()
@@ -6343,44 +6818,44 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_sequentContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def tff_formula_tuple(self, i:int=None):
+        def tff_formula_tuple(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Tff_formula_tupleContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Tff_formula_tupleContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_formula_tupleContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Tff_formula_tupleContext, i
+                )
 
         def Gentzen_arrow(self):
             return self.getToken(tptp_v7_0_0_0Parser.Gentzen_arrow, 0)
 
         def tff_sequent(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_sequentContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_sequentContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_sequent
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_sequent" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_sequent"):
                 listener.enterTff_sequent(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_sequent" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_sequent"):
                 listener.exitTff_sequent(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_sequent" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_sequent"):
                 return visitor.visitTff_sequent(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tff_sequent(self):
 
@@ -6420,38 +6895,39 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_formula_tupleContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_formula_tuple_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_formula_tuple_listContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_formula_tuple_listContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_formula_tuple
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_formula_tuple" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_formula_tuple"):
                 listener.enterTff_formula_tuple(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_formula_tuple" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_formula_tuple"):
                 listener.exitTff_formula_tuple(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_formula_tuple" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_formula_tuple"):
                 return visitor.visitTff_formula_tuple(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_formula_tuple(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_formula_tupleContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_formula_tupleContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 148, self.RULE_tff_formula_tuple)
         try:
             self.state = 957
@@ -6483,43 +6959,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_formula_tuple_listContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def tff_logic_formula(self, i:int=None):
+        def tff_logic_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Tff_logic_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Tff_logic_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_logic_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Tff_logic_formulaContext, i
+                )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_formula_tuple_list
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_formula_tuple_list" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_formula_tuple_list"):
                 listener.enterTff_formula_tuple_list(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_formula_tuple_list" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_formula_tuple_list"):
                 listener.exitTff_formula_tuple_list(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_formula_tuple_list" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_formula_tuple_list"):
                 return visitor.visitTff_formula_tuple_list(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_formula_tuple_list(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_formula_tuple_listContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_formula_tuple_listContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 150, self.RULE_tff_formula_tuple_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 959
@@ -6527,7 +7006,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 964
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 960
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 961
@@ -6545,52 +7024,57 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_typed_atomContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def untyped_atom(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Untyped_atomContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Untyped_atomContext, 0)
 
         def tff_top_level_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_top_level_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_top_level_typeContext, 0
+            )
 
         def tff_typed_atom(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_typed_atomContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_typed_atomContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_typed_atom
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_typed_atom" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_typed_atom"):
                 listener.enterTff_typed_atom(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_typed_atom" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_typed_atom"):
                 listener.exitTff_typed_atom(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_typed_atom" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_typed_atom"):
                 return visitor.visitTff_typed_atom(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_typed_atom(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_typed_atomContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_typed_atomContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 152, self.RULE_tff_typed_atom)
         try:
             self.state = 975
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Dollar_dollar_word, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.Dollar_dollar_word,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 967
                 self.untyped_atom()
@@ -6620,41 +7104,37 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_subtypeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def untyped_atom(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Untyped_atomContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Untyped_atomContext, 0)
 
         def Subtype_sign(self):
             return self.getToken(tptp_v7_0_0_0Parser.Subtype_sign, 0)
 
         def atom(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AtomContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.AtomContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_subtype
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_subtype" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_subtype"):
                 listener.enterTff_subtype(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_subtype" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_subtype"):
                 listener.exitTff_subtype(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_subtype" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_subtype"):
                 return visitor.visitTff_subtype(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tff_subtype(self):
 
@@ -6677,55 +7157,59 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_top_level_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_atomic_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_atomic_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_atomic_typeContext, 0
+            )
 
         def tff_mapping_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_mapping_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_mapping_typeContext, 0
+            )
 
         def tf1_quantified_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tf1_quantified_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tf1_quantified_typeContext, 0
+            )
 
         def tff_top_level_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_top_level_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_top_level_typeContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_top_level_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_top_level_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_top_level_type"):
                 listener.enterTff_top_level_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_top_level_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_top_level_type"):
                 listener.exitTff_top_level_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_top_level_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_top_level_type"):
                 return visitor.visitTff_top_level_type(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_top_level_type(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_top_level_typeContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_top_level_typeContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 156, self.RULE_tff_top_level_type)
         try:
             self.state = 988
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,57,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 57, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 981
@@ -6754,7 +7238,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.match(tptp_v7_0_0_0Parser.T__10)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -6764,8 +7247,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tf1_quantified_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -6773,36 +7257,35 @@ class tptp_v7_0_0_0Parser ( Parser ):
             return self.getToken(tptp_v7_0_0_0Parser.TyForall, 0)
 
         def tff_variable_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_variable_listContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_variable_listContext, 0
+            )
 
         def tff_monotype(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_monotypeContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_monotypeContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tf1_quantified_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTf1_quantified_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTf1_quantified_type"):
                 listener.enterTf1_quantified_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTf1_quantified_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTf1_quantified_type"):
                 listener.exitTf1_quantified_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTf1_quantified_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTf1_quantified_type"):
                 return visitor.visitTf1_quantified_type(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tf1_quantified_type(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tf1_quantified_typeContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tf1_quantified_typeContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 158, self.RULE_tf1_quantified_type)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -6827,38 +7310,38 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_monotypeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_atomic_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_atomic_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_atomic_typeContext, 0
+            )
 
         def tff_mapping_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_mapping_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_mapping_typeContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_monotype
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_monotype" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_monotype"):
                 listener.enterTff_monotype(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_monotype" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_monotype"):
                 listener.exitTff_monotype(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_monotype" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_monotype"):
                 return visitor.visitTff_monotype(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tff_monotype(self):
 
@@ -6868,7 +7351,12 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1002
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Dollar_word, tptp_v7_0_0_0Parser.Upper_word, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.Dollar_word,
+                tptp_v7_0_0_0Parser.Upper_word,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 997
                 self.tff_atomic_type()
@@ -6894,48 +7382,55 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_unitary_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_atomic_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_atomic_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_atomic_typeContext, 0
+            )
 
         def tff_xprod_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_xprod_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_xprod_typeContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_unitary_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_unitary_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_unitary_type"):
                 listener.enterTff_unitary_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_unitary_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_unitary_type"):
                 listener.exitTff_unitary_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_unitary_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_unitary_type"):
                 return visitor.visitTff_unitary_type(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_unitary_type(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_unitary_typeContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_unitary_typeContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 162, self.RULE_tff_unitary_type)
         try:
             self.state = 1009
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Dollar_word, tptp_v7_0_0_0Parser.Upper_word, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.Dollar_word,
+                tptp_v7_0_0_0Parser.Upper_word,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1004
                 self.tff_atomic_type()
@@ -6961,59 +7456,56 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_atomic_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def type_constant(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Type_constantContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Type_constantContext, 0)
 
         def defined_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Defined_typeContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Defined_typeContext, 0)
 
         def type_functor(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Type_functorContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Type_functorContext, 0)
 
         def tff_type_arguments(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_type_argumentsContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_type_argumentsContext, 0
+            )
 
         def variable(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_atomic_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_atomic_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_atomic_type"):
                 listener.enterTff_atomic_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_atomic_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_atomic_type"):
                 listener.exitTff_atomic_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_atomic_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_atomic_type"):
                 return visitor.visitTff_atomic_type(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_atomic_type(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_atomic_typeContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_atomic_typeContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 164, self.RULE_tff_atomic_type)
         try:
             self.state = 1019
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,60,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 60, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1011
@@ -7044,7 +7536,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.variable()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -7054,43 +7545,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_type_argumentsContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def tff_atomic_type(self, i:int=None):
+        def tff_atomic_type(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Tff_atomic_typeContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Tff_atomic_typeContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_atomic_typeContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Tff_atomic_typeContext, i
+                )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_type_arguments
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_type_arguments" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_type_arguments"):
                 listener.enterTff_type_arguments(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_type_arguments" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_type_arguments"):
                 listener.exitTff_type_arguments(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_type_arguments" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_type_arguments"):
                 return visitor.visitTff_type_arguments(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_type_arguments(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_type_argumentsContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_type_argumentsContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 166, self.RULE_tff_type_arguments)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1021
@@ -7098,7 +7592,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1026
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1022
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 1023
@@ -7116,45 +7610,47 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_mapping_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_unitary_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_unitary_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_unitary_typeContext, 0
+            )
 
         def Arrow(self):
             return self.getToken(tptp_v7_0_0_0Parser.Arrow, 0)
 
         def tff_atomic_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_atomic_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_atomic_typeContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_mapping_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_mapping_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_mapping_type"):
                 listener.enterTff_mapping_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_mapping_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_mapping_type"):
                 listener.exitTff_mapping_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_mapping_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_mapping_type"):
                 return visitor.visitTff_mapping_type(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_mapping_type(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_mapping_typeContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_mapping_typeContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 168, self.RULE_tff_mapping_type)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -7173,49 +7669,53 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_xprod_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_unitary_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_unitary_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_unitary_typeContext, 0
+            )
 
         def Star(self):
             return self.getToken(tptp_v7_0_0_0Parser.Star, 0)
 
         def tff_atomic_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_atomic_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_atomic_typeContext, 0
+            )
 
         def tff_xprod_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_xprod_typeContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_xprod_typeContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_xprod_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_xprod_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_xprod_type"):
                 listener.enterTff_xprod_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_xprod_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_xprod_type"):
                 listener.exitTff_xprod_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_xprod_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_xprod_type"):
                 return visitor.visitTff_xprod_type(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-    def tff_xprod_type(self, _p:int=0):
+    def tff_xprod_type(self, _p: int = 0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = tptp_v7_0_0_0Parser.Tff_xprod_typeContext(self, self._ctx, _parentState)
+        localctx = tptp_v7_0_0_0Parser.Tff_xprod_typeContext(
+            self, self._ctx, _parentState
+        )
         _prevctx = localctx
         _startState = 170
         self.enterRecursionRule(localctx, 170, self.RULE_tff_xprod_type, _p)
@@ -7230,25 +7730,32 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self._ctx.stop = self._input.LT(-1)
             self.state = 1043
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,62,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 62, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = tptp_v7_0_0_0Parser.Tff_xprod_typeContext(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_tff_xprod_type)
+                    localctx = tptp_v7_0_0_0Parser.Tff_xprod_typeContext(
+                        self, _parentctx, _parentState
+                    )
+                    self.pushNewRecursionContext(
+                        localctx, _startState, self.RULE_tff_xprod_type
+                    )
                     self.state = 1038
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
+
+                        raise FailedPredicateException(
+                            self, "self.precpred(self._ctx, 1)"
+                        )
                     self.state = 1039
                     self.match(tptp_v7_0_0_0Parser.Star)
                     self.state = 1040
-                    self.tff_atomic_type() 
+                    self.tff_atomic_type()
                 self.state = 1045
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,62,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 62, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -7259,38 +7766,38 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tcf_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tcf_logic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tcf_logic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tcf_logic_formulaContext, 0
+            )
 
         def tff_typed_atom(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_typed_atomContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_typed_atomContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tcf_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTcf_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTcf_formula"):
                 listener.enterTcf_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTcf_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTcf_formula"):
                 listener.exitTcf_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTcf_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTcf_formula"):
                 return visitor.visitTcf_formula(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tcf_formula(self):
 
@@ -7299,7 +7806,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
         try:
             self.state = 1048
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,63,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 63, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1046
@@ -7312,7 +7819,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.tff_typed_atom()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -7322,42 +7828,42 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tcf_logic_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tcf_quantified_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tcf_quantified_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tcf_quantified_formulaContext, 0
+            )
 
         def cnf_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Cnf_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Cnf_formulaContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tcf_logic_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTcf_logic_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTcf_logic_formula"):
                 listener.enterTcf_logic_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTcf_logic_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTcf_logic_formula"):
                 listener.exitTcf_logic_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTcf_logic_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTcf_logic_formula"):
                 return visitor.visitTcf_logic_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tcf_logic_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tcf_logic_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tcf_logic_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 174, self.RULE_tcf_logic_formula)
         try:
             self.state = 1052
@@ -7368,7 +7874,24 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.state = 1050
                 self.tcf_quantified_formula()
                 pass
-            elif token in [tptp_v7_0_0_0Parser.T__9, tptp_v7_0_0_0Parser.T__17, tptp_v7_0_0_0Parser.T__18, tptp_v7_0_0_0Parser.T__23, tptp_v7_0_0_0Parser.T__24, tptp_v7_0_0_0Parser.T__25, tptp_v7_0_0_0Parser.Not, tptp_v7_0_0_0Parser.Real, tptp_v7_0_0_0Parser.Rational, tptp_v7_0_0_0Parser.Integer, tptp_v7_0_0_0Parser.Dollar_word, tptp_v7_0_0_0Parser.Dollar_dollar_word, tptp_v7_0_0_0Parser.Upper_word, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted, tptp_v7_0_0_0Parser.Distinct_object]:
+            elif token in [
+                tptp_v7_0_0_0Parser.T__9,
+                tptp_v7_0_0_0Parser.T__17,
+                tptp_v7_0_0_0Parser.T__18,
+                tptp_v7_0_0_0Parser.T__23,
+                tptp_v7_0_0_0Parser.T__24,
+                tptp_v7_0_0_0Parser.T__25,
+                tptp_v7_0_0_0Parser.Not,
+                tptp_v7_0_0_0Parser.Real,
+                tptp_v7_0_0_0Parser.Rational,
+                tptp_v7_0_0_0Parser.Integer,
+                tptp_v7_0_0_0Parser.Dollar_word,
+                tptp_v7_0_0_0Parser.Dollar_dollar_word,
+                tptp_v7_0_0_0Parser.Upper_word,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+                tptp_v7_0_0_0Parser.Distinct_object,
+            ]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1051
                 self.cnf_formula()
@@ -7385,8 +7908,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tcf_quantified_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -7394,36 +7918,35 @@ class tptp_v7_0_0_0Parser ( Parser ):
             return self.getToken(tptp_v7_0_0_0Parser.Forall, 0)
 
         def tff_variable_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_variable_listContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_variable_listContext, 0
+            )
 
         def cnf_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Cnf_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Cnf_formulaContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tcf_quantified_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTcf_quantified_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTcf_quantified_formula"):
                 listener.enterTcf_quantified_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTcf_quantified_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTcf_quantified_formula"):
                 listener.exitTcf_quantified_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTcf_quantified_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTcf_quantified_formula"):
                 return visitor.visitTcf_quantified_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tcf_quantified_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tcf_quantified_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tcf_quantified_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 176, self.RULE_tcf_quantified_formula)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -7448,38 +7971,36 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_logic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_logic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_logic_formulaContext, 0
+            )
 
         def fof_sequent(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_sequentContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_sequentContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_formula"):
                 listener.enterFof_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_formula"):
                 listener.exitFof_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_formula"):
                 return visitor.visitFof_formula(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def fof_formula(self):
 
@@ -7488,7 +8009,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
         try:
             self.state = 1063
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,65,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 65, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1061
@@ -7501,7 +8022,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.fof_sequent()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -7511,47 +8031,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_logic_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_binary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_binary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_binary_formulaContext, 0
+            )
 
         def fof_unitary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_unitary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_unitary_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_logic_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_logic_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_logic_formula"):
                 listener.enterFof_logic_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_logic_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_logic_formula"):
                 listener.exitFof_logic_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_logic_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_logic_formula"):
                 return visitor.visitFof_logic_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_logic_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_logic_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_logic_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 180, self.RULE_fof_logic_formula)
         try:
             self.state = 1067
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,66,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 66, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1065
@@ -7564,7 +8086,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.fof_unitary_formula()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -7574,47 +8095,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_binary_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_binary_nonassoc(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_binary_nonassocContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_binary_nonassocContext, 0
+            )
 
         def fof_binary_assoc(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_binary_assocContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_binary_assocContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_binary_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_binary_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_binary_formula"):
                 listener.enterFof_binary_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_binary_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_binary_formula"):
                 listener.exitFof_binary_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_binary_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_binary_formula"):
                 return visitor.visitFof_binary_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_binary_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_binary_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_binary_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 182, self.RULE_fof_binary_formula)
         try:
             self.state = 1071
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,67,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 67, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1069
@@ -7627,7 +8150,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.fof_binary_assoc()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -7637,45 +8159,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_binary_nonassocContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def fof_unitary_formula(self, i:int=None):
+        def fof_unitary_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Fof_unitary_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Fof_unitary_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_unitary_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Fof_unitary_formulaContext, i
+                )
 
         def binary_connective(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Binary_connectiveContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Binary_connectiveContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_binary_nonassoc
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_binary_nonassoc" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_binary_nonassoc"):
                 listener.enterFof_binary_nonassoc(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_binary_nonassoc" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_binary_nonassoc"):
                 listener.exitFof_binary_nonassoc(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_binary_nonassoc" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_binary_nonassoc"):
                 return visitor.visitFof_binary_nonassoc(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_binary_nonassoc(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_binary_nonassocContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_binary_nonassocContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 184, self.RULE_fof_binary_nonassoc)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -7694,47 +8220,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_binary_assocContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_or_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_or_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_or_formulaContext, 0
+            )
 
         def fof_and_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_and_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_and_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_binary_assoc
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_binary_assoc" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_binary_assoc"):
                 listener.enterFof_binary_assoc(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_binary_assoc" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_binary_assoc"):
                 listener.exitFof_binary_assoc(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_binary_assoc" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_binary_assoc"):
                 return visitor.visitFof_binary_assoc(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_binary_assoc(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_binary_assocContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_binary_assocContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 186, self.RULE_fof_binary_assoc)
         try:
             self.state = 1079
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,68,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 68, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1077
@@ -7747,7 +8275,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.fof_and_formula(0)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -7757,48 +8284,53 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_or_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def fof_unitary_formula(self, i:int=None):
+        def fof_unitary_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Fof_unitary_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Fof_unitary_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_unitary_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Fof_unitary_formulaContext, i
+                )
 
         def Or(self):
             return self.getToken(tptp_v7_0_0_0Parser.Or, 0)
 
         def fof_or_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_or_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_or_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_or_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_or_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_or_formula"):
                 listener.enterFof_or_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_or_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_or_formula"):
                 listener.exitFof_or_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_or_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_or_formula"):
                 return visitor.visitFof_or_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-    def fof_or_formula(self, _p:int=0):
+    def fof_or_formula(self, _p: int = 0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = tptp_v7_0_0_0Parser.Fof_or_formulaContext(self, self._ctx, _parentState)
+        localctx = tptp_v7_0_0_0Parser.Fof_or_formulaContext(
+            self, self._ctx, _parentState
+        )
         _prevctx = localctx
         _startState = 188
         self.enterRecursionRule(localctx, 188, self.RULE_fof_or_formula, _p)
@@ -7813,25 +8345,32 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self._ctx.stop = self._input.LT(-1)
             self.state = 1091
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,69,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 69, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = tptp_v7_0_0_0Parser.Fof_or_formulaContext(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_fof_or_formula)
+                    localctx = tptp_v7_0_0_0Parser.Fof_or_formulaContext(
+                        self, _parentctx, _parentState
+                    )
+                    self.pushNewRecursionContext(
+                        localctx, _startState, self.RULE_fof_or_formula
+                    )
                     self.state = 1086
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
+
+                        raise FailedPredicateException(
+                            self, "self.precpred(self._ctx, 1)"
+                        )
                     self.state = 1087
                     self.match(tptp_v7_0_0_0Parser.Or)
                     self.state = 1088
-                    self.fof_unitary_formula() 
+                    self.fof_unitary_formula()
                 self.state = 1093
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,69,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 69, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -7842,48 +8381,53 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_and_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def fof_unitary_formula(self, i:int=None):
+        def fof_unitary_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Fof_unitary_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Fof_unitary_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_unitary_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Fof_unitary_formulaContext, i
+                )
 
         def And(self):
             return self.getToken(tptp_v7_0_0_0Parser.And, 0)
 
         def fof_and_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_and_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_and_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_and_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_and_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_and_formula"):
                 listener.enterFof_and_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_and_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_and_formula"):
                 listener.exitFof_and_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_and_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_and_formula"):
                 return visitor.visitFof_and_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-    def fof_and_formula(self, _p:int=0):
+    def fof_and_formula(self, _p: int = 0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = tptp_v7_0_0_0Parser.Fof_and_formulaContext(self, self._ctx, _parentState)
+        localctx = tptp_v7_0_0_0Parser.Fof_and_formulaContext(
+            self, self._ctx, _parentState
+        )
         _prevctx = localctx
         _startState = 190
         self.enterRecursionRule(localctx, 190, self.RULE_fof_and_formula, _p)
@@ -7898,25 +8442,32 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self._ctx.stop = self._input.LT(-1)
             self.state = 1104
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,70,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 70, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = tptp_v7_0_0_0Parser.Fof_and_formulaContext(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_fof_and_formula)
+                    localctx = tptp_v7_0_0_0Parser.Fof_and_formulaContext(
+                        self, _parentctx, _parentState
+                    )
+                    self.pushNewRecursionContext(
+                        localctx, _startState, self.RULE_fof_and_formula
+                    )
                     self.state = 1099
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
+
+                        raise FailedPredicateException(
+                            self, "self.precpred(self._ctx, 1)"
+                        )
                     self.state = 1100
                     self.match(tptp_v7_0_0_0Parser.And)
                     self.state = 1101
-                    self.fof_unitary_formula() 
+                    self.fof_unitary_formula()
                 self.state = 1106
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,70,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 70, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -7927,55 +8478,59 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_unitary_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_quantified_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_quantified_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_quantified_formulaContext, 0
+            )
 
         def fof_unary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_unary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_unary_formulaContext, 0
+            )
 
         def fof_atomic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_atomic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_atomic_formulaContext, 0
+            )
 
         def fof_logic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_logic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_logic_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_unitary_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_unitary_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_unitary_formula"):
                 listener.enterFof_unitary_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_unitary_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_unitary_formula"):
                 listener.exitFof_unitary_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_unitary_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_unitary_formula"):
                 return visitor.visitFof_unitary_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_unitary_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_unitary_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_unitary_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 192, self.RULE_fof_unitary_formula)
         try:
             self.state = 1114
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,71,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 71, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1107
@@ -8004,7 +8559,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.match(tptp_v7_0_0_0Parser.T__10)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -8014,46 +8568,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_quantified_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_quantifier(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_quantifierContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_quantifierContext, 0
+            )
 
         def fof_variable_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_variable_listContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_variable_listContext, 0
+            )
 
         def fof_unitary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_unitary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_unitary_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_quantified_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_quantified_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_quantified_formula"):
                 listener.enterFof_quantified_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_quantified_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_quantified_formula"):
                 listener.exitFof_quantified_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_quantified_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_quantified_formula"):
                 return visitor.visitFof_quantified_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_quantified_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_quantified_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_quantified_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 194, self.RULE_fof_quantified_formula)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -8078,43 +8635,42 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_variable_listContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def variable(self, i:int=None):
+        def variable(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.VariableContext)
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext,i)
-
+                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext, i)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_variable_list
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_variable_list" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_variable_list"):
                 listener.enterFof_variable_list(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_variable_list" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_variable_list"):
                 listener.exitFof_variable_list(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_variable_list" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_variable_list"):
                 return visitor.visitFof_variable_list(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_variable_list(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_variable_listContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_variable_listContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 196, self.RULE_fof_variable_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1123
@@ -8122,7 +8678,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1128
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1124
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 1125
@@ -8140,46 +8696,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_unary_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def unary_connective(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Unary_connectiveContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Unary_connectiveContext, 0
+            )
 
         def fof_unitary_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_unitary_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_unitary_formulaContext, 0
+            )
 
         def fof_infix_unary(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_infix_unaryContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_infix_unaryContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_unary_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_unary_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_unary_formula"):
                 listener.enterFof_unary_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_unary_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_unary_formula"):
                 listener.exitFof_unary_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_unary_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_unary_formula"):
                 return visitor.visitFof_unary_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_unary_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_unary_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_unary_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 198, self.RULE_fof_unary_formula)
         try:
             self.state = 1135
@@ -8192,7 +8751,22 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.state = 1132
                 self.fof_unitary_formula()
                 pass
-            elif token in [tptp_v7_0_0_0Parser.T__17, tptp_v7_0_0_0Parser.T__18, tptp_v7_0_0_0Parser.T__23, tptp_v7_0_0_0Parser.T__24, tptp_v7_0_0_0Parser.T__25, tptp_v7_0_0_0Parser.Real, tptp_v7_0_0_0Parser.Rational, tptp_v7_0_0_0Parser.Integer, tptp_v7_0_0_0Parser.Dollar_word, tptp_v7_0_0_0Parser.Dollar_dollar_word, tptp_v7_0_0_0Parser.Upper_word, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted, tptp_v7_0_0_0Parser.Distinct_object]:
+            elif token in [
+                tptp_v7_0_0_0Parser.T__17,
+                tptp_v7_0_0_0Parser.T__18,
+                tptp_v7_0_0_0Parser.T__23,
+                tptp_v7_0_0_0Parser.T__24,
+                tptp_v7_0_0_0Parser.T__25,
+                tptp_v7_0_0_0Parser.Real,
+                tptp_v7_0_0_0Parser.Rational,
+                tptp_v7_0_0_0Parser.Integer,
+                tptp_v7_0_0_0Parser.Dollar_word,
+                tptp_v7_0_0_0Parser.Dollar_dollar_word,
+                tptp_v7_0_0_0Parser.Upper_word,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+                tptp_v7_0_0_0Parser.Distinct_object,
+            ]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1134
                 self.fof_infix_unary()
@@ -8209,17 +8783,17 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_infix_unaryContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def fof_term(self, i:int=None):
+        def fof_term(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Fof_termContext)
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_termContext,i)
-
+                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_termContext, i)
 
         def Infix_inequality(self):
             return self.getToken(tptp_v7_0_0_0Parser.Infix_inequality, 0)
@@ -8227,26 +8801,25 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_infix_unary
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_infix_unary" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_infix_unary"):
                 listener.enterFof_infix_unary(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_infix_unary" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_infix_unary"):
                 listener.exitFof_infix_unary(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_infix_unary" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_infix_unary"):
                 return visitor.visitFof_infix_unary(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_infix_unary(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_infix_unaryContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_infix_unaryContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 200, self.RULE_fof_infix_unary)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -8265,51 +8838,54 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_atomic_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_plain_atomic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_plain_atomic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_plain_atomic_formulaContext, 0
+            )
 
         def fof_defined_atomic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_defined_atomic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_defined_atomic_formulaContext, 0
+            )
 
         def fof_system_atomic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_system_atomic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_system_atomic_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_atomic_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_atomic_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_atomic_formula"):
                 listener.enterFof_atomic_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_atomic_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_atomic_formula"):
                 listener.exitFof_atomic_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_atomic_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_atomic_formula"):
                 return visitor.visitFof_atomic_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_atomic_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_atomic_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_atomic_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 202, self.RULE_fof_atomic_formula)
         try:
             self.state = 1144
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,74,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 74, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1141
@@ -8328,7 +8904,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.fof_system_atomic_formula()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -8338,38 +8913,39 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_plain_atomic_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_plain_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_plain_termContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_plain_termContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_plain_atomic_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_plain_atomic_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_plain_atomic_formula"):
                 listener.enterFof_plain_atomic_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_plain_atomic_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_plain_atomic_formula"):
                 listener.exitFof_plain_atomic_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_plain_atomic_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_plain_atomic_formula"):
                 return visitor.visitFof_plain_atomic_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_plain_atomic_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_plain_atomic_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_plain_atomic_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 204, self.RULE_fof_plain_atomic_formula)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -8384,47 +8960,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_defined_atomic_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_defined_plain_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_defined_plain_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_defined_plain_formulaContext, 0
+            )
 
         def fof_defined_infix_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_defined_infix_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_defined_infix_formulaContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_defined_atomic_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_defined_atomic_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_defined_atomic_formula"):
                 listener.enterFof_defined_atomic_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_defined_atomic_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_defined_atomic_formula"):
                 listener.exitFof_defined_atomic_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_defined_atomic_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_defined_atomic_formula"):
                 return visitor.visitFof_defined_atomic_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_defined_atomic_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_defined_atomic_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_defined_atomic_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 206, self.RULE_fof_defined_atomic_formula)
         try:
             self.state = 1150
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,75,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 75, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1148
@@ -8437,7 +9015,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.fof_defined_infix_formula()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -8447,38 +9024,39 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_defined_plain_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_defined_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_defined_termContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_defined_termContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_defined_plain_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_defined_plain_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_defined_plain_formula"):
                 listener.enterFof_defined_plain_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_defined_plain_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_defined_plain_formula"):
                 listener.exitFof_defined_plain_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_defined_plain_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_defined_plain_formula"):
                 return visitor.visitFof_defined_plain_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_defined_plain_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_defined_plain_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_defined_plain_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 208, self.RULE_fof_defined_plain_formula)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -8493,45 +9071,45 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_defined_infix_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def fof_term(self, i:int=None):
+        def fof_term(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Fof_termContext)
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_termContext,i)
-
+                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_termContext, i)
 
         def defined_infix_pred(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Defined_infix_predContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Defined_infix_predContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_defined_infix_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_defined_infix_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_defined_infix_formula"):
                 listener.enterFof_defined_infix_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_defined_infix_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_defined_infix_formula"):
                 listener.exitFof_defined_infix_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_defined_infix_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_defined_infix_formula"):
                 return visitor.visitFof_defined_infix_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_defined_infix_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_defined_infix_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_defined_infix_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 210, self.RULE_fof_defined_infix_formula)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -8550,38 +9128,39 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_system_atomic_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_system_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_system_termContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_system_termContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_system_atomic_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_system_atomic_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_system_atomic_formula"):
                 listener.enterFof_system_atomic_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_system_atomic_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_system_atomic_formula"):
                 listener.exitFof_system_atomic_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_system_atomic_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_system_atomic_formula"):
                 return visitor.visitFof_system_atomic_formula(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_system_atomic_formula(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_system_atomic_formulaContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_system_atomic_formulaContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 212, self.RULE_fof_system_atomic_formula)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -8596,51 +9175,48 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_plain_termContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def constant(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.ConstantContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.ConstantContext, 0)
 
         def functor(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.FunctorContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.FunctorContext, 0)
 
         def fof_arguments(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_argumentsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_argumentsContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_plain_term
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_plain_term" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_plain_term"):
                 listener.enterFof_plain_term(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_plain_term" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_plain_term"):
                 listener.exitFof_plain_term(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_plain_term" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_plain_term"):
                 return visitor.visitFof_plain_term(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_plain_term(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_plain_termContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_plain_termContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 214, self.RULE_fof_plain_term)
         try:
             self.state = 1166
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,76,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 76, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1160
@@ -8659,7 +9235,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.match(tptp_v7_0_0_0Parser.T__10)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -8669,48 +9244,53 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_defined_termContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def defined_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Defined_termContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Defined_termContext, 0)
 
         def fof_defined_atomic_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_defined_atomic_termContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_defined_atomic_termContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_defined_term
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_defined_term" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_defined_term"):
                 listener.enterFof_defined_term(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_defined_term" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_defined_term"):
                 listener.exitFof_defined_term(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_defined_term" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_defined_term"):
                 return visitor.visitFof_defined_term(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_defined_term(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_defined_termContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_defined_termContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 216, self.RULE_fof_defined_term)
         try:
             self.state = 1170
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Real, tptp_v7_0_0_0Parser.Rational, tptp_v7_0_0_0Parser.Integer, tptp_v7_0_0_0Parser.Distinct_object]:
+            if token in [
+                tptp_v7_0_0_0Parser.Real,
+                tptp_v7_0_0_0Parser.Rational,
+                tptp_v7_0_0_0Parser.Integer,
+                tptp_v7_0_0_0Parser.Distinct_object,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1168
                 self.defined_term()
@@ -8732,38 +9312,39 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_defined_atomic_termContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_defined_plain_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_defined_plain_termContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_defined_plain_termContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_defined_atomic_term
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_defined_atomic_term" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_defined_atomic_term"):
                 listener.enterFof_defined_atomic_term(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_defined_atomic_term" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_defined_atomic_term"):
                 listener.exitFof_defined_atomic_term(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_defined_atomic_term" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_defined_atomic_term"):
                 return visitor.visitFof_defined_atomic_term(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_defined_atomic_term(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_defined_atomic_termContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_defined_atomic_termContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 218, self.RULE_fof_defined_atomic_term)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -8778,51 +9359,52 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_defined_plain_termContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def defined_constant(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Defined_constantContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Defined_constantContext, 0
+            )
 
         def defined_functor(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Defined_functorContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Defined_functorContext, 0
+            )
 
         def fof_arguments(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_argumentsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_argumentsContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_defined_plain_term
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_defined_plain_term" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_defined_plain_term"):
                 listener.enterFof_defined_plain_term(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_defined_plain_term" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_defined_plain_term"):
                 listener.exitFof_defined_plain_term(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_defined_plain_term" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_defined_plain_term"):
                 return visitor.visitFof_defined_plain_term(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_defined_plain_term(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_defined_plain_termContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_defined_plain_termContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 220, self.RULE_fof_defined_plain_term)
         try:
             self.state = 1180
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,78,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 78, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1174
@@ -8841,7 +9423,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.match(tptp_v7_0_0_0Parser.T__10)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -8851,51 +9432,52 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_system_termContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def system_constant(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.System_constantContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.System_constantContext, 0
+            )
 
         def system_functor(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.System_functorContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.System_functorContext, 0
+            )
 
         def fof_arguments(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_argumentsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_argumentsContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_system_term
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_system_term" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_system_term"):
                 listener.enterFof_system_term(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_system_term" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_system_term"):
                 listener.exitFof_system_term(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_system_term" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_system_term"):
                 return visitor.visitFof_system_term(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_system_term(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_system_termContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_system_termContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 222, self.RULE_fof_system_term)
         try:
             self.state = 1188
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,79,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 79, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1182
@@ -8914,7 +9496,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.match(tptp_v7_0_0_0Parser.T__10)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -8924,43 +9505,40 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_argumentsContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def fof_term(self, i:int=None):
+        def fof_term(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Fof_termContext)
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_termContext,i)
-
+                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_termContext, i)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_arguments
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_arguments" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_arguments"):
                 listener.enterFof_arguments(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_arguments" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_arguments"):
                 listener.exitFof_arguments(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_arguments" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_arguments"):
                 return visitor.visitFof_arguments(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def fof_arguments(self):
 
         localctx = tptp_v7_0_0_0Parser.Fof_argumentsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 224, self.RULE_fof_arguments)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1190
@@ -8968,7 +9546,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1195
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1191
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 1192
@@ -8986,50 +9564,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_termContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_function_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_function_termContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_function_termContext, 0
+            )
 
         def variable(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext, 0)
 
         def tff_conditional_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_conditional_termContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_conditional_termContext, 0
+            )
 
         def tff_let_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_termContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_termContext, 0)
 
         def tff_tuple_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_tuple_termContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_tuple_termContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_term
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_term" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_term"):
                 listener.enterFof_term(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_term" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_term"):
                 listener.exitFof_term(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_term" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_term"):
                 return visitor.visitFof_term(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def fof_term(self):
 
@@ -9039,7 +9616,16 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1203
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Real, tptp_v7_0_0_0Parser.Rational, tptp_v7_0_0_0Parser.Integer, tptp_v7_0_0_0Parser.Dollar_word, tptp_v7_0_0_0Parser.Dollar_dollar_word, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted, tptp_v7_0_0_0Parser.Distinct_object]:
+            if token in [
+                tptp_v7_0_0_0Parser.Real,
+                tptp_v7_0_0_0Parser.Rational,
+                tptp_v7_0_0_0Parser.Integer,
+                tptp_v7_0_0_0Parser.Dollar_word,
+                tptp_v7_0_0_0Parser.Dollar_dollar_word,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+                tptp_v7_0_0_0Parser.Distinct_object,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1198
                 self.fof_function_term()
@@ -9076,57 +9662,69 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_function_termContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_plain_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_plain_termContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_plain_termContext, 0
+            )
 
         def fof_defined_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_defined_termContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_defined_termContext, 0
+            )
 
         def fof_system_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_system_termContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_system_termContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_function_term
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_function_term" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_function_term"):
                 listener.enterFof_function_term(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_function_term" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_function_term"):
                 listener.exitFof_function_term(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_function_term" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_function_term"):
                 return visitor.visitFof_function_term(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_function_term(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_function_termContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_function_termContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 228, self.RULE_fof_function_term)
         try:
             self.state = 1208
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1205
                 self.fof_plain_term()
                 pass
-            elif token in [tptp_v7_0_0_0Parser.Real, tptp_v7_0_0_0Parser.Rational, tptp_v7_0_0_0Parser.Integer, tptp_v7_0_0_0Parser.Dollar_word, tptp_v7_0_0_0Parser.Distinct_object]:
+            elif token in [
+                tptp_v7_0_0_0Parser.Real,
+                tptp_v7_0_0_0Parser.Rational,
+                tptp_v7_0_0_0Parser.Integer,
+                tptp_v7_0_0_0Parser.Dollar_word,
+                tptp_v7_0_0_0Parser.Distinct_object,
+            ]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1206
                 self.fof_defined_term()
@@ -9148,45 +9746,45 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_conditional_termContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_logic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_logic_formulaContext,0)
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_logic_formulaContext, 0
+            )
 
-
-        def fof_term(self, i:int=None):
+        def fof_term(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Fof_termContext)
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_termContext,i)
-
+                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_termContext, i)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_conditional_term
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_conditional_term" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_conditional_term"):
                 listener.enterTff_conditional_term(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_conditional_term" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_conditional_term"):
                 listener.exitTff_conditional_term(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_conditional_term" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_conditional_term"):
                 return visitor.visitTff_conditional_term(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_conditional_term(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_conditional_termContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_conditional_termContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 230, self.RULE_tff_conditional_term)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -9213,42 +9811,41 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_let_termContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def tff_let_formula_defns(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_formula_defnsContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_let_formula_defnsContext, 0
+            )
 
         def fof_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_termContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_termContext, 0)
 
         def tff_let_term_defns(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_let_term_defnsContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Tff_let_term_defnsContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_let_term
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_let_term" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_let_term"):
                 listener.enterTff_let_term(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_let_term" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_let_term"):
                 listener.exitTff_let_term(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_let_term" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_let_term"):
                 return visitor.visitTff_let_term(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tff_let_term(self):
 
@@ -9296,38 +9893,37 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_tuple_termContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_arguments(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_argumentsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_argumentsContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_tuple_term
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_tuple_term" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_tuple_term"):
                 listener.enterTff_tuple_term(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_tuple_term" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_tuple_term"):
                 listener.exitTff_tuple_term(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_tuple_term" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_tuple_term"):
                 return visitor.visitTff_tuple_term(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_tuple_term(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_tuple_termContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_tuple_termContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 234, self.RULE_tff_tuple_term)
         try:
             self.state = 1237
@@ -9359,44 +9955,44 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_sequentContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def fof_formula_tuple(self, i:int=None):
+        def fof_formula_tuple(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Fof_formula_tupleContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Fof_formula_tupleContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_formula_tupleContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Fof_formula_tupleContext, i
+                )
 
         def Gentzen_arrow(self):
             return self.getToken(tptp_v7_0_0_0Parser.Gentzen_arrow, 0)
 
         def fof_sequent(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_sequentContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_sequentContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_sequent
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_sequent" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_sequent"):
                 listener.enterFof_sequent(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_sequent" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_sequent"):
                 listener.exitFof_sequent(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_sequent" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_sequent"):
                 return visitor.visitFof_sequent(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def fof_sequent(self):
 
@@ -9436,38 +10032,39 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_formula_tupleContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_formula_tuple_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_formula_tuple_listContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_formula_tuple_listContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_formula_tuple
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_formula_tuple" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_formula_tuple"):
                 listener.enterFof_formula_tuple(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_formula_tuple" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_formula_tuple"):
                 listener.exitFof_formula_tuple(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_formula_tuple" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_formula_tuple"):
                 return visitor.visitFof_formula_tuple(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_formula_tuple(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_formula_tupleContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_formula_tupleContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 238, self.RULE_fof_formula_tuple)
         try:
             self.state = 1254
@@ -9499,43 +10096,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_formula_tuple_listContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def fof_logic_formula(self, i:int=None):
+        def fof_logic_formula(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Fof_logic_formulaContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Fof_logic_formulaContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_logic_formulaContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Fof_logic_formulaContext, i
+                )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_formula_tuple_list
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_formula_tuple_list" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_formula_tuple_list"):
                 listener.enterFof_formula_tuple_list(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_formula_tuple_list" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_formula_tuple_list"):
                 listener.exitFof_formula_tuple_list(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_formula_tuple_list" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_formula_tuple_list"):
                 return visitor.visitFof_formula_tuple_list(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_formula_tuple_list(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_formula_tuple_listContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_formula_tuple_listContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 240, self.RULE_fof_formula_tuple_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1256
@@ -9543,7 +10143,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1261
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1257
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 1258
@@ -9561,34 +10161,33 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Cnf_formulaContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def cnf_disjunction(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Cnf_disjunctionContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Cnf_disjunctionContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_cnf_formula
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterCnf_formula" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterCnf_formula"):
                 listener.enterCnf_formula(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitCnf_formula" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitCnf_formula"):
                 listener.exitCnf_formula(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCnf_formula" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitCnf_formula"):
                 return visitor.visitCnf_formula(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def cnf_formula(self):
 
@@ -9598,7 +10197,23 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1269
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.T__17, tptp_v7_0_0_0Parser.T__18, tptp_v7_0_0_0Parser.T__23, tptp_v7_0_0_0Parser.T__24, tptp_v7_0_0_0Parser.T__25, tptp_v7_0_0_0Parser.Not, tptp_v7_0_0_0Parser.Real, tptp_v7_0_0_0Parser.Rational, tptp_v7_0_0_0Parser.Integer, tptp_v7_0_0_0Parser.Dollar_word, tptp_v7_0_0_0Parser.Dollar_dollar_word, tptp_v7_0_0_0Parser.Upper_word, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted, tptp_v7_0_0_0Parser.Distinct_object]:
+            if token in [
+                tptp_v7_0_0_0Parser.T__17,
+                tptp_v7_0_0_0Parser.T__18,
+                tptp_v7_0_0_0Parser.T__23,
+                tptp_v7_0_0_0Parser.T__24,
+                tptp_v7_0_0_0Parser.T__25,
+                tptp_v7_0_0_0Parser.Not,
+                tptp_v7_0_0_0Parser.Real,
+                tptp_v7_0_0_0Parser.Rational,
+                tptp_v7_0_0_0Parser.Integer,
+                tptp_v7_0_0_0Parser.Dollar_word,
+                tptp_v7_0_0_0Parser.Dollar_dollar_word,
+                tptp_v7_0_0_0Parser.Upper_word,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+                tptp_v7_0_0_0Parser.Distinct_object,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1264
                 self.cnf_disjunction(0)
@@ -9624,18 +10239,19 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Cnf_disjunctionContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def cnf_literal(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Cnf_literalContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Cnf_literalContext, 0)
 
         def cnf_disjunction(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Cnf_disjunctionContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Cnf_disjunctionContext, 0
+            )
 
         def Or(self):
             return self.getToken(tptp_v7_0_0_0Parser.Or, 0)
@@ -9643,26 +10259,26 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_cnf_disjunction
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterCnf_disjunction" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterCnf_disjunction"):
                 listener.enterCnf_disjunction(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitCnf_disjunction" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitCnf_disjunction"):
                 listener.exitCnf_disjunction(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCnf_disjunction" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitCnf_disjunction"):
                 return visitor.visitCnf_disjunction(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-    def cnf_disjunction(self, _p:int=0):
+    def cnf_disjunction(self, _p: int = 0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = tptp_v7_0_0_0Parser.Cnf_disjunctionContext(self, self._ctx, _parentState)
+        localctx = tptp_v7_0_0_0Parser.Cnf_disjunctionContext(
+            self, self._ctx, _parentState
+        )
         _prevctx = localctx
         _startState = 244
         self.enterRecursionRule(localctx, 244, self.RULE_cnf_disjunction, _p)
@@ -9673,25 +10289,32 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self._ctx.stop = self._input.LT(-1)
             self.state = 1279
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,89,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 89, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = tptp_v7_0_0_0Parser.Cnf_disjunctionContext(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_cnf_disjunction)
+                    localctx = tptp_v7_0_0_0Parser.Cnf_disjunctionContext(
+                        self, _parentctx, _parentState
+                    )
+                    self.pushNewRecursionContext(
+                        localctx, _startState, self.RULE_cnf_disjunction
+                    )
                     self.state = 1274
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
+
+                        raise FailedPredicateException(
+                            self, "self.precpred(self._ctx, 1)"
+                        )
                     self.state = 1275
                     self.match(tptp_v7_0_0_0Parser.Or)
                     self.state = 1276
-                    self.cnf_literal() 
+                    self.cnf_literal()
                 self.state = 1281
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,89,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 89, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -9702,41 +10325,41 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Cnf_literalContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_atomic_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_atomic_formulaContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_atomic_formulaContext, 0
+            )
 
         def Not(self):
             return self.getToken(tptp_v7_0_0_0Parser.Not, 0)
 
         def fof_infix_unary(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_infix_unaryContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_infix_unaryContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_cnf_literal
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterCnf_literal" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterCnf_literal"):
                 listener.enterCnf_literal(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitCnf_literal" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitCnf_literal"):
                 listener.exitCnf_literal(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCnf_literal" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitCnf_literal"):
                 return visitor.visitCnf_literal(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def cnf_literal(self):
 
@@ -9745,7 +10368,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
         try:
             self.state = 1286
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,90,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 90, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1282
@@ -9766,7 +10389,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.fof_infix_unary()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -9776,46 +10398,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_quantifierContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def fof_quantifier(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_quantifierContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Fof_quantifierContext, 0
+            )
 
         def th0_quantifier(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Th0_quantifierContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Th0_quantifierContext, 0
+            )
 
         def th1_quantifier(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Th1_quantifierContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Th1_quantifierContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_quantifier
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_quantifier" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_quantifier"):
                 listener.enterThf_quantifier(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_quantifier" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_quantifier"):
                 listener.exitThf_quantifier(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_quantifier" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_quantifier"):
                 return visitor.visitThf_quantifier(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_quantifier(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_quantifierContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_quantifierContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 248, self.RULE_thf_quantifier)
         try:
             self.state = 1291
@@ -9826,7 +10451,11 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.state = 1288
                 self.fof_quantifier()
                 pass
-            elif token in [tptp_v7_0_0_0Parser.Lambda, tptp_v7_0_0_0Parser.Choice, tptp_v7_0_0_0Parser.Description]:
+            elif token in [
+                tptp_v7_0_0_0Parser.Lambda,
+                tptp_v7_0_0_0Parser.Choice,
+                tptp_v7_0_0_0Parser.Description,
+            ]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1289
                 self.th0_quantifier()
@@ -9848,8 +10477,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Th0_quantifierContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -9865,33 +10495,45 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_th0_quantifier
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTh0_quantifier" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTh0_quantifier"):
                 listener.enterTh0_quantifier(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTh0_quantifier" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTh0_quantifier"):
                 listener.exitTh0_quantifier(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTh0_quantifier" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTh0_quantifier"):
                 return visitor.visitTh0_quantifier(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def th0_quantifier(self):
 
-        localctx = tptp_v7_0_0_0Parser.Th0_quantifierContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Th0_quantifierContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 250, self.RULE_th0_quantifier)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1293
             _la = self._input.LA(1)
-            if not(((((_la - 61)) & ~0x3f) == 0 and ((1 << (_la - 61)) & ((1 << (tptp_v7_0_0_0Parser.Lambda - 61)) | (1 << (tptp_v7_0_0_0Parser.Choice - 61)) | (1 << (tptp_v7_0_0_0Parser.Description - 61)))) != 0)):
+            if not (
+                (
+                    (((_la - 61)) & ~0x3F) == 0
+                    and (
+                        (1 << (_la - 61))
+                        & (
+                            (1 << (tptp_v7_0_0_0Parser.Lambda - 61))
+                            | (1 << (tptp_v7_0_0_0Parser.Choice - 61))
+                            | (1 << (tptp_v7_0_0_0Parser.Description - 61))
+                        )
+                    )
+                    != 0
+                )
+            ):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -9905,8 +10547,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Th1_quantifierContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -9919,33 +10562,35 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_th1_quantifier
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTh1_quantifier" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTh1_quantifier"):
                 listener.enterTh1_quantifier(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTh1_quantifier" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTh1_quantifier"):
                 listener.exitTh1_quantifier(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTh1_quantifier" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTh1_quantifier"):
                 return visitor.visitTh1_quantifier(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def th1_quantifier(self):
 
-        localctx = tptp_v7_0_0_0Parser.Th1_quantifierContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Th1_quantifierContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 252, self.RULE_th1_quantifier)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1295
             _la = self._input.LA(1)
-            if not(_la==tptp_v7_0_0_0Parser.TyForall or _la==tptp_v7_0_0_0Parser.TyExists):
+            if not (
+                _la == tptp_v7_0_0_0Parser.TyForall
+                or _la == tptp_v7_0_0_0Parser.TyExists
+            ):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -9959,8 +10604,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_pair_connectiveContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -9971,8 +10617,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             return self.getToken(tptp_v7_0_0_0Parser.Infix_inequality, 0)
 
         def binary_connective(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Binary_connectiveContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Binary_connectiveContext, 0
+            )
 
         def Assignment(self):
             return self.getToken(tptp_v7_0_0_0Parser.Assignment, 0)
@@ -9980,26 +10627,25 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_pair_connective
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_pair_connective" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_pair_connective"):
                 listener.enterThf_pair_connective(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_pair_connective" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_pair_connective"):
                 listener.exitThf_pair_connective(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_pair_connective" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_pair_connective"):
                 return visitor.visitThf_pair_connective(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_pair_connective(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_pair_connectiveContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_pair_connectiveContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 254, self.RULE_thf_pair_connective)
         try:
             self.state = 1301
@@ -10015,7 +10661,14 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.state = 1298
                 self.match(tptp_v7_0_0_0Parser.Infix_inequality)
                 pass
-            elif token in [tptp_v7_0_0_0Parser.Iff, tptp_v7_0_0_0Parser.Impl, tptp_v7_0_0_0Parser.If, tptp_v7_0_0_0Parser.Niff, tptp_v7_0_0_0Parser.Nor, tptp_v7_0_0_0Parser.Nand]:
+            elif token in [
+                tptp_v7_0_0_0Parser.Iff,
+                tptp_v7_0_0_0Parser.Impl,
+                tptp_v7_0_0_0Parser.If,
+                tptp_v7_0_0_0Parser.Niff,
+                tptp_v7_0_0_0Parser.Nor,
+                tptp_v7_0_0_0Parser.Nand,
+            ]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 1299
                 self.binary_connective()
@@ -10037,42 +10690,44 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Thf_unary_connectiveContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def unary_connective(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Unary_connectiveContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Unary_connectiveContext, 0
+            )
 
         def th1_unary_connective(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Th1_unary_connectiveContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Th1_unary_connectiveContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_thf_unary_connective
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThf_unary_connective" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThf_unary_connective"):
                 listener.enterThf_unary_connective(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThf_unary_connective" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThf_unary_connective"):
                 listener.exitThf_unary_connective(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThf_unary_connective" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThf_unary_connective"):
                 return visitor.visitThf_unary_connective(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def thf_unary_connective(self):
 
-        localctx = tptp_v7_0_0_0Parser.Thf_unary_connectiveContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Thf_unary_connectiveContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 256, self.RULE_thf_unary_connective)
         try:
             self.state = 1305
@@ -10083,7 +10738,13 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.state = 1303
                 self.unary_connective()
                 pass
-            elif token in [tptp_v7_0_0_0Parser.ForallComb, tptp_v7_0_0_0Parser.ExistsComb, tptp_v7_0_0_0Parser.ChoiceComb, tptp_v7_0_0_0Parser.DescriptionComb, tptp_v7_0_0_0Parser.EqComb]:
+            elif token in [
+                tptp_v7_0_0_0Parser.ForallComb,
+                tptp_v7_0_0_0Parser.ExistsComb,
+                tptp_v7_0_0_0Parser.ChoiceComb,
+                tptp_v7_0_0_0Parser.DescriptionComb,
+                tptp_v7_0_0_0Parser.EqComb,
+            ]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1304
                 self.th1_unary_connective()
@@ -10100,8 +10761,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Th1_unary_connectiveContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -10123,33 +10785,47 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_th1_unary_connective
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTh1_unary_connective" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTh1_unary_connective"):
                 listener.enterTh1_unary_connective(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTh1_unary_connective" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTh1_unary_connective"):
                 listener.exitTh1_unary_connective(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTh1_unary_connective" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTh1_unary_connective"):
                 return visitor.visitTh1_unary_connective(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def th1_unary_connective(self):
 
-        localctx = tptp_v7_0_0_0Parser.Th1_unary_connectiveContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Th1_unary_connectiveContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 258, self.RULE_th1_unary_connective)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1307
             _la = self._input.LA(1)
-            if not(((((_la - 53)) & ~0x3f) == 0 and ((1 << (_la - 53)) & ((1 << (tptp_v7_0_0_0Parser.ForallComb - 53)) | (1 << (tptp_v7_0_0_0Parser.ExistsComb - 53)) | (1 << (tptp_v7_0_0_0Parser.ChoiceComb - 53)) | (1 << (tptp_v7_0_0_0Parser.DescriptionComb - 53)) | (1 << (tptp_v7_0_0_0Parser.EqComb - 53)))) != 0)):
+            if not (
+                (
+                    (((_la - 53)) & ~0x3F) == 0
+                    and (
+                        (1 << (_la - 53))
+                        & (
+                            (1 << (tptp_v7_0_0_0Parser.ForallComb - 53))
+                            | (1 << (tptp_v7_0_0_0Parser.ExistsComb - 53))
+                            | (1 << (tptp_v7_0_0_0Parser.ChoiceComb - 53))
+                            | (1 << (tptp_v7_0_0_0Parser.DescriptionComb - 53))
+                            | (1 << (tptp_v7_0_0_0Parser.EqComb - 53))
+                        )
+                    )
+                    != 0
+                )
+            ):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -10163,14 +10839,16 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Tff_pair_connectiveContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def binary_connective(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Binary_connectiveContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Binary_connectiveContext, 0
+            )
 
         def Assignment(self):
             return self.getToken(tptp_v7_0_0_0Parser.Assignment, 0)
@@ -10178,32 +10856,38 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_tff_pair_connective
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTff_pair_connective" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTff_pair_connective"):
                 listener.enterTff_pair_connective(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTff_pair_connective" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTff_pair_connective"):
                 listener.exitTff_pair_connective(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTff_pair_connective" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTff_pair_connective"):
                 return visitor.visitTff_pair_connective(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def tff_pair_connective(self):
 
-        localctx = tptp_v7_0_0_0Parser.Tff_pair_connectiveContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Tff_pair_connectiveContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 260, self.RULE_tff_pair_connective)
         try:
             self.state = 1311
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Iff, tptp_v7_0_0_0Parser.Impl, tptp_v7_0_0_0Parser.If, tptp_v7_0_0_0Parser.Niff, tptp_v7_0_0_0Parser.Nor, tptp_v7_0_0_0Parser.Nand]:
+            if token in [
+                tptp_v7_0_0_0Parser.Iff,
+                tptp_v7_0_0_0Parser.Impl,
+                tptp_v7_0_0_0Parser.If,
+                tptp_v7_0_0_0Parser.Niff,
+                tptp_v7_0_0_0Parser.Nor,
+                tptp_v7_0_0_0Parser.Nand,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1309
                 self.binary_connective()
@@ -10225,8 +10909,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Fof_quantifierContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -10239,33 +10924,34 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_fof_quantifier
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFof_quantifier" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFof_quantifier"):
                 listener.enterFof_quantifier(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFof_quantifier" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFof_quantifier"):
                 listener.exitFof_quantifier(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFof_quantifier" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFof_quantifier"):
                 return visitor.visitFof_quantifier(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def fof_quantifier(self):
 
-        localctx = tptp_v7_0_0_0Parser.Fof_quantifierContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Fof_quantifierContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 262, self.RULE_fof_quantifier)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1313
             _la = self._input.LA(1)
-            if not(_la==tptp_v7_0_0_0Parser.Forall or _la==tptp_v7_0_0_0Parser.Exists):
+            if not (
+                _la == tptp_v7_0_0_0Parser.Forall or _la == tptp_v7_0_0_0Parser.Exists
+            ):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -10279,8 +10965,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Binary_connectiveContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -10305,33 +10992,48 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_binary_connective
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterBinary_connective" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterBinary_connective"):
                 listener.enterBinary_connective(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitBinary_connective" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitBinary_connective"):
                 listener.exitBinary_connective(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitBinary_connective" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitBinary_connective"):
                 return visitor.visitBinary_connective(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def binary_connective(self):
 
-        localctx = tptp_v7_0_0_0Parser.Binary_connectiveContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Binary_connectiveContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 264, self.RULE_binary_connective)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1315
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << tptp_v7_0_0_0Parser.Iff) | (1 << tptp_v7_0_0_0Parser.Impl) | (1 << tptp_v7_0_0_0Parser.If) | (1 << tptp_v7_0_0_0Parser.Niff) | (1 << tptp_v7_0_0_0Parser.Nor) | (1 << tptp_v7_0_0_0Parser.Nand))) != 0)):
+            if not (
+                (
+                    ((_la) & ~0x3F) == 0
+                    and (
+                        (1 << _la)
+                        & (
+                            (1 << tptp_v7_0_0_0Parser.Iff)
+                            | (1 << tptp_v7_0_0_0Parser.Impl)
+                            | (1 << tptp_v7_0_0_0Parser.If)
+                            | (1 << tptp_v7_0_0_0Parser.Niff)
+                            | (1 << tptp_v7_0_0_0Parser.Nor)
+                            | (1 << tptp_v7_0_0_0Parser.Nand)
+                        )
+                    )
+                    != 0
+                )
+            ):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -10345,8 +11047,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Assoc_connectiveContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -10359,33 +11062,32 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_assoc_connective
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAssoc_connective" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAssoc_connective"):
                 listener.enterAssoc_connective(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAssoc_connective" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAssoc_connective"):
                 listener.exitAssoc_connective(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAssoc_connective" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAssoc_connective"):
                 return visitor.visitAssoc_connective(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def assoc_connective(self):
 
-        localctx = tptp_v7_0_0_0Parser.Assoc_connectiveContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Assoc_connectiveContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 266, self.RULE_assoc_connective)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1317
             _la = self._input.LA(1)
-            if not(_la==tptp_v7_0_0_0Parser.Or or _la==tptp_v7_0_0_0Parser.And):
+            if not (_la == tptp_v7_0_0_0Parser.Or or _la == tptp_v7_0_0_0Parser.And):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -10399,8 +11101,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Unary_connectiveContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -10410,26 +11113,25 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_unary_connective
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterUnary_connective" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterUnary_connective"):
                 listener.enterUnary_connective(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitUnary_connective" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitUnary_connective"):
                 listener.exitUnary_connective(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitUnary_connective" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitUnary_connective"):
                 return visitor.visitUnary_connective(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def unary_connective(self):
 
-        localctx = tptp_v7_0_0_0Parser.Unary_connectiveContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Unary_connectiveContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 268, self.RULE_unary_connective)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -10444,34 +11146,31 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Type_constantContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def type_functor(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Type_functorContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Type_functorContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_type_constant
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterType_constant" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterType_constant"):
                 listener.enterType_constant(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitType_constant" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitType_constant"):
                 listener.exitType_constant(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitType_constant" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitType_constant"):
                 return visitor.visitType_constant(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def type_constant(self):
 
@@ -10490,34 +11189,31 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Type_functorContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def atomic_word(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_type_functor
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterType_functor" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterType_functor"):
                 listener.enterType_functor(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitType_functor" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitType_functor"):
                 listener.exitType_functor(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitType_functor" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitType_functor"):
                 return visitor.visitType_functor(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def type_functor(self):
 
@@ -10536,8 +11232,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Defined_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -10547,22 +11244,19 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_defined_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDefined_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterDefined_type"):
                 listener.enterDefined_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDefined_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitDefined_type"):
                 listener.exitDefined_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDefined_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitDefined_type"):
                 return visitor.visitDefined_type(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def defined_type(self):
 
@@ -10581,34 +11275,33 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class System_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def atomic_system_word(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_system_wordContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Atomic_system_wordContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_system_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSystem_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterSystem_type"):
                 listener.enterSystem_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSystem_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitSystem_type"):
                 listener.exitSystem_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSystem_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitSystem_type"):
                 return visitor.visitSystem_type(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def system_type(self):
 
@@ -10627,38 +11320,36 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class AtomContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def untyped_atom(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Untyped_atomContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Untyped_atomContext, 0)
 
         def defined_constant(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Defined_constantContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Defined_constantContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_atom
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAtom" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAtom"):
                 listener.enterAtom(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAtom" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAtom"):
                 listener.exitAtom(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAtom" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAtom"):
                 return visitor.visitAtom(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def atom(self):
 
@@ -10668,7 +11359,11 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1331
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Dollar_dollar_word, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.Dollar_dollar_word,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1329
                 self.untyped_atom()
@@ -10690,38 +11385,36 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Untyped_atomContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def constant(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.ConstantContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.ConstantContext, 0)
 
         def system_constant(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.System_constantContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.System_constantContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_untyped_atom
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterUntyped_atom" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterUntyped_atom"):
                 listener.enterUntyped_atom(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitUntyped_atom" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitUntyped_atom"):
                 listener.exitUntyped_atom(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitUntyped_atom" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitUntyped_atom"):
                 return visitor.visitUntyped_atom(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def untyped_atom(self):
 
@@ -10731,7 +11424,10 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1335
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1333
                 self.constant()
@@ -10753,8 +11449,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Defined_propositionContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -10764,26 +11461,25 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_defined_proposition
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDefined_proposition" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterDefined_proposition"):
                 listener.enterDefined_proposition(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDefined_proposition" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitDefined_proposition"):
                 listener.exitDefined_proposition(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDefined_proposition" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitDefined_proposition"):
                 return visitor.visitDefined_proposition(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def defined_proposition(self):
 
-        localctx = tptp_v7_0_0_0Parser.Defined_propositionContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Defined_propositionContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 282, self.RULE_defined_proposition)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -10798,8 +11494,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Defined_predicateContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -10809,26 +11506,25 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_defined_predicate
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDefined_predicate" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterDefined_predicate"):
                 listener.enterDefined_predicate(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDefined_predicate" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitDefined_predicate"):
                 listener.exitDefined_predicate(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDefined_predicate" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitDefined_predicate"):
                 return visitor.visitDefined_predicate(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def defined_predicate(self):
 
-        localctx = tptp_v7_0_0_0Parser.Defined_predicateContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Defined_predicateContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 284, self.RULE_defined_predicate)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -10843,8 +11539,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Defined_infix_predContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -10857,33 +11554,35 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_defined_infix_pred
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDefined_infix_pred" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterDefined_infix_pred"):
                 listener.enterDefined_infix_pred(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDefined_infix_pred" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitDefined_infix_pred"):
                 listener.exitDefined_infix_pred(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDefined_infix_pred" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitDefined_infix_pred"):
                 return visitor.visitDefined_infix_pred(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def defined_infix_pred(self):
 
-        localctx = tptp_v7_0_0_0Parser.Defined_infix_predContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Defined_infix_predContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 286, self.RULE_defined_infix_pred)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1341
             _la = self._input.LA(1)
-            if not(_la==tptp_v7_0_0_0Parser.Infix_equality or _la==tptp_v7_0_0_0Parser.Assignment):
+            if not (
+                _la == tptp_v7_0_0_0Parser.Infix_equality
+                or _la == tptp_v7_0_0_0Parser.Assignment
+            ):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -10897,34 +11596,31 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class ConstantContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def functor(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.FunctorContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.FunctorContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_constant
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterConstant" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterConstant"):
                 listener.enterConstant(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitConstant" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitConstant"):
                 listener.exitConstant(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitConstant" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitConstant"):
                 return visitor.visitConstant(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def constant(self):
 
@@ -10943,34 +11639,31 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class FunctorContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def atomic_word(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_functor
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFunctor" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFunctor"):
                 listener.enterFunctor(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFunctor" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFunctor"):
                 listener.exitFunctor(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFunctor" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFunctor"):
                 return visitor.visitFunctor(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def functor(self):
 
@@ -10989,38 +11682,39 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class System_constantContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def system_functor(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.System_functorContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.System_functorContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_system_constant
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSystem_constant" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterSystem_constant"):
                 listener.enterSystem_constant(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSystem_constant" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitSystem_constant"):
                 listener.exitSystem_constant(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSystem_constant" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitSystem_constant"):
                 return visitor.visitSystem_constant(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def system_constant(self):
 
-        localctx = tptp_v7_0_0_0Parser.System_constantContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.System_constantContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 292, self.RULE_system_constant)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -11035,38 +11729,39 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class System_functorContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def atomic_system_word(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_system_wordContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Atomic_system_wordContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_system_functor
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSystem_functor" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterSystem_functor"):
                 listener.enterSystem_functor(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSystem_functor" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitSystem_functor"):
                 listener.exitSystem_functor(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSystem_functor" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitSystem_functor"):
                 return visitor.visitSystem_functor(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def system_functor(self):
 
-        localctx = tptp_v7_0_0_0Parser.System_functorContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.System_functorContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 294, self.RULE_system_functor)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -11081,38 +11776,39 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Defined_constantContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def defined_functor(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Defined_functorContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Defined_functorContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_defined_constant
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDefined_constant" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterDefined_constant"):
                 listener.enterDefined_constant(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDefined_constant" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitDefined_constant"):
                 listener.exitDefined_constant(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDefined_constant" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitDefined_constant"):
                 return visitor.visitDefined_constant(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def defined_constant(self):
 
-        localctx = tptp_v7_0_0_0Parser.Defined_constantContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Defined_constantContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 296, self.RULE_defined_constant)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -11127,38 +11823,39 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Defined_functorContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def atomic_defined_word(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_defined_wordContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Atomic_defined_wordContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_defined_functor
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDefined_functor" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterDefined_functor"):
                 listener.enterDefined_functor(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDefined_functor" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitDefined_functor"):
                 listener.exitDefined_functor(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDefined_functor" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitDefined_functor"):
                 return visitor.visitDefined_functor(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def defined_functor(self):
 
-        localctx = tptp_v7_0_0_0Parser.Defined_functorContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Defined_functorContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 298, self.RULE_defined_functor)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -11173,14 +11870,14 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Defined_termContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def number(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NumberContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NumberContext, 0)
 
         def Distinct_object(self):
             return self.getToken(tptp_v7_0_0_0Parser.Distinct_object, 0)
@@ -11188,22 +11885,19 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_defined_term
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDefined_term" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterDefined_term"):
                 listener.enterDefined_term(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDefined_term" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitDefined_term"):
                 listener.exitDefined_term(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDefined_term" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitDefined_term"):
                 return visitor.visitDefined_term(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def defined_term(self):
 
@@ -11213,7 +11907,11 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1357
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Real, tptp_v7_0_0_0Parser.Rational, tptp_v7_0_0_0Parser.Integer]:
+            if token in [
+                tptp_v7_0_0_0Parser.Real,
+                tptp_v7_0_0_0Parser.Rational,
+                tptp_v7_0_0_0Parser.Integer,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1355
                 self.number()
@@ -11235,8 +11933,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class VariableContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -11246,22 +11945,19 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_variable
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterVariable" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterVariable"):
                 listener.enterVariable(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitVariable" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitVariable"):
                 listener.exitVariable(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitVariable" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitVariable"):
                 return visitor.visitVariable(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def variable(self):
 
@@ -11280,49 +11976,47 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class SourceContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def dag_source(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Dag_sourceContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Dag_sourceContext, 0)
 
         def internal_source(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Internal_sourceContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Internal_sourceContext, 0
+            )
 
         def external_source(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.External_sourceContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.External_sourceContext, 0
+            )
 
         def Lower_word(self):
             return self.getToken(tptp_v7_0_0_0Parser.Lower_word, 0)
 
         def sources(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.SourcesContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.SourcesContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_source
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSource" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterSource"):
                 listener.enterSource(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSource" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitSource"):
                 listener.exitSource(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSource" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitSource"):
                 return visitor.visitSource(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def source(self):
 
@@ -11331,7 +12025,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
         try:
             self.state = 1369
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,98,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 98, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1361
@@ -11366,7 +12060,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.match(tptp_v7_0_0_0Parser.T__12)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -11376,43 +12069,40 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class SourcesContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def source(self, i:int=None):
+        def source(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.SourceContext)
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.SourceContext,i)
-
+                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.SourceContext, i)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_sources
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSources" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterSources"):
                 listener.enterSources(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSources" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitSources"):
                 listener.exitSources(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSources" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitSources"):
                 return visitor.visitSources(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def sources(self):
 
         localctx = tptp_v7_0_0_0Parser.SourcesContext(self, self._ctx, self.state)
         self.enterRule(localctx, 306, self.RULE_sources)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1371
@@ -11420,7 +12110,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1376
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1372
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 1373
@@ -11438,38 +12128,36 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Dag_sourceContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def name(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext, 0)
 
         def inference_record(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Inference_recordContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Inference_recordContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_dag_source
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDag_source" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterDag_source"):
                 listener.enterDag_source(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDag_source" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitDag_source"):
                 listener.exitDag_source(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDag_source" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitDag_source"):
                 return visitor.visitDag_source(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def dag_source(self):
 
@@ -11479,7 +12167,11 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1381
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Integer, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.Integer,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1379
                 self.name()
@@ -11501,46 +12193,47 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Inference_recordContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def inference_rule(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Inference_ruleContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Inference_ruleContext, 0
+            )
 
         def useful_info(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Useful_infoContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Useful_infoContext, 0)
 
         def inference_parents(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Inference_parentsContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Inference_parentsContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_inference_record
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterInference_record" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterInference_record"):
                 listener.enterInference_record(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitInference_record" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitInference_record"):
                 listener.exitInference_record(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInference_record" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInference_record"):
                 return visitor.visitInference_record(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def inference_record(self):
 
-        localctx = tptp_v7_0_0_0Parser.Inference_recordContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Inference_recordContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 310, self.RULE_inference_record)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -11567,38 +12260,37 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Inference_ruleContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def atomic_word(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_inference_rule
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterInference_rule" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterInference_rule"):
                 listener.enterInference_rule(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitInference_rule" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitInference_rule"):
                 listener.exitInference_rule(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInference_rule" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInference_rule"):
                 return visitor.visitInference_rule(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def inference_rule(self):
 
-        localctx = tptp_v7_0_0_0Parser.Inference_ruleContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Inference_ruleContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 312, self.RULE_inference_rule)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -11613,38 +12305,37 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Inference_parentsContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def parent_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Parent_listContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Parent_listContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_inference_parents
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterInference_parents" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterInference_parents"):
                 listener.enterInference_parents(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitInference_parents" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitInference_parents"):
                 listener.exitInference_parents(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInference_parents" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInference_parents"):
                 return visitor.visitInference_parents(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def inference_parents(self):
 
-        localctx = tptp_v7_0_0_0Parser.Inference_parentsContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Inference_parentsContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 314, self.RULE_inference_parents)
         try:
             self.state = 1398
@@ -11676,43 +12367,42 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Parent_listContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def parent_info(self, i:int=None):
+        def parent_info(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Parent_infoContext)
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Parent_infoContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Parent_infoContext, i
+                )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_parent_list
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParent_list" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterParent_list"):
                 listener.enterParent_list(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParent_list" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitParent_list"):
                 listener.exitParent_list(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParent_list" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitParent_list"):
                 return visitor.visitParent_list(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def parent_list(self):
 
         localctx = tptp_v7_0_0_0Parser.Parent_listContext(self, self._ctx, self.state)
         self.enterRule(localctx, 316, self.RULE_parent_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1400
@@ -11720,7 +12410,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1405
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1401
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 1402
@@ -11738,44 +12428,42 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Parent_infoContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def source(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.SourceContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.SourceContext, 0)
 
         def parent_details(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Parent_detailsContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Parent_detailsContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_parent_info
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParent_info" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterParent_info"):
                 listener.enterParent_info(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParent_info" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitParent_info"):
                 listener.exitParent_info(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParent_info" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitParent_info"):
                 return visitor.visitParent_info(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def parent_info(self):
 
         localctx = tptp_v7_0_0_0Parser.Parent_infoContext(self, self._ctx, self.state)
         self.enterRule(localctx, 318, self.RULE_parent_info)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1408
@@ -11783,10 +12471,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1410
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==tptp_v7_0_0_0Parser.T__13:
+            if _la == tptp_v7_0_0_0Parser.T__13:
                 self.state = 1409
                 self.parent_details()
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -11797,38 +12484,37 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Parent_detailsContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def general_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_listContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_listContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_parent_details
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParent_details" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterParent_details"):
                 listener.enterParent_details(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParent_details" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitParent_details"):
                 listener.exitParent_details(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParent_details" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitParent_details"):
                 return visitor.visitParent_details(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def parent_details(self):
 
-        localctx = tptp_v7_0_0_0Parser.Parent_detailsContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Parent_detailsContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 320, self.RULE_parent_details)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -11845,44 +12531,42 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Internal_sourceContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def intro_type(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Intro_typeContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Intro_typeContext, 0)
 
         def optional_info(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Optional_infoContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Optional_infoContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_internal_source
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterInternal_source" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterInternal_source"):
                 listener.enterInternal_source(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitInternal_source" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitInternal_source"):
                 listener.exitInternal_source(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInternal_source" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInternal_source"):
                 return visitor.visitInternal_source(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def internal_source(self):
 
-        localctx = tptp_v7_0_0_0Parser.Internal_sourceContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Internal_sourceContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 322, self.RULE_internal_source)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1415
@@ -11892,10 +12576,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1418
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==tptp_v7_0_0_0Parser.T__1:
+            if _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1417
                 self.optional_info()
-
 
             self.state = 1420
             self.match(tptp_v7_0_0_0Parser.T__10)
@@ -11908,8 +12591,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Intro_typeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -11919,22 +12603,19 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_intro_type
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterIntro_type" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterIntro_type"):
                 listener.enterIntro_type(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitIntro_type" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitIntro_type"):
                 listener.exitIntro_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIntro_type" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitIntro_type"):
                 return visitor.visitIntro_type(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def intro_type(self):
 
@@ -11953,46 +12634,45 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class External_sourceContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def file_source(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.File_sourceContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.File_sourceContext, 0)
 
         def theory(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.TheoryContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.TheoryContext, 0)
 
         def creator_source(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Creator_sourceContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Creator_sourceContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_external_source
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterExternal_source" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterExternal_source"):
                 listener.enterExternal_source(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitExternal_source" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitExternal_source"):
                 listener.exitExternal_source(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitExternal_source" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitExternal_source"):
                 return visitor.visitExternal_source(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def external_source(self):
 
-        localctx = tptp_v7_0_0_0Parser.External_sourceContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.External_sourceContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 326, self.RULE_external_source)
         try:
             self.state = 1427
@@ -12025,44 +12705,40 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class File_sourceContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def file_name(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.File_nameContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.File_nameContext, 0)
 
         def file_info(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.File_infoContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.File_infoContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_file_source
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFile_source" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFile_source"):
                 listener.enterFile_source(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFile_source" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFile_source"):
                 listener.exitFile_source(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFile_source" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFile_source"):
                 return visitor.visitFile_source(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def file_source(self):
 
         localctx = tptp_v7_0_0_0Parser.File_sourceContext(self, self._ctx, self.state)
         self.enterRule(localctx, 328, self.RULE_file_source)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1429
@@ -12072,10 +12748,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1432
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==tptp_v7_0_0_0Parser.T__1:
+            if _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1431
                 self.file_info()
-
 
             self.state = 1434
             self.match(tptp_v7_0_0_0Parser.T__10)
@@ -12088,34 +12763,31 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class File_infoContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def name(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_file_info
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFile_info" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFile_info"):
                 listener.enterFile_info(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFile_info" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFile_info"):
                 listener.exitFile_info(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFile_info" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFile_info"):
                 return visitor.visitFile_info(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def file_info(self):
 
@@ -12136,44 +12808,40 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class TheoryContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def theory_name(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Theory_nameContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Theory_nameContext, 0)
 
         def optional_info(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Optional_infoContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Optional_infoContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_theory
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTheory" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTheory"):
                 listener.enterTheory(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTheory" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTheory"):
                 listener.exitTheory(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTheory" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTheory"):
                 return visitor.visitTheory(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def theory(self):
 
         localctx = tptp_v7_0_0_0Parser.TheoryContext(self, self._ctx, self.state)
         self.enterRule(localctx, 332, self.RULE_theory)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1439
@@ -12183,10 +12851,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1442
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==tptp_v7_0_0_0Parser.T__1:
+            if _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1441
                 self.optional_info()
-
 
             self.state = 1444
             self.match(tptp_v7_0_0_0Parser.T__10)
@@ -12199,8 +12866,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Theory_nameContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -12210,22 +12878,19 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_theory_name
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTheory_name" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTheory_name"):
                 listener.enterTheory_name(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTheory_name" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTheory_name"):
                 listener.exitTheory_name(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTheory_name" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTheory_name"):
                 return visitor.visitTheory_name(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def theory_name(self):
 
@@ -12244,44 +12909,42 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Creator_sourceContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def creator_name(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Creator_nameContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Creator_nameContext, 0)
 
         def optional_info(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Optional_infoContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Optional_infoContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_creator_source
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterCreator_source" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterCreator_source"):
                 listener.enterCreator_source(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitCreator_source" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitCreator_source"):
                 listener.exitCreator_source(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCreator_source" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitCreator_source"):
                 return visitor.visitCreator_source(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def creator_source(self):
 
-        localctx = tptp_v7_0_0_0Parser.Creator_sourceContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Creator_sourceContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 336, self.RULE_creator_source)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1448
@@ -12291,10 +12954,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1451
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==tptp_v7_0_0_0Parser.T__1:
+            if _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1450
                 self.optional_info()
-
 
             self.state = 1453
             self.match(tptp_v7_0_0_0Parser.T__10)
@@ -12307,34 +12969,31 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Creator_nameContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def atomic_word(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_creator_name
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterCreator_name" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterCreator_name"):
                 listener.enterCreator_name(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitCreator_name" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitCreator_name"):
                 listener.exitCreator_name(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCreator_name" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitCreator_name"):
                 return visitor.visitCreator_name(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def creator_name(self):
 
@@ -12353,34 +13012,31 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Optional_infoContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def useful_info(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Useful_infoContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Useful_infoContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_optional_info
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterOptional_info" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterOptional_info"):
                 listener.enterOptional_info(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitOptional_info" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitOptional_info"):
                 listener.exitOptional_info(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitOptional_info" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitOptional_info"):
                 return visitor.visitOptional_info(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def optional_info(self):
 
@@ -12401,38 +13057,34 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Useful_infoContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def info_items(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Info_itemsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Info_itemsContext, 0)
 
         def general_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_listContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_listContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_useful_info
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterUseful_info" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterUseful_info"):
                 listener.enterUseful_info(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitUseful_info" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitUseful_info"):
                 listener.exitUseful_info(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitUseful_info" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitUseful_info"):
                 return visitor.visitUseful_info(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def useful_info(self):
 
@@ -12441,7 +13093,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
         try:
             self.state = 1466
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,109,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 109, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1460
@@ -12464,7 +13116,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.general_list()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -12474,43 +13125,40 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Info_itemsContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def info_item(self, i:int=None):
+        def info_item(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Info_itemContext)
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Info_itemContext,i)
-
+                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Info_itemContext, i)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_info_items
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterInfo_items" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterInfo_items"):
                 listener.enterInfo_items(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitInfo_items" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitInfo_items"):
                 listener.exitInfo_items(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInfo_items" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInfo_items"):
                 return visitor.visitInfo_items(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def info_items(self):
 
         localctx = tptp_v7_0_0_0Parser.Info_itemsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 344, self.RULE_info_items)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1468
@@ -12518,7 +13166,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1473
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1469
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 1470
@@ -12536,42 +13184,41 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Info_itemContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def formula_item(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_itemContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_itemContext, 0)
 
         def inference_item(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Inference_itemContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Inference_itemContext, 0
+            )
 
         def general_function(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_functionContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.General_functionContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_info_item
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterInfo_item" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterInfo_item"):
                 listener.enterInfo_item(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitInfo_item" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitInfo_item"):
                 listener.exitInfo_item(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInfo_item" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInfo_item"):
                 return visitor.visitInfo_item(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def info_item(self):
 
@@ -12580,7 +13227,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
         try:
             self.state = 1479
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,111,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 111, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1476
@@ -12599,7 +13246,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.general_function()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -12609,38 +13255,36 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Formula_itemContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def description_item(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Description_itemContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Description_itemContext, 0
+            )
 
         def iquote_item(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Iquote_itemContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Iquote_itemContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_formula_item
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFormula_item" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFormula_item"):
                 listener.enterFormula_item(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFormula_item" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFormula_item"):
                 listener.exitFormula_item(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFormula_item" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFormula_item"):
                 return visitor.visitFormula_item(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def formula_item(self):
 
@@ -12672,38 +13316,37 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Description_itemContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def atomic_word(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_description_item
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDescription_item" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterDescription_item"):
                 listener.enterDescription_item(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDescription_item" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitDescription_item"):
                 listener.exitDescription_item(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDescription_item" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitDescription_item"):
                 return visitor.visitDescription_item(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def description_item(self):
 
-        localctx = tptp_v7_0_0_0Parser.Description_itemContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Description_itemContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 350, self.RULE_description_item)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -12722,34 +13365,31 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Iquote_itemContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def atomic_word(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_iquote_item
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterIquote_item" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterIquote_item"):
                 listener.enterIquote_item(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitIquote_item" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitIquote_item"):
                 listener.exitIquote_item(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIquote_item" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitIquote_item"):
                 return visitor.visitIquote_item(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def iquote_item(self):
 
@@ -12772,56 +13412,62 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Inference_itemContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def inference_status(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Inference_statusContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Inference_statusContext, 0
+            )
 
         def assumptions_record(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Assumptions_recordContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Assumptions_recordContext, 0
+            )
 
         def new_symbol_record(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.New_symbol_recordContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.New_symbol_recordContext, 0
+            )
 
         def refutation(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.RefutationContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.RefutationContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_inference_item
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterInference_item" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterInference_item"):
                 listener.enterInference_item(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitInference_item" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitInference_item"):
                 listener.exitInference_item(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInference_item" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInference_item"):
                 return visitor.visitInference_item(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def inference_item(self):
 
-        localctx = tptp_v7_0_0_0Parser.Inference_itemContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Inference_itemContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 354, self.RULE_inference_item)
         try:
             self.state = 1497
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.T__33, tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.T__33,
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1493
                 self.inference_status()
@@ -12853,42 +13499,42 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Inference_statusContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def status_value(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Status_valueContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Status_valueContext, 0)
 
         def inference_info(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Inference_infoContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Inference_infoContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_inference_status
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterInference_status" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterInference_status"):
                 listener.enterInference_status(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitInference_status" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitInference_status"):
                 listener.exitInference_status(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInference_status" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInference_status"):
                 return visitor.visitInference_status(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def inference_status(self):
 
-        localctx = tptp_v7_0_0_0Parser.Inference_statusContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Inference_statusContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 356, self.RULE_inference_status)
         try:
             self.state = 1504
@@ -12903,7 +13549,10 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.state = 1501
                 self.match(tptp_v7_0_0_0Parser.T__10)
                 pass
-            elif token in [tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            elif token in [
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1503
                 self.inference_info()
@@ -12920,8 +13569,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Status_valueContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -12931,22 +13581,19 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_status_value
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterStatus_value" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterStatus_value"):
                 listener.enterStatus_value(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitStatus_value" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitStatus_value"):
                 listener.exitStatus_value(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStatus_value" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitStatus_value"):
                 return visitor.visitStatus_value(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def status_value(self):
 
@@ -12965,46 +13612,45 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Inference_infoContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def inference_rule(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Inference_ruleContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Inference_ruleContext, 0
+            )
 
         def atomic_word(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext, 0)
 
         def general_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_listContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_listContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_inference_info
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterInference_info" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterInference_info"):
                 listener.enterInference_info(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitInference_info" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitInference_info"):
                 listener.exitInference_info(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInference_info" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInference_info"):
                 return visitor.visitInference_info(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def inference_info(self):
 
-        localctx = tptp_v7_0_0_0Parser.Inference_infoContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Inference_infoContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 360, self.RULE_inference_info)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -13029,38 +13675,37 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Assumptions_recordContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def name_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Name_listContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Name_listContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_assumptions_record
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAssumptions_record" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAssumptions_record"):
                 listener.enterAssumptions_record(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAssumptions_record" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAssumptions_record"):
                 listener.exitAssumptions_record(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAssumptions_record" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAssumptions_record"):
                 return visitor.visitAssumptions_record(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def assumptions_record(self):
 
-        localctx = tptp_v7_0_0_0Parser.Assumptions_recordContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Assumptions_recordContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 362, self.RULE_assumptions_record)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -13083,34 +13728,31 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class RefutationContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def file_source(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.File_sourceContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.File_sourceContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_refutation
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRefutation" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterRefutation"):
                 listener.enterRefutation(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRefutation" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitRefutation"):
                 listener.exitRefutation(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRefutation" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRefutation"):
                 return visitor.visitRefutation(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def refutation(self):
 
@@ -13133,42 +13775,42 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class New_symbol_recordContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def atomic_word(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext, 0)
 
         def new_symbol_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.New_symbol_listContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.New_symbol_listContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_new_symbol_record
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterNew_symbol_record" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterNew_symbol_record"):
                 listener.enterNew_symbol_record(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitNew_symbol_record" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitNew_symbol_record"):
                 listener.exitNew_symbol_record(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNew_symbol_record" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNew_symbol_record"):
                 return visitor.visitNew_symbol_record(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def new_symbol_record(self):
 
-        localctx = tptp_v7_0_0_0Parser.New_symbol_recordContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.New_symbol_recordContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 366, self.RULE_new_symbol_record)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -13195,43 +13837,46 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class New_symbol_listContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def principal_symbol(self, i:int=None):
+        def principal_symbol(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.Principal_symbolContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.Principal_symbolContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Principal_symbolContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.Principal_symbolContext, i
+                )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_new_symbol_list
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterNew_symbol_list" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterNew_symbol_list"):
                 listener.enterNew_symbol_list(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitNew_symbol_list" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitNew_symbol_list"):
                 listener.exitNew_symbol_list(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNew_symbol_list" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNew_symbol_list"):
                 return visitor.visitNew_symbol_list(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def new_symbol_list(self):
 
-        localctx = tptp_v7_0_0_0Parser.New_symbol_listContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.New_symbol_listContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 368, self.RULE_new_symbol_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1533
@@ -13239,7 +13884,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1538
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1534
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 1535
@@ -13257,48 +13902,49 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Principal_symbolContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def functor(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.FunctorContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.FunctorContext, 0)
 
         def variable(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_principal_symbol
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPrincipal_symbol" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterPrincipal_symbol"):
                 listener.enterPrincipal_symbol(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPrincipal_symbol" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitPrincipal_symbol"):
                 listener.exitPrincipal_symbol(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPrincipal_symbol" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitPrincipal_symbol"):
                 return visitor.visitPrincipal_symbol(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def principal_symbol(self):
 
-        localctx = tptp_v7_0_0_0Parser.Principal_symbolContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Principal_symbolContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 370, self.RULE_principal_symbol)
         try:
             self.state = 1543
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1541
                 self.functor()
@@ -13320,44 +13966,42 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class IncludeContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def file_name(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.File_nameContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.File_nameContext, 0)
 
         def formula_selection(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_selectionContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.Formula_selectionContext, 0
+            )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_include
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterInclude" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterInclude"):
                 listener.enterInclude(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitInclude" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitInclude"):
                 listener.exitInclude(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInclude" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitInclude"):
                 return visitor.visitInclude(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def include(self):
 
         localctx = tptp_v7_0_0_0Parser.IncludeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 372, self.RULE_include)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1545
@@ -13367,10 +14011,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1548
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==tptp_v7_0_0_0Parser.T__1:
+            if _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1547
                 self.formula_selection()
-
 
             self.state = 1550
             self.match(tptp_v7_0_0_0Parser.T__2)
@@ -13383,38 +14026,37 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Formula_selectionContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def name_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Name_listContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Name_listContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_formula_selection
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFormula_selection" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFormula_selection"):
                 listener.enterFormula_selection(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFormula_selection" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFormula_selection"):
                 listener.exitFormula_selection(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFormula_selection" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFormula_selection"):
                 return visitor.visitFormula_selection(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def formula_selection(self):
 
-        localctx = tptp_v7_0_0_0Parser.Formula_selectionContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Formula_selectionContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 374, self.RULE_formula_selection)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -13435,43 +14077,40 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Name_listContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def name(self, i:int=None):
+        def name(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.NameContext)
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext,i)
-
+                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NameContext, i)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_name_list
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterName_list" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterName_list"):
                 listener.enterName_list(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitName_list" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitName_list"):
                 listener.exitName_list(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitName_list" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitName_list"):
                 return visitor.visitName_list(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def name_list(self):
 
         localctx = tptp_v7_0_0_0Parser.Name_listContext(self, self._ctx, self.state)
         self.enterRule(localctx, 376, self.RULE_name_list)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1557
@@ -13479,7 +14118,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1562
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1558
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 1559
@@ -13497,42 +14136,37 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class General_termContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def general_data(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_dataContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_dataContext, 0)
 
         def general_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_termContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_termContext, 0)
 
         def general_list(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_listContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_listContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_general_term
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterGeneral_term" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterGeneral_term"):
                 listener.enterGeneral_term(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitGeneral_term" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitGeneral_term"):
                 listener.exitGeneral_term(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitGeneral_term" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitGeneral_term"):
                 return visitor.visitGeneral_term(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def general_term(self):
 
@@ -13541,7 +14175,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
         try:
             self.state = 1571
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,119,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 119, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1565
@@ -13564,7 +14198,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.general_list()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -13574,53 +14207,48 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class General_dataContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def atomic_word(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext, 0)
 
         def general_function(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_functionContext,0)
-
+            return self.getTypedRuleContext(
+                tptp_v7_0_0_0Parser.General_functionContext, 0
+            )
 
         def variable(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.VariableContext, 0)
 
         def number(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NumberContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.NumberContext, 0)
 
         def Distinct_object(self):
             return self.getToken(tptp_v7_0_0_0Parser.Distinct_object, 0)
 
         def formula_data(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_dataContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Formula_dataContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_general_data
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterGeneral_data" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterGeneral_data"):
                 listener.enterGeneral_data(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitGeneral_data" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitGeneral_data"):
                 listener.exitGeneral_data(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitGeneral_data" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitGeneral_data"):
                 return visitor.visitGeneral_data(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def general_data(self):
 
@@ -13629,7 +14257,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
         try:
             self.state = 1579
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,120,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 120, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1573
@@ -13666,7 +14294,6 @@ class tptp_v7_0_0_0Parser ( Parser ):
                 self.formula_data()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -13676,42 +14303,40 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class General_functionContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def atomic_word(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext, 0)
 
         def general_terms(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_termsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_termsContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_general_function
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterGeneral_function" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterGeneral_function"):
                 listener.enterGeneral_function(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitGeneral_function" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitGeneral_function"):
                 listener.exitGeneral_function(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitGeneral_function" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitGeneral_function"):
                 return visitor.visitGeneral_function(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def general_function(self):
 
-        localctx = tptp_v7_0_0_0Parser.General_functionContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.General_functionContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 382, self.RULE_general_function)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -13732,50 +14357,43 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Formula_dataContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def thf_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Thf_formulaContext, 0)
 
         def tff_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Tff_formulaContext, 0)
 
         def fof_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_formulaContext, 0)
 
         def cnf_formula(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Cnf_formulaContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Cnf_formulaContext, 0)
 
         def fof_term(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_termContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Fof_termContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_formula_data
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFormula_data" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFormula_data"):
                 listener.enterFormula_data(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFormula_data" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFormula_data"):
                 listener.exitFormula_data(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFormula_data" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFormula_data"):
                 return visitor.visitFormula_data(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def formula_data(self):
 
@@ -13842,34 +14460,31 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class General_listContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def general_terms(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_termsContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_termsContext, 0)
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_general_list
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterGeneral_list" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterGeneral_list"):
                 listener.enterGeneral_list(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitGeneral_list" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitGeneral_list"):
                 listener.exitGeneral_list(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitGeneral_list" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitGeneral_list"):
                 return visitor.visitGeneral_list(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def general_list(self):
 
@@ -13905,43 +14520,44 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class General_termsContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def general_term(self, i:int=None):
+        def general_term(self, i: int = None):
             if i is None:
-                return self.getTypedRuleContexts(tptp_v7_0_0_0Parser.General_termContext)
+                return self.getTypedRuleContexts(
+                    tptp_v7_0_0_0Parser.General_termContext
+                )
             else:
-                return self.getTypedRuleContext(tptp_v7_0_0_0Parser.General_termContext,i)
-
+                return self.getTypedRuleContext(
+                    tptp_v7_0_0_0Parser.General_termContext, i
+                )
 
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_general_terms
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterGeneral_terms" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterGeneral_terms"):
                 listener.enterGeneral_terms(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitGeneral_terms" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitGeneral_terms"):
                 listener.exitGeneral_terms(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitGeneral_terms" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitGeneral_terms"):
                 return visitor.visitGeneral_terms(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def general_terms(self):
 
         localctx = tptp_v7_0_0_0Parser.General_termsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 388, self.RULE_general_terms)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1615
@@ -13949,7 +14565,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1620
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==tptp_v7_0_0_0Parser.T__1:
+            while _la == tptp_v7_0_0_0Parser.T__1:
                 self.state = 1616
                 self.match(tptp_v7_0_0_0Parser.T__1)
                 self.state = 1617
@@ -13967,14 +14583,14 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class NameContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def atomic_word(self):
-            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext,0)
-
+            return self.getTypedRuleContext(tptp_v7_0_0_0Parser.Atomic_wordContext, 0)
 
         def Integer(self):
             return self.getToken(tptp_v7_0_0_0Parser.Integer, 0)
@@ -13982,22 +14598,19 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_name
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterName" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterName"):
                 listener.enterName(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitName" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitName"):
                 listener.exitName(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitName" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitName"):
                 return visitor.visitName(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def name(self):
 
@@ -14007,7 +14620,10 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.state = 1625
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [tptp_v7_0_0_0Parser.Lower_word, tptp_v7_0_0_0Parser.Single_quoted]:
+            if token in [
+                tptp_v7_0_0_0Parser.Lower_word,
+                tptp_v7_0_0_0Parser.Single_quoted,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1623
                 self.atomic_word()
@@ -14029,8 +14645,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Atomic_wordContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -14043,33 +14660,33 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_atomic_word
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAtomic_word" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAtomic_word"):
                 listener.enterAtomic_word(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAtomic_word" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAtomic_word"):
                 listener.exitAtomic_word(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAtomic_word" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAtomic_word"):
                 return visitor.visitAtomic_word(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def atomic_word(self):
 
         localctx = tptp_v7_0_0_0Parser.Atomic_wordContext(self, self._ctx, self.state)
         self.enterRule(localctx, 392, self.RULE_atomic_word)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1627
             _la = self._input.LA(1)
-            if not(_la==tptp_v7_0_0_0Parser.Lower_word or _la==tptp_v7_0_0_0Parser.Single_quoted):
+            if not (
+                _la == tptp_v7_0_0_0Parser.Lower_word
+                or _la == tptp_v7_0_0_0Parser.Single_quoted
+            ):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -14083,8 +14700,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Atomic_defined_wordContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -14094,26 +14712,25 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_atomic_defined_word
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAtomic_defined_word" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAtomic_defined_word"):
                 listener.enterAtomic_defined_word(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAtomic_defined_word" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAtomic_defined_word"):
                 listener.exitAtomic_defined_word(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAtomic_defined_word" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAtomic_defined_word"):
                 return visitor.visitAtomic_defined_word(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def atomic_defined_word(self):
 
-        localctx = tptp_v7_0_0_0Parser.Atomic_defined_wordContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Atomic_defined_wordContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 394, self.RULE_atomic_defined_word)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -14128,8 +14745,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class Atomic_system_wordContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -14139,26 +14757,25 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_atomic_system_word
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAtomic_system_word" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAtomic_system_word"):
                 listener.enterAtomic_system_word(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAtomic_system_word" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAtomic_system_word"):
                 listener.exitAtomic_system_word(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAtomic_system_word" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAtomic_system_word"):
                 return visitor.visitAtomic_system_word(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-
     def atomic_system_word(self):
 
-        localctx = tptp_v7_0_0_0Parser.Atomic_system_wordContext(self, self._ctx, self.state)
+        localctx = tptp_v7_0_0_0Parser.Atomic_system_wordContext(
+            self, self._ctx, self.state
+        )
         self.enterRule(localctx, 396, self.RULE_atomic_system_word)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -14173,8 +14790,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class NumberContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -14190,33 +14808,43 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_number
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterNumber" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterNumber"):
                 listener.enterNumber(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitNumber" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitNumber"):
                 listener.exitNumber(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNumber" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNumber"):
                 return visitor.visitNumber(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def number(self):
 
         localctx = tptp_v7_0_0_0Parser.NumberContext(self, self._ctx, self.state)
         self.enterRule(localctx, 398, self.RULE_number)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1633
             _la = self._input.LA(1)
-            if not(((((_la - 74)) & ~0x3f) == 0 and ((1 << (_la - 74)) & ((1 << (tptp_v7_0_0_0Parser.Real - 74)) | (1 << (tptp_v7_0_0_0Parser.Rational - 74)) | (1 << (tptp_v7_0_0_0Parser.Integer - 74)))) != 0)):
+            if not (
+                (
+                    (((_la - 74)) & ~0x3F) == 0
+                    and (
+                        (1 << (_la - 74))
+                        & (
+                            (1 << (tptp_v7_0_0_0Parser.Real - 74))
+                            | (1 << (tptp_v7_0_0_0Parser.Rational - 74))
+                            | (1 << (tptp_v7_0_0_0Parser.Integer - 74))
+                        )
+                    )
+                    != 0
+                )
+            ):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -14230,8 +14858,9 @@ class tptp_v7_0_0_0Parser ( Parser ):
         return localctx
 
     class File_nameContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -14241,22 +14870,19 @@ class tptp_v7_0_0_0Parser ( Parser ):
         def getRuleIndex(self):
             return tptp_v7_0_0_0Parser.RULE_file_name
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFile_name" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFile_name"):
                 listener.enterFile_name(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFile_name" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFile_name"):
                 listener.exitFile_name(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFile_name" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFile_name"):
                 return visitor.visitFile_name(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def file_name(self):
 
@@ -14274,9 +14900,7 @@ class tptp_v7_0_0_0Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
-
-    def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
+    def sempred(self, localctx: RuleContext, ruleIndex: int, predIndex: int):
         if self._predicates == None:
             self._predicates = dict()
         self._predicates[18] = self.thf_or_formula_sempred
@@ -14296,56 +14920,48 @@ class tptp_v7_0_0_0Parser ( Parser ):
         else:
             return pred(localctx, predIndex)
 
-    def thf_or_formula_sempred(self, localctx:Thf_or_formulaContext, predIndex:int):
-            if predIndex == 0:
-                return self.precpred(self._ctx, 1)
-         
+    def thf_or_formula_sempred(self, localctx: Thf_or_formulaContext, predIndex: int):
+        if predIndex == 0:
+            return self.precpred(self._ctx, 1)
 
-    def thf_and_formula_sempred(self, localctx:Thf_and_formulaContext, predIndex:int):
-            if predIndex == 1:
-                return self.precpred(self._ctx, 1)
-         
+    def thf_and_formula_sempred(self, localctx: Thf_and_formulaContext, predIndex: int):
+        if predIndex == 1:
+            return self.precpred(self._ctx, 1)
 
-    def thf_apply_formula_sempred(self, localctx:Thf_apply_formulaContext, predIndex:int):
-            if predIndex == 2:
-                return self.precpred(self._ctx, 1)
-         
+    def thf_apply_formula_sempred(
+        self, localctx: Thf_apply_formulaContext, predIndex: int
+    ):
+        if predIndex == 2:
+            return self.precpred(self._ctx, 1)
 
-    def thf_xprod_type_sempred(self, localctx:Thf_xprod_typeContext, predIndex:int):
-            if predIndex == 3:
-                return self.precpred(self._ctx, 1)
-         
+    def thf_xprod_type_sempred(self, localctx: Thf_xprod_typeContext, predIndex: int):
+        if predIndex == 3:
+            return self.precpred(self._ctx, 1)
 
-    def thf_union_type_sempred(self, localctx:Thf_union_typeContext, predIndex:int):
-            if predIndex == 4:
-                return self.precpred(self._ctx, 1)
-         
+    def thf_union_type_sempred(self, localctx: Thf_union_typeContext, predIndex: int):
+        if predIndex == 4:
+            return self.precpred(self._ctx, 1)
 
-    def tff_or_formula_sempred(self, localctx:Tff_or_formulaContext, predIndex:int):
-            if predIndex == 5:
-                return self.precpred(self._ctx, 1)
-         
+    def tff_or_formula_sempred(self, localctx: Tff_or_formulaContext, predIndex: int):
+        if predIndex == 5:
+            return self.precpred(self._ctx, 1)
 
-    def tff_and_formula_sempred(self, localctx:Tff_and_formulaContext, predIndex:int):
-            if predIndex == 6:
-                return self.precpred(self._ctx, 1)
-         
+    def tff_and_formula_sempred(self, localctx: Tff_and_formulaContext, predIndex: int):
+        if predIndex == 6:
+            return self.precpred(self._ctx, 1)
 
-    def tff_xprod_type_sempred(self, localctx:Tff_xprod_typeContext, predIndex:int):
-            if predIndex == 7:
-                return self.precpred(self._ctx, 1)
-         
+    def tff_xprod_type_sempred(self, localctx: Tff_xprod_typeContext, predIndex: int):
+        if predIndex == 7:
+            return self.precpred(self._ctx, 1)
 
-    def fof_or_formula_sempred(self, localctx:Fof_or_formulaContext, predIndex:int):
-            if predIndex == 8:
-                return self.precpred(self._ctx, 1)
-         
+    def fof_or_formula_sempred(self, localctx: Fof_or_formulaContext, predIndex: int):
+        if predIndex == 8:
+            return self.precpred(self._ctx, 1)
 
-    def fof_and_formula_sempred(self, localctx:Fof_and_formulaContext, predIndex:int):
-            if predIndex == 9:
-                return self.precpred(self._ctx, 1)
-         
+    def fof_and_formula_sempred(self, localctx: Fof_and_formulaContext, predIndex: int):
+        if predIndex == 9:
+            return self.precpred(self._ctx, 1)
 
-    def cnf_disjunction_sempred(self, localctx:Cnf_disjunctionContext, predIndex:int):
-            if predIndex == 10:
-                return self.precpred(self._ctx, 1)
+    def cnf_disjunction_sempred(self, localctx: Cnf_disjunctionContext, predIndex: int):
+        if predIndex == 10:
+            return self.precpred(self._ctx, 1)

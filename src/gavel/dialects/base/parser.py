@@ -39,9 +39,8 @@ class Parser(Generic[Parseable, Target]):
         """
         raise NotImplementedError
 
-    def load_many(self, string: Iterable[str])->Iterable[Parseable]:
+    def load_many(self, string: Iterable[str]) -> Iterable[Parseable]:
         raise NotImplementedError
-
 
     def parse_from_string(
         self,

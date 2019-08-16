@@ -41,7 +41,10 @@ class Sine(Selector):
         return self.calculate_triggers()
 
     def trigger(self, symbol, sentence: FOLElement) -> bool:
-        return symbol in sentence.symbols() and all(self.commonness[symbol] <= self.commonness[symbol2] for symbol2 in sentence.symbols())
+        return symbol in sentence.symbols() and all(
+            self.commonness[symbol] <= self.commonness[symbol2]
+            for symbol2 in sentence.symbols()
+        )
 
     def calculate_triggers(self):
         remaining_premises = list(self.premises)
@@ -54,7 +57,7 @@ class Sine(Selector):
             newer_symbols = set()
             for p in remaining_premises:
                 p_symbs = self._premise_symbols[p]
-                #If s is k-step triggered and s triggers A, then A is k + 1-step triggered
+                # If s is k-step triggered and s triggers A, then A is k + 1-step triggered
                 if any(self.trigger(s, p) for s in k_triggered_symbols):
                     newer_symbols = newer_symbols.union(p_symbs)
                     yield p
@@ -71,14 +74,23 @@ class SineTolerance(Sine):
         self.tolerance = tolerance
 
     def trigger(self, symbol, sentence: FOLElement) -> bool:
-        return symbol in sentence.symbols() and all(self.commonness[symbol] <= self.tolerance * self.commonness[symbol2] for symbol2 in sentence.symbols())
+        return symbol in sentence.symbols() and all(
+            self.commonness[symbol] <= self.tolerance * self.commonness[symbol2]
+            for symbol2 in sentence.symbols()
+        )
 
 
 class SineGenerality(Sine):
-
     def __init__(self, *args, generality, **kwargs):
         super(SineGenerality, self).__init__(*args, **kwargs)
         self.generality = generality
 
     def trigger(self, symbol, sentence: FOLElement) -> bool:
-        return symbol in sentence.symbols() and self.commonness[symbol] <= self.generality and all(self.commonness[symbol] <= self.commonness[symbol2] for symbol2 in sentence.symbols())
+        return (
+            symbol in sentence.symbols()
+            and self.commonness[symbol] <= self.generality
+            and all(
+                self.commonness[symbol] <= self.commonness[symbol2]
+                for symbol2 in sentence.symbols()
+            )
+        )

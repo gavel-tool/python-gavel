@@ -50,8 +50,14 @@ class HetsProve(HetsCall, BaseProverInterface):
                 iri,
                 json=dict(
                     format="json",
-
-                    goals=[dict(node=node, reasonerConfiguration=dict(timeLimit=100, reasoner="Vampire"))],
+                    goals=[
+                        dict(
+                            node=node,
+                            reasonerConfiguration=dict(
+                                timeLimit=100, reasoner="Vampire"
+                            ),
+                        )
+                    ],
                 ),
             )
             if response.status_code == 200:
