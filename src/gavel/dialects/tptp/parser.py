@@ -11,7 +11,8 @@ from antlr4 import InputStream
 
 import gavel.dialects.db.structures as db
 import gavel.settings as settings
-from gavel.dialects.base.parser import LogicParser, ProblemParser
+from gavel.dialects.base.parser import LogicParser
+from gavel.dialects.base.parser import ProblemParser
 from gavel.dialects.db.connection import get_or_create
 from gavel.dialects.db.connection import get_or_None
 from gavel.dialects.db.connection import with_session

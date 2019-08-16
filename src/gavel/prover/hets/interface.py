@@ -1,15 +1,16 @@
 import json
 import tempfile
+from urllib.parse import quote
 
-from gavel.settings import HETS_HOST
-from gavel.settings import HETS_PORT
 import requests as req
 
-from urllib.parse import quote
 from gavel.dialects.base.compiler import Compiler
 from gavel.dialects.tptp.parser import TPTPParser
 from gavel.logic.fol import Problem
 from gavel.prover.base.interface import BaseProverInterface
+from gavel.settings import HETS_HOST
+from gavel.settings import HETS_PORT
+
 
 class HetsCall:
     def __init__(self, paths):
@@ -59,11 +60,3 @@ class HetsProve(HetsCall, BaseProverInterface):
                     yield goal["prover_output"]
             else:
                 raise Exception(response.content)
-
-
-
-
-
-
-
-

@@ -21,10 +21,12 @@ import gavel.dialects.db.structures as fol_db
 import gavel.dialects.tptp.parser as build_tptp
 import gavel.settings as settings
 from gavel.dialects.tptp.compiler import TPTPCompiler
-from gavel.dialects.tptp.parser import TPTPParser, Problem
+from gavel.dialects.tptp.parser import Problem
+from gavel.dialects.tptp.parser import TPTPParser
 from gavel.prover.hets.interface import HetsProve
 from gavel.prover.vampire.interface import VampireInterface
 from gavel.selection.selector import Sine
+
 
 @click.group()
 def db():

@@ -2,8 +2,9 @@ from enum import Enum
 from itertools import chain
 from typing import Iterable
 
-from gavel.logic.base import LogicElement, Sentence
+from gavel.logic.base import LogicElement
 from gavel.logic.base import Problem
+from gavel.logic.base import Sentence
 
 
 class FOLElement(LogicElement):

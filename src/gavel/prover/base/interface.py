@@ -1,6 +1,8 @@
-from gavel.dialects.base.dialect import Problem, Dialect
-from gavel.logic.base import LogicElement
 from typing import Iterable
+
+from gavel.dialects.base.dialect import Dialect
+from gavel.dialects.base.dialect import Problem
+from gavel.logic.base import LogicElement
 
 
 class BaseProverInterface:
@@ -21,4 +23,3 @@ class BaseProverInterface:
 class BaseResultHandler:
     def get_used_axioms(self):
         raise NotImplementedError
-

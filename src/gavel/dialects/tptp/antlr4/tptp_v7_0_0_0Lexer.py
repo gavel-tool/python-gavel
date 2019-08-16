@@ -1,8 +1,9 @@
 # Generated from tptp_v7_0_0_0.g4 by ANTLR 4.7.2
-from antlr4 import *
+import sys
 from io import StringIO
 from typing.io import TextIO
-import sys
+
+from antlr4 import *
 
 
 def serializedATN():
@@ -499,5 +500,3 @@ class tptp_v7_0_0_0Lexer(Lexer):
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None
-
-

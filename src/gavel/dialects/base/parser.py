@@ -2,8 +2,9 @@ from typing import Generic
 from typing import Iterable
 from typing import TypeVar
 
-from gavel.logic.base import LogicElement, Sentence
+from gavel.logic.base import LogicElement
 from gavel.logic.base import Problem
+from gavel.logic.base import Sentence
 
 Parseable = TypeVar("Parseable")
 Target = TypeVar("Target")
