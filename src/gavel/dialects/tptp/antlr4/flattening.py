@@ -941,7 +941,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#constant.
     def visitConstant(self, ctx: tptp_v7_0_0_0Parser.ConstantContext):
-        return self.visit_first(ctx)
+        return structures.Constant(self.visit_first(ctx))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#functor.
     def visitFunctor(self, ctx: tptp_v7_0_0_0Parser.FunctorContext):

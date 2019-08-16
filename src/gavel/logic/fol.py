@@ -187,12 +187,8 @@ class QuantifiedFormula(FOLElement):
         )
 
     def symbols(self):
-        for variable in self.variables:
-            for symbol in variable.symbols():
-                yield symbol
-        for symbol in self.formula.symbols():
-            yield symbol
-
+        variables = {symbol for variable in self.variables for symbol in variable.symbols()}
+        return set(self.formula.symbols()).difference(variables)
 
 class AnnotatedFormula(FOLElement, Sentence):
 
@@ -210,6 +206,9 @@ class AnnotatedFormula(FOLElement, Sentence):
 
     def is_conjecture(self):
         return self.role in (FormulaRole.CONJECTURE, FormulaRole.NEGATED_CONJECTURE)
+
+    def __str__(self):
+        return f"{self.logic}({self.name},{self.role},{self.formula})"
 
 
 class BinaryFormula(FOLElement):
@@ -243,7 +242,14 @@ class FunctorExpression(FOLElement):
 
     def symbols(self):
         yield self.functor
-        return chain(*map(lambda x: x.symbols(), self.arguments))
+        for argument in self.arguments:
+            if isinstance(argument, FOLElement):
+                for s in argument.symbols():
+                    yield s
+            elif isinstance(argument, str):
+                yield argument
+            else:
+                raise NotImplementedError
 
 
 class PredicateExpression(FOLElement):
@@ -313,9 +319,25 @@ class Variable(FOLElement):
     def __init__(self, symbol):
         self.symbol = symbol
 
+    def __str__(self):
+        return self.symbol
+
+    def symbols(self):
+        return set()
+
+
+class Constant(FOLElement):
+
+    __visit_name__ = "constant"
+
+    def __init__(self, symbol):
+        self.symbol = symbol
+
+    def __str__(self):
+        return self.symbol
+
     def symbols(self):
         return {self.symbol}
-
 
 class Let(FOLElement):
 

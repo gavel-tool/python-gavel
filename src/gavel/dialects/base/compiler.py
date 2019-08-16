@@ -75,5 +75,8 @@ class Compiler:
     def visit_variable(self, variable: fol.Variable):
         raise NotImplementedError
 
+    def visit_constant(self, variable: fol.Variable):
+        raise NotImplementedError
+
     def visit_problem(self, problem: fol.Problem):
         raise NotImplementedError

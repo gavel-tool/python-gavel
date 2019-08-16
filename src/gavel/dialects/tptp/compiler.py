@@ -234,6 +234,9 @@ class TPTPCompiler(Compiler):
     def visit_variable(self, variable: fol.Variable):
         return variable.symbol
 
+    def visit_constant(self, variable: fol.Variable):
+        return variable.symbol
+
     def visit_problem(self, problem: fol.Problem):
         L = [self.visit(axiom) for axiom in problem.premises]
         L.append(self.visit(problem.conjecture))
