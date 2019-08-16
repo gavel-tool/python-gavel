@@ -21,9 +21,10 @@ import gavel.dialects.db.structures as fol_db
 import gavel.dialects.tptp.parser as build_tptp
 import gavel.settings as settings
 from gavel.dialects.tptp.compiler import TPTPCompiler
-from gavel.dialects.tptp.parser import TPTPParser
+from gavel.dialects.tptp.parser import TPTPParser, Problem
 from gavel.prover.hets.interface import HetsProve
 from gavel.prover.vampire.interface import VampireInterface
+from gavel.selection.selector import Sine
 
 @click.group()
 def db():
@@ -74,15 +75,33 @@ def clear_db(p):
 
 @click.command()
 @click.argument("f")
-def prove(f):
+@click.option("-s", default=None)
+def prove(f, s):
     processor = TPTPParser()
     vp = VampireInterface()
     hp = HetsProve(vp)
     problems = list(processor.problem_processor(f))
     compiler = TPTPCompiler()
     for problem in problems:
+        if s is not None:
+            selector = Sine(premises=problem.premises,
+                            conjecture=problem.conjecture, max_depth=10)
+            problem = Problem(premises=selector.select(),
+                              conjecture=problem.conjecture)
         for goal_result in hp.prove(problem, compiler):
             print(goal_result)
+
+
+@click.command()
+@click.argument("f")
+def select(f):
+    processor = TPTPParser()
+    problem = list(processor.problem_processor(f))[0]
+    selector = Sine(premises=problem.premises, conjecture=problem.conjecture, max_depth=10)
+    smaller_problem = Problem(premises=selector.select(), conjecture=problem.conjecture)
+    for prem in list(smaller_problem.premises):
+        print(prem)
+    print(smaller_problem.conjecture)
 
 
 db.add_command(init_db)
@@ -93,6 +112,8 @@ db.add_command(store_tptp)
 db.add_command(store_solutions)
 
 db.add_command(prove)
+
+db.add_command(select)
 
 cli = click.CommandCollection(sources=[db])
 
