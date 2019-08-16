@@ -4,9 +4,10 @@ from __future__ import absolute_import
 from __future__ import print_function
 
 import io
-
 import os
 import re
+import subprocess
+import sys
 from glob import glob
 from os.path import basename
 from os.path import dirname
@@ -18,9 +19,6 @@ from setuptools import Extension
 from setuptools import find_packages
 from setuptools import setup
 from setuptools.command.build_ext import build_ext
-
-import subprocess
-import sys
 
 
 def read(*names, **kwargs):
@@ -125,7 +123,7 @@ setup(
         "pre-commit",
         "pytest",
         "requests",
-        "tensorflow"
+        "tensorflow",
     ],
     extras_require={
         # eg:
