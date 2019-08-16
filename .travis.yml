@@ -64,10 +64,6 @@ install:
 
 
 before_script:
-  - git submodule init
-  - git submodule sync
-  - git submodule update
-  - (cd src/gavel/language/tptp/parser/base/; antlr4 -o .. -visitor -Dlanguage=Python3 tptp_v7_0_0_0.g4)
   - wget "http://www.tptp.org/TPTP/Archive/TPTP-v7.0.0.tgz"
   - mkdir "$HOME/TPTP"
   - tar -xf TPTP-v7.0.0.tgz -C "$HOME/TPTP" --strip-components 1

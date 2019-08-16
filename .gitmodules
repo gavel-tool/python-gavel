@@ -1,3 +1,0 @@
-[submodule "src/gavel/dialects/tptp/antlr4/base"]
-	path = src/gavel/dialects/tptp/antlr4/base
-	url = https://github.com/TobiasGleissner/TPTP-ANTLR4-Grammar.git

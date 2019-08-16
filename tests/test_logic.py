@@ -1,5 +1,5 @@
 from gavel.dialects.tptp.antlr4 import tptp_v7_0_0_0Parser
-from gavel.dialects.tptp.tptpparser import TPTPParser
+from gavel.dialects.tptp.parser import TPTPParser
 import unittest
 
 

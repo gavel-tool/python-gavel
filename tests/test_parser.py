@@ -1,4 +1,4 @@
-from gavel.dialects.tptp.tptpparser import TPTPParser, StorageProcessor
+from gavel.dialects.tptp.parser import TPTPParser, StorageProcessor
 from gavel.dialects.tptp.compiler import Compiler
 from gavel.dialects.db.connection import with_session
 from gavel.settings import TPTP_ROOT
