@@ -136,7 +136,7 @@ class StorageProcessor(TPTPParser):
         premises = []
         conjectures = []
         if s_created:
-            for line, orig in self.load_expressions_from_file(path):
+            for line in self.load_expressions_from_file(path):
                 if isinstance(line, fol.Import):
                     imported_source = (
                         session.query(db.Source).filter_by(path=line.path).first()
@@ -165,7 +165,6 @@ class StorageProcessor(TPTPParser):
                             line,
                             *args,
                             source=source,
-                            orig=orig,
                             force_creation=True,
                             **kwargs
                         )
@@ -176,7 +175,6 @@ class StorageProcessor(TPTPParser):
                             line,
                             *args,
                             source=source,
-                            orig=orig,
                             force_creation=True,
                             **kwargs
                         )

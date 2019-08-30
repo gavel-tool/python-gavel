@@ -20,7 +20,7 @@ class Formula(Base):
     name = sqla.Column(sqla.Text)
     source_id = sqla.Column(sqla.Integer, sqla.ForeignKey(Source.id), nullable=False)
     source = relationship(Source)
-    original = sqla.Column(sqla.Text, nullable=False)
+    original = sqla.Column(sqla.Text)
     blob = sqla.Column(sqla.Binary)
     __table_args__ = (
         sqla.UniqueConstraint("name", "source_id", name="_form_name_source"),
