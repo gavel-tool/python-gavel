@@ -17,14 +17,14 @@ def get_engine():
             cred += "@"
 
         location = DB_CONNECTION.get("host", "")
-        if "port" in DB_CONNECTION:
-            location += ":" + DB_CONNECTION["port"]
-        else:
-            __ENGINE__ = create_engine(
-                "{dbms}://{cred}{location}/{database}".format(
-                    dbms=DBMS, cred=cred, location=location, **DB_CONNECTION
-                )
+        port = DB_CONNECTION.get("port")
+        if port:
+            location += ":" + port
+        __ENGINE__ = create_engine(
+            "{dbms}://{cred}{location}/{database}".format(
+                dbms=DBMS, cred=cred, location=location, **DB_CONNECTION
             )
+        )
     return __ENGINE__
 
 
