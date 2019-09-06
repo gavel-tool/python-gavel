@@ -2,16 +2,18 @@ import cProfile
 import pstats
 import unittest
 from os.path import join
+import pytest
 
 from gavel.dialects.db.connection import with_session
-from gavel.dialects.tptp.compiler import Compiler
+from gavel.dialects.tptp.compiler import TPTPCompiler
 from gavel.dialects.tptp.parser import StorageProcessor
 from gavel.dialects.tptp.parser import TPTPParser
-from gavel.settings import TPTP_ROOT
+from gavel.config.settings import TPTP_ROOT
+import gavel.dialects.db.structures as fol_db
 
 
 class TestProcessor(TPTPParser):
-    compiler = Compiler()
+    compiler = TPTPCompiler()
 
     def parse(self, tree, *args, **kwargs):
         original = tree.getText()
@@ -35,23 +37,28 @@ axioms = ["GRP001-0.ax"]
 problems = ["ALG/ALG001-1.p", "NUN/NUN030^1.p"]
 
 
+class DBTest(unittest.TestCase):
+    @classmethod
+    def setup_class(cls):
+        fol_db.create_tables()
+
+    @classmethod
+    def teardown_class(cls):
+        fol_db.drop_tables()
+
 @with_session
 def single_problem(problem, session):
     processor = StorageProcessor()
     for problem in processor.problem_processor(
         join(TPTP_ROOT, join("Problems", problem)), session=session
     ):
-        problem.create_problem_file()
+        p = problem
 
 
 def single_axiom(axiom):
-    p = cProfile.Profile()
-    p.enable()
     processor = TestProcessor()
     for _ in processor.axiomset_processor(join(TPTP_ROOT, join("Axioms", axiom))):
         pass
-    p.disable()
-    p.print_stats(sort=pstats.SortKey.TIME)
 
 
 class TestParser(unittest.TestCase):
@@ -64,19 +71,27 @@ class TestParser(unittest.TestCase):
             pass
 
 
-class TestAxiomsCNF(unittest.TestCase):
+class TestAxiomsCNF(DBTest):
     def test_RNG001_0(self):
         single_axiom("RNG001-0.ax")
 
 
-class TestAxiomsFOF(unittest.TestCase):
+class TestAxiomsFOF(DBTest):
     def test_AGT001_0(self):
         single_axiom("AGT001+0.ax")
 
 
-class TestProblems:
+@pytest.mark.skip
+class TestTHFProblems(DBTest):
     def test_NUN030_1(self):
         single_problem("NUN/NUN030^1.p")
 
+
+class TestCNFProblems(DBTest):
     def test_ALG001_1(self):
         single_problem("ALG/ALG001-1.p")
+
+
+class TestFOFProblems(DBTest):
+    def test_ALG001_1(self):
+        single_problem("SET/SET002+3.p")

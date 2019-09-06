@@ -15,6 +15,7 @@ from gavel.dialects.base.parser import ProblemParser
 from gavel.dialects.db.connection import get_or_create
 from gavel.dialects.db.connection import get_or_None
 from gavel.dialects.db.connection import with_session
+from gavel.dialects.db.compiler import DBCompiler
 from gavel.logic import fol
 from gavel.logic.base import LogicElement
 from gavel.logic.base import Problem
@@ -126,6 +127,10 @@ class TPTPParser(LogicParser):
 
 
 class StorageProcessor(TPTPParser):
+
+    def __init__(self):
+        self.compiler = DBCompiler()
+
     @with_session
     def problem_processor(self, path, *args, **kwargs):
         session = kwargs.get("session")
@@ -196,7 +201,6 @@ class StorageProcessor(TPTPParser):
         self,
         formula: fol.AnnotatedFormula,
         *args,
-        orig=None,
         force_creation=False,
         **kwargs
     ):
@@ -204,7 +208,7 @@ class StorageProcessor(TPTPParser):
         session = kwargs.get("session")
         if force_creation or source.id is None:
             formula_obj = db.Formula(
-                name=formula.name, source=source, blob=pkl.dumps(formula), original=orig
+                name=formula.name, source=source, json=self.compiler.visit(formula)
             )
             session.add(formula_obj)
         else:
@@ -222,8 +226,8 @@ class StorageProcessor(TPTPParser):
         commit = kwargs.get("commit", False)
         if created:
             result = [
-                self.formula_processor(item, source=source, *args, orig=orig, **kwargs)
-                for item, orig in self.load_expressions_from_file(path)
+                self.formula_processor(formula=item, source=source, *args, **kwargs)
+                for item in self.load_expressions_from_file(path)
             ]
             if commit:
                 session.commit()

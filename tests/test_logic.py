@@ -11,7 +11,7 @@ class TestFOL(unittest.TestCase):
             processor.load_expressions_from_file("tests/files/single_line_fof.txt")
         )
         self.assertEqual(len(result), 1, "Single line was not parsed as single line")
-        line, _ = result[0]
+        line = result[0]
         self.assertSetEqual(
-            set(line.symbols()), {"X0", "X1", "X2", "X3", "ismeet", "leq"}
+            set(line.symbols()), {"ismeet", "leq"}
         )
