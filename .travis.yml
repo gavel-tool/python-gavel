@@ -8,7 +8,6 @@ env:
     - OEP_DB_USER="postgres" GAVEL_DB_PASSWORD="postgres" GAVEL_DB_NAME="postgres" TPTP_ROOT="$HOME/TPTP"
   matrix:
     - TOXENV=check
-    - TOXENV=docs
 matrix:
   include:
     - python: '3.5'
