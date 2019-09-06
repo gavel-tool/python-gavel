@@ -24,8 +24,8 @@ class DBProblemParser(ProblemParser):
         for c in conjectures:
             yield Problem(premises, c)
 
-class DBFOLParser(LogicParser):
 
+class DBFOLParser(LogicParser):
     def _parse_rec(self, obj, *args, **kwargs):
         if isinstance(obj, str):
             return obj
@@ -61,13 +61,17 @@ class DBFOLParser(LogicParser):
         return getattr(fol.UnaryConnective, connective["unary_connective"].upper())
 
     def parse_unary_formula(self, formula: dict):
-        return fol.UnaryFormula(formula=self._parse_rec(formula["formula"]), connective=self._parse_rec(formula["connective"]))
+        return fol.UnaryFormula(
+            formula=self._parse_rec(formula["formula"]),
+            connective=self._parse_rec(formula["connective"]),
+        )
 
     def parse_quantified_formula(self, formula: dict):
         return fol.QuantifiedFormula(
             formula=self._parse_rec(formula["formula"]),
             quantifier=self._parse_rec(formula["quantifier"]),
-            variables=[self._parse_rec(v) for v in formula["quantifier"]])
+            variables=[self._parse_rec(v) for v in formula["quantifier"]],
+        )
 
     def parse_annotated_formula(self, anno: dict):
         return fol.AnnotatedFormula(
@@ -81,20 +85,27 @@ class DBFOLParser(LogicParser):
         return fol.BinaryFormula(
             left=self._parse_rec(formula["left"]),
             right=self._parse_rec(formula["right"]),
-            operator=self._parse_rec(formula["connective"]))
+            operator=self._parse_rec(formula["connective"]),
+        )
 
     def parse_functor_expression(self, expression: fol.FunctorExpression):
         return fol.FunctorExpression(
             functor=self._parse_rec(expression["functor"]),
-            arguments=[self._parse_rec(a) for a in expression["arguments"]])
+            arguments=[self._parse_rec(a) for a in expression["arguments"]],
+        )
 
     def parse_predicate_expression(self, expression: dict) -> fol.PredicateExpression:
         return fol.PredicateExpression(
             predicate=self._parse_rec(expression["functor"]),
-            arguments=[self._parse_rec(a) for a in expression["arguments"]])
+            arguments=[self._parse_rec(a) for a in expression["arguments"]],
+        )
 
     def parse_conditional(self, conditional: dict) -> fol.Conditional:
-        return fol.Conditional(if_clause=self._parse_rec(conditional["if_clause"]), then_clause=self._parse_rec(conditional["then_clause"]), else_clause=self._parse_rec(conditional["else_clause"]))
+        return fol.Conditional(
+            if_clause=self._parse_rec(conditional["if_clause"]),
+            then_clause=self._parse_rec(conditional["then_clause"]),
+            else_clause=self._parse_rec(conditional["else_clause"]),
+        )
 
     def parse_import(self, imp: dict) -> fol.Import:
         return fol.Import(path=imp["path"])
@@ -106,4 +117,7 @@ class DBFOLParser(LogicParser):
         return fol.Constant(symbol=variable["symbol"])
 
     def parse_problem(self, problem: dict) -> fol.Problem:
-        return fol.Problem(premises=[self._parse_rec(p) for p in problem["premises"]], conjecture=self._parse_rec(problem["conjecture"]))
+        return fol.Problem(
+            premises=[self._parse_rec(p) for p in problem["premises"]],
+            conjecture=self._parse_rec(problem["conjecture"]),
+        )

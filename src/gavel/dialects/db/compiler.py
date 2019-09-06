@@ -52,25 +52,58 @@ class DBCompiler(Compiler):
         return dict(type="unary_connective", unary_connective=connective.name.lower())
 
     def visit_unary_formula(self, formula: fol.UnaryFormula):
-        return dict(type="unary_formula", formula=self.visit(formula.formula), connective=self.visit(formula.connective))
+        return dict(
+            type="unary_formula",
+            formula=self.visit(formula.formula),
+            connective=self.visit(formula.connective),
+        )
 
     def visit_quantified_formula(self, formula: fol.QuantifiedFormula):
-        return dict(type="quantified_formula", formula=self.visit(formula.formula), quantifier=self.visit(formula.quantifier), variables=[self.visit(v) for v in formula.variables])
+        return dict(
+            type="quantified_formula",
+            formula=self.visit(formula.formula),
+            quantifier=self.visit(formula.quantifier),
+            variables=[self.visit(v) for v in formula.variables],
+        )
 
     def visit_annotated_formula(self, anno: fol.AnnotatedFormula):
-        return dict(type="annotated_formula", formula=self.visit(anno.formula), name=self.visit(anno.name), role=self.visit(anno.role), logic=self.visit(anno.logic))
+        return dict(
+            type="annotated_formula",
+            formula=self.visit(anno.formula),
+            name=self.visit(anno.name),
+            role=self.visit(anno.role),
+            logic=self.visit(anno.logic),
+        )
 
     def visit_binary_formula(self, formula: fol.BinaryFormula):
-        return dict(type="binary_formula", left=self.visit(formula.left), right=self.visit(formula.right), connective=self.visit(formula.operator))
+        return dict(
+            type="binary_formula",
+            left=self.visit(formula.left),
+            right=self.visit(formula.right),
+            connective=self.visit(formula.operator),
+        )
 
     def visit_functor_expression(self, expression: fol.FunctorExpression):
-        return dict(type="functor_expression", arguments=[self.visit(a) for a in expression.arguments], functor=self.visit(expression.functor))
+        return dict(
+            type="functor_expression",
+            arguments=[self.visit(a) for a in expression.arguments],
+            functor=self.visit(expression.functor),
+        )
 
     def visit_predicate_expression(self, expression: fol.PredicateExpression):
-        return dict(type="predicate_expression", arguments=[self.visit(a) for a in expression.arguments], predicate=self.visit(expression.predicate))
+        return dict(
+            type="predicate_expression",
+            arguments=[self.visit(a) for a in expression.arguments],
+            predicate=self.visit(expression.predicate),
+        )
 
     def visit_conditional(self, conditional: fol.Conditional):
-        return dict(type="conditional", if_clause=conditional.if_clause, then_clause=conditional.then_clause, else_clause=conditional.else_clause)
+        return dict(
+            type="conditional",
+            if_clause=conditional.if_clause,
+            then_clause=conditional.then_clause,
+            else_clause=conditional.else_clause,
+        )
 
     def visit_import(self, imp: fol.Import):
         return dict(type="import", path=imp.path)
@@ -82,4 +115,8 @@ class DBCompiler(Compiler):
         return dict(type="constant", symbol=variable.symbol)
 
     def visit_problem(self, problem: fol.Problem):
-        return dict(type="problem", premises=[self.visit(p) for p in problem.premises], conjecture=self.visit(problem.conjecture))
+        return dict(
+            type="problem",
+            premises=[self.visit(p) for p in problem.premises],
+            conjecture=self.visit(problem.conjecture),
+        )

@@ -127,7 +127,6 @@ class TPTPParser(LogicParser):
 
 
 class StorageProcessor(TPTPParser):
-
     def __init__(self):
         self.compiler = DBCompiler()
 
@@ -166,21 +165,13 @@ class StorageProcessor(TPTPParser):
                         fol.FormulaRole.NEGATED_CONJECTURE,
                     ):
                         conjecture = self.formula_processor(
-                            line,
-                            *args,
-                            source=source,
-                            force_creation=True,
-                            **kwargs
+                            line, *args, source=source, force_creation=True, **kwargs
                         )
                         session.add(conjecture)
                         conjectures.append(conjecture)
                     else:
                         premise = self.formula_processor(
-                            line,
-                            *args,
-                            source=source,
-                            force_creation=True,
-                            **kwargs
+                            line, *args, source=source, force_creation=True, **kwargs
                         )
                         session.add(premise)
                         premises.append(premise)
@@ -198,11 +189,7 @@ class StorageProcessor(TPTPParser):
             return session.query(db.Problem).filter_by(source=source).all()
 
     def formula_processor(
-        self,
-        formula: fol.AnnotatedFormula,
-        *args,
-        force_creation=False,
-        **kwargs
+        self, formula: fol.AnnotatedFormula, *args, force_creation=False, **kwargs
     ):
         source = kwargs.get("source")
         session = kwargs.get("session")
