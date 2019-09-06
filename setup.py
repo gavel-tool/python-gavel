@@ -123,7 +123,6 @@ setup(
         "pre-commit",
         "pytest",
         "requests",
-        "tensorflow",
     ],
     extras_require={
         # eg:
