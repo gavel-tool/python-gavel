@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from gavel.settings import DB_CONNECTION
-from gavel.settings import DBMS
+from gavel.config.settings import DB_CONNECTION
+from gavel.config.settings import DBMS
 
 __ENGINE__ = None
 

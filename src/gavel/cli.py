@@ -17,9 +17,9 @@ Why does this file exist, and why not put this in __main__?
 
 import click
 
+import gavel.config.settings as settings
 import gavel.dialects.db.structures as fol_db
 import gavel.dialects.tptp.parser as build_tptp
-import gavel.settings as settings
 from gavel.dialects.tptp.compiler import TPTPCompiler
 from gavel.dialects.tptp.parser import Problem
 from gavel.dialects.tptp.parser import TPTPParser

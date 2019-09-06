@@ -5,11 +5,10 @@ from urllib.parse import quote
 import requests as req
 
 from gavel.dialects.base.compiler import Compiler
-from gavel.dialects.tptp.parser import TPTPParser
 from gavel.logic.fol import Problem
 from gavel.prover.base.interface import BaseProverInterface
-from gavel.settings import HETS_HOST
-from gavel.settings import HETS_PORT
+from gavel.config.settings import HETS_HOST
+from gavel.config.settings import HETS_PORT
 
 
 class HetsCall:

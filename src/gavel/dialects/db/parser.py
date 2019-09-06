@@ -1,18 +1,9 @@
-import gavel.dialects.db.structures as db
-import gavel.settings as settings
 from gavel.dialects.base.parser import LogicParser
 from gavel.dialects.base.parser import Parseable
-from gavel.dialects.base.parser import Parser
 from gavel.dialects.base.parser import ProblemParser
-from gavel.dialects.db.connection import get_or_create
-from gavel.dialects.db.connection import get_or_None
-from gavel.dialects.db.connection import with_session
 from gavel.logic import fol
-from gavel.logic.base import LogicElement
 from gavel.logic.base import Problem
 from gavel.logic.base import Sentence
-from gavel.logic.fol import FormulaRole
-from gavel.settings import TPTP_ROOT
 
 
 class DBProblemParser(ProblemParser):

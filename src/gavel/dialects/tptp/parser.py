@@ -1,4 +1,3 @@
-import multiprocessing as mp
 import os
 import pickle as pkl
 import re
@@ -10,7 +9,7 @@ from antlr4 import CommonTokenStream
 from antlr4 import InputStream
 
 import gavel.dialects.db.structures as db
-import gavel.settings as settings
+import gavel.config.settings as settings
 from gavel.dialects.base.parser import LogicParser
 from gavel.dialects.base.parser import ProblemParser
 from gavel.dialects.db.connection import get_or_create
@@ -20,7 +19,7 @@ from gavel.logic import fol
 from gavel.logic.base import LogicElement
 from gavel.logic.base import Problem
 from gavel.logic.fol import FormulaRole
-from gavel.settings import TPTP_ROOT
+from gavel.config.settings import TPTP_ROOT
 
 from .antlr4.flattening import FOFFlatteningVisitor
 from .antlr4.tptp_v7_0_0_0Lexer import tptp_v7_0_0_0Lexer
