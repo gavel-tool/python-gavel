@@ -119,7 +119,6 @@ setup(
         "click",
         "sqlalchemy>=1.2",
         "antlr4-python3-runtime",
-        "psycopg2-binary",
         "pre-commit",
         "pytest",
         "requests",
