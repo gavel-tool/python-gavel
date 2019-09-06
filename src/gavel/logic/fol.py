@@ -212,7 +212,9 @@ class AnnotatedFormula(FOLElement, Sentence):
         return self.role in (FormulaRole.CONJECTURE, FormulaRole.NEGATED_CONJECTURE)
 
     def __str__(self):
-        return f"{self.logic}({self.name},{self.role},{self.formula})"
+        return "{logic}({name},{role},{formula})".format(
+            logic=self.logic, name=self.name, role=self.role, formula=self.formula
+        )
 
 
 class BinaryFormula(FOLElement):
