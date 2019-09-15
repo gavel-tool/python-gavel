@@ -2,21 +2,29 @@ from typing import Iterable
 
 from gavel.dialects.base.dialect import Dialect
 from gavel.dialects.base.dialect import Problem
+from gavel.dialects.base.dialect import Compiler
 from gavel.logic.base import LogicElement
 
 
 class BaseProverInterface:
-    _dialect_cls = Dialect
+    _prover_dialect_cls = Dialect
 
     def __init__(self, *args, **kwargs):
-        self.dialect = self._dialect_cls(*args, **kwargs)
+        super(BaseProverInterface, self).__init__(*args, **kwargs)
+        self.dialect = self._prover_dialect_cls()
 
     def prove(self, problem: Problem, *args, **kwargs):
-        """
-        Attempt to prove a problem specified in `file`
-        :param file:
-        :return:
-        """
+        return self._post_process_proof(
+            self._submit_problem(self._bootstrap_problem(problem))
+        )
+
+    def _bootstrap_problem(self, problem: Problem):
+        raise NotImplementedError
+
+    def _submit_problem(self, problem_instance, *args, **kwargs):
+        raise NotImplementedError
+
+    def _post_process_proof(self, raw_proof_result):
         raise NotImplementedError
 
 

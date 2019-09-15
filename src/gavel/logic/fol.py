@@ -183,7 +183,7 @@ class QuantifiedFormula(FOLElement):
     def __str__(self):
         return "%s[%s]: %s" % (
             repr(self.quantifier),
-            ", ".join(self.variables),
+            ", ".join(map(str, self.variables)),
             self.formula,
         )
 
@@ -212,8 +212,13 @@ class AnnotatedFormula(FOLElement, Sentence):
         return self.role in (FormulaRole.CONJECTURE, FormulaRole.NEGATED_CONJECTURE)
 
     def __str__(self):
-        return "{logic}({name},{role},{formula})".format(
-            logic=self.logic, name=self.name, role=self.role, formula=self.formula
+        return (
+            "{logic}({name},{role},{formula})".format(
+                logic=self.logic, name=self.name, role=self.role, formula=self.formula
+            )
+            + ("# " + str(self.annotation))
+            if self.annotation
+            else ""
         )
 
 

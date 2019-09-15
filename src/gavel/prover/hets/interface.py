@@ -4,7 +4,7 @@ from urllib.parse import quote
 
 import requests as req
 
-from gavel.dialects.base.compiler import Compiler
+from gavel.dialects.tptp.dialect import TPTPDialect
 from gavel.logic.fol import Problem
 from gavel.prover.base.interface import BaseProverInterface
 from gavel.config.settings import HETS_HOST
@@ -12,7 +12,8 @@ from gavel.config.settings import HETS_PORT
 
 
 class HetsCall:
-    def __init__(self, paths):
+    def __init__(self, paths, *args, **kwargs):
+        super(HetsCall, self).__init__(*args, **kwargs)
         self.url = "http://" + HETS_HOST
         if HETS_PORT:
             self.url += ":" + str(HETS_PORT)
@@ -33,35 +34,43 @@ class HetsCall:
         return quote(path, safe="")
 
 
-class HetsProve(HetsCall, BaseProverInterface):
-    def __init__(self, prover: BaseProverInterface):
-        super(HetsProve, self).__init__(["prove"])
-        self._internal_prover = prover
+class HetsProve(BaseProverInterface, HetsCall):
+    _prover_dialect_cls = TPTPDialect
 
-    def prove(self, problem: Problem, compiler: Compiler, *args, **kwargs):
-        with tempfile.NamedTemporaryFile(mode="w+") as tf:
-            node = str(tf.name).split("/")[-1]
-            iri = self.encode("file://" + str(tf.name))
-            problem_string = compiler.visit_problem(problem)
-            tf.write(problem_string)
-            tf.seek(0)
-            response = self.post(
-                iri,
-                json=dict(
-                    format="json",
-                    goals=[
-                        dict(
-                            node=node,
-                            reasonerConfiguration=dict(
-                                timeLimit=100, reasoner="Vampire"
-                            ),
-                        )
-                    ],
-                ),
-            )
-            if response.status_code == 200:
-                jsn = json.loads(response.content.decode("utf-8"))[0]
-                for goal in jsn["goals"]:
-                    yield goal["prover_output"]
-            else:
-                raise Exception(response.content)
+    def __init__(self, prover_interface: BaseProverInterface, *args, **kwargs):
+        super(HetsProve, self).__init__(["prove"])
+
+    def _bootstrap_problem(self, problem: Problem):
+        tf = tempfile.NamedTemporaryFile(mode="w+")
+        problem_string = self.dialect.compile_problem(problem)
+        tf.write(problem_string)
+        tf.seek(0)
+        return tf
+
+    def _submit_problem(self, problem_instance, *args, **kwargs):
+        node = str(problem_instance.name).split("/")[-1]
+        iri = self.encode("file://" + str(problem_instance.name))
+        response = self.post(
+            iri,
+            json=dict(
+                format="json",
+                goals=[
+                    dict(
+                        node=node,
+                        reasonerConfiguration=dict(timeLimit=100, reasoner="Vampire"),
+                    )
+                ],
+            ),
+        )
+        problem_instance.close()
+        if response.status_code == 200:
+            jsn = json.loads(response.content.decode("utf-8"))[0]
+            for goal in jsn["goals"]:
+                for line in goal["prover_output"].split("\n"):
+                    yield line
+        else:
+            raise Exception(response.content)
+
+    def _post_process_proof(self, raw_proof_result):
+        for line in self.dialect.parse_many_expressions(raw_proof_result):
+            yield line
