@@ -1,15 +1,17 @@
 import json
 import tempfile
 from urllib.parse import quote
+from typing import Iterable
+
 
 import requests as req
 
 from gavel.dialects.tptp.dialect import TPTPDialect
-from gavel.logic.fol import Problem
+from gavel.logic.fol import Problem, LogicElement, AnnotatedFormula
 from gavel.prover.base.interface import BaseProverInterface
 from gavel.config.settings import HETS_HOST
 from gavel.config.settings import HETS_PORT
-
+from gavel.prover.base.proof_structures import ProofGraph
 
 class HetsCall:
     def __init__(self, paths, *args, **kwargs):
@@ -74,3 +76,9 @@ class HetsProve(BaseProverInterface, HetsCall):
     def _post_process_proof(self, raw_proof_result):
         for line in self.dialect.parse_many_expressions(raw_proof_result):
             yield line
+
+    def _build_proof_graph(self, lines: Iterable[AnnotatedFormula], problem: Problem) -> ProofGraph:
+        pg = ProofGraph(premises=problem.premises)
+        d = {line.name: line for line in lines}
+
+
