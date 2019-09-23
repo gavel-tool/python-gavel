@@ -9,6 +9,4 @@ class TestCompiler(TestCase):
     @pytest.mark.skip
     def assert_compiler(self, structure, expected):
         c = self.compiler()
-        self.assertEqual(
-            c.visit(structure),
-            expected)
+        self.assertEqual(c.visit(structure), expected)

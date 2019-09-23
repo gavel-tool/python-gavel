@@ -14,6 +14,7 @@ from gavel.config.settings import HETS_HOST
 from gavel.config.settings import HETS_PORT
 from gavel.prover.base.proof_structures import ProofGraph
 
+
 class HetsCall:
     def __init__(self, paths, *args, **kwargs):
         super(HetsCall, self).__init__(*args, **kwargs)
@@ -78,8 +79,8 @@ class HetsProve(BaseProverInterface, HetsCall):
         for line in self.dialect.parse_many_expressions(raw_proof_result):
             yield line
 
-    def _build_proof_graph(self, lines: Iterable[AnnotatedFormula], problem: Problem) -> ProofGraph:
+    def _build_proof_graph(
+        self, lines: Iterable[AnnotatedFormula], problem: Problem
+    ) -> ProofGraph:
         pg = ProofGraph(premises=problem.premises)
         d = {line.name: line for line in lines}
-
-

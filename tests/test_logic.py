@@ -12,6 +12,4 @@ class TestFOL(unittest.TestCase):
         )
         self.assertEqual(len(result), 1, "Single line was not parsed as single line")
         line = result[0]
-        self.assertSetEqual(
-            set(line.symbols()), {"ismeet", "leq"}
-        )
+        self.assertSetEqual(set(line.symbols()), {"ismeet", "leq"})

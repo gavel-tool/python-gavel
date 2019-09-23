@@ -257,7 +257,10 @@ class Conditional(LogicElement):
     __visit_name__ = "conditional"
 
     def __init__(
-        self, if_clause: LogicElement, then_clause: LogicElement, else_clause: LogicElement
+        self,
+        if_clause: LogicElement,
+        then_clause: LogicElement,
+        else_clause: LogicElement,
     ):
 
         self.if_clause = if_clause

@@ -229,9 +229,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_subtype.
     def visitThf_subtype(self, ctx: tptp_v7_0_0_0Parser.Thf_subtypeContext):
-        return logic.Subtype(
-            self.visit(ctx.children[0]), self.visit(ctx.children[2])
-        )
+        return logic.Subtype(self.visit(ctx.children[0]), self.visit(ctx.children[2]))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_top_level_type.
     def visitThf_top_level_type(

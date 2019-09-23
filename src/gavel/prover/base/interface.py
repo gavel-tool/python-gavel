@@ -15,8 +15,11 @@ class BaseProverInterface:
         self.dialect = self._prover_dialect_cls()
 
     def prove(self, problem: Problem, *args, **kwargs) -> ProofGraph:
-        return self._build_proof_graph(self._post_process_proof(
-            self._submit_problem(self._bootstrap_problem(problem))), problem
+        return self._build_proof_graph(
+            self._post_process_proof(
+                self._submit_problem(self._bootstrap_problem(problem))
+            ),
+            problem,
         )
 
     def _bootstrap_problem(self, problem: Problem):
@@ -28,8 +31,11 @@ class BaseProverInterface:
     def _post_process_proof(self, raw_proof_result):
         raise NotImplementedError
 
-    def _build_proof_graph(self, lines: Iterable[LogicElement], problem: Problem) -> ProofGraph:
+    def _build_proof_graph(
+        self, lines: Iterable[LogicElement], problem: Problem
+    ) -> ProofGraph:
         raise NotImplementedError
+
 
 class BaseResultHandler:
     def get_used_axioms(self):

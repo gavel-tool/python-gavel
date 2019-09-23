@@ -46,6 +46,7 @@ class DBTest(unittest.TestCase):
     def teardown_class(cls):
         fol_db.drop_tables()
 
+
 @with_session
 def single_problem(problem, session):
     processor = StorageProcessor()
@@ -69,4 +70,3 @@ class TestParser(unittest.TestCase):
             "tests/files/single_line_thf.txt"
         ):
             pass
-

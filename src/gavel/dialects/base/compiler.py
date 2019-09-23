@@ -1,6 +1,7 @@
 import gavel.logic.logic as fol
 from gavel.logic import problem
 
+
 class Compiler:
     def visit(self, obj, *args, **kwargs):
         if isinstance(obj, str):
