@@ -1,6 +1,7 @@
 # Generated from tptp_v7_0_0_0.g4 by ANTLR 4.5.1
 import gavel.dialects.tptp.sources as sources
-import gavel.logic.fol as structures
+from gavel.logic import logic
+from gavel.logic import problem
 from gavel.dialects.tptp.antlr4.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
 from gavel.dialects.tptp.antlr4.tptp_v7_0_0_0Visitor import tptp_v7_0_0_0Visitor
 
@@ -21,8 +22,6 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         return node.symbol.text
 
     def visit_first(self, ctx):
-        if ctx.children is None:
-            raise structures.EOFException
         assert len(ctx.children) == 1
         return self.visit(ctx.children[0])
 
@@ -46,9 +45,9 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#annotated_formula.
     def visitAnnotated_formula(
         self, ctx: tptp_v7_0_0_0Parser.Annotated_formulaContext
-    ) -> structures.AnnotatedFormula:
+    ) -> problem.AnnotatedFormula:
         annotated = ctx.children[0]
-        return structures.AnnotatedFormula(
+        return problem.AnnotatedFormula(
             self.visit(annotated.children[0]).replace("(", ""),
             self.visit(annotated.children[1]),  # name
             self.visit(annotated.children[3]),  # role
@@ -67,21 +66,21 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         return self.visit(ctx.children[1])
 
     _ROLE_MAP = {
-        "axiom": structures.FormulaRole.AXIOM,
-        "hypothesis": structures.FormulaRole.HYPOTHESIS,
-        "definition": structures.FormulaRole.DEFINITION,
-        "assumption": structures.FormulaRole.ASSUMPTION,
-        "lemma": structures.FormulaRole.LEMMA,
-        "theorem": structures.FormulaRole.THEOREM,
-        "corollary": structures.FormulaRole.COROLLARY,
-        "conjecture": structures.FormulaRole.CONJECTURE,
-        "negated_conjecture": structures.FormulaRole.NEGATED_CONJECTURE,
-        "plain": structures.FormulaRole.PLAIN,
-        "type": structures.FormulaRole.TYPE,
-        "fi_domain": structures.FormulaRole.FI_DOMAIN,
-        "fi_functors": structures.FormulaRole.FI_FUNCTORS,
-        "fi_predicates": structures.FormulaRole.FI_PREDICATES,
-        "unknown": structures.FormulaRole.UNKNOWN,
+        "axiom": problem.FormulaRole.AXIOM,
+        "hypothesis": problem.FormulaRole.HYPOTHESIS,
+        "definition": problem.FormulaRole.DEFINITION,
+        "assumption": problem.FormulaRole.ASSUMPTION,
+        "lemma": problem.FormulaRole.LEMMA,
+        "theorem": problem.FormulaRole.THEOREM,
+        "corollary": problem.FormulaRole.COROLLARY,
+        "conjecture": problem.FormulaRole.CONJECTURE,
+        "negated_conjecture": problem.FormulaRole.NEGATED_CONJECTURE,
+        "plain": problem.FormulaRole.PLAIN,
+        "type": problem.FormulaRole.TYPE,
+        "fi_domain": problem.FormulaRole.FINITE_INTERPRETATION_DOMAIN,
+        "fi_functors": problem.FormulaRole.FINITE_INTERPRETATION_FUNCTORS,
+        "fi_predicates": problem.FormulaRole.FINITE_INTERPRETATION_PREDICATES,
+        "unknown": problem.FormulaRole.UNKNOWN,
     }
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#formula_role.
@@ -112,25 +111,25 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_or_formula.
     def visitThf_or_formula(self, ctx: tptp_v7_0_0_0Parser.Thf_or_formulaContext):
-        return structures.BinaryFormula(
+        return logic.BinaryFormula(
             self.visit(ctx.children[0]),
-            structures.BinaryConnective.DISJUNCTION,
+            logic.BinaryConnective.DISJUNCTION,
             self.visit(ctx.children[2]),
         )
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_and_formula.
     def visitThf_and_formula(self, ctx: tptp_v7_0_0_0Parser.Thf_and_formulaContext):
-        return structures.BinaryFormula(
+        return logic.BinaryFormula(
             self.visit(ctx.children[0]),
-            structures.BinaryConnective.CONJUNCTION,
+            logic.BinaryConnective.CONJUNCTION,
             self.visit(ctx.children[2]),
         )
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_apply_formula.
     def visitThf_apply_formula(self, ctx: tptp_v7_0_0_0Parser.Thf_apply_formulaContext):
-        return structures.BinaryFormula(
+        return logic.BinaryFormula(
             self.visit(ctx.children[0]),
-            structures.BinaryConnective.APPLY,
+            logic.BinaryConnective.APPLY,
             self.visit(ctx.children[2]),
         )
 
@@ -148,7 +147,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitThf_quantified_formula(
         self, ctx: tptp_v7_0_0_0Parser.Thf_quantified_formulaContext
     ):
-        return structures.QuantifiedFormula(
+        return logic.QuantifiedFormula(
             *self.visit(ctx.children[0]), self.visit(ctx.children[1])
         )
 
@@ -174,13 +173,13 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitThf_typed_variable(
         self, ctx: tptp_v7_0_0_0Parser.Thf_typed_variableContext
     ):
-        return structures.TypedVariable(
+        return logic.TypedVariable(
             self.visit(ctx.children[0]), self.visit(ctx.children[2])
         )
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_unary_formula.
     def visitThf_unary_formula(self, ctx: tptp_v7_0_0_0Parser.Thf_unary_formulaContext):
-        return structures.UnaryFormula(
+        return logic.UnaryFormula(
             self.visit(ctx.children[0]), self.visit(ctx.children[2])
         )
 
@@ -198,7 +197,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_conditional.
     def visitThf_conditional(self, ctx: tptp_v7_0_0_0Parser.Thf_conditionalContext):
-        return structures.Conditional(
+        return logic.Conditional(
             self.visit(ctx.children[1]),
             self.visit(ctx.children[3]),
             self.visit(ctx.children[5]),
@@ -206,7 +205,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_let.
     def visitThf_let(self, ctx: tptp_v7_0_0_0Parser.Thf_letContext):
-        return structures.Let(
+        return logic.Let(
             self.visit(ctx.children[1]),
             self.visit(ctx.children[3]),
             self.visit(ctx.children[5]),
@@ -218,7 +217,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_type_formula.
     def visitThf_type_formula(self, ctx: tptp_v7_0_0_0Parser.Thf_type_formulaContext):
-        return structures.TypeFormula(
+        return logic.TypeFormula(
             self.visit(ctx.children[0]), self.visit(ctx.children[2])
         )
 
@@ -230,7 +229,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_subtype.
     def visitThf_subtype(self, ctx: tptp_v7_0_0_0Parser.Thf_subtypeContext):
-        return structures.Subtype(
+        return logic.Subtype(
             self.visit(ctx.children[0]), self.visit(ctx.children[2])
         )
 
@@ -254,32 +253,32 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_mapping_type.
     def visitThf_mapping_type(self, ctx: tptp_v7_0_0_0Parser.Thf_mapping_typeContext):
-        return structures.MappingType(
+        return logic.MappingType(
             self.visit(ctx.children[0]), self.visit(ctx.children[2])
         )
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_xprod_type.
     def visitThf_xprod_type(self, ctx: tptp_v7_0_0_0Parser.Thf_xprod_typeContext):
-        return structures.BinaryFormula(
+        return logic.BinaryFormula(
             self.visit(ctx.children[0]),
-            structures.BinaryConnective.PRODUCT,
+            logic.BinaryConnective.PRODUCT,
             self.visit(ctx.children[2]),
         )
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_union_type.
     def visitThf_union_type(self, ctx: tptp_v7_0_0_0Parser.Thf_union_typeContext):
-        return structures.BinaryFormula(
+        return logic.BinaryFormula(
             self.visit(ctx.children[0]),
-            structures.BinaryConnective.UNION,
+            logic.BinaryConnective.UNION,
             self.visit(ctx.children[2]),
         )
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_sequent.
     def visitThf_sequent(self, ctx: tptp_v7_0_0_0Parser.Thf_sequentContext):
         if isinstance(ctx.children[0], tptp_v7_0_0_0Parser.Thf_tupleContext):
-            return structures.BinaryFormula(
+            return logic.BinaryFormula(
                 self.visit(ctx.children[0]),
-                structures.BinaryConnective.GENTZEN_ARROW,
+                logic.BinaryConnective.GENTZEN_ARROW,
                 self.visit(ctx.children[2]),
             )
         else:
@@ -376,7 +375,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         if len(ctx.children) == 1:
             return self.visit_first(ctx)
         elif len(ctx.children) == 2:
-            return structures.UnaryFormula(
+            return logic.UnaryFormula(
                 self.visit(ctx.children[0]), self.visit(ctx.children[1])
             )
 
@@ -414,9 +413,9 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#tff_let_term_defn.
     def visitTff_let_term_defn(self, ctx: tptp_v7_0_0_0Parser.Tff_let_term_defnContext):
-        return structures.BinaryFormula(
+        return logic.BinaryFormula(
             self.visit(ctx.children[0]),
-            structures.BinaryConnective.ASSIGN,
+            logic.BinaryConnective.ASSIGN,
             self.visit(ctx.children[2]),
         )
 
@@ -470,7 +469,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         if left == "(":
             return self.visit(ctx.children[1])
         else:
-            return structures.TypedVariable(left, self.visit(ctx.children[2]))
+            return logic.TypedVariable(left, self.visit(ctx.children[2]))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#tff_subtype.
     def visitTff_subtype(self, ctx: tptp_v7_0_0_0Parser.Tff_subtypeContext):
@@ -486,7 +485,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitTf1_quantified_type(
         self, ctx: tptp_v7_0_0_0Parser.Tf1_quantified_typeContext
     ):
-        return structures.QuantifiedType(
+        return logic.QuantifiedType(
             self.visit(ctx.children[0]), self.visit(ctx.children[5])
         )
 
@@ -510,7 +509,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         if len(ctx.children) == 1:
             return self.visit_first(ctx)
         elif len(ctx.children) == 3:
-            return structures.FunctorExpression(
+            return logic.FunctorExpression(
                 self.visit(ctx.children[0]), self.visit(ctx.children[2])
             )
         raise NotImplementedError
@@ -527,9 +526,9 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#tff_mapping_type.
     def visitTff_mapping_type(self, ctx: tptp_v7_0_0_0Parser.Tff_mapping_typeContext):
-        return structures.BinaryFormula(
+        return logic.BinaryFormula(
             self.visit(ctx.children[0]),
-            structures.BinaryConnective.ARROW,
+            logic.BinaryConnective.ARROW,
             self.visit(ctx.children[2]),
         )
 
@@ -549,8 +548,8 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitTcf_quantified_formula(
         self, ctx: tptp_v7_0_0_0Parser.Tcf_quantified_formulaContext
     ):
-        return structures.QuantifiedFormula(
-            structures.Quantifier.UNIVERSAL,  # quantifier
+        return logic.QuantifiedFormula(
+            logic.Quantifier.UNIVERSAL,  # quantifier
             self.visit(ctx.children[2]),  # variable list
             self.visit(ctx.children[5]),  # formula
         )
@@ -573,7 +572,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitFof_binary_nonassoc(
         self, ctx: tptp_v7_0_0_0Parser.Fof_binary_nonassocContext
     ):
-        return structures.BinaryFormula(
+        return logic.BinaryFormula(
             self.visit(ctx.children[0]),
             self.visit(ctx.children[1]),
             self.visit(ctx.children[2]),
@@ -585,17 +584,17 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#fof_or_formula.
     def visitFof_or_formula(self, ctx: tptp_v7_0_0_0Parser.Fof_or_formulaContext):
-        return structures.BinaryFormula(
+        return logic.BinaryFormula(
             self.visit(ctx.children[0]),
-            structures.BinaryConnective.DISJUNCTION,
+            logic.BinaryConnective.DISJUNCTION,
             self.visit(ctx.children[2]),
         )
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#fof_and_formula.
     def visitFof_and_formula(self, ctx: tptp_v7_0_0_0Parser.Fof_and_formulaContext):
-        return structures.BinaryFormula(
+        return logic.BinaryFormula(
             self.visit(ctx.children[0]),
-            structures.BinaryConnective.CONJUNCTION,
+            logic.BinaryConnective.CONJUNCTION,
             self.visit(ctx.children[2]),
         )
 
@@ -614,7 +613,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitFof_quantified_formula(
         self, ctx: tptp_v7_0_0_0Parser.Fof_quantified_formulaContext
     ):
-        return structures.QuantifiedFormula(
+        return logic.QuantifiedFormula(
             self.visit(ctx.children[0]),  # quantifier
             self.visit(ctx.children[2]),  # variable list
             self.visit(ctx.children[5]),  # formula
@@ -629,16 +628,16 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         if len(ctx.children) == 1:
             return self.visit_first(ctx)
         elif len(ctx.children) == 2:
-            return structures.UnaryFormula(
+            return logic.UnaryFormula(
                 self.visit(ctx.children[0]), self.visit(ctx.children[1])
             )
         raise NotImplementedError
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#fof_infix_unary.
     def visitFof_infix_unary(self, ctx: tptp_v7_0_0_0Parser.Fof_infix_unaryContext):
-        return structures.BinaryFormula(
+        return logic.BinaryFormula(
             self.visit(ctx.children[0]),
-            structures.BinaryConnective.NEQ,
+            logic.BinaryConnective.NEQ,
             self.visit(ctx.children[2]),
         )
 
@@ -657,7 +656,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
             return self.visit_first(ctx)
         else:
             # case: <predicate>(<fof_arguments>)
-            return structures.PredicateExpression(
+            return logic.PredicateExpression(
                 self.visit(ctx.children[0]), self.visit(ctx.children[2])
             )
 
@@ -677,9 +676,9 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitFof_defined_infix_formula(
         self, ctx: tptp_v7_0_0_0Parser.Fof_defined_infix_formulaContext
     ):
-        return structures.BinaryFormula(
+        return logic.BinaryFormula(
             self.visit(ctx.children[0]),
-            structures.BinaryConnective.EQ,
+            logic.BinaryConnective.EQ,
             self.visit(ctx.children[2]),
         )
 
@@ -696,7 +695,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
             return self.visit_first(ctx)
         else:
             # case: <functor>(<fof_arguments>)
-            return structures.FunctorExpression(
+            return logic.FunctorExpression(
                 self.visit(ctx.children[0]), self.visit(ctx.children[2])
             )
 
@@ -717,7 +716,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         if len(ctx.children) == 1:
             return self.visit_first(ctx)
         elif len(ctx.children) == 4:
-            return structures.FunctorExpression(
+            return logic.FunctorExpression(
                 self.visit(ctx.children[0]), self.visit(ctx.children[2])
             )
         raise NotImplementedError
@@ -727,7 +726,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         if len(ctx.children) == 1:
             return self.visit_first(ctx)
         elif len(ctx.children) == 4:
-            return structures.FunctorExpression(
+            return logic.FunctorExpression(
                 self.visit(ctx.children[0]), self.visit(ctx.children[2])
             )
         raise NotImplementedError
@@ -784,9 +783,9 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         if len(ctx.children) == 1:
             return self.visit_first(ctx)
         elif len(ctx.children) == 3:
-            return structures.BinaryFormula(
+            return logic.BinaryFormula(
                 self.visit(ctx.children[0]),
-                structures.BinaryConnective.DISJUNCTION,
+                logic.BinaryConnective.DISJUNCTION,
                 self.visit(ctx.children[2]),
             )
 
@@ -795,8 +794,8 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         if len(ctx.children) == 1:
             return self.visit_first(ctx)
         else:
-            return structures.UnaryFormula(
-                structures.UnaryConnective.NEGATION, self.visit(ctx.children[1])
+            return logic.UnaryFormula(
+                logic.UnaryConnective.NEGATION, self.visit(ctx.children[1])
             )
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_quantifier.
@@ -836,8 +835,8 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         return self.visitChildren(ctx)
 
     _QUANTIFIER_MAP = {
-        "!": structures.Quantifier.UNIVERSAL,
-        "?": structures.Quantifier.EXISTENTIAL,
+        "!": logic.Quantifier.UNIVERSAL,
+        "?": logic.Quantifier.EXISTENTIAL,
     }
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#fof_quantifier.
     def visitFof_quantifier(self, ctx: tptp_v7_0_0_0Parser.Fof_quantifierContext):
@@ -848,17 +847,17 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         if len(ctx.children) == 1:
             connective = self.visit_first(ctx)
             if connective == "<=>":
-                return structures.BinaryConnective.BIIMPLICATION
+                return logic.BinaryConnective.BIIMPLICATION
             elif connective == "=>":
-                return structures.BinaryConnective.IMPLICATION
+                return logic.BinaryConnective.IMPLICATION
             elif connective == "<=":
-                return structures.BinaryConnective.REVERSE_IMPLICATION
+                return logic.BinaryConnective.REVERSE_IMPLICATION
             elif connective == "<~>":
-                return structures.BinaryConnective.SIMILARITY
+                return logic.BinaryConnective.SIMILARITY
             elif connective == "~&":
-                return structures.BinaryConnective.NEGATED_CONJUNCTION
+                return logic.BinaryConnective.NEGATED_CONJUNCTION
             elif connective == "~|":
-                return structures.BinaryConnective.NEGATED_DISJUNCTION
+                return logic.BinaryConnective.NEGATED_DISJUNCTION
         raise NotImplementedError(connective)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#assoc_connective.
@@ -869,7 +868,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitUnary_connective(self, ctx: tptp_v7_0_0_0Parser.Unary_connectiveContext):
         connective = self.visit_first(ctx)
         if connective == "~":
-            return structures.UnaryConnective.NEGATION
+            return logic.UnaryConnective.NEGATION
         raise NotImplementedError
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#type_constant.
@@ -911,21 +910,21 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         raise NotImplementedError
 
     _DEFINED_PREDICATE_MAP = {
-        "$distinct": structures.DefinedPredicate.DISTINCT,
-        "$less": structures.DefinedPredicate.LESS,
-        "$lesseq": structures.DefinedPredicate.LESS_EQ,
-        "$greater": structures.DefinedPredicate.GREATER,
-        "$greatereq": structures.DefinedPredicate.GREATER_EQ,
-        "$is_int": structures.DefinedPredicate.IS_INT,
-        "$is_rat": structures.DefinedPredicate.IS_RAT,
-        "$box_P": structures.DefinedPredicate.BOX_P,
-        "$box_i": structures.DefinedPredicate.BOX_I,
-        "$box_int": structures.DefinedPredicate.BOX_INT,
-        "$box": structures.DefinedPredicate.BOX,
-        "$dia_P": structures.DefinedPredicate.DIA_P,
-        "$dia_i": structures.DefinedPredicate.DIA_I,
-        "$dia_int": structures.DefinedPredicate.DIA_INT,
-        "$dia": structures.DefinedPredicate.DIA,
+        "$distinct": logic.DefinedPredicate.DISTINCT,
+        "$less": logic.DefinedPredicate.LESS,
+        "$lesseq": logic.DefinedPredicate.LESS_EQ,
+        "$greater": logic.DefinedPredicate.GREATER,
+        "$greatereq": logic.DefinedPredicate.GREATER_EQ,
+        "$is_int": logic.DefinedPredicate.IS_INT,
+        "$is_rat": logic.DefinedPredicate.IS_RAT,
+        "$box_P": logic.DefinedPredicate.BOX_P,
+        "$box_i": logic.DefinedPredicate.BOX_I,
+        "$box_int": logic.DefinedPredicate.BOX_INT,
+        "$box": logic.DefinedPredicate.BOX,
+        "$dia_P": logic.DefinedPredicate.DIA_P,
+        "$dia_i": logic.DefinedPredicate.DIA_I,
+        "$dia_int": logic.DefinedPredicate.DIA_INT,
+        "$dia": logic.DefinedPredicate.DIA,
     }
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#defined_predicate.
@@ -943,7 +942,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#constant.
     def visitConstant(self, ctx: tptp_v7_0_0_0Parser.ConstantContext):
-        return structures.Constant(self.visit_first(ctx))
+        return logic.Constant(self.visit_first(ctx))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#functor.
     def visitFunctor(self, ctx: tptp_v7_0_0_0Parser.FunctorContext):
@@ -971,7 +970,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#variable.
     def visitVariable(self, ctx: tptp_v7_0_0_0Parser.VariableContext):
-        return structures.Variable(self.visit_first(ctx))
+        return logic.Variable(self.visit_first(ctx))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#source.
     def visitSource(self, ctx: tptp_v7_0_0_0Parser.SourceContext):
@@ -1130,7 +1129,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#include.
     def visitInclude(self, ctx: tptp_v7_0_0_0Parser.IncludeContext):
-        return structures.Import(self.visit(ctx.children[1]))
+        return logic.Import(self.visit(ctx.children[1]))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#formula_selection.
     def visitFormula_selection(self, ctx: tptp_v7_0_0_0Parser.Formula_selectionContext):

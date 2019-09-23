@@ -1,6 +1,6 @@
 from gavel.dialects.base.compiler import Compiler
 from gavel.dialects.base.parser import ProblemParser
-from gavel.logic.base import Problem
+from gavel.logic.problem import Problem
 from typing import Iterable
 
 

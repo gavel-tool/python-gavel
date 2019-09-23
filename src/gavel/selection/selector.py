@@ -1,8 +1,8 @@
 from itertools import chain
 from typing import List
 
-from gavel.logic.fol import AnnotatedFormula
-from gavel.logic.fol import FOLElement
+from gavel.logic.problem import AnnotatedFormula
+from gavel.logic.logic import LogicElement
 
 
 class Selector:
@@ -40,7 +40,7 @@ class Sine(Selector):
     def select(self):
         return self.calculate_triggers()
 
-    def trigger(self, symbol, sentence: FOLElement) -> bool:
+    def trigger(self, symbol, sentence: LogicElement) -> bool:
         return symbol in sentence.symbols() and all(
             self.commonness[symbol] <= self.commonness[symbol2]
             for symbol2 in sentence.symbols()
@@ -73,7 +73,7 @@ class SineTolerance(Sine):
         super(SineTolerance, self).__init__(*args, **kwargs)
         self.tolerance = tolerance
 
-    def trigger(self, symbol, sentence: FOLElement) -> bool:
+    def trigger(self, symbol, sentence: LogicElement) -> bool:
         return symbol in sentence.symbols() and all(
             self.commonness[symbol] <= self.tolerance * self.commonness[symbol2]
             for symbol2 in sentence.symbols()
@@ -85,7 +85,7 @@ class SineGenerality(Sine):
         super(SineGenerality, self).__init__(*args, **kwargs)
         self.generality = generality
 
-    def trigger(self, symbol, sentence: FOLElement) -> bool:
+    def trigger(self, symbol, sentence: LogicElement) -> bool:
         return (
             symbol in sentence.symbols()
             and self.commonness[symbol] <= self.generality

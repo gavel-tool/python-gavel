@@ -2,13 +2,14 @@ from enum import Enum
 from itertools import chain
 from typing import Iterable
 
-from gavel.logic.base import LogicElement
-from gavel.logic.base import Problem
-from gavel.logic.base import Sentence
 
+class LogicElement:
+    __visit_name__ = "undefined"
 
-class FOLElement(LogicElement):
-    pass
+    requires_parens = False
+
+    def symbols(self) -> Iterable:
+        return []
 
 
 class Quantifier(Enum):
@@ -31,30 +32,6 @@ class Quantifier(Enum):
             return "\u2203"
         else:
             raise NotImplementedError
-
-
-class FormulaRole(Enum):
-
-    __visit_name__ = "formula_role"
-
-    AXIOM = 0
-    HYPOTHESIS = 1
-    DEFINITION = 2
-    ASSUMPTION = 3
-    LEMMA = 4
-    THEOREM = 5
-    COROLLARY = 6
-    CONJECTURE = 7
-    PLAIN = 8
-    FI_DOMAIN = 9
-    FI_FUNCTORS = 10
-    FI_PREDICATES = 11
-    UNKNOWN = 12
-    TYPE = 13
-    NEGATED_CONJECTURE = 14
-
-    def __repr__(self):
-        return self.name
 
 
 class BinaryConnective(Enum):
@@ -156,11 +133,11 @@ class UnaryConnective(Enum):
             return "~"
 
 
-class UnaryFormula(FOLElement):
+class UnaryFormula(LogicElement):
 
     __visit_name__ = "unary_formula"
 
-    def __init__(self, connective, formula: FOLElement):
+    def __init__(self, connective, formula: LogicElement):
         self.connective = connective
         self.formula = formula
 
@@ -171,7 +148,7 @@ class UnaryFormula(FOLElement):
         return self.formula.symbols()
 
 
-class QuantifiedFormula(FOLElement):
+class QuantifiedFormula(LogicElement):
 
     __visit_name__ = "quantified_formula"
 
@@ -194,41 +171,13 @@ class QuantifiedFormula(FOLElement):
         return set(self.formula.symbols()).difference(variables)
 
 
-class AnnotatedFormula(FOLElement, Sentence):
-
-    __visit_name__ = "annotated_formula"
-
-    def __init__(self, logic, name, role: FormulaRole, formula, annotation=None):
-        self.logic = logic
-        self.name = name
-        self.role = role
-        self.formula = formula
-        self.annotation = annotation
-
-    def symbols(self):
-        return self.formula.symbols()
-
-    def is_conjecture(self):
-        return self.role in (FormulaRole.CONJECTURE, FormulaRole.NEGATED_CONJECTURE)
-
-    def __str__(self):
-        return (
-            "{logic}({name},{role},{formula})".format(
-                logic=self.logic, name=self.name, role=self.role, formula=self.formula
-            )
-            + ("# " + str(self.annotation))
-            if self.annotation
-            else ""
-        )
-
-
-class BinaryFormula(FOLElement):
+class BinaryFormula(LogicElement):
 
     __visit_name__ = "binary_formula"
 
     requires_parens = True
 
-    def __init__(self, left: FOLElement, operator, right: FOLElement):
+    def __init__(self, left: LogicElement, operator, right: LogicElement):
         self.left = left
         self.right = right
         self.operator = operator
@@ -240,11 +189,11 @@ class BinaryFormula(FOLElement):
         return chain(self.left.symbols(), self.right.symbols())
 
 
-class FunctorExpression(FOLElement):
+class FunctorExpression(LogicElement):
 
     __visit_name__ = "functor_expression"
 
-    def __init__(self, functor, arguments: Iterable[FOLElement]):
+    def __init__(self, functor, arguments: Iterable[LogicElement]):
         self.functor = functor
         self.arguments = arguments
 
@@ -254,7 +203,7 @@ class FunctorExpression(FOLElement):
     def symbols(self):
         yield self.functor
         for argument in self.arguments:
-            if isinstance(argument, FOLElement):
+            if isinstance(argument, LogicElement):
                 for s in argument.symbols():
                     yield s
             elif isinstance(argument, str):
@@ -263,7 +212,7 @@ class FunctorExpression(FOLElement):
                 raise NotImplementedError
 
 
-class PredicateExpression(FOLElement):
+class PredicateExpression(LogicElement):
 
     __visit_name__ = "predicate_expression"
 
@@ -279,7 +228,7 @@ class PredicateExpression(FOLElement):
         return chain(*map(lambda x: x.symbols(), self.arguments))
 
 
-class TypedVariable(FOLElement):
+class TypedVariable(LogicElement):
 
     __visit_name__ = "typed_variable"
 
@@ -291,7 +240,7 @@ class TypedVariable(FOLElement):
         yield self.name
 
 
-class TypeFormula(FOLElement):
+class TypeFormula(LogicElement):
 
     __visit_name__ = "type_formula"
 
@@ -303,12 +252,12 @@ class TypeFormula(FOLElement):
         yield self.name
 
 
-class Conditional(FOLElement):
+class Conditional(LogicElement):
 
     __visit_name__ = "conditional"
 
     def __init__(
-        self, if_clause: FOLElement, then_clause: FOLElement, else_clause: FOLElement
+        self, if_clause: LogicElement, then_clause: LogicElement, else_clause: LogicElement
     ):
 
         self.if_clause = if_clause
@@ -323,7 +272,7 @@ class Conditional(FOLElement):
         )
 
 
-class Variable(FOLElement):
+class Variable(LogicElement):
 
     __visit_name__ = "variable"
 
@@ -337,7 +286,7 @@ class Variable(FOLElement):
         return set()
 
 
-class Constant(FOLElement):
+class Constant(LogicElement):
 
     __visit_name__ = "constant"
 
@@ -351,7 +300,7 @@ class Constant(FOLElement):
         return {self.symbol}
 
 
-class Let(FOLElement):
+class Let(LogicElement):
 
     __visit_name__ = "let"
 
@@ -364,7 +313,7 @@ class Let(FOLElement):
         return self.formula.symbols()
 
 
-class Subtype(FOLElement):
+class Subtype(LogicElement):
 
     __visit_name__ = "subtype"
 
@@ -373,7 +322,7 @@ class Subtype(FOLElement):
         self.right = right
 
 
-class QuantifiedType(FOLElement):
+class QuantifiedType(LogicElement):
 
     __visit_name__ = "quantified_type"
 
@@ -382,7 +331,7 @@ class QuantifiedType(FOLElement):
         self.vtype = vtype
 
 
-class Import(FOLElement):
+class Import(LogicElement):
 
     __visit_name__ = "import"
 
@@ -390,14 +339,10 @@ class Import(FOLElement):
         self.path = path.replace("'", "")
 
 
-class MappingType(FOLElement):
+class MappingType(LogicElement):
 
     __visit_name__ = "mapping_type"
 
     def __init__(self, left, right):
         self.left = left
         self.right = right
-
-
-class EOFException(Exception):
-    pass

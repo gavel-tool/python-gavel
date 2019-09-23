@@ -1,9 +1,10 @@
-import gavel.logic.fol as fol
+import gavel.logic.logic as fol
+from gavel.logic import problem
 from gavel.dialects.base.compiler import Compiler
 
 
 class TPTPCompiler(Compiler):
-    def parenthesise(self, element: fol.FOLElement):
+    def parenthesise(self, element: fol.LogicElement):
         if isinstance(element, str):
             return element
         result = self.visit(element)
@@ -31,36 +32,36 @@ class TPTPCompiler(Compiler):
         else:
             return "?"
 
-    def visit_formula_role(self, role: fol.FormulaRole):
-        if role == fol.FormulaRole.AXIOM:
+    def visit_formula_role(self, role: problem.FormulaRole):
+        if role == problem.FormulaRole.AXIOM:
             return "axiom"
-        elif role == fol.FormulaRole.HYPOTHESIS:
+        elif role == problem.FormulaRole.HYPOTHESIS:
             return "hypothesis"
-        elif role == fol.FormulaRole.DEFINITION:
+        elif role == problem.FormulaRole.DEFINITION:
             return "definition"
-        elif role == fol.FormulaRole.ASSUMPTION:
+        elif role == problem.FormulaRole.ASSUMPTION:
             return "assumption"
-        elif role == fol.FormulaRole.LEMMA:
+        elif role == problem.FormulaRole.LEMMA:
             return "lemma"
-        elif role == fol.FormulaRole.THEOREM:
+        elif role == problem.FormulaRole.THEOREM:
             return "theorem"
-        elif role == fol.FormulaRole.COROLLARY:
+        elif role == problem.FormulaRole.COROLLARY:
             return "corollary"
-        elif role == fol.FormulaRole.CONJECTURE:
+        elif role == problem.FormulaRole.CONJECTURE:
             return "conjecture"
-        elif role == fol.FormulaRole.PLAIN:
+        elif role == problem.FormulaRole.PLAIN:
             return "plain"
-        elif role == fol.FormulaRole.FI_DOMAIN:
+        elif role == problem.FormulaRole.FINITE_INTERPRETATION_DOMAIN:
             return "fi_domain"
-        elif role == fol.FormulaRole.FI_FUNCTORS:
+        elif role == problem.FormulaRole.FINITE_INTERPRETATION_FUNCTORS:
             return "fi_functors"
-        elif role == fol.FormulaRole.FI_PREDICATES:
+        elif role == problem.FormulaRole.FINITE_INTERPRETATION_PREDICATES:
             return "fi_predicates"
-        elif role == fol.FormulaRole.UNKNOWN:
+        elif role == problem.FormulaRole.UNKNOWN:
             return "unknown"
-        elif role == fol.FormulaRole.TYPE:
+        elif role == problem.FormulaRole.TYPE:
             return "type"
-        elif role == fol.FormulaRole.NEGATED_CONJECTURE:
+        elif role == problem.FormulaRole.NEGATED_CONJECTURE:
             return "negated_conjecture"
         else:
             raise NotImplementedError
@@ -155,7 +156,7 @@ class TPTPCompiler(Compiler):
             self.parenthesise(formula.formula),
         )
 
-    def visit_annotated_formula(self, anno: fol.AnnotatedFormula):
+    def visit_annotated_formula(self, anno: problem.AnnotatedFormula):
         return "{}({},{},({})).".format(
             anno.logic, anno.name, self.visit(anno.role), self.visit(anno.formula)
         )
@@ -237,7 +238,7 @@ class TPTPCompiler(Compiler):
     def visit_constant(self, variable: fol.Variable):
         return variable.symbol
 
-    def visit_problem(self, problem: fol.Problem):
+    def visit_problem(self, problem: problem.Problem):
         L = [self.visit(axiom) for axiom in problem.premises]
         L.append(self.visit(problem.conjecture))
         return "\n".join(L)

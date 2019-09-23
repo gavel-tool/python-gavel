@@ -16,10 +16,10 @@ from gavel.dialects.db.connection import get_or_create
 from gavel.dialects.db.connection import get_or_None
 from gavel.dialects.db.connection import with_session
 from gavel.dialects.db.compiler import DBCompiler
-from gavel.logic import fol
-from gavel.logic.base import LogicElement
-from gavel.logic.base import Problem
-from gavel.logic.fol import FormulaRole
+from gavel.logic import logic
+from gavel.logic.logic import LogicElement
+from gavel.logic.problem import Problem
+from gavel.logic.problem import FormulaRole, AnnotatedFormula
 from gavel.config.settings import TPTP_ROOT
 
 from .antlr4.flattening import FOFFlatteningVisitor
@@ -105,9 +105,9 @@ class TPTPParser(LogicParser):
         conjectures = []
         for raw_line in self.load_expressions_from_file(path, *args, **kwargs):
             line = self.formula_processor(raw_line)
-            if isinstance(line, fol.Import):
+            if isinstance(line, logic.Import):
                 imports.append(line)
-            elif isinstance(line, fol.AnnotatedFormula):
+            elif isinstance(line, AnnotatedFormula):
                 if line.role in (
                     FormulaRole.CONJECTURE,
                     FormulaRole.NEGATED_CONJECTURE,
@@ -140,7 +140,7 @@ class StorageProcessor(TPTPParser):
         conjectures = []
         if s_created:
             for line in self.load_expressions_from_file(path):
-                if isinstance(line, fol.Import):
+                if isinstance(line, logic.Import):
                     imported_source = (
                         session.query(db.Source).filter_by(path=line.path).first()
                     )
@@ -159,10 +159,10 @@ class StorageProcessor(TPTPParser):
                         # raise Exception("Source (%s) not found" % line.path)
                     for axiom in axiomset:
                         premises.append(axiom)
-                elif isinstance(line, fol.AnnotatedFormula):
+                elif isinstance(line, AnnotatedFormula):
                     if line.role in (
-                        fol.FormulaRole.CONJECTURE,
-                        fol.FormulaRole.NEGATED_CONJECTURE,
+                        logic.FormulaRole.CONJECTURE,
+                        logic.FormulaRole.NEGATED_CONJECTURE,
                     ):
                         conjecture = self.formula_processor(
                             line, *args, source=source, force_creation=True, **kwargs
@@ -189,7 +189,7 @@ class StorageProcessor(TPTPParser):
             return session.query(db.Problem).filter_by(source=source).all()
 
     def formula_processor(
-        self, formula: fol.AnnotatedFormula, *args, force_creation=False, **kwargs
+        self, formula: AnnotatedFormula, *args, force_creation=False, **kwargs
     ):
         source = kwargs.get("source")
         session = kwargs.get("session")

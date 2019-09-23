@@ -7,7 +7,8 @@ from typing import Iterable
 import requests as req
 
 from gavel.dialects.tptp.dialect import TPTPDialect
-from gavel.logic.fol import Problem, LogicElement, AnnotatedFormula
+from gavel.logic.problem import Problem, AnnotatedFormula
+from gavel.logic.logic import LogicElement
 from gavel.prover.base.interface import BaseProverInterface
 from gavel.config.settings import HETS_HOST
 from gavel.config.settings import HETS_PORT

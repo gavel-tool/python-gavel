@@ -1,6 +1,5 @@
-from gavel.logic.base import LogicElement
+from gavel.logic.logic import LogicElement
 from typing import Iterable, List
-import networkx as nx
 
 
 class ProofStep:

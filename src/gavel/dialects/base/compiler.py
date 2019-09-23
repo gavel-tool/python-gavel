@@ -1,5 +1,5 @@
-import gavel.logic.fol as fol
-
+import gavel.logic.logic as fol
+from gavel.logic import problem
 
 class Compiler:
     def visit(self, obj, *args, **kwargs):
@@ -18,7 +18,7 @@ class Compiler:
     def visit_quantifier(self, quantifier: fol.Quantifier):
         raise NotImplementedError
 
-    def visit_formula_role(self, role: fol.FormulaRole):
+    def visit_formula_role(self, role: problem.FormulaRole):
         raise NotImplementedError
 
     def visit_binary_connective(self, connective: fol.BinaryConnective):
@@ -36,7 +36,7 @@ class Compiler:
     def visit_quantified_formula(self, formula: fol.QuantifiedFormula):
         raise NotImplementedError
 
-    def visit_annotated_formula(self, anno: fol.AnnotatedFormula):
+    def visit_annotated_formula(self, anno: problem.AnnotatedFormula):
         raise NotImplementedError
 
     def visit_binary_formula(self, formula: fol.BinaryFormula):
@@ -78,5 +78,5 @@ class Compiler:
     def visit_constant(self, variable: fol.Variable):
         raise NotImplementedError
 
-    def visit_problem(self, problem: fol.Problem):
+    def visit_problem(self, problem: problem.Problem):
         raise NotImplementedError

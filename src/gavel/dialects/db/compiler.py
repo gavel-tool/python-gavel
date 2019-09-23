@@ -1,4 +1,5 @@
-import gavel.logic.fol as fol
+import gavel.logic.logic as fol
+from gavel.logic import problem
 from gavel.dialects.base.compiler import Compiler
 
 
@@ -9,36 +10,36 @@ class DBCompiler(Compiler):
         elif quantifier.is_universal():
             return dict(type="quantifier", quantifier="universial")
 
-    def visit_formula_role(self, role: fol.FormulaRole):
-        if role == fol.FormulaRole.ASSUMPTION:
+    def visit_formula_role(self, role: problem.FormulaRole):
+        if role == problem.FormulaRole.ASSUMPTION:
             return dict(type="formula_role", formula_role="assumption")
-        elif role == fol.FormulaRole.AXIOM:
+        elif role == problem.FormulaRole.AXIOM:
             return dict(type="formula_role", formula_role="axiom")
-        elif role == fol.FormulaRole.CONJECTURE:
+        elif role == problem.FormulaRole.CONJECTURE:
             return dict(type="formula_role", formula_role="conjecture")
-        elif role == fol.FormulaRole.COROLLARY:
+        elif role == problem.FormulaRole.COROLLARY:
             return dict(type="formula_role", formula_role="corollary")
-        elif role == fol.FormulaRole.DEFINITION:
+        elif role == problem.FormulaRole.DEFINITION:
             return dict(type="formula_role", formula_role="definition")
-        elif role == fol.FormulaRole.FI_DOMAIN:
+        elif role == problem.FormulaRole.FI_DOMAIN:
             return dict(type="formula_role", formula_role="fi_domain")
-        elif role == fol.FormulaRole.FI_FUNCTORS:
+        elif role == problem.FormulaRole.FI_FUNCTORS:
             return dict(type="formula_role", formula_role="fi_functors")
-        elif role == fol.FormulaRole.FI_PREDICATES:
+        elif role == problem.FormulaRole.FI_PREDICATES:
             return dict(type="formula_role", formula_role="fi_predicates")
-        elif role == fol.FormulaRole.HYPOTHESIS:
+        elif role == problem.FormulaRole.HYPOTHESIS:
             return dict(type="formula_role", formula_role="hypothesis")
-        elif role == fol.FormulaRole.LEMMA:
+        elif role == problem.FormulaRole.LEMMA:
             return dict(type="formula_role", formula_role="lemma")
-        elif role == fol.FormulaRole.NEGATED_CONJECTURE:
+        elif role == problem.FormulaRole.NEGATED_CONJECTURE:
             return dict(type="formula_role", formula_role="negated_conjecture")
-        elif role == fol.FormulaRole.PLAIN:
+        elif role == problem.FormulaRole.PLAIN:
             return dict(type="formula_role", formula_role="plain")
-        elif role == fol.FormulaRole.THEOREM:
+        elif role == problem.FormulaRole.THEOREM:
             return dict(type="formula_role", formula_role="theorem")
-        elif role == fol.FormulaRole.TYPE:
+        elif role == problem.FormulaRole.TYPE:
             return dict(type="formula_role", formula_role="type")
-        elif role == fol.FormulaRole.UNKNOWN:
+        elif role == problem.FormulaRole.UNKNOWN:
             return dict(type="formula_role", formula_role="unknown")
         raise NotImplementedError
 
@@ -66,7 +67,7 @@ class DBCompiler(Compiler):
             variables=[self.visit(v) for v in formula.variables],
         )
 
-    def visit_annotated_formula(self, anno: fol.AnnotatedFormula):
+    def visit_annotated_formula(self, anno: problem.AnnotatedFormula):
         return dict(
             type="annotated_formula",
             formula=self.visit(anno.formula),
@@ -114,7 +115,7 @@ class DBCompiler(Compiler):
     def visit_constant(self, variable: fol.Variable):
         return dict(type="constant", symbol=variable.symbol)
 
-    def visit_problem(self, problem: fol.Problem):
+    def visit_problem(self, problem: problem.Problem):
         return dict(
             type="problem",
             premises=[self.visit(p) for p in problem.premises],
