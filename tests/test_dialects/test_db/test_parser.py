@@ -70,28 +70,3 @@ class TestParser(unittest.TestCase):
         ):
             pass
 
-
-class TestAxiomsCNF(DBTest):
-    def test_RNG001_0(self):
-        single_axiom("RNG001-0.ax")
-
-
-class TestAxiomsFOF(DBTest):
-    def test_AGT001_0(self):
-        single_axiom("AGT001+0.ax")
-
-
-@pytest.mark.skip
-class TestTHFProblems(DBTest):
-    def test_NUN030_1(self):
-        single_problem("NUN/NUN030^1.p")
-
-
-class TestCNFProblems(DBTest):
-    def test_ALG001_1(self):
-        single_problem("ALG/ALG001-1.p")
-
-
-class TestFOFProblems(DBTest):
-    def test_ALG001_1(self):
-        single_problem("SET/SET002+3.p")
