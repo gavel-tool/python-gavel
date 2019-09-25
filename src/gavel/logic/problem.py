@@ -1,6 +1,7 @@
-from gavel.logic.logic import LogicElement
-from typing import Iterable
 from enum import Enum
+from typing import Iterable
+
+from gavel.logic.logic import LogicElement
 
 
 class ProblemElement:

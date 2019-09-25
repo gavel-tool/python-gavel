@@ -1,18 +1,18 @@
 import json
 import tempfile
-from urllib.parse import quote
 from typing import Iterable
-
+from urllib.parse import quote
 
 import requests as req
 
-from gavel.dialects.tptp.dialect import TPTPDialect
-from gavel.logic.problem import Problem, AnnotatedFormula
-from gavel.logic.logic import LogicElement
-from gavel.prover.base.interface import BaseProverInterface
 from gavel.config.settings import HETS_HOST
 from gavel.config.settings import HETS_PORT
-from gavel.prover.base.proof_structures import ProofGraph
+from gavel.dialects.tptp.dialect import TPTPDialect
+from gavel.logic.logic import LogicElement
+from gavel.logic.problem import AnnotatedFormula
+from gavel.logic.problem import Problem
+from gavel.logic.proof import Proof
+from gavel.prover.base.interface import BaseProverInterface
 
 
 class HetsCall:
@@ -69,18 +69,12 @@ class HetsProve(BaseProverInterface, HetsCall):
         problem_instance.close()
         if response.status_code == 200:
             jsn = json.loads(response.content.decode("utf-8"))[0]
-            for goal in jsn["goals"]:
-                for line in goal["prover_output"].split("\n"):
-                    yield line
+            assert "goals" in jsn
+            goals = jsn["goals"]
+            assert len(goals) == 1
+            return goals[0]["prover_output"]
         else:
             raise Exception(response.content)
 
     def _post_process_proof(self, raw_proof_result):
-        for line in self.dialect.parse_many_expressions(raw_proof_result):
-            yield line
-
-    def _build_proof_graph(
-        self, lines: Iterable[AnnotatedFormula], problem: Problem
-    ) -> ProofGraph:
-        pg = ProofGraph(premises=problem.premises)
-        d = {line.name: line for line in lines}
+        return raw_proof_result

@@ -8,19 +8,30 @@ import requests
 from antlr4 import CommonTokenStream
 from antlr4 import InputStream
 
-import gavel.dialects.db.structures as db
 import gavel.config.settings as settings
+import gavel.dialects.db.structures as db
+from gavel.config.settings import TPTP_ROOT
 from gavel.dialects.base.parser import LogicParser
+from gavel.dialects.base.parser import ParserException
 from gavel.dialects.base.parser import ProblemParser
+from gavel.dialects.base.parser import ProofParser
+from gavel.dialects.db.compiler import DBCompiler
 from gavel.dialects.db.connection import get_or_create
 from gavel.dialects.db.connection import get_or_None
 from gavel.dialects.db.connection import with_session
-from gavel.dialects.db.compiler import DBCompiler
+from gavel.dialects.tptp.sources import InferenceSource
+from gavel.dialects.tptp.sources import Input
+from gavel.dialects.tptp.sources import InternalSource
 from gavel.logic import logic
 from gavel.logic.logic import LogicElement
+from gavel.logic.problem import AnnotatedFormula
+from gavel.logic.problem import FormulaRole
 from gavel.logic.problem import Problem
-from gavel.logic.problem import FormulaRole, AnnotatedFormula
-from gavel.config.settings import TPTP_ROOT
+from gavel.logic.proof import Axiom
+from gavel.logic.proof import Inference
+from gavel.logic.proof import Introduction
+from gavel.logic.proof import LinearProof
+from gavel.logic.proof import ProofStep
 
 from .antlr4.flattening import FOFFlatteningVisitor
 from .antlr4.tptp_v7_0_0_0Lexer import tptp_v7_0_0_0Lexer
@@ -1450,6 +1461,38 @@ def all_axioms(processor):
 
 class TPTPProblemParser(ProblemParser):
     logic_parser_cls = TPTPParser
+
+
+class SimpleTPTPProofParser(ProofParser):
+    def __init__(self):
+        self._tptp_parser = TPTPParser()
+
+    def parse(self, structure: str, *args, **kwargs):
+        return LinearProof(
+            steps=[
+                self._create_proof_step(s)
+                for s in self._tptp_parser.load_many(structure.split("\n"))
+            ]
+        )
+
+    def _create_proof_step(self, e: LogicElement) -> ProofStep:
+        if isinstance(e, AnnotatedFormula):
+            if e.role == FormulaRole.AXIOM:
+                return Axiom(formula=e.formula, name=e.name)
+            elif e.role == FormulaRole.PLAIN:
+                if isinstance(e.annotation, InferenceSource):
+                    return Inference(
+                        formula=e.formula, name=e.name, antecedents=e.annotation.parents
+                    )
+                elif isinstance(e.annotation, InternalSource):
+                    return Introduction(
+                        formula=e.formula,
+                        name=e.name,
+                        introduction_type=e.annotation.intro_type,
+                    )
+            raise ParserException(e)
+        else:
+            raise ParserException
 
 
 def get_all_files(path):

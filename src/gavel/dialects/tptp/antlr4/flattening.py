@@ -1,9 +1,9 @@
 # Generated from tptp_v7_0_0_0.g4 by ANTLR 4.5.1
 import gavel.dialects.tptp.sources as sources
-from gavel.logic import logic
-from gavel.logic import problem
 from gavel.dialects.tptp.antlr4.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
 from gavel.dialects.tptp.antlr4.tptp_v7_0_0_0Visitor import tptp_v7_0_0_0Visitor
+from gavel.logic import logic
+from gavel.logic import problem
 
 # This class defines a complete generic visitor for a parse tree produced by tptp_v7_0_0_0Parser.
 
@@ -1010,7 +1010,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#parent_info.
     def visitParent_info(self, ctx: tptp_v7_0_0_0Parser.Parent_infoContext):
-        return self.visitChildren(ctx)
+        return self.visitChildren(ctx)[0]
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#parent_details.
     def visitParent_details(self, ctx: tptp_v7_0_0_0Parser.Parent_detailsContext):
@@ -1022,9 +1022,17 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
             self.visit(ctx.children[1]), self.visit(ctx.children[2])
         )
 
+    INTRO_TYPE_MAP = {
+        "definition": sources.IntroductionType.DEFINITION,
+        "axiom_of_choice": sources.IntroductionType.AXIOM_OF_CHOICE,
+        "tautology": sources.IntroductionType.TAUTOLOGY,
+        "assumption": sources.IntroductionType.ASSUMPTION,
+        "avatar_definition": sources.IntroductionType.DEFINITION,
+    }
+
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#intro_type.
     def visitIntro_type(self, ctx: tptp_v7_0_0_0Parser.Intro_typeContext):
-        return self.visitChildren(ctx)
+        return self.INTRO_TYPE_MAP[self.visit_first(ctx)]
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#external_source.
     def visitExternal_source(self, ctx: tptp_v7_0_0_0Parser.External_sourceContext):

@@ -5,6 +5,7 @@ from typing import TypeVar
 from gavel.logic.logic import LogicElement
 from gavel.logic.problem import Problem
 from gavel.logic.problem import Sentence
+from gavel.logic.proof import Proof
 
 Parseable = TypeVar("Parseable")
 Target = TypeVar("Target")
@@ -118,5 +119,15 @@ class ProblemParser(Parser[Parseable, Problem]):
                     conjectures.append(s)
                 else:
                     premises.append(s)
+            else:
+                raise ParserException("Unknown element:" + str(s))
         for c in conjectures:
             yield Problem(premises, c)
+
+
+class ParserException(Exception):
+    pass
+
+
+class ProofParser(Parser[Parseable, Proof]):
+    pass

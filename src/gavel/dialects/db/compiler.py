@@ -1,6 +1,6 @@
 import gavel.logic.logic as fol
-from gavel.logic import problem
 from gavel.dialects.base.compiler import Compiler
+from gavel.logic import problem
 
 
 class DBCompiler(Compiler):

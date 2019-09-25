@@ -90,8 +90,13 @@ def prove(f, s):
                 premises=problem.premises, conjecture=problem.conjecture, max_depth=10
             )
             problem = Problem(premises=selector.select(), conjecture=problem.conjecture)
-        for goal_result in hp.prove(problem, compiler):
-            print(goal_result)
+        proof = hp.prove(problem, compiler)
+        for s in proof.steps:
+            print(
+                "{name}: {formula} [{source}]".format(
+                    name=s.name, formula=s.formula, source=s.render_source()
+                )
+            )
 
 
 @click.command()

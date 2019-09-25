@@ -1,5 +1,7 @@
 from typing import Iterable
 
+from gavel.logic.proof import IntroductionType
+
 
 class Annotation:
     pass
@@ -10,8 +12,8 @@ class Source:
 
 
 class InternalSource(Source):
-    def __init__(self, rule, info):
-        self.rule = rule
+    def __init__(self, intro_type: IntroductionType, info):
+        self.intro_type = intro_type
         self.info = info
 
 

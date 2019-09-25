@@ -1,12 +1,16 @@
+from typing import Iterable
+
 from gavel.dialects.base.compiler import Compiler
 from gavel.dialects.base.parser import ProblemParser
+from gavel.dialects.base.parser import ProofParser
 from gavel.logic.problem import Problem
-from typing import Iterable
+from gavel.logic.proof import Proof
 
 
 class Dialect:
     _problem_parser_cls = ProblemParser
     _compiler_cls = Compiler
+    _proof_parser_cls = ProofParser
 
     def compile(self, obj: Problem, *args, **kwargs):
         c = self._compiler_cls()
@@ -38,3 +42,7 @@ class Dialect:
         c = self._compiler_cls()
         compiled = c.visit(obj, *args, **kwargs)
         return r.render(compiled, *args, **kwargs)
+
+    def parse_proof(self, prover_output) -> Proof:
+        p = self._proof_parser_cls()
+        return p.parse(prover_output)

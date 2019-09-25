@@ -1,8 +1,8 @@
 from itertools import chain
 from typing import List
 
-from gavel.logic.problem import AnnotatedFormula
 from gavel.logic.logic import LogicElement
+from gavel.logic.problem import AnnotatedFormula
 
 
 class Selector:
