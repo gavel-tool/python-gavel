@@ -13,7 +13,7 @@ def get_engine():
         cred = DB_CONNECTION.get("user", "")
         if cred:
             if "password" in DB_CONNECTION:
-                cred += "{user}:{password}".format(**DB_CONNECTION)
+                cred = "{user}:{password}".format(**DB_CONNECTION)
             cred += "@"
 
         location = DB_CONNECTION.get("host", "")

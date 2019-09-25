@@ -8,7 +8,7 @@ class ProblemElement:
     pass
 
 
-class Sentence(LogicElement):
+class Sentence(ProblemElement):
     def is_conjecture(self):
         raise NotImplementedError
 
@@ -37,7 +37,7 @@ class FormulaRole(Enum):
         return self.name
 
 
-class AnnotatedFormula(ProblemElement):
+class AnnotatedFormula(Sentence):
 
     __visit_name__ = "annotated_formula"
 
@@ -46,7 +46,7 @@ class AnnotatedFormula(ProblemElement):
         logic,
         name: str = None,
         role: FormulaRole = None,
-        formula: Sentence = None,
+        formula: LogicElement = None,
         annotation=None,
     ):
         self.logic = logic
@@ -69,6 +69,11 @@ class AnnotatedFormula(ProblemElement):
             + ("# " + str(self.annotation))
             if self.annotation
             else ""
+        )
+
+    def __eq__(self, other):
+        return type(self) == type(other) and all(
+            getattr(self, n) == getattr(other, n) for n in self.__dict__
         )
 
 

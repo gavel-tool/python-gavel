@@ -10,7 +10,7 @@ from antlr4 import InputStream
 
 import gavel.config.settings as settings
 import gavel.dialects.db.structures as db
-from gavel.config.settings import TPTP_ROOT
+from gavel.config import settings as settings
 from gavel.dialects.base.parser import LogicParser
 from gavel.dialects.base.parser import ParserException
 from gavel.dialects.base.parser import ProblemParser
@@ -23,6 +23,7 @@ from gavel.dialects.tptp.sources import InferenceSource
 from gavel.dialects.tptp.sources import Input
 from gavel.dialects.tptp.sources import InternalSource
 from gavel.logic import logic
+from gavel.logic import problem
 from gavel.logic.logic import LogicElement
 from gavel.logic.problem import AnnotatedFormula
 from gavel.logic.problem import FormulaRole
@@ -129,7 +130,7 @@ class TPTPParser(LogicParser):
 
         for im in imports:
             for imported_axiom in self.file_processor(
-                os.path.join(TPTP_ROOT, im.path), *args, **kwargs
+                os.path.join(settings.TPTP_ROOT, im.path), *args, **kwargs
             ):
                 axioms.append(imported_axiom)
 
@@ -163,7 +164,7 @@ class StorageProcessor(TPTPParser):
                         )
                     else:
                         axiomset = self.axiomset_processor(
-                            os.path.join(TPTP_ROOT, line.path),
+                            os.path.join(settings.TPTP_ROOT, line.path),
                             session=session,
                             commit=False,
                         )
@@ -172,8 +173,8 @@ class StorageProcessor(TPTPParser):
                         premises.append(axiom)
                 elif isinstance(line, AnnotatedFormula):
                     if line.role in (
-                        logic.FormulaRole.CONJECTURE,
-                        logic.FormulaRole.NEGATED_CONJECTURE,
+                        problem.FormulaRole.CONJECTURE,
+                        problem.FormulaRole.NEGATED_CONJECTURE,
                     ):
                         conjecture = self.formula_processor(
                             line, *args, source=source, force_creation=True, **kwargs
@@ -189,11 +190,9 @@ class StorageProcessor(TPTPParser):
                 else:
                     raise NotImplementedError
             for conjecture in conjectures:
-                problem = db.Problem(
-                    premises=premises, source=source, conjecture=conjecture
-                )
-                session.add(problem)
-                problems.append(problem)
+                p = db.Problem(premises=premises, source=source, conjecture=conjecture)
+                session.add(p)
+                problems.append(p)
             session.commit()
             return problems
         else:
@@ -1456,7 +1455,7 @@ def all_axioms(processor):
     ]
     for f in files:
         print(f)
-        processor.axiomset_processor(os.path.join(TPTP_ROOT, f))
+        processor.axiomset_processor(os.path.join(settings.TPTP_ROOT, f))
 
 
 class TPTPProblemParser(ProblemParser):
@@ -1503,7 +1502,7 @@ def get_all_files(path):
 
 
 def all_problems(processor):
-    for f in get_all_files(os.path.join(TPTP_ROOT, "Problems")):
+    for f in get_all_files(os.path.join(settings.TPTP_ROOT, "Problems")):
         print(f)
         for problem in processor.problem_processor(f):
             print("done")

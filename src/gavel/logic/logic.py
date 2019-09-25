@@ -303,6 +303,11 @@ class Constant(LogicElement):
         return {self.symbol}
 
 
+class DefinedConstant(Constant, Enum):
+    VERUM = 0
+    FALSUM = 1
+
+
 class Let(LogicElement):
 
     __visit_name__ = "let"

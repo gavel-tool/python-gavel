@@ -902,9 +902,9 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         else:
             prop = self.visit_first(ctx)
             if prop == "$true":
-                return True
+                return logic.DefinedConstant.VERUM
             elif prop == "$false":
-                return False
+                return logic.DefinedConstant.FALSUM
         raise NotImplementedError
 
     _DEFINED_PREDICATE_MAP = {
@@ -960,7 +960,13 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#defined_functor.
     def visitDefined_functor(self, ctx: tptp_v7_0_0_0Parser.Defined_functorContext):
-        return self.visitChildren(ctx)
+        f = self.visit_first(ctx)
+        if f == "$true":
+            return logic.DefinedConstant.VERUM
+        elif f == "$false":
+            return logic.DefinedConstant.FALSUM
+        else:
+            return f
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#defined_term.
     def visitDefined_term(self, ctx: tptp_v7_0_0_0Parser.Defined_termContext):
@@ -1181,7 +1187,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitAtomic_defined_word(
         self, ctx: tptp_v7_0_0_0Parser.Atomic_defined_wordContext
     ):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#atomic_system_word.
     def visitAtomic_system_word(

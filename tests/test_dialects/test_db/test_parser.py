@@ -2,14 +2,15 @@ import cProfile
 import pstats
 import unittest
 from os.path import join
+
 import pytest
 
+import gavel.dialects.db.structures as fol_db
+from gavel.config.settings import TPTP_ROOT
 from gavel.dialects.db.connection import with_session
 from gavel.dialects.tptp.compiler import TPTPCompiler
 from gavel.dialects.tptp.parser import StorageProcessor
 from gavel.dialects.tptp.parser import TPTPParser
-from gavel.config.settings import TPTP_ROOT
-import gavel.dialects.db.structures as fol_db
 
 
 class TestProcessor(TPTPParser):

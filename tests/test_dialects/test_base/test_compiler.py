@@ -1,5 +1,7 @@
 from unittest import TestCase
+
 import pytest
+
 from gavel.dialects.base.compiler import Compiler
 
 
