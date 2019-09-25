@@ -16,11 +16,13 @@ Why does this file exist, and why not put this in __main__?
 """
 
 import click
+import os
 
 import gavel.config.settings as settings
-import gavel.dialects.db.structures as fol_db
+from gavel.dialects.db.structures import store_formula, create_tables, drop_tables
 import gavel.dialects.tptp.parser as build_tptp
 from gavel.dialects.tptp.compiler import TPTPCompiler
+from gavel.dialects.db.compiler import DBCompiler
 from gavel.dialects.tptp.parser import Problem
 from gavel.dialects.tptp.parser import TPTPParser
 from gavel.prover.hets.interface import HetsProve
@@ -36,17 +38,25 @@ def db():
 @click.command()
 def init_db():
     """Create tables for storage of formulas"""
-    fol_db.create_tables()
+    create_tables()
 
 
 @click.command()
-@click.option("-p", default=settings.TPTP_ROOT)
-def store_tptp(p):
-    settings.TPTP_ROOT = p
-    build_tptp.store_axioms()
-    build_tptp.store_problems()
-
-
+@click.argument("path", default=None)
+@click.option("-r", default=False)
+def store(path, r):
+    parser = TPTPParser()
+    compiler = DBCompiler()
+    for sub_path in os.listdir(path):
+        sub_path = os.path.join(path, sub_path)
+        if os.path.isfile(sub_path):
+            print(sub_path)
+            i = 0
+            for formula in parser.parse_from_file(sub_path):
+                i += 1
+                struc = compiler.visit(formula)
+                store_formula(sub_path, struc)
+            print("--- %d formulas extracted ---"%i)
 @click.command()
 @click.option("-p", default=settings.TPTP_ROOT)
 def store_problems(p):
@@ -64,15 +74,15 @@ def store_solutions(p):
 @click.command()
 def drop_db():
     """Drop tables created gy init-db"""
-    fol_db.drop_tables()
+    drop_tables()
 
 
 @click.command()
 @click.option("-p", default=settings.TPTP_ROOT)
 def clear_db(p):
     """Drop tables created gy init-db and recreate them"""
-    fol_db.drop_tables()
-    fol_db.create_tables()
+    drop_tables()
+    create_tables()
 
 
 @click.command()
@@ -117,7 +127,7 @@ db.add_command(init_db)
 db.add_command(drop_db)
 db.add_command(clear_db)
 db.add_command(store_problems)
-db.add_command(store_tptp)
+db.add_command(store)
 db.add_command(store_solutions)
 
 db.add_command(prove)

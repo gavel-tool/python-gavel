@@ -83,33 +83,29 @@ class TPTPParser(LogicParser):
         if buffer:
             raise Exception('Unprocessed input: """%s"""' % buffer)
 
-    def load_string(self, string: str, *args, **kwargs):
-        return tptp_v7_0_0_0Parser(
+    def load_single_from_string(self, string: str, *args, **kwargs):
+        s = tptp_v7_0_0_0Parser(
             CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(string)))
-        ).tptp_input()
+        )
+        return s.tptp_input()
 
     def load_expressions_from_file(
         self, path, *args, **kwargs
     ) -> Iterable[LogicElement]:
         with open(path) as infile:
             lines = infile.readlines()
-            return self.load_many(lines)
+            for line in self.load_many(lines):
+                yield self.parse(line)
 
     def load_many(
         self, lines: Iterable[str], *args, **kwargs
     ) -> Iterable[LogicElement]:
-        # pool = mp.Pool(mp.cpu_count() - 1)
-        for tree in map(
-            self.parse_from_string, self.stream_formula_lines(lines, **kwargs)
-        ):
-            yield tree
-        # pool.close()
+        return map(
+            self.load_single_from_string, self.stream_formula_lines(lines, **kwargs)
+        )
 
-    def parse(self, tree, *args, **kwargs) -> LogicElement:
+    def parse(self, tree, *args, **kwargs):
         return self.visitor.visit(tree)
-
-    def file_processor(self, path, *args, **kwargs):
-        return self.load_expressions_from_file(path, *args, **kwargs)
 
     def problem_processor(self, path, *args, load_imports=False, **kwargs):
         axioms = []
@@ -129,7 +125,7 @@ class TPTPParser(LogicParser):
                     axioms.append(line)
 
         for im in imports:
-            for imported_axiom in self.file_processor(
+            for imported_axiom in self.load_expressions_from_file(
                 os.path.join(settings.TPTP_ROOT, im.path), *args, **kwargs
             ):
                 axioms.append(imported_axiom)
@@ -231,12 +227,6 @@ class StorageProcessor(TPTPParser):
             return result
         else:
             return session.query(db.Formula).filter_by(source=source).all()
-
-
-class AutoencoderProcessor(TPTPParser):
-    def formula_processor(self, formula, *args, orig=None, **kwargs):
-        return formula
-
 
 def all_axioms(processor):
     files = [

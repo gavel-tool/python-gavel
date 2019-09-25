@@ -27,7 +27,7 @@ class Parser(Generic[Parseable, Target]):
         """
         raise NotImplementedError
 
-    def load_string(self, string: str, *args, **kwargs) -> Parseable:
+    def load_single_from_string(self, string: str, *args, **kwargs) -> Parseable:
         """
         Load a string into the structure represented by the dialect
         Parameters
@@ -43,7 +43,7 @@ class Parser(Generic[Parseable, Target]):
     def load_many(self, string: Iterable[str]) -> Iterable[Parseable]:
         raise NotImplementedError
 
-    def parse_from_string(
+    def parse_single_from_string(
         self,
         string: str,
         load_args=None,
@@ -62,7 +62,7 @@ class Parser(Generic[Parseable, Target]):
         -------
         """
         return self.parse(
-            self.load_string(string, *(load_args or []), **(load_kwargs or {})),
+            self.load_single_from_string(string, *(load_args or []), **(load_kwargs or {})),
             *(parse_args or []),
             **(parse_kwargs or {})
         )
@@ -78,8 +78,9 @@ class Parser(Generic[Parseable, Target]):
         with open(*args, **kwargs) as inp:
             return inp.read()
 
-    def parse_from_file(self, file_path, *args, **kwargs) -> LogicElement:
-        return self.parse_from_string(self.__unpack_file(file_path), *args, **kwargs)
+    def parse_from_file(self, file_path, *args, **kwargs) -> Iterable[Target]:
+        for line in self.load_many(self.__unpack_file(file_path).split("\n")):
+            yield self.parse(line, *args, **kwargs)
 
     def is_valid(self, inp: str) -> bool:
         """
@@ -100,7 +101,7 @@ class Parser(Generic[Parseable, Target]):
         return self.is_valid(self.__unpack_file(*args, **kwargs))
 
 
-class LogicParser(Parser[Parseable, Iterable[LogicElement]]):
+class LogicParser(Parser[Parseable, LogicElement]):
     pass
 
 

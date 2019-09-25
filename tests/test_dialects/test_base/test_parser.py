@@ -25,5 +25,5 @@ class TestLogicParser(unittest.TestCase):
             self.assertEqual(o1, o2)
 
     def check_parser(self, parser_input, expected):
-        r = self.parser.parse_from_string(parser_input)
+        r = self.parser.parse_single_from_string(parser_input)
         self.assertObjectEqual(r, expected)

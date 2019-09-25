@@ -36,7 +36,7 @@ class Dialect:
 
     def parse_expression_from_string(self, string: str, *args, **kwargs) -> Problem:
         p = self._problem_parser_cls.logic_parser_cls()
-        return p.parse_from_string(string, *args, **kwargs)
+        return p.parse_single_from_string(string, *args, **kwargs)
 
     def compile_and_render(self, obj: Problem, *args, **kwargs):
         c = self._compiler_cls()

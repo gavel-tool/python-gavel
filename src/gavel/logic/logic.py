@@ -96,6 +96,8 @@ class BinaryConnective(Enum):
             return ":="
         if self == BinaryConnective.ARROW:
             return ">"
+        else:
+            raise Exception(self)
 
 
 class DefinedPredicate(Enum):
@@ -183,7 +185,7 @@ class BinaryFormula(LogicElement):
         self.operator = operator
 
     def __str__(self):
-        return "(%s) %s (%s)" % (self.left, repr(self.operator), self.right)
+        return "(%s) %s (%s)" % (str(self.left), repr(self.operator), str(self.right))
 
     def symbols(self):
         return chain(self.left.symbols(), self.right.symbols())
@@ -306,6 +308,12 @@ class Constant(LogicElement):
 class DefinedConstant(Constant, Enum):
     VERUM = 0
     FALSUM = 1
+
+    def __str__(self):
+        if self == DefinedConstant.VERUM:
+            return "$true"
+        elif self == DefinedConstant.FALSUM:
+            return "$false"
 
 
 class Let(LogicElement):

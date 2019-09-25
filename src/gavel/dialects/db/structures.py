@@ -2,6 +2,7 @@ import sqlalchemy as sqla
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relation
 from sqlalchemy.orm import relationship
+from gavel.dialects.db.connection import with_session, get_or_create
 
 from gavel.dialects.db.connection import get_engine
 
@@ -20,7 +21,9 @@ class Formula(Base):
     name = sqla.Column(sqla.Text)
     source_id = sqla.Column(sqla.Integer, sqla.ForeignKey(Source.id), nullable=False)
     source = relationship(Source)
+    logic = sqla.VARCHAR(4)
     json = sqla.Column(sqla.JSON)
+
 
 
 association_premises = sqla.Table(
@@ -82,3 +85,11 @@ def drop_tables(tables=None):
     metadata = Base.metadata
     metadata.bind = get_engine()
     metadata.drop_all(tables=tables)
+
+
+@with_session
+def store_formula(source, struc, session=None):
+    source, _ = get_or_create(session, Source, path=source)
+    struc.source = source
+    session.add(struc)
+    session.commit()
