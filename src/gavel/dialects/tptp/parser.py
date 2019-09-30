@@ -201,7 +201,7 @@ class StorageProcessor(TPTPParser):
         session = kwargs.get("session")
         if force_creation or source.id is None:
             formula_obj = db.Formula(
-                name=formula.name, source=source, json=self.compiler.visit(formula)
+                name=formula.name, source=source, json=self.compiler.visit(formula.formula)
             )
             session.add(formula_obj)
         else:

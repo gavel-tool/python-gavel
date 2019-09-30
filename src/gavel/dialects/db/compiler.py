@@ -67,12 +67,22 @@ class DBCompiler(Compiler):
             variables=[self.visit(v) for v in formula.variables],
         )
 
-    def visit_annotated_formula(self, anno: problem.AnnotatedFormula):
-        return Formula(
-            json=self.visit(anno.formula),
-            name=self.visit(anno.name),
-            logic=self.visit(anno.logic),
-        )
+    def visit_annotated_formula(self, anno: problem.AnnotatedFormula, root=True):
+        if root:
+            return Formula(
+                json=self.visit(anno.formula),
+                name=self.visit(anno.name),
+                logic=self.visit(anno.logic),
+            )
+        else:
+            return dict(
+                type="annotated_formula",
+                formula=self.visit(anno.formula),
+                name=self.visit(anno.name),
+                role=self.visit(anno.role),
+                logic=self.visit(anno.logic),
+            )
+
 
     def visit_binary_formula(self, formula: fol.BinaryFormula):
         return dict(
@@ -116,6 +126,28 @@ class DBCompiler(Compiler):
     def visit_problem(self, problem: problem.Problem):
         return dict(
             type="problem",
-            premises=[self.visit(p) for p in problem.premises],
+            premises=[self.visit_annotated_formula(p, root=False) for p in problem.premises],
             conjecture=self.visit(problem.conjecture),
         )
+
+    def visit_let(self, expression: fol.Let):
+        return dict(
+            formula=self.visit(expression.formula),
+            definitions=self.visit(expression.definitions),
+            types=self.visit(expression.types)
+        )
+
+    def visit_mapping_type(self, expression: fol.Subtype):
+        pass
+
+    def visit_quantified_type(self, expression: fol.QuantifiedType):
+        pass
+
+    def visit_subtype(self, expression: fol.Subtype):
+        pass
+
+    def visit_type_formula(self, formula: fol.TypeFormula):
+        pass
+
+    def visit_typed_variable(self, variable: fol.TypedVariable):
+        pass

@@ -2,30 +2,24 @@ from gavel.dialects.base.parser import LogicParser
 from gavel.dialects.base.parser import Parseable
 from gavel.dialects.base.parser import ProblemParser
 from gavel.logic import logic
-from gavel.logic.base import Problem
-from gavel.logic.base import Sentence
+from gavel.logic.problem import Problem
+from gavel.logic.problem import Sentence
 
 
 class DBProblemParser(ProblemParser):
     logic_parser_cls = LogicParser
 
     def __init__(self, *args, **kwargs):
-        self.logic_parser = LogicParser(*args, **kwargs)
+        super(DBProblemParser, self).__init__(*args, **kwargs)
+        self.logic_parser = LogicParser()
 
     def parse(self, structure: Parseable, *args, **kwargs):
-        premises = []
-        conjectures = []
-        for s in self.logic_parser.parse(structure):
-            if isinstance(s, Sentence):
-                if s.is_conjecture():
-                    conjectures.append(s)
-                else:
-                    premises.append(s)
-        for c in conjectures:
-            yield Problem(premises, c)
+        premises = [self.logic_parser.parse(s) for s in structure.premises]
+        conjecture = self.logic_parser.parse(structure.conjecture)
+        return Problem(premises, conjecture)
 
 
-class DBFOLParser(LogicParser):
+class DBLogicParser(LogicParser):
     def _parse_rec(self, obj, *args, **kwargs):
         if isinstance(obj, str):
             return obj

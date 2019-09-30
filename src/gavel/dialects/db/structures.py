@@ -2,8 +2,8 @@ import sqlalchemy as sqla
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relation
 from sqlalchemy.orm import relationship
-from gavel.dialects.db.connection import with_session, get_or_create
-
+from gavel.dialects.db.connection import with_session, get_or_create, get_or_None
+from gavel.logic.problem import AnnotatedFormula
 from gavel.dialects.db.connection import get_engine
 
 Base = declarative_base()
@@ -88,8 +88,15 @@ def drop_tables(tables=None):
 
 
 @with_session
-def store_formula(source, struc, session=None):
-    source, _ = get_or_create(session, Source, path=source)
-    struc.source = source
-    session.add(struc)
-    session.commit()
+def store_formula(source, struc: AnnotatedFormula, session=None):
+    source, created = get_or_create(session, Source, path=source)
+    structure = None
+    if not created:
+        structure = get_or_None(session, Formula, name=struc.name, source=source)
+    if structure is None:
+        struc.source = source
+        session.add(struc)
+        session.commit()
+        return True
+    else:
+        return False
