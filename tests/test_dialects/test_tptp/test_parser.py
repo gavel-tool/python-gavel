@@ -30,3 +30,23 @@ class TestTPTPParser(TestLogicParser):
             ),
         )
         self.check_parser(inp, result)
+
+class TestTHFParser(TestLogicParser):
+    _parser_cls = TPTPParser
+
+    def test_type_formula(self):
+        inp = """thf(prop_a,type,(
+    prop_a: $i > $o ))."""
+        expected = problem.AnnotatedFormula(
+            logic="thf",
+            name="prop_a",
+            role=problem.FormulaRole.TYPE,
+            formula=logic.TypeFormula(
+                name=logic.Constant("prop_a"),
+                type_expression=logic.MappingType(
+                    left="$i",
+                    right="$o"
+                )
+            )
+        )
+        self.check_parser(inp, expected)

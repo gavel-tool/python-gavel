@@ -189,7 +189,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_function.
     def visitThf_function(self, ctx: tptp_v7_0_0_0Parser.Thf_functionContext):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_conn_term.
     def visitThf_conn_term(self, ctx: tptp_v7_0_0_0Parser.Thf_conn_termContext):
@@ -225,7 +225,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitThf_typeable_formula(
         self, ctx: tptp_v7_0_0_0Parser.Thf_typeable_formulaContext
     ):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_subtype.
     def visitThf_subtype(self, ctx: tptp_v7_0_0_0Parser.Thf_subtypeContext):
@@ -891,7 +891,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#untyped_atom.
     def visitUntyped_atom(self, ctx: tptp_v7_0_0_0Parser.Untyped_atomContext):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#defined_proposition.
     def visitDefined_proposition(
