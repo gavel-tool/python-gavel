@@ -50,18 +50,19 @@ def store(path, r):
         for sub_path in os.listdir(path):
             sub_path = os.path.join(path, sub_path)
             if os.path.isfile(sub_path):
-                store_file(sub_path)
+                store_file(sub_path, parser, compiler)
     elif os.path.isfile(path):
-        store_file(path)
+        store_file(path, parser, compiler)
 
 def store_file(path, parser, compiler):
-    print(path)
-    i = 0
-    for formula in parser.parse_from_file(path):
-        i += 1
-        struc = compiler.visit(formula)
-        store_formula(path, struc)
-    print("--- %d formulas extracted ---" % i)
+    if not "^" in path:
+        print(path)
+        i = 0
+        for formula in parser.parse_from_file(path):
+            i += 1
+            struc = compiler.visit(formula)
+            store_formula(path, struc)
+        print("--- %d formulas extracted ---" % i)
 
 
 @click.command()
