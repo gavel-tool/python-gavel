@@ -1199,11 +1199,11 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitAtomic_system_word(
         self, ctx: tptp_v7_0_0_0Parser.Atomic_system_wordContext
     ):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#number.
     def visitNumber(self, ctx: tptp_v7_0_0_0Parser.NumberContext):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#file_name.
     def visitFile_name(self, ctx: tptp_v7_0_0_0Parser.File_nameContext):
