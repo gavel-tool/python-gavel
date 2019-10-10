@@ -29,7 +29,8 @@ from gavel.prover.hets.interface import HetsProve
 from gavel.prover.vampire.interface import VampireInterface
 from gavel.selection.selector import Sine
 
-
+import networkx as nx
+from matplotlib import pyplot as plt
 @click.group()
 def db():
     pass
@@ -88,7 +89,8 @@ def clear_db(p):
 @click.command()
 @click.argument("f")
 @click.option("-s", default=None)
-def prove(f, s):
+@click.option("--plot", is_flag=True, default=False)
+def prove(f, s, plot):
     processor = TPTPParser()
     vp = VampireInterface()
     hp = HetsProve(vp)
@@ -101,12 +103,16 @@ def prove(f, s):
             )
             problem = Problem(premises=selector.select(), conjecture=problem.conjecture)
         proof = hp.prove(problem, compiler)
-        for s in proof.steps:
-            print(
-                "{name}: {formula} [{source}]".format(
-                    name=s.name, formula=s.formula, source=s.render_source()
+        if not plot:
+            for s in proof.steps:
+                print(
+                    "{name}: {formula} [{source}]".format(
+                        name=s.name, formula=s.formula, source=s.render_source()
+                    )
                 )
-            )
+        else:
+            g = proof.get_graph()
+            g.render()
 
 
 @click.command()

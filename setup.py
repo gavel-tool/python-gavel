@@ -120,6 +120,7 @@ setup(
         "sqlalchemy>=1.2",
         "antlr4-python3-runtime",
         "pre-commit",
+        "graphviz",
         "pytest",
         "requests",
     ],

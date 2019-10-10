@@ -1459,7 +1459,7 @@ class SimpleTPTPProofParser(ProofParser):
     def parse(self, structure: str, *args, **kwargs):
         return LinearProof(
             steps=[
-                self._create_proof_step(s)
+                self._create_proof_step(self._tptp_parser.parse(s))
                 for s in self._tptp_parser.load_many(structure.split("\n"))
             ]
         )
@@ -1481,7 +1481,7 @@ class SimpleTPTPProofParser(ProofParser):
                     )
             raise ParserException(e)
         else:
-            raise ParserException
+            raise ParserException(e)
 
 
 def get_all_files(path):
