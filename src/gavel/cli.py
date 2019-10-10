@@ -46,16 +46,24 @@ def init_db():
 def store(path, r):
     parser = TPTPParser()
     compiler = DBCompiler()
-    for sub_path in os.listdir(path):
-        sub_path = os.path.join(path, sub_path)
-        if os.path.isfile(sub_path):
-            print(sub_path)
-            i = 0
-            for formula in parser.parse_from_file(sub_path):
-                i += 1
-                struc = compiler.visit(formula)
-                store_formula(sub_path, struc)
-            print("--- %d formulas extracted ---"%i)
+    if os.path.isdir(path):
+        for sub_path in os.listdir(path):
+            sub_path = os.path.join(path, sub_path)
+            if os.path.isfile(sub_path):
+                store_file(sub_path)
+    elif os.path.isfile(path):
+        store_file(path)
+
+def store_file(path, parser, compiler):
+    print(path)
+    i = 0
+    for formula in parser.parse_from_file(path):
+        i += 1
+        struc = compiler.visit(formula)
+        store_formula(path, struc)
+    print("--- %d formulas extracted ---" % i)
+
+
 @click.command()
 @click.option("-p", default=settings.TPTP_ROOT)
 def store_problems(p):
