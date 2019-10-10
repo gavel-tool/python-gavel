@@ -55,7 +55,7 @@ def store(path, r):
         store_file(path, parser, compiler)
 
 def store_file(path, parser, compiler):
-    if not "^" in path:
+    if not "=" in path and not "^" in path :
         print(path)
         i = 0
         for formula in parser.parse_from_file(path):
