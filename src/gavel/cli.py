@@ -29,8 +29,6 @@ from gavel.prover.hets.interface import HetsProve
 from gavel.prover.vampire.interface import VampireInterface
 from gavel.selection.selector import Sine
 
-import networkx as nx
-from matplotlib import pyplot as plt
 @click.group()
 def db():
     pass
