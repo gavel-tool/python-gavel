@@ -103,11 +103,15 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_binary_pair.
     def visitThf_binary_pair(self, ctx: tptp_v7_0_0_0Parser.Thf_binary_pairContext):
-        return self.visitChildren(ctx)
+        return logic.BinaryFormula(
+            self.visit(ctx.children[0]),
+            self.visit(ctx.children[1]),
+            self.visit(ctx.children[2])
+        )
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_binary_tuple.
     def visitThf_binary_tuple(self, ctx: tptp_v7_0_0_0Parser.Thf_binary_tupleContext):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_or_formula.
     def visitThf_or_formula(self, ctx: tptp_v7_0_0_0Parser.Thf_or_formulaContext):
@@ -812,7 +816,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitThf_pair_connective(
         self, ctx: tptp_v7_0_0_0Parser.Thf_pair_connectiveContext
     ):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_unary_connective.
     def visitThf_unary_connective(
@@ -856,6 +860,8 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
                 return logic.BinaryConnective.NEGATED_CONJUNCTION
             elif connective == "~|":
                 return logic.BinaryConnective.NEGATED_DISJUNCTION
+            elif connective == "=":
+                return logic.BinaryConnective.EQ
         raise NotImplementedError(connective)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#assoc_connective.
