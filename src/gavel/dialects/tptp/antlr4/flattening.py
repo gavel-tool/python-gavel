@@ -356,11 +356,11 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitTff_quantified_formula(
         self, ctx: tptp_v7_0_0_0Parser.Tff_quantified_formulaContext
     ):
-        return self.visitFof_quantified_formula(ctx)
+        return self.visitThf_quantified_formula(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#tff_variable_list.
     def visitTff_variable_list(self, ctx: tptp_v7_0_0_0Parser.Tff_variable_listContext):
-        return self.visitFof_variable_list(ctx)
+        return self.visitThf_variable_list(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#tff_variable.
     def visitTff_variable(self, ctx: tptp_v7_0_0_0Parser.Tff_variableContext):
@@ -885,7 +885,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#defined_type.
     def visitDefined_type(self, ctx: tptp_v7_0_0_0Parser.Defined_typeContext):
-        return self.visitChildren(ctx)
+        return logic.Type(self.visit_first(ctx))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#system_type.
     def visitSystem_type(self, ctx: tptp_v7_0_0_0Parser.System_typeContext):
