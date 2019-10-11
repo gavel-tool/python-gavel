@@ -337,6 +337,12 @@ class Subtype(LogicElement):
         self.left = left
         self.right = right
 
+class Type(LogicElement):
+    __visit_name__ = "type"
+
+    def __init__(self, name):
+        self.name = name
+
 
 class QuantifiedType(LogicElement):
 

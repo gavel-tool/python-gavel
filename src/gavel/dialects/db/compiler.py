@@ -150,4 +150,10 @@ class DBCompiler(Compiler):
         pass
 
     def visit_typed_variable(self, variable: fol.TypedVariable):
-        pass
+        return dict(
+            name=variable.name,
+            type=self.visit(variable.vtype)
+        )
+
+    def visit_type(self, t: fol.Type):
+        return t.name
