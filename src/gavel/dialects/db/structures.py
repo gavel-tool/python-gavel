@@ -73,20 +73,6 @@ class Solution(Base):
     premises = relation(SolutionItem)
 
 
-def create_tables():
-    print("Build datastructures")
-    metadata = Base.metadata
-    metadata.bind = get_engine()
-    metadata.create_all()
-
-
-def drop_tables(tables=None):
-    print("Destroy datastructures")
-    metadata = Base.metadata
-    metadata.bind = get_engine()
-    metadata.drop_all(tables=tables)
-
-
 @with_session
 def store_formula(source, struc: AnnotatedFormula, session=None):
     source, created = get_or_create(session, Source, path=source)

@@ -19,7 +19,7 @@ import click
 import os
 
 import gavel.config.settings as settings
-from gavel.dialects.db.structures import store_formula, create_tables, drop_tables
+from gavel.dialects.db.structures import store_formula
 import gavel.dialects.tptp.parser as build_tptp
 from gavel.dialects.tptp.compiler import TPTPCompiler
 from gavel.dialects.db.compiler import DBCompiler
@@ -28,16 +28,20 @@ from gavel.dialects.tptp.parser import TPTPParser
 from gavel.prover.hets.interface import HetsProve
 from gavel.prover.vampire.interface import VampireInterface
 from gavel.selection.selector import Sine
+from alembic import command
+from alembic.config import Config
+
+alembic_cfg = Config("alembic.ini")
+
 
 @click.group()
 def db():
     pass
 
-
 @click.command()
-def init_db():
+def migrate_db():
     """Create tables for storage of formulas"""
-    create_tables()
+    command.upgrade(alembic_cfg, "head")
 
 
 @click.command()
@@ -82,16 +86,15 @@ def store_solutions(p):
 @click.command()
 def drop_db():
     """Drop tables created gy init-db"""
-    drop_tables()
+    command.downgrade(alembic_cfg, "base")
 
 
 @click.command()
 @click.option("-p", default=settings.TPTP_ROOT)
 def clear_db(p):
     """Drop tables created gy init-db and recreate them"""
-    drop_tables()
-    create_tables()
-
+    command.downgrade(alembic_cfg, "base")
+    command.upgrade(alembic_cfg, "head")
 
 @click.command()
 @click.argument("f")
@@ -136,7 +139,7 @@ def select(f):
     print(smaller_problem.conjecture)
 
 
-db.add_command(init_db)
+db.add_command(migrate_db)
 db.add_command(drop_db)
 db.add_command(clear_db)
 db.add_command(store_problems)
