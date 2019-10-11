@@ -113,6 +113,7 @@ def store_file(path, parser, compiler):
                 store_formula(path, struc)
             mark_source_complete(path)
             print("--- %d formulas extracted ---" % i)
+            pool.close()
         else:
             skip = True
             skip_reason = "Already complete"
