@@ -19,7 +19,7 @@ import click
 import os
 
 import gavel.config.settings as settings
-from gavel.dialects.db.structures import store_formula, mark_source_complete, is_source_complete
+from gavel.dialects.db.structures import store_formula, mark_source_complete, is_source_complete, store_all
 import gavel.dialects.tptp.parser as build_tptp
 from gavel.dialects.tptp.compiler import TPTPCompiler
 from gavel.dialects.db.compiler import DBCompiler
@@ -50,36 +50,8 @@ def migrate_db():
 def store(path, r):
     parser = TPTPParser()
     compiler = DBCompiler()
-    if os.path.isdir(path):
-        for sub_path in os.listdir(path):
-            sub_path = os.path.join(path, sub_path)
-            if os.path.isfile(sub_path):
-                store_file(sub_path, parser, compiler)
-    elif os.path.isfile(path):
-        store_file(path, parser, compiler)
+    store_all(path, parser, compiler)
 
-def store_file(path, parser, compiler):
-    skip = False
-    skip_reason = None
-
-    if "=" not in path and "^" not in path:
-        if not is_source_complete(path):
-            print(path)
-            i = 0
-            for formula in parser.parse_from_file(path):
-                i += 1
-                struc = compiler.visit(formula)
-                store_formula(path, struc)
-            mark_source_complete(path)
-            print("--- %d formulas extracted ---" % i)
-        else:
-            skip = True
-            skip_reason = "Already complete"
-    else:
-        skip = True
-        skip_reason = "Not supported"
-    if skip:
-        print("--- Skipping - Reason: %s ---"%skip_reason)
 
 @click.command()
 @click.option("-p", default=settings.TPTP_ROOT)

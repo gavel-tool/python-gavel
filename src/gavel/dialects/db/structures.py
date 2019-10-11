@@ -4,7 +4,9 @@ from sqlalchemy.orm import relation
 from sqlalchemy.orm import relationship
 from gavel.dialects.db.connection import with_session, get_or_create, get_or_None
 from gavel.logic.problem import AnnotatedFormula
-from gavel.dialects.db.connection import get_engine
+
+import os
+import multiprocessing as mp
 
 Base = declarative_base()
 
@@ -87,6 +89,40 @@ def store_formula(source, struc: AnnotatedFormula, session=None):
         return True
     else:
         return False
+
+
+def store_all(path, parser, compiler):
+    if os.path.isdir(path):
+        for sub_path in os.listdir(path):
+            sub_path = os.path.join(path, sub_path)
+            if os.path.isfile(sub_path):
+                store_file(sub_path, parser, compiler)
+    elif os.path.isfile(path):
+        store_file(path, parser, compiler)
+
+
+def store_file(path, parser, compiler):
+    skip = False
+    skip_reason = None
+    print(path)
+    if "=" not in path and "^" not in path:
+        if not is_source_complete(path):
+            i = 0
+            pool = mp.Pool(mp.cpu_count()-1)
+            for struc in pool.map(compiler.visit, parser.parse_from_file(path)):
+                i += 1
+                store_formula(path, struc)
+            mark_source_complete(path)
+            print("--- %d formulas extracted ---" % i)
+        else:
+            skip = True
+            skip_reason = "Already complete"
+    else:
+        skip = True
+        skip_reason = "Not supported"
+    if skip:
+        print("--- Skipping - Reason: %s ---"%skip_reason)
+
 
 
 @with_session
