@@ -85,7 +85,7 @@ class Proof:
             labels[s.name] = s.formula
             if isinstance(s, Inference):
                 for a in s.antecedents:
-                    g.edge(a,s.name, "Inference")
+                    g.edge(a, s.name, "Inference")
                 shape = "oval"
             else:
                 if isinstance(s, Introduction):

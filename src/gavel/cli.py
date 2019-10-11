@@ -19,7 +19,12 @@ import click
 import os
 
 import gavel.config.settings as settings
-from gavel.dialects.db.structures import store_formula, mark_source_complete, is_source_complete, store_all
+from gavel.dialects.db.structures import (
+    store_formula,
+    mark_source_complete,
+    is_source_complete,
+    store_all,
+)
 import gavel.dialects.tptp.parser as build_tptp
 from gavel.dialects.tptp.compiler import TPTPCompiler
 from gavel.dialects.db.compiler import DBCompiler
@@ -37,6 +42,7 @@ alembic_cfg = Config("alembic.ini")
 @click.group()
 def db():
     pass
+
 
 @click.command()
 def migrate_db():
@@ -79,6 +85,7 @@ def clear_db(p):
     """Drop tables created gy init-db and recreate them"""
     command.downgrade(alembic_cfg, "base")
     command.upgrade(alembic_cfg, "head")
+
 
 @click.command()
 @click.argument("f")

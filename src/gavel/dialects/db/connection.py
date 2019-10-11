@@ -19,7 +19,8 @@ def get_url():
     if port:
         location += ":" + port
     return "{dbms}://{cred}{location}/{database}".format(
-                dbms=DBMS, cred=cred, location=location, **DB_CONNECTION)
+        dbms=DBMS, cred=cred, location=location, **DB_CONNECTION
+    )
 
 
 def get_engine():

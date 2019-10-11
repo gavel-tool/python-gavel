@@ -337,6 +337,7 @@ class Subtype(LogicElement):
         self.left = left
         self.right = right
 
+
 class Type(LogicElement):
     __visit_name__ = "type"
 

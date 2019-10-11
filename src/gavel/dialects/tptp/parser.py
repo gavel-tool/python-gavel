@@ -201,7 +201,9 @@ class StorageProcessor(TPTPParser):
         session = kwargs.get("session")
         if force_creation or source.id is None:
             formula_obj = db.Formula(
-                name=formula.name, source=source, json=self.compiler.visit(formula.formula)
+                name=formula.name,
+                source=source,
+                json=self.compiler.visit(formula.formula),
             )
             session.add(formula_obj)
         else:
@@ -227,6 +229,7 @@ class StorageProcessor(TPTPParser):
             return result
         else:
             return session.query(db.Formula).filter_by(source=source).all()
+
 
 def all_axioms(processor):
     files = [

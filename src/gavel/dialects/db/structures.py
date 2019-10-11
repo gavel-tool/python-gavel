@@ -28,7 +28,6 @@ class Formula(Base):
     json = sqla.Column(sqla.JSON)
 
 
-
 association_premises = sqla.Table(
     "association",
     Base.metadata,
@@ -108,7 +107,7 @@ def store_file(path, parser, compiler):
     if "=" not in path and "^" not in path:
         if not is_source_complete(path):
             i = 0
-            pool = mp.Pool(mp.cpu_count()-1)
+            pool = mp.Pool(mp.cpu_count() - 1)
             for struc in pool.map(compiler.visit, parser.parse_from_file(path)):
                 i += 1
                 store_formula(path, struc)
@@ -121,8 +120,7 @@ def store_file(path, parser, compiler):
         skip = True
         skip_reason = "Not supported"
     if skip:
-        print("--- Skipping - Reason: %s ---"%skip_reason)
-
+        print("--- Skipping - Reason: %s ---" % skip_reason)
 
 
 @with_session
@@ -130,8 +128,9 @@ def mark_source_complete(source, session=None):
     session.query(Source).filter_by(path=source).update({"complete": True})
     session.commit()
 
+
 @with_session
 def is_source_complete(source, session=None):
     source_obj = get_or_None(session, Source, path=source)
-    assert source_obj is not None, "Source object not found in database: %s"%source
+    assert source_obj is not None, "Source object not found in database: %s" % source
     return source_obj.complete

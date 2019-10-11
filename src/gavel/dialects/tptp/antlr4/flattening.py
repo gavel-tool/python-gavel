@@ -106,7 +106,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
         return logic.BinaryFormula(
             self.visit(ctx.children[0]),
             self.visit(ctx.children[1]),
-            self.visit(ctx.children[2])
+            self.visit(ctx.children[2]),
         )
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_binary_tuple.
