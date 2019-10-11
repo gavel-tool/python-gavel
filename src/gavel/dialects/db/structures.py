@@ -13,6 +13,7 @@ class Source(Base):
     __tablename__ = "source"
     id = sqla.Column(sqla.Integer, primary_key=True)
     path = sqla.Column(sqla.String, unique=True)
+    complete = sqla.Column(sqla.Boolean, default=False)
 
 
 class Formula(Base):
@@ -86,3 +87,15 @@ def store_formula(source, struc: AnnotatedFormula, session=None):
         return True
     else:
         return False
+
+
+@with_session
+def mark_source_complete(source, session=None):
+    session.query(Source).filter_by(path=source).update({"complete": True})
+    session.commit()
+
+@with_session
+def is_source_complete(source, session=None):
+    source_obj = get_or_None(session, Source, path=source)
+    assert source_obj is not None, "Source object not found in database: %s"%source
+    return source_obj.complete

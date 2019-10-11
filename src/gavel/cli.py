@@ -19,7 +19,7 @@ import click
 import os
 
 import gavel.config.settings as settings
-from gavel.dialects.db.structures import store_formula
+from gavel.dialects.db.structures import store_formula, mark_source_complete, is_source_complete
 import gavel.dialects.tptp.parser as build_tptp
 from gavel.dialects.tptp.compiler import TPTPCompiler
 from gavel.dialects.db.compiler import DBCompiler
@@ -59,15 +59,27 @@ def store(path, r):
         store_file(path, parser, compiler)
 
 def store_file(path, parser, compiler):
-    if not "=" in path and not "^" in path :
-        print(path)
-        i = 0
-        for formula in parser.parse_from_file(path):
-            i += 1
-            struc = compiler.visit(formula)
-            store_formula(path, struc)
-        print("--- %d formulas extracted ---" % i)
+    skip = False
+    skip_reason = None
 
+    if "=" not in path and "^" not in path:
+        if not is_source_complete(path):
+            print(path)
+            i = 0
+            for formula in parser.parse_from_file(path):
+                i += 1
+                struc = compiler.visit(formula)
+                store_formula(path, struc)
+            mark_source_complete(path)
+            print("--- %d formulas extracted ---" % i)
+        else:
+            skip = True
+            skip_reason = "Already complete"
+    else:
+        skip = True
+        skip_reason = "Not supported"
+    if skip:
+        print("--- Skipping - Reason: %s ---"%skip_reason)
 
 @click.command()
 @click.option("-p", default=settings.TPTP_ROOT)
