@@ -132,5 +132,6 @@ def mark_source_complete(source, session=None):
 @with_session
 def is_source_complete(source, session=None):
     source_obj = get_or_None(session, Source, path=source)
-    assert source_obj is not None, "Source object not found in database: %s" % source
+    if source_obj is None:
+        return False
     return source_obj.complete
