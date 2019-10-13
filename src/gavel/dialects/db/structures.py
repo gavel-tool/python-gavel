@@ -79,6 +79,8 @@ class Solution(Base):
 def store_formula(source, struc: AnnotatedFormula, session=None):
     source, created = get_or_create(session, Source, path=source)
     structure = None
+    # If the source object was already in the database, the formula might
+    # already be present, too. Check that before storing a second copy
     if not created:
         structure = get_or_None(session, Formula, name=struc.name, source=source)
     if structure is None:
@@ -108,7 +110,7 @@ def store_file(path, parser, compiler):
         if not is_source_complete(path):
             i = 0
             pool = mp.Pool(mp.cpu_count() - 1)
-            for struc in pool.map(compiler.visit, parser.parse_from_file(path)):
+            for struc in pool.imap(compiler.visit, parser.parse_from_file(path)):
                 i += 1
                 store_formula(path, struc)
             mark_source_complete(path)
