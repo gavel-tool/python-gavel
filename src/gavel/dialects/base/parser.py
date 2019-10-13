@@ -70,7 +70,7 @@ class Parser(Generic[Parseable, Target]):
         )
 
     @staticmethod
-    def __unpack_file(*args, **kwargs) -> str:
+    def _unpack_file(*args, **kwargs) -> Iterable[str]:
         """
         Parameters
         ----------
@@ -78,10 +78,10 @@ class Parser(Generic[Parseable, Target]):
         -------
         """
         with open(*args, **kwargs) as inp:
-            return inp.read()
+            return inp.readlines()
 
     def parse_from_file(self, file_path, *args, **kwargs) -> Iterable[Target]:
-        for line in self.load_many(self.__unpack_file(file_path).split("\n")):
+        for line in self.load_many(self._unpack_file(file_path)):
             yield self.parse(line, *args, **kwargs)
 
     def is_valid(self, inp: str) -> bool:
@@ -100,8 +100,11 @@ class Parser(Generic[Parseable, Target]):
         raise NotImplementedError
 
     def is_file_valid(self, *args, **kwargs):
-        return self.is_valid(self.__unpack_file(*args, **kwargs))
+        return self.is_valid("\n".join(self._unpack_file(*args, **kwargs)))
 
+
+    def stream_formula_lines(self, *args, **kwargs) -> Iterable[str]:
+        raise NotImplementedError
 
 class LogicParser(Parser[Parseable, LogicElement]):
     pass

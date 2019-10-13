@@ -89,6 +89,9 @@ class TPTPParser(LogicParser):
         )
         return s.tptp_input()
 
+    def stream_formulas(self, path, *args, **kwargs):
+        return self.stream_formula_lines(self._unpack_file(path))
+
     def load_expressions_from_file(
         self, path, *args, **kwargs
     ) -> Iterable[LogicElement]:
