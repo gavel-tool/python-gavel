@@ -255,6 +255,9 @@ class TPTPAntlrParser(LogicParser, StringBasedParser):
         )
         return s.tptp_input()
 
+    def stream_formulas(self, path, *args, **kwargs):
+        return self.stream_formula_lines(self._unpack_file(path))
+
     def load_expressions_from_file(
         self, path, *args, **kwargs
     ) -> Iterable[LogicElement]:
@@ -292,108 +295,6 @@ class TPTPAntlrParser(LogicParser, StringBasedParser):
         for conjecture in conjectures:
             yield Problem(premises=axioms, imports=imports,
                           conjecture=conjecture)
-
-
-class StorageProcessor(TPTPParser):
-    def __init__(self):
-        self.compiler = DBCompiler()
-
-    @with_session
-    def problem_processor(self, path, *args, **kwargs):
-        session = kwargs.get("session")
-        source, s_created = get_or_create(session, db.Source, path=path)
-        # problem = get_or_None(session, db.Problem, source=source.id)
-        problems = []
-        premises = []
-        conjectures = []
-        if s_created:
-            for line in self.load_expressions_from_file(path):
-                if isinstance(line, logic.Import):
-                    imported_source = (
-                        session.query(db.Source).filter_by(
-                            path=line.path).first()
-                    )
-                    if imported_source:
-                        axiomset = (
-                            session.query(db.Formula)
-                                .filter_by(source=imported_source)
-                                .all()
-                        )
-                    else:
-                        axiomset = self.axiomset_processor(
-                            os.path.join(settings.TPTP_ROOT, line.path),
-                            session=session,
-                            commit=False,
-                        )
-                        # raise Exception("Source (%s) not found" % line.path)
-                    for axiom in axiomset:
-                        premises.append(axiom)
-                elif isinstance(line, AnnotatedFormula):
-                    if line.role in (
-                        problem.FormulaRole.CONJECTURE,
-                        problem.FormulaRole.NEGATED_CONJECTURE,
-                    ):
-                        conjecture = self.formula_processor(
-                            line, *args, source=source, force_creation=True,
-                            **kwargs
-                        )
-                        session.add(conjecture)
-                        conjectures.append(conjecture)
-                    else:
-                        premise = self.formula_processor(
-                            line, *args, source=source, force_creation=True,
-                            **kwargs
-                        )
-                        session.add(premise)
-                        premises.append(premise)
-                else:
-                    raise NotImplementedError
-            for conjecture in conjectures:
-                p = db.Problem(premises=premises, source=source,
-                               conjecture=conjecture)
-                session.add(p)
-                problems.append(p)
-            session.commit()
-            return problems
-        else:
-            return session.query(db.Problem).filter_by(source=source).all()
-
-    def formula_processor(
-        self, formula: AnnotatedFormula, *args, force_creation=False, **kwargs
-    ):
-        source = kwargs.get("source")
-        session = kwargs.get("session")
-        if force_creation or source.id is None:
-            formula_obj = db.Formula(
-                name=formula.name,
-                source=source,
-                json=self.compiler.visit(formula.formula),
-            )
-            session.add(formula_obj)
-        else:
-            formula_obj = get_or_None(
-                session, db.Formula, name=formula.name, source=source
-            )
-            if formula_obj is None:
-                raise Exception
-        return formula_obj
-
-    @with_session
-    def axiomset_processor(self, path, *args, **kwargs):
-        session = kwargs.get("session")
-        source, created = get_or_create(session, db.Source, path=path)
-        commit = kwargs.get("commit", False)
-        if created:
-            result = [
-                self.formula_processor(formula=item, source=source, *args,
-                                       **kwargs)
-                for item in self.load_expressions_from_file(path)
-            ]
-            if commit:
-                session.commit()
-            return result
-        else:
-            return session.query(db.Formula).filter_by(source=source).all()
 
 
 def all_axioms(processor):
@@ -1681,13 +1582,3 @@ def all_solution(path, system=""):
             )
         )
         print(response)
-
-
-def store_problems():
-    processor = StorageProcessor()
-    all_problems(processor)
-
-
-def store_axioms():
-    processor = StorageProcessor()
-    all_axioms(processor)
