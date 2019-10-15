@@ -1,3 +1,4 @@
+from abc import ABC
 from typing import Generic
 from typing import Iterable
 from typing import TypeVar
@@ -27,7 +28,10 @@ class Parser(Generic[Parseable, Target]):
         """
         raise NotImplementedError
 
-    def load_single_from_string(self, string: str, *args, **kwargs) -> Parseable:
+
+class StringBasedParser(Parser, ABC):
+    def load_single_from_string(self, string: str, *args,
+                                **kwargs) -> Parseable:
         """
         Load a string into the structure represented by the dialect
         Parameters
@@ -38,9 +42,6 @@ class Parser(Generic[Parseable, Target]):
         Returns
         -------
         """
-        raise NotImplementedError
-
-    def load_many(self, string: Iterable[str]) -> Iterable[Parseable]:
         raise NotImplementedError
 
     def parse_single_from_string(
@@ -62,7 +63,8 @@ class Parser(Generic[Parseable, Target]):
         -------
         """
         return self.parse(
-            self.load_single_from_string(string, *(load_args or []), **(load_kwargs or {})),
+            self.load_single_from_string(string, *(load_args or []),
+                                         **(load_kwargs or {})),
             *(parse_args or []),
             **(parse_kwargs or {})
         )
@@ -98,7 +100,18 @@ class Parser(Generic[Parseable, Target]):
         raise NotImplementedError
 
     def is_file_valid(self, *args, **kwargs):
-        return self.is_valid(self.__unpack_file(*args, **kwargs))
+        return self.is_valid(self.__unpack_file(*args, **kwargs))#
+
+    def stream_formula_lines(self, lines: Iterable[str], **kwargs):
+        raise NotImplementedError
+
+    def load_many(
+        self, lines: Iterable[str], *args, **kwargs
+    ) -> Iterable[LogicElement]:
+        return map(
+            self.load_single_from_string,
+            self.stream_formula_lines(lines, **kwargs)
+        )
 
 
 class LogicParser(Parser[Parseable, LogicElement]):

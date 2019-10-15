@@ -11,7 +11,7 @@ from antlr4 import InputStream
 import gavel.config.settings as settings
 import gavel.dialects.db.structures as db
 from gavel.config import settings as settings
-from gavel.dialects.base.parser import LogicParser
+from gavel.dialects.base.parser import LogicParser, Parseable, Target, StringBasedParser
 from gavel.dialects.base.parser import ParserException
 from gavel.dialects.base.parser import ProblemParser
 from gavel.dialects.base.parser import ProofParser
@@ -38,12 +38,178 @@ from .antlr4.flattening import FOFFlatteningVisitor
 from .antlr4.tptp_v7_0_0_0Lexer import tptp_v7_0_0_0Lexer
 from .antlr4.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
 
+from lark import Lark, Tree
+
 sys.setrecursionlimit(10000)
 
 form_expression = re.compile(r"^(?!%|\n)(?P<logic>[^(]*)\([^.]*\)\.\S*$")
 
+with open("dialects/tptp/tptp.lark") as gf:
+    lark_grammar = Lark(gf.read(), parser='lalr', debug=True, start=["start", "tptp_line"])
 
-class TPTPParser(LogicParser):
+
+class TPTPParser(LogicParser, StringBasedParser):
+    def is_valid(self, inp: str) -> bool:
+        pass
+
+    def parse(self, structure: Parseable, *args, **kwargs) -> Target:
+        return self.visit(structure)
+
+    def load_single_from_string(self, string: str, *args, **kwargs):
+        r = lark_grammar.parse(string, start="tptp_line")
+        return r
+
+    def visit(self, obj:Tree, **kwargs):
+        if isinstance(obj, str):
+            return obj
+        meth = getattr(self, "visit_%s" % obj.data, None)
+
+        if meth is None:
+            raise Exception(
+                "Visitor '{name}' not found for {cls}".format(
+                    name=obj.data, cls=type(obj)
+                )
+            )
+        return meth(obj, **kwargs)
+
+    def visit_start(self, obj, **kwargs):
+        return (self.visit(f, **kwargs) for f in obj.children)
+
+    def visit_tptp_line(self, obj, **kwargs):
+        return self.visit(obj.children[0], **kwargs)
+
+    def visit_annotated_formula(self, obj, **kwargs):
+        return problem.AnnotatedFormula(
+            logic=obj.children[0],
+            name=obj.children[1],
+            role=self._ROLE_MAP[obj.children[2]],
+            formula=self.visit(obj.children[3], **kwargs)
+        )
+
+    def visit_term(self, obj, **kwargs):
+        return self.visit(obj.children[0], **kwargs)
+
+    def visit_functor_term(self, obj, term_level=False, **kwargs):
+        c0 = obj.children[0]
+        is_defined = c0.startswith("$")
+        if len(obj.children) > 1:
+            if term_level:
+                return logic.FunctorExpression(
+                    functor=c0,
+                    arguments=[self.visit(c, term_level=term_level, **kwargs) for c in obj.children[1:]]
+                )
+            else:
+                p = self._DEFINED_PREDICATE_MAP[c0] if is_defined else c0
+                return logic.PredicateExpression(
+                    predicate=p,
+                    arguments=[self.visit(c, term_level=True, **kwargs) for c in
+                               obj.children[1:]]
+                )
+        else:
+            if is_defined:
+                if c0 == "$true":
+                    return logic.DefinedConstant.VERUM
+                elif c0 == "$false":
+                    return logic.DefinedConstant.FALSUM
+                else:
+                    return logic.DefinedConstant(c0)
+            else:
+                return logic.Constant(obj.children[0])
+
+    def visit_quantified_formula(self, obj, **kwargs):
+        q = logic.Quantifier.UNIVERSAL if obj.children[0] == "!" else logic.Quantifier.EXISTENTIAL
+        return logic.QuantifiedFormula(
+            quantifier=q,
+            variables=[self.visit(c, **kwargs) for c in obj.children[1:-2]],
+            formula=self.visit(obj.children[-1], **kwargs)
+        )
+
+    def visit_unary_formula(self, obj, **kwargs):
+        return logic.UnaryFormula(
+            connective=logic.UnaryConnective.NEGATION,
+            formula=self.visit(obj.children[1], **kwargs)
+        )
+
+    def visit_binary_formula(self, obj, **kwargs):
+        return logic.BinaryFormula(
+            left=self.visit(obj.children[0], **kwargs),
+            operator=self.visit_binary_operator(obj.children[1], **kwargs),
+            right=self.visit(obj.children[2], **kwargs)
+        )
+
+    _ROLE_MAP = {
+        "axiom": problem.FormulaRole.AXIOM,
+        "hypothesis": problem.FormulaRole.HYPOTHESIS,
+        "definition": problem.FormulaRole.DEFINITION,
+        "assumption": problem.FormulaRole.ASSUMPTION,
+        "lemma": problem.FormulaRole.LEMMA,
+        "theorem": problem.FormulaRole.THEOREM,
+        "corollary": problem.FormulaRole.COROLLARY,
+        "conjecture": problem.FormulaRole.CONJECTURE,
+        "negated_conjecture": problem.FormulaRole.NEGATED_CONJECTURE,
+        "plain": problem.FormulaRole.PLAIN,
+        "type": problem.FormulaRole.TYPE,
+        "fi_domain": problem.FormulaRole.FINITE_INTERPRETATION_DOMAIN,
+        "fi_functors": problem.FormulaRole.FINITE_INTERPRETATION_FUNCTORS,
+        "fi_predicates": problem.FormulaRole.FINITE_INTERPRETATION_PREDICATES,
+        "unknown": problem.FormulaRole.UNKNOWN,
+    }
+
+    _DEFINED_PREDICATE_MAP = {
+        "$distinct": logic.DefinedPredicate.DISTINCT,
+        "$less": logic.DefinedPredicate.LESS,
+        "$lesseq": logic.DefinedPredicate.LESS_EQ,
+        "$greater": logic.DefinedPredicate.GREATER,
+        "$greatereq": logic.DefinedPredicate.GREATER_EQ,
+        "$is_int": logic.DefinedPredicate.IS_INT,
+        "$is_rat": logic.DefinedPredicate.IS_RAT,
+        "$box_P": logic.DefinedPredicate.BOX_P,
+        "$box_i": logic.DefinedPredicate.BOX_I,
+        "$box_int": logic.DefinedPredicate.BOX_INT,
+        "$box": logic.DefinedPredicate.BOX,
+        "$dia_P": logic.DefinedPredicate.DIA_P,
+        "$dia_i": logic.DefinedPredicate.DIA_I,
+        "$dia_int": logic.DefinedPredicate.DIA_INT,
+        "$dia": logic.DefinedPredicate.DIA,
+    }
+
+    _BINARY_CONNECTIVE_MAP = {
+        "&": logic.BinaryConnective.CONJUNCTION,
+        "|": logic.BinaryConnective.DISJUNCTION,
+        "=>":logic.BinaryConnective.IMPLICATION,
+        "<=>": logic.BinaryConnective.SIMILARITY,
+        "<=":logic.BinaryConnective.REVERSE_IMPLICATION,
+        "<~>":logic.BinaryConnective.SIMILARITY,
+        "~&":logic.BinaryConnective.NEGATED_CONJUNCTION,
+        "~|":logic.BinaryConnective.NEGATED_DISJUNCTION,
+        "=": logic.BinaryConnective.EQ,
+        "!=": logic.BinaryConnective.NEQ,
+        "@": logic.BinaryConnective.APPLY,
+        "*": logic.BinaryConnective.PRODUCT,
+        "+": logic.BinaryConnective.UNION,
+        "-->": logic.BinaryConnective.GENTZEN_ARROW,
+        ":=": logic.BinaryConnective.ASSIGN,
+        ">": logic.BinaryConnective.ARROW
+    }
+
+    def visit_binary_operator(self, obj, **kwargs):
+        return self._BINARY_CONNECTIVE_MAP[obj]
+
+    def visit_variable(self, obj, **kwargs):
+        return logic.Variable(obj.children[0])
+
+    def stream_formula_lines(self, lines: Iterable[str], **kwargs):
+        buffer = ""
+        for line in lines:
+            if not line.startswith("%") and not line.startswith("\n"):
+                buffer += line.strip()
+                if buffer.endswith("."):
+                    yield buffer
+                    buffer = ""
+        if buffer:
+            raise Exception('Unprocessed input: """%s"""' % buffer)
+
+class TPTPAntlrParser(LogicParser, StringBasedParser):
     visitor = FOFFlatteningVisitor()
 
     def folder_processor(self, path, file_processor, *args, **kwargs):
@@ -97,13 +263,6 @@ class TPTPParser(LogicParser):
             for line in self.load_many(lines):
                 yield self.parse(line)
 
-    def load_many(
-        self, lines: Iterable[str], *args, **kwargs
-    ) -> Iterable[LogicElement]:
-        return map(
-            self.load_single_from_string, self.stream_formula_lines(lines, **kwargs)
-        )
-
     def parse(self, tree, *args, **kwargs):
         return self.visitor.visit(tree)
 
@@ -131,7 +290,8 @@ class TPTPParser(LogicParser):
                 axioms.append(imported_axiom)
 
         for conjecture in conjectures:
-            yield Problem(premises=axioms, imports=imports, conjecture=conjecture)
+            yield Problem(premises=axioms, imports=imports,
+                          conjecture=conjecture)
 
 
 class StorageProcessor(TPTPParser):
@@ -150,13 +310,14 @@ class StorageProcessor(TPTPParser):
             for line in self.load_expressions_from_file(path):
                 if isinstance(line, logic.Import):
                     imported_source = (
-                        session.query(db.Source).filter_by(path=line.path).first()
+                        session.query(db.Source).filter_by(
+                            path=line.path).first()
                     )
                     if imported_source:
                         axiomset = (
                             session.query(db.Formula)
-                            .filter_by(source=imported_source)
-                            .all()
+                                .filter_by(source=imported_source)
+                                .all()
                         )
                     else:
                         axiomset = self.axiomset_processor(
@@ -173,20 +334,23 @@ class StorageProcessor(TPTPParser):
                         problem.FormulaRole.NEGATED_CONJECTURE,
                     ):
                         conjecture = self.formula_processor(
-                            line, *args, source=source, force_creation=True, **kwargs
+                            line, *args, source=source, force_creation=True,
+                            **kwargs
                         )
                         session.add(conjecture)
                         conjectures.append(conjecture)
                     else:
                         premise = self.formula_processor(
-                            line, *args, source=source, force_creation=True, **kwargs
+                            line, *args, source=source, force_creation=True,
+                            **kwargs
                         )
                         session.add(premise)
                         premises.append(premise)
                 else:
                     raise NotImplementedError
             for conjecture in conjectures:
-                p = db.Problem(premises=premises, source=source, conjecture=conjecture)
+                p = db.Problem(premises=premises, source=source,
+                               conjecture=conjecture)
                 session.add(p)
                 problems.append(p)
             session.commit()
@@ -201,7 +365,8 @@ class StorageProcessor(TPTPParser):
         session = kwargs.get("session")
         if force_creation or source.id is None:
             formula_obj = db.Formula(
-                name=formula.name, source=source, json=self.compiler.visit(formula.formula)
+                name=formula.name, source=source,
+                json=self.compiler.visit(formula.formula)
             )
             session.add(formula_obj)
         else:
@@ -219,7 +384,8 @@ class StorageProcessor(TPTPParser):
         commit = kwargs.get("commit", False)
         if created:
             result = [
-                self.formula_processor(formula=item, source=source, *args, **kwargs)
+                self.formula_processor(formula=item, source=source, *args,
+                                       **kwargs)
                 for item in self.load_expressions_from_file(path)
             ]
             if commit:
@@ -227,6 +393,7 @@ class StorageProcessor(TPTPParser):
             return result
         else:
             return session.query(db.Formula).filter_by(source=source).all()
+
 
 def all_axioms(processor):
     files = [
@@ -1424,7 +1591,7 @@ def all_axioms(processor):
         "Axioms/SET007/SET007+74.ax",
         "Axioms/SET007/SET007+365.ax",
         "Axioms/GEO010+0.ax",
-        #'Axioms/CSR002+5.ax',
+        # 'Axioms/CSR002+5.ax',
         # "Axioms/CSR003+2.ax",
         "Axioms/CSR001+2.ax",
         "Axioms/CSR001+3.ax",
@@ -1471,7 +1638,8 @@ class SimpleTPTPProofParser(ProofParser):
             elif e.role == FormulaRole.PLAIN:
                 if isinstance(e.annotation, InferenceSource):
                     return Inference(
-                        formula=e.formula, name=e.name, antecedents=e.annotation.parents
+                        formula=e.formula, name=e.name,
+                        antecedents=e.annotation.parents
                     )
                 elif isinstance(e.annotation, InternalSource):
                     return Introduction(

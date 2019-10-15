@@ -14,7 +14,7 @@ class TestLogicParser(unittest.TestCase):
         self.parser = self._parser_cls()
 
     def assertObjectEqual(self, o1, o2):
-        self.assertEqual(type(o1), type(o2))
+        self.assertTrue(isinstance(o1, type(o2)) or isinstance(o2, type(o1)))
         if isinstance(o1, LogicElement) or isinstance(o1, AnnotatedFormula):
             for n in chain(o1.__dict__.keys(), o2.__dict__.keys()):
                 self.assertObjectEqual(getattr(o1, n), getattr(o2, n))

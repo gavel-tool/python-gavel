@@ -117,6 +117,7 @@ setup(
     install_requires=[
         # eg: 'aspectlib==1.1.1', 'six>=1.7',
         "click",
+        "lark-parser",
         "sqlalchemy>=1.2",
         "antlr4-python3-runtime",
         "pre-commit",

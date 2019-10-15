@@ -49,7 +49,6 @@ class BinaryConnective(Enum):
     EQ = 8
     NEQ = 9
     APPLY = 10
-    MAPPING = 11
     PRODUCT = 12
     UNION = 13
     GENTZEN_ARROW = 14

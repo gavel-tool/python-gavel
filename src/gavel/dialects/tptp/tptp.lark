@@ -1,0 +1,43 @@
+%import common.WS
+%ignore WS
+
+DOLLAR_WORD: "$" WORD
+WORD: /\w+/
+UPPER_WORD: ("A" .. "Z") WORD?
+LOWER_WORD: LOWER WORD?
+LOWER: "a" .. "z"
+
+?file_name: "/"? WORD "/" file_name | WORD ["." WORD]
+
+variable:  UPPER_WORD
+constant: LOWER_WORD
+?predicate: LOWER_WORD
+?functor: LOWER_WORD | DOLLAR_WORD
+
+// predicate_formula: predicate "(" term ("," term)* ")"
+binary_formula: term BINARY_OPERATOR term
+unary_formula: UNARY_CONNECTIVE term
+quantified_formula: QUANTIFIER "[" (variable ("," variable)*) "]" ":" formula
+BINARY_OPERATOR: "&" | "|" | "=>" | "<=>" | "<=" | "<~>" | "~&" | "~|" | "=" | "!=" | "@" | "*" | "+" | "-->" | ":=" | ">"
+UNARY_CONNECTIVE: "~"
+//defined_predicate: "$distinct" | "$less" | "$lesseq" | "$greater" | "$greatereq" | "$is_int" | "$is_rat" | "$box_P" | "$box_i" | "$box_int" | "$box" | "$dia_P" | "$dia_i" | "$dia_int" | "$dia" | DOLLAR_WORD
+QUANTIFIER: "!" | "?"
+
+?formula: term
+
+term: "(" term ")" | variable | functor_term | binary_formula | unary_formula | quantified_formula | functor_term
+functor_term: functor ["(" term ("," term)* ")"]
+
+
+LOGIC: "thf" | "ttf" | "cnf" | "fof"
+annotation: "TODO"
+FORMULA_ROLE: "axiom" | "hypothesis" | "definition" | "assumption" | "lemma" | "theorem" | "corollary" | "conjecture" | "negated_conjecture" | "plain" | "type" | "fi_domain" | "fi_functors" | "fi_predicates" | "unknown"
+
+annotated_formula: LOGIC "(" WORD "," FORMULA_ROLE "," formula [ "," annotation ] ")."
+include: "include(" file_name ")."
+
+COMMENT: /%[^\n]*\n/
+
+?tptp_line: annotated_formula | include | COMMENT
+
+start: tptp_line*
