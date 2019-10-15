@@ -7,24 +7,26 @@ from gavel.config.settings import DBMS
 __ENGINE__ = None
 
 
+def get_url():
+    cred = DB_CONNECTION.get("user", "")
+    if cred:
+        if "password" in DB_CONNECTION:
+            cred = "{user}:{password}".format(**DB_CONNECTION)
+        cred += "@"
+
+    location = DB_CONNECTION.get("host", "")
+    port = DB_CONNECTION.get("port")
+    if port:
+        location += ":" + port
+    return "{dbms}://{cred}{location}/{database}".format(
+        dbms=DBMS, cred=cred, location=location, **DB_CONNECTION
+    )
+
+
 def get_engine():
     global __ENGINE__
     if __ENGINE__ is None:
-        cred = DB_CONNECTION.get("user", "")
-        if cred:
-            if "password" in DB_CONNECTION:
-                cred = "{user}:{password}".format(**DB_CONNECTION)
-            cred += "@"
-
-        location = DB_CONNECTION.get("host", "")
-        port = DB_CONNECTION.get("port")
-        if port:
-            location += ":" + port
-        __ENGINE__ = create_engine(
-            "{dbms}://{cred}{location}/{database}".format(
-                dbms=DBMS, cred=cred, location=location, **DB_CONNECTION
-            )
-        )
+        __ENGINE__ = create_engine(get_url())
     return __ENGINE__
 
 

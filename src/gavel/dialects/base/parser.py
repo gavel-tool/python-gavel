@@ -63,8 +63,9 @@ class StringBasedParser(Parser, ABC):
         -------
         """
         return self.parse(
-            self.load_single_from_string(string, *(load_args or []),
-                                         **(load_kwargs or {})),
+            self.load_single_from_string(
+                string, *(load_args or []), **(load_kwargs or {})
+            ),
             *(parse_args or []),
             **(parse_kwargs or {})
         )

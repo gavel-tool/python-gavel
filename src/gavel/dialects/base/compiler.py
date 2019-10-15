@@ -81,3 +81,6 @@ class Compiler:
 
     def visit_problem(self, problem: problem.Problem):
         raise NotImplementedError
+
+    def visit_type(self, problem: fol.Type):
+        raise NotImplementedError

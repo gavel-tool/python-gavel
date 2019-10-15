@@ -3,6 +3,7 @@ from gavel.dialects.base.compiler import Compiler
 from gavel.logic import problem
 from gavel.dialects.db.structures import Formula
 
+
 class DBCompiler(Compiler):
     def visit_quantifier(self, quantifier: fol.Quantifier):
         if quantifier.is_existential():
@@ -83,7 +84,6 @@ class DBCompiler(Compiler):
                 logic=self.visit(anno.logic),
             )
 
-
     def visit_binary_formula(self, formula: fol.BinaryFormula):
         return dict(
             type="binary_formula",
@@ -126,7 +126,9 @@ class DBCompiler(Compiler):
     def visit_problem(self, problem: problem.Problem):
         return dict(
             type="problem",
-            premises=[self.visit_annotated_formula(p, root=False) for p in problem.premises],
+            premises=[
+                self.visit_annotated_formula(p, root=False) for p in problem.premises
+            ],
             conjecture=self.visit(problem.conjecture),
         )
 
@@ -134,7 +136,7 @@ class DBCompiler(Compiler):
         return dict(
             formula=self.visit(expression.formula),
             definitions=self.visit(expression.definitions),
-            types=self.visit(expression.types)
+            types=self.visit(expression.types),
         )
 
     def visit_mapping_type(self, expression: fol.Subtype):
@@ -150,4 +152,7 @@ class DBCompiler(Compiler):
         pass
 
     def visit_typed_variable(self, variable: fol.TypedVariable):
-        pass
+        return dict(name=variable.name, type=self.visit(variable.vtype))
+
+    def visit_type(self, t: fol.Type):
+        return t.name

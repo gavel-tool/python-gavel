@@ -2,7 +2,7 @@ from abc import ABC
 from enum import Enum
 from typing import Iterable
 from typing import List
-
+import graphviz as gv
 from gavel.logic.logic import LogicElement
 from gavel.logic.problem import FormulaRole
 
@@ -77,6 +77,26 @@ class Proof:
 
     def _iterate_used_axioms(self):
         raise NotImplementedError
+
+    def get_graph(self) -> gv.Digraph:
+        g = gv.Digraph()
+        labels = {}
+        for s in self.steps:
+            labels[s.name] = s.formula
+            if isinstance(s, Inference):
+                for a in s.antecedents:
+                    g.edge(a, s.name, "Inference")
+                shape = "oval"
+            else:
+                if isinstance(s, Introduction):
+                    shape = "star"
+                elif isinstance(s, Axiom):
+                    shape = "box"
+                else:
+                    raise Exception(s)
+
+            g.node(s.name, str(s.formula), shape=shape)
+        return g
 
 
 class LinearProof(Proof):

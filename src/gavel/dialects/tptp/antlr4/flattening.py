@@ -103,11 +103,15 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_binary_pair.
     def visitThf_binary_pair(self, ctx: tptp_v7_0_0_0Parser.Thf_binary_pairContext):
-        return self.visitChildren(ctx)
+        return logic.BinaryFormula(
+            self.visit(ctx.children[0]),
+            self.visit(ctx.children[1]),
+            self.visit(ctx.children[2]),
+        )
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_binary_tuple.
     def visitThf_binary_tuple(self, ctx: tptp_v7_0_0_0Parser.Thf_binary_tupleContext):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_or_formula.
     def visitThf_or_formula(self, ctx: tptp_v7_0_0_0Parser.Thf_or_formulaContext):
@@ -352,11 +356,11 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitTff_quantified_formula(
         self, ctx: tptp_v7_0_0_0Parser.Tff_quantified_formulaContext
     ):
-        return self.visitFof_quantified_formula(ctx)
+        return self.visitThf_quantified_formula(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#tff_variable_list.
     def visitTff_variable_list(self, ctx: tptp_v7_0_0_0Parser.Tff_variable_listContext):
-        return self.visitFof_variable_list(ctx)
+        return self.visitThf_variable_list(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#tff_variable.
     def visitTff_variable(self, ctx: tptp_v7_0_0_0Parser.Tff_variableContext):
@@ -812,7 +816,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitThf_pair_connective(
         self, ctx: tptp_v7_0_0_0Parser.Thf_pair_connectiveContext
     ):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#thf_unary_connective.
     def visitThf_unary_connective(
@@ -856,6 +860,8 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
                 return logic.BinaryConnective.NEGATED_CONJUNCTION
             elif connective == "~|":
                 return logic.BinaryConnective.NEGATED_DISJUNCTION
+            elif connective == "=":
+                return logic.BinaryConnective.EQ
         raise NotImplementedError(connective)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#assoc_connective.
@@ -879,7 +885,7 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#defined_type.
     def visitDefined_type(self, ctx: tptp_v7_0_0_0Parser.Defined_typeContext):
-        return self.visitChildren(ctx)
+        return logic.Type(self.visit_first(ctx))
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#system_type.
     def visitSystem_type(self, ctx: tptp_v7_0_0_0Parser.System_typeContext):
@@ -1193,11 +1199,11 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     def visitAtomic_system_word(
         self, ctx: tptp_v7_0_0_0Parser.Atomic_system_wordContext
     ):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#number.
     def visitNumber(self, ctx: tptp_v7_0_0_0Parser.NumberContext):
-        return self.visitChildren(ctx)
+        return self.visit_first(ctx)
 
     # Visit a parse tree produced by tptp_v7_0_0_0Parser#file_name.
     def visitFile_name(self, ctx: tptp_v7_0_0_0Parser.File_nameContext):
