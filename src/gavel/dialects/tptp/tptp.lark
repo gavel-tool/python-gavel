@@ -1,4 +1,5 @@
 %import common.WS
+%import common.SIGNED_NUMBER
 %ignore WS
 
 DOLLAR_WORD: "$" WORD
@@ -25,7 +26,7 @@ QUANTIFIER: "!" | "?"
 
 ?formula: term
 
-term: "(" term ")" | variable | functor_term | binary_formula | unary_formula | quantified_formula | functor_term
+term: "(" term ")" | variable | functor_term | binary_formula | unary_formula | quantified_formula | functor_term | SIGNED_NUMBER | /'[^']*'/
 functor_term: functor ["(" term ("," term)* ")"]
 
 
