@@ -86,7 +86,6 @@ def store_formula(source, struc: AnnotatedFormula, session=None):
     if structure is None:
         struc.source = source
         session.add(struc)
-        session.commit()
         return True
     else:
         return False
@@ -101,8 +100,8 @@ def store_all(path, parser, compiler):
     elif os.path.isfile(path):
         store_file(path, parser, compiler)
 
-
-def store_file(path, parser, compiler):
+@with_session
+def store_file(path, parser, compiler, session=None):
     skip = False
     skip_reason = None
     print(path)
@@ -110,10 +109,11 @@ def store_file(path, parser, compiler):
         if not is_source_complete(path):
             i = 0
             pool = mp.Pool(mp.cpu_count() - 1)
-            for struc in pool.imap(parser.parse_single_from_string, parser.stream_formulas(path)):
+            for struc in map(parser.parse_single_from_string, parser.stream_formulas(path)):
                 i += 1
-                store_formula(path, compiler.visit(struc))
+                store_formula(path, compiler.visit(struc), session=session)
             mark_source_complete(path)
+            session.commit()
             print("--- %d formulas extracted ---" % i)
             pool.close()
         else:

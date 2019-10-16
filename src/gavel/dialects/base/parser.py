@@ -106,6 +106,9 @@ class StringBasedParser(Parser, ABC):
     def stream_formula_lines(self, lines: Iterable[str], **kwargs):
         raise NotImplementedError
 
+    def stream_formulas(self, path, *args, **kwargs):
+        return self.stream_formula_lines(self._unpack_file(path))
+
     def load_many(
         self, lines: Iterable[str], *args, **kwargs
     ) -> Iterable[LogicElement]:

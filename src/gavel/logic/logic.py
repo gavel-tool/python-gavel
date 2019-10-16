@@ -303,6 +303,18 @@ class Constant(LogicElement):
     def symbols(self):
         return {self.symbol}
 
+class DistinctObject(LogicElement):
+
+    __visit_name__ = "distinct_object"
+
+    def __init__(self, symbol):
+        self.symbol = symbol
+
+    def __str__(self):
+        return self.symbol
+
+    def symbols(self):
+        return {self.symbol}
 
 class DefinedConstant(Constant, Enum):
     VERUM = 0

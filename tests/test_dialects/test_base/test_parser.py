@@ -13,16 +13,16 @@ class TestLogicParser(unittest.TestCase):
         super(TestLogicParser, self).__init__(*args, **kwargs)
         self.parser = self._parser_cls()
 
-    def assertObjectEqual(self, o1, o2):
-        self.assertTrue(isinstance(o1, type(o2)) or isinstance(o2, type(o1)))
-        if isinstance(o1, LogicElement) or isinstance(o1, AnnotatedFormula):
-            for n in chain(o1.__dict__.keys(), o2.__dict__.keys()):
-                self.assertObjectEqual(getattr(o1, n), getattr(o2, n))
-        elif isinstance(o1, list):
-            for po1, po2 in zip(o1, o2):
+    def assertObjectEqual(self, result, expected):
+        self.assertTrue(isinstance(result, type(expected)) or isinstance(expected, type(result)), "Types do not math: (expected: %s, got: %s)" % (type(expected), type(result)))
+        if isinstance(result, LogicElement) or isinstance(result, AnnotatedFormula):
+            for n in chain(result.__dict__.keys(), expected.__dict__.keys()):
+                self.assertObjectEqual(getattr(result, n), getattr(expected, n))
+        elif isinstance(result, list):
+            for po1, po2 in zip(result, expected):
                 self.assertObjectEqual(po1, po2)
         else:
-            self.assertEqual(o1, o2)
+            self.assertEqual(result, expected)
 
     def check_parser(self, parser_input, expected):
         r = self.parser.parse_single_from_string(parser_input)
