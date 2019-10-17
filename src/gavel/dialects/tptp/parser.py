@@ -64,14 +64,14 @@ _BINARY_CONNECTIVE_MAP = {
     }
 
 with open(os.path.join(os.path.dirname(__file__), "tptp.lark")) as gf:
-    lark_grammar = Lark(gf.read(),  debug=True, start=["start", "tptp_line"])
+    lark_grammar = Lark(gf.read(), start=["start", "tptp_line"])
 
 def _balance_binary_tree(obj, skip_connective=True, **kwargs):
     if len(obj.children) > 2:
-        split_point = -1 # len(obj.children)//2
+        split_point = len(obj.children)//2
         if skip_connective:
             cl = obj.children[:split_point]
-            #cr = obj.children[split_point:]
+            cr = obj.children[split_point:]
         else:
             # It the split marker is on an operator everything is fine.
             # Otherwise move it
@@ -79,16 +79,16 @@ def _balance_binary_tree(obj, skip_connective=True, **kwargs):
                 split_point -= 1
             connective = obj.children[split_point]
             cl = obj.children[:split_point]
-            #cr = obj.children[split_point+1:]
+            cr = obj.children[split_point+1:]
 
         tl = Tree(data=obj.data, children=cl)
-        #tr = Tree(data=obj.data, children=cr)
+        tr = Tree(data=obj.data, children=cr)
         l = _balance_binary_tree(tl, skip_connective=skip_connective, **kwargs)
-        #r = _balance_binary_tree(tr, skip_connective=skip_connective, **kwargs)
+        r = _balance_binary_tree(tr, skip_connective=skip_connective, **kwargs)
         if skip_connective:
-            return Tree(data=obj.data, children=[l, obj.children[-1]])
+            return Tree(data=obj.data, children=[l, r])
         else:
-            return Tree(data=obj.data, children=[l, connective, obj.children[-1]])
+            return Tree(data=obj.data, children=[l, connective, r])
     else:
         return obj
 
@@ -127,9 +127,9 @@ class TPTPParser(LogicParser, StringBasedParser):
             )
         return meth(obj, **kwargs)
 
-
     def visit_start(self, obj, **kwargs):
-        return (self.visit(f, **kwargs) for f in obj.children)
+        assert len(obj.children) == 1
+        return self.visit(obj.children[0], **kwargs)
 
     def visit_tptp_line(self, obj, **kwargs):
         return self.visit(obj.children[0], **kwargs)
@@ -175,13 +175,9 @@ class TPTPParser(LogicParser, StringBasedParser):
                 arguments=[self.visit(c, term_level=term_level, **kwargs) for c in obj.children[1:]]
             )
         else:
+            assert len(obj.children) == 1 and isinstance(obj.children[0], str)
             if is_defined:
-                if c0 == "$true":
-                    return logic.DefinedConstant.VERUM
-                elif c0 == "$false":
-                    return logic.DefinedConstant.FALSUM
-                else:
-                    return logic.DefinedConstant(c0)
+                return logic.DefinedConstant(c0)
             else:
                 return logic.Constant(obj.children[0])
 
@@ -189,7 +185,7 @@ class TPTPParser(LogicParser, StringBasedParser):
         q = logic.Quantifier.UNIVERSAL if obj.children[0] == "!" else logic.Quantifier.EXISTENTIAL
         return logic.QuantifiedFormula(
             quantifier=q,
-            variables=[self.visit(c, **kwargs) for c in obj.children[1:-2]],
+            variables=[self.visit(c, **kwargs) for c in obj.children[1:-1]],
             formula=self.visit(obj.children[-1], **kwargs)
         )
 
@@ -276,6 +272,7 @@ class TPTPParser(LogicParser, StringBasedParser):
         return _BINARY_CONNECTIVE_MAP[obj]
 
     def visit_variable(self, obj, **kwargs):
+        assert len(obj.children) == 1 and isinstance(obj.children[0], str)
         return logic.Variable(obj.children[0])
 
     def stream_formula_lines(self, lines: Iterable[str], **kwargs):
@@ -290,7 +287,8 @@ class TPTPParser(LogicParser, StringBasedParser):
             raise Exception('Unprocessed input: """%s"""' % buffer)
 
     def visit_distinct_object(self, obj, **kwargs):
-        return logic.DistinctObject(obj)
+        assert len(obj.children) == 1 and isinstance(obj.children[0], str)
+        return logic.DistinctObject(obj.children[0][1:-1])
 
 class TPTPAntlrParser(LogicParser, StringBasedParser):
     visitor = FOFFlatteningVisitor()
