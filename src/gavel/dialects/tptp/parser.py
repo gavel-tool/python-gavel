@@ -145,17 +145,24 @@ class TPTPParser(LogicParser, StringBasedParser):
     def visit_formula(self, obj, **kwargs):
         return self.visit(obj.children[0], **kwargs)
 
-    def visit_predicate_formula(self, obj, term_level=False, **kwargs):
+    def visit_functor_term(self, obj, term_level=False, **kwargs):
         c0 = obj.children[0]
         is_defined = c0.startswith("$")
         if len(obj.children) > 1:
-            p = self._DEFINED_PREDICATE_MAP[c0] if is_defined else c0
-            return logic.PredicateExpression(
-                predicate=p,
-                arguments=[self.visit(c, term_level=True, **kwargs) for c in
-                           obj.children[1:]]
-            )
+            if term_level:
+                return logic.FunctorExpression(
+                    functor=c0,
+                    arguments=[self.visit(c, term_level=term_level, **kwargs) for c in obj.children[1:]]
+                )
+            else:
+                p = self._DEFINED_PREDICATE_MAP[c0] if is_defined else c0
+                return logic.PredicateExpression(
+                    predicate=p,
+                    arguments=[self.visit(c, term_level=True, **kwargs) for c in
+                               obj.children[1:]]
+                )
         else:
+            assert len(obj.children) == 1 and isinstance(obj.children[0], str)
             if is_defined:
                 if c0 == "$true":
                     return logic.DefinedConstant.VERUM
@@ -166,28 +173,16 @@ class TPTPParser(LogicParser, StringBasedParser):
             else:
                 return logic.Constant(obj.children[0])
 
-    def visit_functor_term(self, obj, term_level=False, **kwargs):
-        c0 = obj.children[0]
-        is_defined = c0.startswith("$")
-        if len(obj.children) > 1:
-            return logic.FunctorExpression(
-                functor=c0,
-                arguments=[self.visit(c, term_level=term_level, **kwargs) for c in obj.children[1:]]
-            )
-        else:
-            assert len(obj.children) == 1 and isinstance(obj.children[0], str)
-            if is_defined:
-                return logic.DefinedConstant(c0)
-            else:
-                return logic.Constant(obj.children[0])
-
     def visit_quantified_formula(self, obj, **kwargs):
-        q = logic.Quantifier.UNIVERSAL if obj.children[0] == "!" else logic.Quantifier.EXISTENTIAL
-        return logic.QuantifiedFormula(
-            quantifier=q,
-            variables=[self.visit(c, **kwargs) for c in obj.children[1:-1]],
-            formula=self.visit(obj.children[-1], **kwargs)
-        )
+        if len(obj.children) == 1:
+            return self.visit(obj.children[0])
+        else:
+            q = logic.Quantifier.UNIVERSAL if obj.children[0] == "!" else logic.Quantifier.EXISTENTIAL
+            return logic.QuantifiedFormula(
+                quantifier=q,
+                variables=[self.visit(c, **kwargs) for c in obj.children[1:-1]],
+                formula=self.visit(obj.children[-1], **kwargs)
+            )
 
     def visit_unary_formula(self, obj, **kwargs):
         if len(obj.children) == 1:
@@ -229,7 +224,8 @@ class TPTPParser(LogicParser, StringBasedParser):
         return self.visit_binary_formula(obj, **kwargs)
 
     def visit_object_binary_formula(self, obj, **kwargs):
-        kwargs['term_level'] = True
+        if len(obj.children) > 1:
+            kwargs['term_level'] = True
         return self.visit_binary_formula(obj, **kwargs)
 
     _ROLE_MAP = {
