@@ -13,8 +13,9 @@ LOWER: "a" .. "z"
 variable:  UPPER_WORD
 constant: LOWER_WORD
 ?functor: LOWER_WORD | DOLLAR_WORD
+?predicate: LOWER_WORD | DOLLAR_WORD
 
-quantified_formula: QUANTIFIER "[" (variable ("," variable)*) "]" ":" formula
+
 
 OBJECT_BINARY_OPERATOR: "=" | "!="
 TYPE_BINARY_OPERATOR: "@" | "*" | "+" | "-->" | ":=" | ">"
@@ -24,17 +25,16 @@ UNARY_CONNECTIVE: "~"
 //defined_predicate: "$distinct" | "$less" | "$lesseq" | "$greater" | "$greatereq" | "$is_int" | "$is_rat" | "$box_P" | "$box_i" | "$box_int" | "$box" | "$dia_P" | "$dia_i" | "$dia_int" | "$dia" | DOLLAR_WORD
 QUANTIFIER: "!" | "?"
 
-formula: disjunction | quantified_formula
+formula: disjunction
 
 disjunction: conjunction ("|" conjunction)*
 conjunction: logic_binary_formula ("&" logic_binary_formula)*
 logic_binary_formula: type_binary_formula (LOGIC_BINARY_OPERATOR type_binary_formula)*
 type_binary_formula: unary_formula (TYPE_BINARY_OPERATOR unary_formula)*
 unary_formula: [UNARY_CONNECTIVE] transition_formula
-?transition_formula: predicate_formula | object_binary_formula | "(" disjunction ")" | quantified_formula
-
+?transition_formula: object_binary_formula | "(" formula ")" | quantified_formula
+quantified_formula: QUANTIFIER "[" (variable ("," variable)*) "]" ":" unary_formula
 object_binary_formula: term (OBJECT_BINARY_OPERATOR term)*
-predicate_formula: functor ["(" term ("," term)* ")"]
 
 ?term: functor_term | bottom
 functor_term: functor ["(" term ("," term)* ")"]

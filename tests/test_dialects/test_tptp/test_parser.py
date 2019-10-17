@@ -1,24 +1,12 @@
 from gavel.dialects.tptp.parser import TPTPParser, TPTPAntlrParser
+from gavel.dialects.tptp.compiler import TPTPCompiler
 from gavel.logic import logic
 from gavel.logic import problem
 from ..test_base.test_parser import TestLogicParser
 from gavel.config.settings import TPTP_ROOT
 import os
 import unittest
-
-class TestParserAlignment(TestLogicParser):
-    def test_all(self):
-        path = os.path.join(TPTP_ROOT, "Axioms")
-        antlr_parser = TPTPAntlrParser()
-        lr_parser = TPTPParser()
-        for sub_path in os.listdir(path):
-            sub_path = os.path.join(path, sub_path)
-            if os.path.isfile(sub_path) and "=" not in sub_path and "^" not in sub_path:
-                for f in lr_parser.stream_formulas(sub_path):
-                    result = lr_parser.parse_single_from_string(f)
-                    expected = antlr_parser.parse_single_from_string(f)
-                    self.assertObjectEqual(result, expected)
-
+import multiprocessing as mp
 
 
 class TestTPTPParser(TestLogicParser):
@@ -63,8 +51,50 @@ class TestTPTPParser(TestLogicParser):
         )
         self.check_parser(inp, result)
 
+class TestLALRSanity(TestTPTPParser):
+    def __init__(self, *args, **kwargs):
+        super(TestLALRSanity, self).__init__(*args, **kwargs)
+        self.antlr_parser = TPTPAntlrParser()
 
-
+    def test_formula(self):
+        f = 'fof(maps,axiom,( ! [F,A,B] :( ' \
+            'maps(F,A,B)' \
+            '<=> ' \
+            '(' \
+            '   ! [X] :( ' \
+            '       member(X,A)' \
+        '           => ' \
+            '       ? [Y] :( ' \
+            '           member(Y,B)' \
+            '           & ' \
+            '           apply(F,X,Y) ' \
+            '       ) ' \
+            '   )' \
+            '   & ' \
+            '   ! [X,Y1,Y2] :( ' \
+            '       ( ' \
+            '           member(X,A)' \
+            '           & ' \
+            '           member(Y1,B)' \
+            '           & ' \
+            '           member(Y2,B)' \
+            '       )' \
+            '       => ' \
+            '       ( ' \
+            '           (' \
+            '               apply(F,X,Y1)' \
+            '               &' \
+            '               apply(F,X,Y2)' \
+            '           )' \
+            '           => ' \
+            '               Y1 ' \
+            '               = ' \
+            '               Y2 ' \
+            '      ) ' \
+            '   ) ' \
+            ') ) )).'
+        self.assertObjectEqual(self.parser.parse_single_from_string(f),
+                               self.antlr_parser.parse_single_from_string(f))
 
 """
 class TestTHFParser(TestLogicParser):

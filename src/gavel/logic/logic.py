@@ -222,7 +222,7 @@ class PredicateExpression(LogicElement):
         self.arguments = arguments
 
     def __str__(self):
-        return "%s(%s)" % (self.predicate, ", ".join(self.arguments))
+        return "%s(%s)" % (self.predicate, ", ".join(map(str, self.arguments)))
 
     def symbols(self):
         yield self.predicate
