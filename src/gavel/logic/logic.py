@@ -317,6 +317,9 @@ class DistinctObject(LogicElement):
         return {self.symbol}
 
 class DefinedConstant(Constant, Enum):
+
+    __visit_name__ = "defined_constant"
+
     VERUM = 0
     FALSUM = 1
 
