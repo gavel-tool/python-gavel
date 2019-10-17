@@ -112,7 +112,7 @@ def store_file(path, parser, compiler, session=None):
             for struc in map(parser.parse_single_from_string, parser.stream_formulas(path)):
                 i += 1
                 store_formula(path, compiler.visit(struc), session=session)
-            mark_source_complete(path)
+            mark_source_complete(path, session=session)
             session.commit()
             print("--- %d formulas extracted ---" % i)
             pool.close()
