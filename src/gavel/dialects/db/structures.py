@@ -105,7 +105,8 @@ def store_file(path, parser, compiler, session=None):
     skip = False
     skip_reason = None
     print(path)
-    if "=" not in path and "^" not in path:
+    fname = os.path.basename(path)
+    if "=" not in fname and "^" not in fname and "_" not in fname:
         if not is_source_complete(path):
             i = 0
             pool = mp.Pool(mp.cpu_count() - 1)
