@@ -45,41 +45,45 @@ sys.setrecursionlimit(10000)
 form_expression = re.compile(r"^(?!%|\n)(?P<logic>[^(]*)\([^.]*\)\.\S*$")
 
 _BINARY_CONNECTIVE_MAP = {
-        "&": logic.BinaryConnective.CONJUNCTION,
-        "|": logic.BinaryConnective.DISJUNCTION,
-        "=>":logic.BinaryConnective.IMPLICATION,
-        "<=>": logic.BinaryConnective.BIIMPLICATION,
-        "<=":logic.BinaryConnective.REVERSE_IMPLICATION,
-        "<~>":logic.BinaryConnective.SIMILARITY,
-        "~&":logic.BinaryConnective.NEGATED_CONJUNCTION,
-        "~|":logic.BinaryConnective.NEGATED_DISJUNCTION,
-        "=": logic.BinaryConnective.EQ,
-        "!=": logic.BinaryConnective.NEQ,
-        "@": logic.BinaryConnective.APPLY,
-        "*": logic.BinaryConnective.PRODUCT,
-        "+": logic.BinaryConnective.UNION,
-        "-->": logic.BinaryConnective.GENTZEN_ARROW,
-        ":=": logic.BinaryConnective.ASSIGN,
-        ">": logic.BinaryConnective.ARROW
-    }
+    "&": logic.BinaryConnective.CONJUNCTION,
+    "|": logic.BinaryConnective.DISJUNCTION,
+    "=>": logic.BinaryConnective.IMPLICATION,
+    "<=>": logic.BinaryConnective.BIIMPLICATION,
+    "<=": logic.BinaryConnective.REVERSE_IMPLICATION,
+    "<~>": logic.BinaryConnective.SIMILARITY,
+    "~&": logic.BinaryConnective.NEGATED_CONJUNCTION,
+    "~|": logic.BinaryConnective.NEGATED_DISJUNCTION,
+    "=": logic.BinaryConnective.EQ,
+    "!=": logic.BinaryConnective.NEQ,
+    "@": logic.BinaryConnective.APPLY,
+    "*": logic.BinaryConnective.PRODUCT,
+    "+": logic.BinaryConnective.UNION,
+    "-->": logic.BinaryConnective.GENTZEN_ARROW,
+    ":=": logic.BinaryConnective.ASSIGN,
+    ">": logic.BinaryConnective.ARROW,
+}
 
 with open(os.path.join(os.path.dirname(__file__), "tptp.lark")) as gf:
     lark_grammar = Lark(gf.read(), start=["start", "tptp_line"])
 
+
 def _balance_binary_tree(obj, skip_connective=True, **kwargs):
     if len(obj.children) > 2:
-        split_point = len(obj.children)//2
+        split_point = len(obj.children) // 2
         if skip_connective:
             cl = obj.children[:split_point]
             cr = obj.children[split_point:]
         else:
             # It the split marker is on an operator everything is fine.
             # Otherwise move it
-            if not (isinstance(obj.children[split_point], str) and obj.children[split_point] in _BINARY_CONNECTIVE_MAP):
+            if not (
+                isinstance(obj.children[split_point], str)
+                and obj.children[split_point] in _BINARY_CONNECTIVE_MAP
+            ):
                 split_point -= 1
             connective = obj.children[split_point]
             cl = obj.children[:split_point]
-            cr = obj.children[split_point+1:]
+            cr = obj.children[split_point + 1 :]
 
         tl = Tree(data=obj.data, children=cl)
         tr = Tree(data=obj.data, children=cr)
@@ -92,14 +96,21 @@ def _balance_binary_tree(obj, skip_connective=True, **kwargs):
     else:
         return obj
 
+
 def _recursive_binary(skip_connective=True):
     def wrapper(f):
         def inner(self, obj, **kwargs):
             if len(obj.children) == 1:
                 return self.visit(obj.children[0], **kwargs)
             else:
-                return f(self, _balance_binary_tree(obj, skip_connective=skip_connective), **kwargs)
+                return f(
+                    self,
+                    _balance_binary_tree(obj, skip_connective=skip_connective),
+                    **kwargs
+                )
+
         return inner
+
     return wrapper
 
 
@@ -114,7 +125,7 @@ class TPTPParser(LogicParser, StringBasedParser):
         r = lark_grammar.parse(string, start="tptp_line")
         return r
 
-    def visit(self, obj:Tree, **kwargs):
+    def visit(self, obj: Tree, **kwargs):
         if isinstance(obj, str):
             return obj
         meth = getattr(self, "visit_%s" % obj.data, None)
@@ -139,7 +150,7 @@ class TPTPParser(LogicParser, StringBasedParser):
             logic=obj.children[0],
             name=obj.children[1],
             role=self._ROLE_MAP[obj.children[2]],
-            formula=self.visit(obj.children[3], **kwargs)
+            formula=self.visit(obj.children[3], **kwargs),
         )
 
     def visit_formula(self, obj, **kwargs):
@@ -152,14 +163,19 @@ class TPTPParser(LogicParser, StringBasedParser):
             if term_level:
                 return logic.FunctorExpression(
                     functor=c0,
-                    arguments=[self.visit(c, term_level=term_level, **kwargs) for c in obj.children[1:]]
+                    arguments=[
+                        self.visit(c, term_level=term_level, **kwargs)
+                        for c in obj.children[1:]
+                    ],
                 )
             else:
                 p = self._DEFINED_PREDICATE_MAP[c0] if is_defined else c0
                 return logic.PredicateExpression(
                     predicate=p,
-                    arguments=[self.visit(c, term_level=True, **kwargs) for c in
-                               obj.children[1:]]
+                    arguments=[
+                        self.visit(c, term_level=True, **kwargs)
+                        for c in obj.children[1:]
+                    ],
                 )
         else:
             assert len(obj.children) == 1 and isinstance(obj.children[0], str)
@@ -177,11 +193,15 @@ class TPTPParser(LogicParser, StringBasedParser):
         if len(obj.children) == 1:
             return self.visit(obj.children[0])
         else:
-            q = logic.Quantifier.UNIVERSAL if obj.children[0] == "!" else logic.Quantifier.EXISTENTIAL
+            q = (
+                logic.Quantifier.UNIVERSAL
+                if obj.children[0] == "!"
+                else logic.Quantifier.EXISTENTIAL
+            )
             return logic.QuantifiedFormula(
                 quantifier=q,
                 variables=[self.visit(c, **kwargs) for c in obj.children[1:-1]],
-                formula=self.visit(obj.children[-1], **kwargs)
+                formula=self.visit(obj.children[-1], **kwargs),
             )
 
     def visit_unary_formula(self, obj, **kwargs):
@@ -190,7 +210,7 @@ class TPTPParser(LogicParser, StringBasedParser):
         else:
             return logic.UnaryFormula(
                 connective=logic.UnaryConnective.NEGATION,
-                formula=self.visit(obj.children[1], **kwargs)
+                formula=self.visit(obj.children[1], **kwargs),
             )
 
     @_recursive_binary(skip_connective=True)
@@ -198,7 +218,7 @@ class TPTPParser(LogicParser, StringBasedParser):
         return logic.BinaryFormula(
             left=self.visit(obj.children[0], **kwargs),
             operator=logic.BinaryConnective.CONJUNCTION,
-            right=self.visit(obj.children[1], **kwargs)
+            right=self.visit(obj.children[1], **kwargs),
         )
 
     @_recursive_binary(skip_connective=True)
@@ -206,7 +226,7 @@ class TPTPParser(LogicParser, StringBasedParser):
         return logic.BinaryFormula(
             left=self.visit(obj.children[0], **kwargs),
             operator=logic.BinaryConnective.DISJUNCTION,
-            right=self.visit(obj.children[1], **kwargs)
+            right=self.visit(obj.children[1], **kwargs),
         )
 
     @_recursive_binary(skip_connective=False)
@@ -214,7 +234,7 @@ class TPTPParser(LogicParser, StringBasedParser):
         return logic.BinaryFormula(
             left=self.visit(obj.children[0], **kwargs),
             operator=self.visit_binary_operator(obj.children[1], **kwargs),
-            right=self.visit(obj.children[2], **kwargs)
+            right=self.visit(obj.children[2], **kwargs),
         )
 
     def visit_type_binary_formula(self, obj, **kwargs):
@@ -225,7 +245,7 @@ class TPTPParser(LogicParser, StringBasedParser):
 
     def visit_object_binary_formula(self, obj, **kwargs):
         if len(obj.children) > 1:
-            kwargs['term_level'] = True
+            kwargs["term_level"] = True
         return self.visit_binary_formula(obj, **kwargs)
 
     _ROLE_MAP = {
@@ -285,6 +305,7 @@ class TPTPParser(LogicParser, StringBasedParser):
     def visit_distinct_object(self, obj, **kwargs):
         assert len(obj.children) == 1 and isinstance(obj.children[0], str)
         return logic.DistinctObject(obj.children[0][1:-1])
+
 
 class TPTPAntlrParser(LogicParser, StringBasedParser):
     visitor = FOFFlatteningVisitor()
@@ -367,8 +388,7 @@ class TPTPAntlrParser(LogicParser, StringBasedParser):
                 axioms.append(imported_axiom)
 
         for conjecture in conjectures:
-            yield Problem(premises=axioms, imports=imports,
-                          conjecture=conjecture)
+            yield Problem(premises=axioms, imports=imports, conjecture=conjecture)
 
 
 class TPTPProblemParser(ProblemParser):
@@ -394,8 +414,7 @@ class SimpleTPTPProofParser(ProofParser):
             elif e.role == FormulaRole.PLAIN:
                 if isinstance(e.annotation, InferenceSource):
                     return Inference(
-                        formula=e.formula, name=e.name,
-                        antecedents=e.annotation.parents
+                        formula=e.formula, name=e.name, antecedents=e.annotation.parents
                     )
                 elif isinstance(e.annotation, InternalSource):
                     return Introduction(
@@ -436,4 +455,3 @@ def all_solution(path, system=""):
             )
         )
         print(response)
-

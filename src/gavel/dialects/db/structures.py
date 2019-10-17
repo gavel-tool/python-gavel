@@ -100,6 +100,7 @@ def store_all(path, parser, compiler):
     elif os.path.isfile(path):
         store_file(path, parser, compiler)
 
+
 @with_session
 def store_file(path, parser, compiler, session=None):
     skip = False
@@ -110,7 +111,9 @@ def store_file(path, parser, compiler, session=None):
         if not is_source_complete(path):
             i = 0
             pool = mp.Pool(mp.cpu_count() - 1)
-            for struc in pool.imap(parser.parse_single_from_string, parser.stream_formulas(path)):
+            for struc in pool.imap(
+                parser.parse_single_from_string, parser.stream_formulas(path)
+            ):
                 i += 1
                 store_formula(path, compiler.visit(struc), session=session)
             mark_source_complete(path, session=session)

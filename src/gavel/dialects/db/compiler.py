@@ -152,10 +152,7 @@ class DBCompiler(Compiler):
         pass
 
     def visit_distinct_object(self, variable: fol.DistinctObject):
-        return dict(
-            type="distinct_object",
-            symbol=variable.symbol
-        )
+        return dict(type="distinct_object", symbol=variable.symbol)
 
     def visit_typed_variable(self, variable: fol.TypedVariable):
         return dict(name=variable.name, type=self.visit(variable.vtype))

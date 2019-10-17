@@ -30,8 +30,7 @@ class Parser(Generic[Parseable, Target]):
 
 
 class StringBasedParser(Parser, ABC):
-    def load_single_from_string(self, string: str, *args,
-                                **kwargs) -> Parseable:
+    def load_single_from_string(self, string: str, *args, **kwargs) -> Parseable:
         """
         Load a string into the structure represented by the dialect
         Parameters
@@ -101,7 +100,7 @@ class StringBasedParser(Parser, ABC):
         raise NotImplementedError
 
     def is_file_valid(self, *args, **kwargs):
-        return self.is_valid(self.__unpack_file(*args, **kwargs))#
+        return self.is_valid(self.__unpack_file(*args, **kwargs))  #
 
     def stream_formula_lines(self, lines: Iterable[str], **kwargs):
         raise NotImplementedError
@@ -113,13 +112,12 @@ class StringBasedParser(Parser, ABC):
         self, lines: Iterable[str], *args, **kwargs
     ) -> Iterable[LogicElement]:
         return map(
-            self.load_single_from_string,
-            self.stream_formula_lines(lines, **kwargs)
+            self.load_single_from_string, self.stream_formula_lines(lines, **kwargs)
         )
-
 
     def stream_formula_lines(self, *args, **kwargs) -> Iterable[str]:
         raise NotImplementedError
+
 
 class LogicParser(Parser[Parseable, LogicElement]):
     pass
