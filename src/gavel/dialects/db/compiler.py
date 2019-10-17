@@ -162,3 +162,11 @@ class DBCompiler(Compiler):
 
     def visit_type(self, t: fol.Type):
         return t.name
+
+    def visit_defined_constant(self, obj: fol.DefinedConstant):
+        if obj == fol.DefinedConstant.VERUM:
+            return "$true"
+        elif obj == fol.DefinedConstant.FALSUM:
+            return "$false"
+        else:
+            raise NotImplementedError
