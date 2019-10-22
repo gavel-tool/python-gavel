@@ -49,7 +49,7 @@ LOGIC: "thf" | "ttf" | "cnf" | "fof"
 annotation: "TODO"
 FORMULA_ROLE: "axiom" | "hypothesis" | "definition" | "assumption" | "lemma" | "theorem" | "corollary" | "conjecture" | "negated_conjecture" | "plain" | "type" | "fi_domain" | "fi_functors" | "fi_predicates" | "unknown"
 
-annotated_formula: LOGIC "(" WORD "," FORMULA_ROLE "," formula [ "," annotation ] ")."
+annotated_formula: LOGIC "(" ( WORD | single_quoted ) "," FORMULA_ROLE "," formula [ "," annotation ] ")."
 include: "include(" file_name ")."
 
 COMMENT: /%[^\n]*\n/
