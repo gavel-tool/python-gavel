@@ -31,7 +31,7 @@ disjunction: conjunction ("|" conjunction)*
 conjunction: logic_binary_formula ("&" logic_binary_formula)*
 logic_binary_formula: type_binary_formula (LOGIC_BINARY_OPERATOR type_binary_formula)*
 type_binary_formula: unary_formula (TYPE_BINARY_OPERATOR unary_formula)*
-unary_formula: [UNARY_CONNECTIVE] transition_formula
+unary_formula: (UNARY_CONNECTIVE unary_formula) | transition_formula
 ?transition_formula: object_binary_formula | "(" formula ")" | quantified_formula
 quantified_formula: QUANTIFIER "[" (variable ("," variable)*) "]" ":" unary_formula
 object_binary_formula: term (OBJECT_BINARY_OPERATOR term)*
