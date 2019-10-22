@@ -42,8 +42,8 @@ functor_term: functor ["(" term ("," term)* ")"]
 
 
 
-distinct_object: /"([^"]|\\")*"/
-?single_quoted: /'([^']|\\')*'/
+distinct_object: /"([^"]|\\")*(?<!\\)""/
+?single_quoted: /'([^']|\\')*(?<!\\)'/
 
 LOGIC: "thf" | "ttf" | "cnf" | "fof"
 annotation: "TODO"
