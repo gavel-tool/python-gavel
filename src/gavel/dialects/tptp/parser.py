@@ -40,9 +40,10 @@ from gavel.logic.proof import Introduction
 from gavel.logic.proof import LinearProof
 from gavel.logic.proof import ProofStep
 
-from .antlr4.flattening import FOFFlatteningVisitor
-from .antlr4.tptp_v7_0_0_0Lexer import tptp_v7_0_0_0Lexer
-from .antlr4.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
+if SUPPORTS_ANTLR:
+    from .antlr4.flattening import FOFFlatteningVisitor
+    from .antlr4.tptp_v7_0_0_0Lexer import tptp_v7_0_0_0Lexer
+    from .antlr4.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
 
 from lark import Lark, Tree
 
