@@ -114,19 +114,18 @@ def store_file(path, parser, compiler, session=None):
         source, created = get_or_create(session, Source, path=path)
         if not source.complete:
             i = 0
-            pool = mp.Pool(mp.cpu_count() - 1)
-            for struc in pool.imap(
-                parser.parse_single_from_string, parser.stream_formulas(path)
-            ):
-                i += 1
-                store_formula(path, compiler.visit(struc), session=session, source=source, skip_existence_check=created)
-            mark_source_complete(path, session=session)
-            print("%d formulas extracted" % i)
-            print("commit to database")
-            print("--- done ---")
-            session.commit()
+            with mp.Pool(mp.cpu_count() - 1) as pool:
+                for struc in pool.imap(
+                    parser.parse_single_from_string, parser.stream_formulas(path)
+                ):
+                    i += 1
+                    store_formula(path, compiler.visit(struc), session=session, source=source, skip_existence_check=created)
+                mark_source_complete(path, session=session)
+                print("%d formulas extracted" % i)
+                print("commit to database")
+                print("--- done ---")
+                session.commit()
 
-            pool.close()
         else:
             skip = True
             skip_reason = "Already complete"
