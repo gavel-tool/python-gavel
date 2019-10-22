@@ -1,4 +1,4 @@
-from gavel.dialects.tptp.parser import TPTPParser, TPTPAntlrParser
+from gavel.dialects.tptp.parser import TPTPParser
 from gavel.dialects.tptp.compiler import TPTPCompiler
 from gavel.logic import logic
 from gavel.logic import problem
@@ -76,52 +76,6 @@ class TestTPTPParser(TestLogicParser):
             )
         )
         return inp, result
-
-@skip
-class TestLALRSanity(TestTPTPParser):
-    def __init__(self, *args, **kwargs):
-        super(TestLALRSanity, self).__init__(*args, **kwargs)
-        self.antlr_parser = TPTPAntlrParser()
-
-    def test_formula(self):
-        f = 'fof(maps,axiom,( ! [F,A,B] :( ' \
-            'maps(F,A,B)' \
-            '<=> ' \
-            '(' \
-            '   ! [X] :( ' \
-            '       member(X,A)' \
-        '           => ' \
-            '       ? [Y] :( ' \
-            '           member(Y,B)' \
-            '           & ' \
-            '           apply(F,X,Y) ' \
-            '       ) ' \
-            '   )' \
-            '   & ' \
-            '   ! [X,Y1,Y2] :( ' \
-            '       ( ' \
-            '           member(X,A)' \
-            '           & ' \
-            '           member(Y1,B)' \
-            '           & ' \
-            '           member(Y2,B)' \
-            '       )' \
-            '       => ' \
-            '       ( ' \
-            '           (' \
-            '               apply(F,X,Y1)' \
-            '               &' \
-            '               apply(F,X,Y2)' \
-            '           )' \
-            '           => ' \
-            '               Y1 ' \
-            '               = ' \
-            '               Y2 ' \
-            '      ) ' \
-            '   ) ' \
-            ') ) )).'
-        self.assertObjectEqual(self.parser.parse_single_from_string(f),
-                               self.antlr_parser.parse_single_from_string(f))
 
 """
 class TestTHFParser(TestLogicParser):
