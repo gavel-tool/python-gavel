@@ -187,7 +187,10 @@ class TPTPParser(LogicParser, StringBasedParser):
                 else:
                     return logic.DefinedConstant(c0)
             else:
-                return logic.Constant(obj.children[0])
+                if c0[0] == "\"":
+                    return logic.DistinctObject(c0)
+                else:
+                    return logic.Constant(c0)
 
     def visit_quantified_formula(self, obj, **kwargs):
         if len(obj.children) == 1:
