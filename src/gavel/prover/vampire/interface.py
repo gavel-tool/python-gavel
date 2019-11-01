@@ -1,10 +1,11 @@
-import gavel.dialects.tptp.sources as sources
+from gavel.prover import register_prover
 from gavel.dialects.base.dialect import Problem
 from gavel.dialects.tptp.dialect import TPTPDialect
 from gavel.prover.base.interface import BaseProverInterface
 from gavel.prover.base.interface import BaseResultHandler
 
 
+@register_prover("vampire")
 class VampireInterface(BaseProverInterface):
     _dialect_cls = TPTPDialect
 
