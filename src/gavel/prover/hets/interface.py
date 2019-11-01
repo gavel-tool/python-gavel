@@ -39,9 +39,8 @@ class HetsCall:
 
 
 class HetsProve(BaseProverInterface, HetsCall):
-    _prover_dialect_cls = TPTPDialect
-
     def __init__(self, prover_interface: BaseProverInterface, *args, **kwargs):
+        self._prover_dialect_cls = prover_interface._prover_dialect_cls
         super(HetsProve, self).__init__(["prove"])
 
     def _bootstrap_problem(self, problem: Problem):
