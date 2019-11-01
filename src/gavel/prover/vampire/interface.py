@@ -1,4 +1,4 @@
-from gavel.prover import register_prover
+from gavel.prover.registry import register_prover
 from gavel.dialects.base.dialect import Problem
 from gavel.dialects.tptp.dialect import TPTPDialect
 from gavel.prover.base.interface import BaseProverInterface

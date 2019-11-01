@@ -17,12 +17,16 @@ class Parser(Generic[Parseable, Target]):
         """
         Transforms the input structure into metadata as used by the
         OpenEnergyPlatform
+
         Parameters
         ----------
+
         inp: str
             The input string that should be parsed into OEP metadata
+
         Returns
         -------
+
         OEPMetadata
             OEP metadata represented by `inp`
         """
@@ -33,11 +37,11 @@ class StringBasedParser(Parser, ABC):
     def load_single_from_string(self, string: str, *args, **kwargs) -> Parseable:
         """
         Load a string into the structure represented by the dialect
+
         Parameters
         ----------
         string
-        args
-        kwargs
+
         Returns
         -------
         """
@@ -53,11 +57,12 @@ class StringBasedParser(Parser, ABC):
     ) -> Target:
         """
         Parse a string into OEPMetadata
+
         Parameters
         ----------
+
         string
-        args
-        kwargs
+
         Returns
         -------
         """
@@ -114,9 +119,6 @@ class StringBasedParser(Parser, ABC):
         return map(
             self.load_single_from_string, self.stream_formula_lines(lines, **kwargs)
         )
-
-    def stream_formula_lines(self, *args, **kwargs) -> Iterable[str]:
-        raise NotImplementedError
 
 
 class LogicParser(Parser[Parseable, LogicElement]):

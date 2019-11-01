@@ -119,6 +119,7 @@ setup(
         # eg:
         #   'rst': ['docutils>=0.11'],
         #   ':python_version=="2.6"': ['argparse'],
+        "dev": ["black", "isort", "pre-commit", "sphinx-click"]
     },
     entry_points={"console_scripts": ["gavel = gavel.cli:main"]},
     cmdclass={"build_ext": optional_build_ext},

@@ -27,11 +27,12 @@ from gavel.dialects.db.structures import (
 )
 import gavel.dialects.tptp.parser as build_tptp
 from gavel.dialects.tptp.compiler import TPTPCompiler
+from gavel.dialects.tptp.parser import TPTPProblemParser
 from gavel.dialects.db.compiler import DBCompiler
 from gavel.dialects.tptp.parser import Problem
 from gavel.dialects.tptp.parser import TPTPParser
 from gavel.prover.hets.interface import HetsProve
-from gavel.prover.vampire.interface import VampireInterface
+from gavel.prover.registry import get_prover
 from gavel.selection.selector import Sine
 from alembic import command
 from alembic.config import Config
@@ -88,14 +89,17 @@ def clear_db(p):
 
 
 @click.command()
+@click.argument("p")
 @click.argument("f")
 @click.option("-s", default=None)
+@click.option("--hets", is_flag=True, default=False)
 @click.option("--plot", is_flag=True, default=False)
-def prove(f, s, plot):
-    processor = TPTPParser()
-    vp = VampireInterface()
-    hp = HetsProve(vp)
-    problems = list(processor.problem_processor(f))
+def prove(p, f, s, plot, hets):
+    prover_interface = get_prover(p)
+    if hets:
+        prover_interface = HetsProve(prover_interface)
+    processor = TPTPProblemParser()
+    problems = list(processor.parse(f))
     compiler = TPTPCompiler()
     for problem in problems:
         if s is not None:
@@ -103,7 +107,7 @@ def prove(f, s, plot):
                 premises=problem.premises, conjecture=problem.conjecture, max_depth=10
             )
             problem = Problem(premises=selector.select(), conjecture=problem.conjecture)
-        proof = hp.prove(problem, compiler)
+        proof = prover_interface.prove(problem, compiler)
         if not plot:
             for s in proof.steps:
                 print(
