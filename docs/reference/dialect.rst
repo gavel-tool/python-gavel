@@ -7,14 +7,12 @@ Parser
 ******
 
 
-.. testsetup:: *
-
-    from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
-
 Gavel comes with a collection of parsers for different logical frameworks. You can use these parsers to parse a
 single expression from a string:
 
 .. testcode::
+
+    from gavel.dialects.tptp.parser import TPTPParser
 
     parser = TPTPParser()
     string = "cnf(name, axiom, a | b)."
@@ -47,6 +45,8 @@ not accept problems that cotain multiple conjectures, :class:`ProblemParser.pars
 containing one conjecture each.
 
 .. testcode::
+
+    from gavel.dialects.tptp.parser import TPTPProblemParser
 
     problem_parser = TPTPProblemParser()
     string = "cnf(a1, axiom, a | b).cnf(a1, axiom, ~a).cnf(a2, negated_conjecture, b)."
