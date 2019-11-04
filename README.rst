@@ -71,7 +71,7 @@ Documentation
 =============
 
 
-https://python-gavel.readthedocs.io/
+https://gavel.readthedocs.io/
 
 
 Development
