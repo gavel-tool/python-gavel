@@ -61,8 +61,20 @@ in a prover interface. Simply implement a subclass of
     class YourProverInterface(BaseProverInterface):
         def _submit_problem(self, problem_instance, *args, **kwargs):
             # Call your prov:qer here
-            result = simple_prover()
+            result = simple_prover(problem_instance)
             return result
+
+.. testcode::
+
+    pi = YourProverInterface()
+    proof = pi.prove(problem)
+    for step in proof.steps:
+        print(step.formula)
+
+.. testoutput::
+
+    $true
+
 
 Note that `simple_prover` is accepting and returning the structures used by gavel. If your parser requires a different
 format, you may want to implement a dialect and use it in :class:`YourProverInterface._prover_dialect_cls`.
