@@ -35,8 +35,7 @@ class Dialect:
 class IdentityDialect(Dialect):
 
     def compile_problem(self, obj: Problem, *args, **kwargs):
-        c = self._compiler_cls()
-        return c.visit_problem(obj, *args, **kwargs)
+        return obj
 
     def parse_proof(self, prover_output) -> Proof:
         return prover_output
