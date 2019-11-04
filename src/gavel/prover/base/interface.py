@@ -12,13 +12,33 @@ class BaseProverInterface:
     Base class for prover support
     """
     _prover_dialect_cls = IdentityDialect
+    """
+    A dialect class that is instantiated and used to compile to
+    and parse from a format suppported by the prover
+    """
 
     def __init__(self, *args, **kwargs):
         super(BaseProverInterface, self).__init__(*args, **kwargs)
         self.dialect = self._prover_dialect_cls()
 
     def prove(self, problem: Problem, *args, **kwargs) -> Proof:
-        return self.build_proof(
+        """
+        Takes a instance of a gavel proof problem.
+        submits it to the prover in a supported format and parses the result
+        into a gavel proof object. Both translations are handled by the prover
+        dialect in :class:`_prover_dialect_cls`
+
+        Parameters
+        ----------
+        problem: :class:`gavel.logic.problem.Problem`
+            The problem to prove
+
+        Returns
+        -------
+            A proof if the proof was successful
+        """
+
+        return self._build_proof(
             self._post_process_proof(
                 self._submit_problem(self._bootstrap_problem(problem))
             ),
@@ -76,7 +96,7 @@ class BaseProverInterface:
 
         return raw_proof_result
 
-    def build_proof(self, prover_output, problem: Problem) -> Proof:
+    def _build_proof(self, prover_output, problem: Problem) -> Proof:
         """
         Parses the proof returned by the prover.
 

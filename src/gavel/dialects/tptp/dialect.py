@@ -6,6 +6,5 @@ from gavel.logic.problem import Problem
 
 
 class TPTPDialect(Dialect):
-    _problem_parser_cls = TPTPProblemParser
+    _parser_cls = TPTPProblemParser
     _compiler_cls = TPTPCompiler
-    _proof_parser_cls = SimpleTPTPProofParser

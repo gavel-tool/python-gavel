@@ -13,7 +13,6 @@ class LogicElement:
 
 
 class Quantifier(Enum):
-
     __visit_name__ = "quantifier"
 
     UNIVERSAL = 0
@@ -135,6 +134,16 @@ class UnaryConnective(Enum):
 
 
 class UnaryFormula(LogicElement):
+    """
+    Attributes
+    ----------
+
+    connective:
+        A unary connective
+    formula:
+        A formula
+
+    """
 
     __visit_name__ = "unary_formula"
 
@@ -150,6 +159,17 @@ class UnaryFormula(LogicElement):
 
 
 class QuantifiedFormula(LogicElement):
+    """
+    Attributes
+    ----------
+
+    quantifier:
+        A quantier (existential or universal)
+    variables:
+        A list of variables bound by the quantifier
+    formula
+        A logical formula
+    """
 
     __visit_name__ = "quantified_formula"
 
@@ -174,6 +194,17 @@ class QuantifiedFormula(LogicElement):
 
 class BinaryFormula(LogicElement):
 
+    """
+    Attributes
+    ----------
+    oparator
+        A binary operator
+    left
+        The formula on the left side
+    right
+        The formula on the right side
+
+    """
     __visit_name__ = "binary_formula"
 
     requires_parens = True

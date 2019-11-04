@@ -3,6 +3,14 @@
 Provers
 =======
 
+Gavel is designed to support a number of provers. The communication to those is handled by so called prover interfaces
+(see :class:`BaseProverInterface`).
+
+.. autoclass:: BaseProverInterface
+    :members:
+
+    .. autoproperty:: _prover_dialect_cls
+
 Custom Provers
 **************
 
@@ -57,15 +65,4 @@ in a prover interface. Simply implement a subclass of
             return result
 
 Note that `simple_prover` is accepting and returning the structures used by gavel. If your parser requires a different
-format, you may want to implement a dialect and use it in :class:`BaseProverInterface.YourProverInterface._prover_dialect_cls`.
-
-
-
-
-.. autoclass:: BaseProverInterface
-    :members:
-    :private-members:
-
-
-
-
+format, you may want to implement a dialect and use it in :class:`YourProverInterface._prover_dialect_cls`.
