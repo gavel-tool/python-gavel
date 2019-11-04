@@ -110,6 +110,7 @@ setup(
         "lark-parser",
         "alembic",
         "sqlalchemy>=1.2",
+        "psycopg2",
         "pre-commit",
         "graphviz",
         "pytest",
