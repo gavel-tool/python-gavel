@@ -6,13 +6,13 @@ Dialects
 Parser
 ******
 
-.. automodule:: gavel.dialects.base.parser
-    :members:
-    :private-members:
 
 .. testsetup:: *
 
     from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
+
+Gavel comes with a collection of parsers for different logical frameworks. You can use these parsers to parse a
+single expression from a string:
 
 .. testcode::
 
@@ -26,9 +26,11 @@ Parser
 
     (a) | (b)
 
+In most cases the exact structrue of the input is not known, e.g. it might contain several expressions. To extract all
+lines from a string use the `parse_single_from_string` which returns a generator of found expressions
+
 .. testcode::
 
-    parser = TPTPParser()
     string = "cnf(name, axiom, a | b).cnf(name, axiom, d | e)."
 
     for line in parser.stream_formula_lines(string):
@@ -40,6 +42,9 @@ Parser
     (a) | (b)
     (d) | (e)
 
+If you want to parse a complete problem from a file, use the specific problem parser. As some reasoners (e.g. SPASS) do
+not accept problems that cotain multiple conjectures, :class:`ProblemParser.parse` returns a generator of problems,
+containing one conjecture each.
 
 .. testcode::
 
@@ -60,6 +65,12 @@ Parser
     ~(a)
     Conjecture:
     b
+
+
+.. automodule:: gavel.dialects.base.parser
+    :members:
+    :private-members:
+
 
 Compiler
 ********
