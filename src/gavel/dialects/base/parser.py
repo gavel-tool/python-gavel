@@ -129,12 +129,12 @@ class ProblemParser(Parser[Parseable, Problem]):
     logic_parser_cls = LogicParser
 
     def __init__(self, *args, **kwargs):
-        self.logic_parser = LogicParser(*args, **kwargs)
+        self.logic_parser = self.logic_parser_cls(*args, **kwargs)
 
-    def parse(self, structure: Parseable, *args, **kwargs):
+    def parse(self, inp, *args, **kwargs):
         premises = []
         conjectures = []
-        for s in self.logic_parser.parse(structure):
+        for s in map(self.logic_parser.parse_single_from_string, self.logic_parser.stream_formula_lines(inp)):
             if isinstance(s, Sentence):
                 if s.is_conjecture():
                     conjectures.append(s)

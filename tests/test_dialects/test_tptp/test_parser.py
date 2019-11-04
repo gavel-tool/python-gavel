@@ -35,9 +35,6 @@ class TestTPTPParser(TestLogicParser):
         )
         self.check_parser(inp, result)
 
-    def test_verum(self):
-        inp = """"""
-
     def test_functor(self):
         inp = """cnf(and_definition1,axiom,( and(X,n0) = n0 ))."""
         result = problem.AnnotatedFormula(

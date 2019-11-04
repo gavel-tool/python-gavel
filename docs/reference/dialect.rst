@@ -12,7 +12,7 @@ Parser
 
 .. testsetup:: *
 
-    from gavel.dialects.tptp.parser import TPTPParser
+    from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
 
 .. testcode::
 
@@ -39,6 +39,27 @@ Parser
 
     (a) | (b)
     (d) | (e)
+
+
+.. testcode::
+
+    problem_parser = TPTPProblemParser()
+    string = "cnf(a1, axiom, a | b).cnf(a1, axiom, ~a).cnf(a2, negated_conjecture, b)."
+
+    for problem in problem_parser.parse(string):
+        print("Axioms:")
+        for a in problem.premises:
+            print(a.formula)
+        print("Conjecture:")
+        print(problem.conjecture.formula)
+
+.. testoutput::
+
+    Axioms:
+    (a) | (b)
+    ~(a)
+    Conjecture:
+    b
 
 Compiler
 ********
