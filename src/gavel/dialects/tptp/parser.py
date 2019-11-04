@@ -5,8 +5,14 @@ import sys
 from typing import Iterable
 
 import requests
-from antlr4 import CommonTokenStream
-from antlr4 import InputStream
+
+try:
+    from antlr4 import CommonTokenStream
+    from antlr4 import InputStream
+except:
+    SUPPORTS_ANTLR = False
+else:
+    SUPPORTS_ANTLR = True
 
 import gavel.config.settings as settings
 import gavel.dialects.db.structures as db
@@ -34,9 +40,10 @@ from gavel.logic.proof import Introduction
 from gavel.logic.proof import LinearProof
 from gavel.logic.proof import ProofStep
 
-from .antlr4.flattening import FOFFlatteningVisitor
-from .antlr4.tptp_v7_0_0_0Lexer import tptp_v7_0_0_0Lexer
-from .antlr4.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
+if SUPPORTS_ANTLR:
+    from .antlr4.flattening import FOFFlatteningVisitor
+    from .antlr4.tptp_v7_0_0_0Lexer import tptp_v7_0_0_0Lexer
+    from .antlr4.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
 
 from lark import Lark, Tree
 
@@ -187,7 +194,10 @@ class TPTPParser(LogicParser, StringBasedParser):
                 else:
                     return logic.DefinedConstant(c0)
             else:
-                return logic.Constant(obj.children[0])
+                if c0[0] == "\"":
+                    return logic.DistinctObject(c0)
+                else:
+                    return logic.Constant(c0)
 
     def visit_quantified_formula(self, obj, **kwargs):
         if len(obj.children) == 1:
@@ -307,88 +317,89 @@ class TPTPParser(LogicParser, StringBasedParser):
         return logic.DistinctObject(obj.children[0][1:-1])
 
 
-class TPTPAntlrParser(LogicParser, StringBasedParser):
-    visitor = FOFFlatteningVisitor()
+if SUPPORTS_ANTLR:
+    class TPTPAntlrParser(LogicParser, StringBasedParser):
+        visitor = FOFFlatteningVisitor()
 
-    def folder_processor(self, path, file_processor, *args, **kwargs):
-        for root, dirs, files in os.walk(path):
-            for file in files:
-                if not file == "README":
-                    f = os.path.join(root, file)
-                    yield file_processor(f, *args, **kwargs)
+        def folder_processor(self, path, file_processor, *args, **kwargs):
+            for root, dirs, files in os.walk(path):
+                for file in files:
+                    if not file == "README":
+                        f = os.path.join(root, file)
+                        yield file_processor(f, *args, **kwargs)
 
-    def problemset_processor(self, *args, **kwargs):
-        tptp_root = kwargs.get("tptp_root", settings.TPTP_ROOT)
-        return self.folder_processor(
-            os.path.join(tptp_root, "Problems"), self.problem_processor
-        )
+        def problemset_processor(self, *args, **kwargs):
+            tptp_root = kwargs.get("tptp_root", settings.TPTP_ROOT)
+            return self.folder_processor(
+                os.path.join(tptp_root, "Problems"), self.problem_processor
+            )
 
-    def axiomsets_processor(self, *args, **kwargs):
-        tptp_root = kwargs.get("tptp_root", settings.TPTP_ROOT)
-        return self.folder_processor(
-            os.path.join(tptp_root, "Axioms"), self.axiomset_processor
-        )
+        def axiomsets_processor(self, *args, **kwargs):
+            tptp_root = kwargs.get("tptp_root", settings.TPTP_ROOT)
+            return self.folder_processor(
+                os.path.join(tptp_root, "Axioms"), self.axiomset_processor
+            )
 
-    def axiomset_processor(self, path, *args, **kwargs):
-        for item in self.load_expressions_from_file(path):
-            yield self.formula_processor(item, *args, **kwargs)
+        def axiomset_processor(self, path, *args, **kwargs):
+            for item in self.load_expressions_from_file(path):
+                yield self.formula_processor(item, *args, **kwargs)
 
-    def formula_processor(self, formula, *args, orig=None, **kwargs):
-        return formula
+        def formula_processor(self, formula, *args, orig=None, **kwargs):
+            return formula
 
-    def stream_formula_lines(self, lines: Iterable[str], **kwargs):
-        buffer = ""
-        for line in lines:
-            if not line.startswith("%") and not line.startswith("\n"):
-                buffer += line.strip()
-                if buffer.endswith("."):
-                    yield buffer
-                    buffer = ""
-        if buffer:
-            raise Exception('Unprocessed input: """%s"""' % buffer)
+        def stream_formula_lines(self, lines: Iterable[str], **kwargs):
+            buffer = ""
+            for line in lines:
+                if not line.startswith("%") and not line.startswith("\n"):
+                    buffer += line.strip()
+                    if buffer.endswith("."):
+                        yield buffer
+                        buffer = ""
+            if buffer:
+                raise Exception('Unprocessed input: """%s"""' % buffer)
 
-    def load_single_from_string(self, string: str, *args, **kwargs):
-        s = tptp_v7_0_0_0Parser(
-            CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(string)))
-        )
-        return s.tptp_input()
+        def load_single_from_string(self, string: str, *args, **kwargs):
+            s = tptp_v7_0_0_0Parser(
+                CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(string)))
+            )
+            return s.tptp_input()
 
-    def load_expressions_from_file(
-        self, path, *args, **kwargs
-    ) -> Iterable[LogicElement]:
-        with open(path) as infile:
-            lines = infile.readlines()
-            for line in self.load_many(lines):
-                yield self.parse(line)
+        def load_expressions_from_file(
+            self, path, *args, **kwargs
+        ) -> Iterable[LogicElement]:
+            with open(path) as infile:
+                lines = infile.readlines()
+                for line in self.load_many(lines):
+                    yield self.parse(line)
 
-    def parse(self, tree, *args, **kwargs):
-        return self.visitor.visit(tree)
+        def parse(self, tree, *args, **kwargs):
+            return self.visitor.visit(tree)
 
-    def problem_processor(self, path, *args, load_imports=False, **kwargs):
-        axioms = []
-        imports = []
-        conjectures = []
-        for raw_line in self.load_expressions_from_file(path, *args, **kwargs):
-            line = self.formula_processor(raw_line)
-            if isinstance(line, logic.Import):
-                imports.append(line)
-            elif isinstance(line, AnnotatedFormula):
-                if line.role in (
-                    FormulaRole.CONJECTURE,
-                    FormulaRole.NEGATED_CONJECTURE,
+        def problem_processor(self, path, *args, load_imports=False, **kwargs):
+            axioms = []
+            imports = []
+            conjectures = []
+            for raw_line in self.load_expressions_from_file(path, *args, **kwargs):
+                line = self.formula_processor(raw_line)
+                if isinstance(line, logic.Import):
+                    imports.append(line)
+                elif isinstance(line, AnnotatedFormula):
+                    if line.role in (
+                        FormulaRole.CONJECTURE,
+                        FormulaRole.NEGATED_CONJECTURE,
+                    ):
+                        conjectures.append(line)
+                    else:
+                        axioms.append(line)
+
+            for im in imports:
+                for imported_axiom in self.load_expressions_from_file(
+                    os.path.join(settings.TPTP_ROOT, im.path), *args, **kwargs
                 ):
-                    conjectures.append(line)
-                else:
-                    axioms.append(line)
+                    axioms.append(imported_axiom)
 
-        for im in imports:
-            for imported_axiom in self.load_expressions_from_file(
-                os.path.join(settings.TPTP_ROOT, im.path), *args, **kwargs
-            ):
-                axioms.append(imported_axiom)
-
-        for conjecture in conjectures:
-            yield Problem(premises=axioms, imports=imports, conjecture=conjecture)
+            for conjecture in conjectures:
+                yield Problem(premises=axioms, imports=imports, conjecture=conjecture)
 
 
 class TPTPProblemParser(ProblemParser):

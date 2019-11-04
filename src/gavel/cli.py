@@ -37,8 +37,10 @@ from gavel.selection.selector import Sine
 from alembic import command
 from alembic.config import Config
 
-alembic_cfg = Config("alembic.ini")
+ROOT_DIR = os.path.dirname(__file__)
 
+alembic_cfg = Config(os.path.join(ROOT_DIR, "alembic.ini"))
+alembic_cfg.set_main_option("script_location", os.path.join(ROOT_DIR, "alembic"))
 
 @click.group()
 def db():

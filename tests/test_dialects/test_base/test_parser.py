@@ -3,9 +3,8 @@ from itertools import chain
 
 from gavel.dialects.base.parser import LogicElement
 from gavel.dialects.base.parser import LogicParser
-from gavel.logic.problem import AnnotatedFormula
-
-
+from gavel.logic.problem import AnnotatedFormula, FormulaRole
+from gavel.logic import logic
 class TestLogicParser(unittest.TestCase):
     _parser_cls = LogicParser
 
@@ -21,9 +20,33 @@ class TestLogicParser(unittest.TestCase):
         elif isinstance(result, list):
             for po1, po2 in zip(result, expected):
                 self.assertObjectEqual(po1, po2)
+        elif isinstance(result, str):
+            self.assertEqual(str(result), str(expected))
         else:
             self.assertEqual(result, expected)
 
     def check_parser(self, parser_input, expected):
         r = self.parser.parse_single_from_string(parser_input)
         self.assertObjectEqual(r, expected)
+
+
+def check_wrapper(logic_name="fof",name="name"):
+    def outer(f):
+        def inner(self: TestLogicParser):
+            formula, expected_formula = f(self)
+            string = "{logic}({name},{role},{formula}).".format(
+                logic=logic_name,
+                name=name,
+                role="plain",
+                formula=formula
+            )
+            result = self.parser.parse_single_from_string(string)
+            expected = AnnotatedFormula(
+                logic=logic_name,
+                name=name,
+                role=FormulaRole.PLAIN,
+                formula=expected_formula
+            )
+            self.assertObjectEqual(result, expected)
+        return inner
+    return outer
