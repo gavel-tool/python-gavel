@@ -95,7 +95,10 @@ class TestTPTPProblemParser(TestProblemParser):
     _parser_cls = TPTPProblemParser
 
     def test_problems_1(self):
-        inp = open("files/problem1.p").read()
+        inp = """fof(a1, axiom, p(a) => q(a)).
+fof(a2, axiom, q(a) => $false).
+fof(a3, axiom, $true => p(a)).
+fof(c, conjecture, $false)."""
         result = [
             problem.Problem(
                 premises=[
@@ -150,7 +153,12 @@ class TestTPTPProblemParser(TestProblemParser):
         self.check_parser(inp, result)
 
     def test_problems_2(self):
-        inp = open("files/problem2.p").read()
+        inp = """fof(a1, axiom, (p(a) & p(b) & p(d)) => $false).
+fof(a2, axiom, p(e)  => $false).
+fof(a3, axiom, p(c) => p(a)).
+fof(a4, axiom, p(c)   => $false).
+fof(a5, axiom, p(a) => p(d)).
+fof(c, conjecture, $false)."""
         result = [
             problem.Problem(
                 premises=[
@@ -242,7 +250,13 @@ class TestTPTPProblemParser(TestProblemParser):
         self.check_parser(inp, result)
 
     def test_problems_3(self):
-        inp = open("files/problem3.p").read()
+        inp = """fof(a1, axiom, (p(e) & p(b) & p(d)) => $false).
+fof(a2, axiom, p(e) => p(d)).
+fof(a3, axiom, $true => p(f)).
+fof(a4, axiom, p(a) => $false).
+fof(a5, axiom, p(c) => p(e)).
+fof(a6, axiom, $true => p(c)).
+fof(c, conjecture, $false)."""
         result = [
             problem.Problem(
                 premises=[
@@ -347,7 +361,13 @@ class TestTPTPProblemParser(TestProblemParser):
 
 
     def test_problems_4(self):
-        inp = open("files/problem4.p").read()
+        inp = """fof(a1, axiom, (p(e) & p(b) & p(d)) => $false).
+fof(a2, axiom, p(e) => p(d)).
+fof(a3, axiom, $true => p(b)).
+fof(a4, axiom, p(a) => $false).
+fof(a5, axiom, p(c) => p(e)).
+fof(a6, axiom, $true => p(c)).
+fof(c, conjecture, $false)."""
         result = [
             problem.Problem(
                 premises=[
