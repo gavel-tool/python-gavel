@@ -84,3 +84,9 @@ class Compiler:
 
     def visit_type(self, problem: fol.Type):
         raise NotImplementedError
+
+    def visit_distinct_object(self, obj: fol.DistinctObject):
+        raise NotImplementedError
+
+    def visit_defined_constant(self, obj: fol.DefinedConstant):
+        raise NotImplementedError

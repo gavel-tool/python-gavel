@@ -76,17 +76,25 @@ class Solution(Base):
 
 
 @with_session
-def store_formula(source, struc: AnnotatedFormula, session=None):
-    source, created = get_or_create(session, Source, path=source)
+def store_formula(
+    source_name,
+    struc: AnnotatedFormula,
+    session=None,
+    source=None,
+    skip_existence_check=False,
+):
+    created = skip_existence_check
     structure = None
+
+    if source is None:
+        source, created = get_or_create(session, Source, path=source_name)
     # If the source object was already in the database, the formula might
     # already be present, too. Check that before storing a second copy
-    if not created:
+    if not created and not skip_existence_check:
         structure = get_or_None(session, Formula, name=struc.name, source=source)
     if structure is None:
         struc.source = source
         session.add(struc)
-        session.commit()
         return True
     else:
         return False
@@ -102,20 +110,28 @@ def store_all(path, parser, compiler):
         store_file(path, parser, compiler)
 
 
-def store_file(path, parser, compiler):
+@with_session
+def store_file(path, parser, compiler, session=None):
     skip = False
     skip_reason = None
     print(path)
-    if "=" not in path and "^" not in path:
-        if not is_source_complete(path):
+    fname = os.path.basename(path)
+    if "=" not in fname and "^" not in fname and "_" not in fname:
+        source, created = get_or_create(session, Source, path=path)
+        if not source.complete:
             i = 0
-            pool = mp.Pool(mp.cpu_count() - 1)
-            for struc in pool.imap(parser.parse_single_from_string, parser.stream_formulas(path)):
-                i += 1
-                store_formula(path, compiler.visit(struc))
-            mark_source_complete(path)
-            print("--- %d formulas extracted ---" % i)
-            pool.close()
+            with mp.Pool(mp.cpu_count() - 1) as pool:
+                for struc in pool.imap(
+                    parser.parse_single_from_string, parser.stream_formulas(path)
+                ):
+                    i += 1
+                    store_formula(path, compiler.visit(struc), session=session, source=source, skip_existence_check=created)
+                mark_source_complete(path, session=session)
+                print("%d formulas extracted" % i)
+                print("commit to database")
+                print("--- done ---")
+                session.commit()
+
         else:
             skip = True
             skip_reason = "Already complete"

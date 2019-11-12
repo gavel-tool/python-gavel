@@ -64,7 +64,7 @@ class optional_build_ext(build_ext):
 
 setup(
     name="gavel",
-    version="0.0.0",
+    version="0.0.3",
     license="AGPL",
     description="A toolset for prover independent premise selection. Template generated with cookiecutter-pylibrary.",
     long_description="%s\n%s"
@@ -107,9 +107,10 @@ setup(
     install_requires=[
         # eg: 'aspectlib==1.1.1', 'six>=1.7',
         "click",
+        "lark-parser",
         "alembic",
         "sqlalchemy>=1.2",
-        "antlr4-python3-runtime",
+        "psycopg2-binary",
         "pre-commit",
         "graphviz",
         "pytest",
@@ -119,6 +120,7 @@ setup(
         # eg:
         #   'rst': ['docutils>=0.11'],
         #   ':python_version=="2.6"': ['argparse'],
+        "dev": ["black", "isort", "pre-commit", "sphinx-click"]
     },
     entry_points={"console_scripts": ["gavel = gavel.cli:main"]},
     cmdclass={"build_ext": optional_build_ext},

@@ -63,11 +63,9 @@ class HetsSession:
             self.post(["uploadFile", self.folder], data=fil.read())
             return quote("/".join([self.folder, fp]), safe="")
 
-
 class HetsProve(BaseProverInterface):
-    _prover_dialect_cls = TPTPDialect
-
-    def __init__(self, prover_interface: BaseProverInterface, session, *args, **kwargs):
+    def __init__(self, prover_interface: BaseProverInterface, *args, **kwargs):
+        self._prover_dialect_cls = prover_interface._prover_dialect_cls
         super(HetsProve, self).__init__()
         self.session = session
 

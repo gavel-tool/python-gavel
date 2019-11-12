@@ -15,8 +15,8 @@ Overview
     * - package
       - | |version| |wheel| |supported-versions| |supported-implementations|
         | |commits-since|
-.. |docs| image:: https://readthedocs.org/projects/python-gavel/badge/?style=flat
-    :target: https://readthedocs.org/projects/python-gavel
+.. |docs| image:: https://readthedocs.org/projects/gavel/badge/?style=flat
+    :target: https://readthedocs.org/projects/gavel
     :alt: Documentation Status
 
 .. |travis| image:: https://travis-ci.org/MGlauer/python-gavel.svg?branch=master
@@ -71,7 +71,7 @@ Documentation
 =============
 
 
-https://python-gavel.readthedocs.io/
+https://gavel.readthedocs.io/
 
 
 Development

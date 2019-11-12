@@ -655,7 +655,10 @@ class FOFFlatteningVisitor(tptp_v7_0_0_0Visitor):
     ):
         if len(ctx.children) == 1:
             # case: <proposition>
-            return self.visit_first(ctx)
+            r = self.visit_first(ctx)
+            if isinstance(r, logic.FunctorExpression):
+                r = logic.PredicateExpression(r.functor, r.arguments)
+            return r
         else:
             # case: <predicate>(<fof_arguments>)
             return logic.PredicateExpression(

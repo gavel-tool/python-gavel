@@ -235,6 +235,9 @@ class TPTPCompiler(Compiler):
     def visit_variable(self, variable: fol.Variable):
         return variable.symbol
 
+    def visit_distinct_object(self, variable: fol.DistinctObject):
+        return '"' + variable.symbol + '"'
+
     def visit_constant(self, variable: fol.Variable):
         return variable.symbol
 

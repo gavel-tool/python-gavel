@@ -5,3 +5,7 @@ Reference
     :glob:
 
     gavel*
+    logic*
+    dialect*
+    prover*
+

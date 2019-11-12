@@ -86,6 +86,19 @@ class Import(ProblemElement):
 
 
 class Problem:
+    """
+    This class stores the important information that are needed for a proof
+
+    Attributes
+    ----------
+
+    premises: :class:`gavel.logic.logic.Sentence`
+        The premises available for this problem
+
+    conjecture: :class:`gavel.logic.logic.Sentence`
+        The conjecture that should be proven`
+    """
+
     def __init__(
         self, premises: Iterable[Sentence], conjecture: Iterable[Sentence], imports=None
     ):

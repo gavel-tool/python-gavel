@@ -1,0 +1,56 @@
+%import common.WS
+%import common.SIGNED_NUMBER
+%ignore WS
+
+DOLLAR_WORD: "$" WORD
+WORD: /\w+/
+UPPER_WORD: ("A" .. "Z") WORD?
+LOWER_WORD: LOWER WORD?
+LOWER: "a" .. "z"
+
+?file_name: "/"? WORD "/" file_name | WORD ["." WORD]
+
+variable:  UPPER_WORD
+constant: LOWER_WORD
+?functor: LOWER_WORD | DOLLAR_WORD | SIGNED_NUMBER | single_quoted | distinct_object
+
+
+OBJECT_BINARY_OPERATOR: "=" | "!="
+TYPE_BINARY_OPERATOR: "@" | "*" | "+" | "-->" | ":=" | ">"
+LOGIC_BINARY_OPERATOR: "=>" | "<=>" | "<=" | "<~>" | "~&" | "~|"
+
+UNARY_CONNECTIVE: "~"
+QUANTIFIER: "!" | "?"
+
+formula: disjunction
+
+disjunction: conjunction ("|" conjunction)*
+conjunction: logic_binary_formula ("&" logic_binary_formula)*
+logic_binary_formula: type_binary_formula (LOGIC_BINARY_OPERATOR type_binary_formula)*
+type_binary_formula: unary_formula (TYPE_BINARY_OPERATOR unary_formula)*
+unary_formula: (UNARY_CONNECTIVE unary_formula) | transition_formula
+?transition_formula: object_binary_formula | "(" formula ")" | quantified_formula
+quantified_formula: QUANTIFIER "[" (variable ("," variable)*) "]" ":" unary_formula
+object_binary_formula: term (OBJECT_BINARY_OPERATOR term)*
+
+?term: functor_term | bottom
+functor_term: functor ["(" term ("," term)* ")"]
+?bottom: variable | "(" term ")"
+
+
+
+?distinct_object: /"([^"]|\\")*(?<!\\)"/
+?single_quoted: /'([^']|\\')*(?<!\\)'/
+
+LOGIC: "thf" | "ttf" | "cnf" | "fof"
+annotation: "TODO"
+FORMULA_ROLE: "axiom" | "hypothesis" | "definition" | "assumption" | "lemma" | "theorem" | "corollary" | "conjecture" | "negated_conjecture" | "plain" | "type" | "fi_domain" | "fi_functors" | "fi_predicates" | "unknown"
+
+annotated_formula: LOGIC "(" ( WORD | single_quoted ) "," FORMULA_ROLE "," formula [ "," annotation ] ")."
+include: "include(" file_name ")."
+
+COMMENT: /%[^\n]*\n/
+
+?tptp_line: annotated_formula | include | COMMENT
+
+start: tptp_line*

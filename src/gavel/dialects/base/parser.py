@@ -1,3 +1,4 @@
+from abc import ABC
 from typing import Generic
 from typing import Iterable
 from typing import TypeVar
@@ -16,31 +17,34 @@ class Parser(Generic[Parseable, Target]):
         """
         Transforms the input structure into metadata as used by the
         OpenEnergyPlatform
+
         Parameters
         ----------
+
         inp: str
             The input string that should be parsed into OEP metadata
+
         Returns
         -------
+
         OEPMetadata
             OEP metadata represented by `inp`
         """
         raise NotImplementedError
 
+
+class StringBasedParser(Parser, ABC):
     def load_single_from_string(self, string: str, *args, **kwargs) -> Parseable:
         """
         Load a string into the structure represented by the dialect
+
         Parameters
         ----------
         string
-        args
-        kwargs
+
         Returns
         -------
         """
-        raise NotImplementedError
-
-    def load_many(self, string: Iterable[str]) -> Iterable[Parseable]:
         raise NotImplementedError
 
     def parse_single_from_string(
@@ -53,11 +57,12 @@ class Parser(Generic[Parseable, Target]):
     ) -> Target:
         """
         Parse a string into OEPMetadata
+
         Parameters
         ----------
+
         string
-        args
-        kwargs
+
         Returns
         -------
         """
@@ -100,11 +105,21 @@ class Parser(Generic[Parseable, Target]):
         raise NotImplementedError
 
     def is_file_valid(self, *args, **kwargs):
-        return self.is_valid("\n".join(self._unpack_file(*args, **kwargs)))
+        return self.is_valid(self.__unpack_file(*args, **kwargs))  #
 
-
-    def stream_formula_lines(self, *args, **kwargs) -> Iterable[str]:
+    def stream_formula_lines(self, lines: Iterable[str], **kwargs):
         raise NotImplementedError
+
+    def stream_formulas(self, path, *args, **kwargs):
+        return self.stream_formula_lines(self._unpack_file(path))
+
+    def load_many(
+        self, lines: Iterable[str], *args, **kwargs
+    ) -> Iterable[LogicElement]:
+        return map(
+            self.load_single_from_string, self.stream_formula_lines(lines, **kwargs)
+        )
+
 
 class LogicParser(Parser[Parseable, LogicElement]):
     pass
@@ -114,12 +129,12 @@ class ProblemParser(Parser[Parseable, Problem]):
     logic_parser_cls = LogicParser
 
     def __init__(self, *args, **kwargs):
-        self.logic_parser = LogicParser(*args, **kwargs)
+        self.logic_parser = self.logic_parser_cls(*args, **kwargs)
 
-    def parse(self, structure: Parseable, *args, **kwargs):
+    def parse(self, inp, *args, **kwargs):
         premises = []
         conjectures = []
-        for s in self.logic_parser.parse(structure):
+        for s in map(self.logic_parser.parse_single_from_string, self.logic_parser.stream_formula_lines(inp)):
             if isinstance(s, Sentence):
                 if s.is_conjecture():
                     conjectures.append(s)

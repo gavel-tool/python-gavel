@@ -27,17 +27,20 @@ from gavel.dialects.db.structures import (
 )
 import gavel.dialects.tptp.parser as build_tptp
 from gavel.dialects.tptp.compiler import TPTPCompiler
+from gavel.dialects.tptp.parser import TPTPProblemParser
 from gavel.dialects.db.compiler import DBCompiler
 from gavel.dialects.tptp.parser import Problem
 from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
 from gavel.prover.hets.interface import HetsProve, HetsSession, HetsEngine
-from gavel.prover.vampire.interface import VampireInterface
+from gavel.prover.registry import get_prover
 from gavel.selection.selector import Sine
 from alembic import command
 from alembic.config import Config
 
-alembic_cfg = Config("alembic.ini")
+ROOT_DIR = os.path.dirname(__file__)
 
+alembic_cfg = Config(os.path.join(ROOT_DIR, "alembic.ini"))
+alembic_cfg.set_main_option("script_location", os.path.join(ROOT_DIR, "alembic"))
 
 @click.group()
 def db():
@@ -88,15 +91,18 @@ def clear_db(p):
 
 
 @click.command()
+@click.argument("p")
 @click.argument("f")
 @click.option("-s", default=None)
+@click.option("--hets", is_flag=True, default=False)
 @click.option("--plot", is_flag=True, default=False)
-def prove(f, s, plot):
+def prove(p, f, s, plot, hets):
+    prover_interface = get_prover(p)
+    if hets:
+        hets_engine = HetsEngine(settings.HETS_HOST, port=settings.HETS_PORT)
+        hets_session = HetsSession(hets_engine)
+        prover_interface = HetsProve(prover_interface, hets_session)
     processor = TPTPProblemParser()
-    vp = VampireInterface()
-    hets_engine = HetsEngine(settings.HETS_HOST, port=settings.HETS_PORT)
-    hets_session = HetsSession(hets_engine)
-    hp = HetsProve(vp, hets_session)
     problems = list(processor.parse(f))
     compiler = TPTPCompiler()
     for problem in problems:
@@ -105,7 +111,7 @@ def prove(f, s, plot):
                 premises=problem.premises, conjecture=problem.conjecture, max_depth=10
             )
             problem = Problem(premises=selector.select(), conjecture=problem.conjecture)
-        proof = hp.prove(problem, compiler)
+        proof = prover_interface.prove(problem, compiler)
         if not plot:
             for s in proof.steps:
                 print(

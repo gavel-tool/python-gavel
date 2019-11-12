@@ -13,7 +13,6 @@ class LogicElement:
 
 
 class Quantifier(Enum):
-
     __visit_name__ = "quantifier"
 
     UNIVERSAL = 0
@@ -49,7 +48,6 @@ class BinaryConnective(Enum):
     EQ = 8
     NEQ = 9
     APPLY = 10
-    MAPPING = 11
     PRODUCT = 12
     UNION = 13
     GENTZEN_ARROW = 14
@@ -136,6 +134,16 @@ class UnaryConnective(Enum):
 
 
 class UnaryFormula(LogicElement):
+    """
+    Attributes
+    ----------
+
+    connective:
+        A unary connective
+    formula:
+        A formula
+
+    """
 
     __visit_name__ = "unary_formula"
 
@@ -151,6 +159,17 @@ class UnaryFormula(LogicElement):
 
 
 class QuantifiedFormula(LogicElement):
+    """
+    Attributes
+    ----------
+
+    quantifier:
+        A quantier (existential or universal)
+    variables:
+        A list of variables bound by the quantifier
+    formula
+        A logical formula
+    """
 
     __visit_name__ = "quantified_formula"
 
@@ -175,6 +194,17 @@ class QuantifiedFormula(LogicElement):
 
 class BinaryFormula(LogicElement):
 
+    """
+    Attributes
+    ----------
+    oparator
+        A binary operator
+    left
+        The formula on the left side
+    right
+        The formula on the right side
+
+    """
     __visit_name__ = "binary_formula"
 
     requires_parens = True
@@ -223,7 +253,7 @@ class PredicateExpression(LogicElement):
         self.arguments = arguments
 
     def __str__(self):
-        return "%s(%s)" % (self.predicate, ", ".join(self.arguments))
+        return "%s(%s)" % (self.predicate, ", ".join(map(str, self.arguments)))
 
     def symbols(self):
         yield self.predicate
@@ -305,7 +335,24 @@ class Constant(LogicElement):
         return {self.symbol}
 
 
-class DefinedConstant(Constant, Enum):
+class DistinctObject(LogicElement):
+
+    __visit_name__ = "distinct_object"
+
+    def __init__(self, symbol):
+        self.symbol = symbol
+
+    def __str__(self):
+        return self.symbol
+
+    def symbols(self):
+        return {self.symbol}
+
+
+class DefinedConstant(Enum):
+
+    __visit_name__ = "defined_constant"
+
     VERUM = 0
     FALSUM = 1
 
