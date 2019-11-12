@@ -29,8 +29,8 @@ import gavel.dialects.tptp.parser as build_tptp
 from gavel.dialects.tptp.compiler import TPTPCompiler
 from gavel.dialects.db.compiler import DBCompiler
 from gavel.dialects.tptp.parser import Problem
-from gavel.dialects.tptp.parser import TPTPParser
-from gavel.prover.hets.interface import HetsProve
+from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
+from gavel.prover.hets.interface import HetsProve, HetsSession, HetsEngine
 from gavel.prover.vampire.interface import VampireInterface
 from gavel.selection.selector import Sine
 from alembic import command
@@ -92,10 +92,12 @@ def clear_db(p):
 @click.option("-s", default=None)
 @click.option("--plot", is_flag=True, default=False)
 def prove(f, s, plot):
-    processor = TPTPParser()
+    processor = TPTPProblemParser()
     vp = VampireInterface()
-    hp = HetsProve(vp)
-    problems = list(processor.problem_processor(f))
+    hets_engine = HetsEngine(settings.HETS_HOST, port=settings.HETS_PORT)
+    hets_session = HetsSession(hets_engine)
+    hp = HetsProve(vp, hets_session)
+    problems = list(processor.parse(f))
     compiler = TPTPCompiler()
     for problem in problems:
         if s is not None:

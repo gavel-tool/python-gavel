@@ -12,5 +12,5 @@ DB_CONNECTION = dict(
     database=os.environ.get("GAVEL_DB_NAME", ":memory:"),
 )
 
-HETS_HOST = os.environ.get("HETS_HOST", "localhost")
-HETS_PORT = os.environ.get("HETS_PORT", 8000)
+HETS_HOST = os.environ.get("HETS_HOST", "rest.hets.eu")
+HETS_PORT = os.environ.get("HETS_PORT", 80)

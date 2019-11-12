@@ -15,58 +15,80 @@ from gavel.logic.proof import Proof
 from gavel.prover.base.interface import BaseProverInterface
 
 
-class HetsCall:
-    def __init__(self, paths, *args, **kwargs):
-        super(HetsCall, self).__init__(*args, **kwargs)
-        self.url = "http://" + HETS_HOST
-        if HETS_PORT:
-            self.url += ":" + str(HETS_PORT)
-        self.url = "/".join([self.url] + paths)
+class HetsEngine:
 
-    def get(self, path, *args, **kwargs):
-        print(path)
-        return self.__send(req.get, path, *args, **kwargs)
+    def __init__(self, url, port=80):
+        self.url = url
+        self.port = port
 
-    def post(self, path, *args, data=None, **kwargs):
-        return self.__send(req.post, path, *args, data=data, **kwargs)
+    @property
+    def connection_string(self, path=None):
+        return "http://{url}:{port}".format(
+            url=self.url,
+            port=self.port
+        )
 
-    def __send(self, f, path, *args, **kwargs):
-        return f(self.url + "/" + path, *args, **kwargs)
+
+def connection_wrapper(f):
+    def inner(self, paths, **kwargs):
+        s = self.engine.connection_string
+        if paths is not None:
+            s += "/" + "/".join(paths)
+        result = f(self, s, **kwargs)
+        assert 200 <= result.status_code < 300
+        return result.content
+    return inner
+
+
+class HetsSession:
+    def __init__(self, engine, *args, **kwargs):
+        super(HetsSession, self).__init__(*args, **kwargs)
+        self.engine = engine
+        self.folder = self.get(["folder"])
+
+    @connection_wrapper
+    def get(self, *args, **kwargs):
+        return req.get(*args, **kwargs)
+
+    @connection_wrapper
+    def post(self, *args, **kwargs):
+        return req.post(*args, **kwargs)
 
     @staticmethod
     def encode(path):
         return quote(path, safe="")
 
+    def upload(self, fp):
+        with open(fp) as fil:
+            self.post(["uploadFile", self.folder], data=fil.read())
+            return quote("/".join([self.folder, fp]), safe="")
 
-class HetsProve(BaseProverInterface, HetsCall):
+
+class HetsProve(BaseProverInterface):
     _prover_dialect_cls = TPTPDialect
 
-    def __init__(self, prover_interface: BaseProverInterface, *args, **kwargs):
-        super(HetsProve, self).__init__(["prove"])
+    def __init__(self, prover_interface: BaseProverInterface, session, *args, **kwargs):
+        super(HetsProve, self).__init__()
+        self.session = session
 
     def _bootstrap_problem(self, problem: Problem):
-        tf = tempfile.NamedTemporaryFile(mode="w+")
-        problem_string = self.dialect.compile_problem(problem)
-        tf.write(problem_string)
-        tf.seek(0)
-        return tf
+        with tempfile.NamedTemporaryFile(mode="w+") as tf:
+            problem_string = self.dialect.compile_problem(problem)
+            tf.write(problem_string)
+            return self.session.upload(tf.name)
 
     def _submit_problem(self, problem_instance, *args, **kwargs):
-        node = str(problem_instance.name).split("/")[-1]
-        iri = self.encode("file://" + str(problem_instance.name))
-        response = self.post(
-            iri,
+        response = self.session.post( "/".join("prove", problem_instance),
             json=dict(
                 format="json",
                 goals=[
                     dict(
-                        node=node,
+                        node=problem_instance,
                         reasonerConfiguration=dict(timeLimit=100, reasoner="Vampire"),
                     )
                 ],
             ),
         )
-        problem_instance.close()
         if response.status_code == 200:
             jsn = json.loads(response.content.decode("utf-8"))[0]
             assert "goals" in jsn
