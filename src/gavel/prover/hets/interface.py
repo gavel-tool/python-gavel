@@ -7,7 +7,7 @@ import requests as req
 
 from gavel.config.settings import HETS_HOST
 from gavel.config.settings import HETS_PORT
-from gavel.dialects.tptp.dialect import TPTPDialect
+from gavel.dialects.tptp.dialect import TPTPProblemDialect
 from gavel.logic.logic import LogicElement
 from gavel.logic.problem import AnnotatedFormula
 from gavel.logic.problem import Problem

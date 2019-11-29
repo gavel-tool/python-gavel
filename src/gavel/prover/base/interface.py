@@ -61,7 +61,7 @@ class BaseProverInterface:
 
         A problem format that is understood by the prover
         """
-        return self.dialect.compile_problem(problem)
+        return self.dialect.compile(problem)
 
     def _submit_problem(self, problem_instance, *args, **kwargs):
         """
@@ -110,7 +110,7 @@ class BaseProverInterface:
         -------
             A proof object
         """
-        return self.dialect.parse_proof(prover_output)
+        return self.dialect.parse(prover_output)
 
 
 class BaseResultHandler:

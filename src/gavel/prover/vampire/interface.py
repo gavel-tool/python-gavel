@@ -1,13 +1,13 @@
 from gavel.prover.registry import register_prover
 from gavel.dialects.base.dialect import Problem
-from gavel.dialects.tptp.dialect import TPTPDialect
+from gavel.dialects.tptp.dialect import TPTPProblemDialect
 from gavel.prover.base.interface import BaseProverInterface
 from gavel.prover.base.interface import BaseResultHandler
 
 
 @register_prover("vampire")
 class VampireInterface(BaseProverInterface):
-    _prover_dialect_cls = TPTPDialect
+    _prover_dialect_cls = TPTPProblemDialect
 
     def prove(self, problem: Problem, *args, **kwargs):
         """

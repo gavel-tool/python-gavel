@@ -29,7 +29,6 @@ from gavel.dialects.tptp.parser import Problem
 from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
 from gavel.prover.hets.interface import HetsProve, HetsSession, HetsEngine
 from gavel.prover.registry import get_prover
-from gavel.prover.vampire import interface
 from gavel.selection.selector import Sine
 from alembic import command
 from alembic.config import Config
