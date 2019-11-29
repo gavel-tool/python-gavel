@@ -68,7 +68,7 @@ class HetsSession:
         enc_folder = quote(self.folder, safe="")
         enc_file = quote(name, safe="")
         self.post(["uploadFile", enc_folder, enc_file], data=content)
-        return "%2F".join([enc_folder, enc_file])
+        return enc_folder, enc_file
 
 
 class HetsProve(BaseProverInterface):
@@ -81,18 +81,24 @@ class HetsProve(BaseProverInterface):
         problem_string = "\n".join(self.dialect.compile(l) for l in problem.premises)
         problem_string += self.dialect.compile(problem.conjecture)
         name = self.session.add_file(problem_string)
-        return self.session.upload(name, problem_string)
+        return self.session.upload(name, problem_string), problem
 
     def _submit_problem(self, problem_instance, *args, **kwargs):
-        response = self.session.post(["prove", "%2Ftmp%2F" + problem_instance],
+        (folder_name, file_name), problem = problem_instance
+        response = self.session.post(["prove", "%2F".join(["", "tmp", folder_name, file_name])],
             json=dict(
                 format="json",
                 goals=[
                     dict(
                         node="f0",
                         reasonerConfiguration=dict(timeLimit=100, reasoner="EProver"),
+                        useTheorems=False
                     )
                 ],
+                premiseSelection=dict(
+                    kind="manual",
+                    manualPremises=[a.name for a in problem.premises]
+                )
             )
         )
         jsn = json.loads(response.decode("utf-8"))["prover_output"][0]
