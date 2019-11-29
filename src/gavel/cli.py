@@ -20,19 +20,16 @@ import os
 
 import gavel.config.settings as settings
 from gavel.dialects.db.structures import (
-    store_formula,
-    mark_source_complete,
-    is_source_complete,
     store_all,
 )
 import gavel.dialects.tptp.parser as build_tptp
 from gavel.dialects.tptp.compiler import TPTPCompiler
-from gavel.dialects.tptp.parser import TPTPProblemParser
 from gavel.dialects.db.compiler import DBCompiler
 from gavel.dialects.tptp.parser import Problem
 from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
 from gavel.prover.hets.interface import HetsProve, HetsSession, HetsEngine
 from gavel.prover.registry import get_prover
+from gavel.prover.vampire import interface
 from gavel.selection.selector import Sine
 from alembic import command
 from alembic.config import Config
@@ -103,7 +100,8 @@ def prove(p, f, s, plot, hets):
         hets_session = HetsSession(hets_engine)
         prover_interface = HetsProve(prover_interface, hets_session)
     processor = TPTPProblemParser()
-    problems = list(processor.parse(f))
+    with open(f) as fp:
+        problems = list(processor.parse(fp.readlines()))
     compiler = TPTPCompiler()
     for problem in problems:
         if s is not None:

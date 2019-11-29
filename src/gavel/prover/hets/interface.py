@@ -35,7 +35,7 @@ def connection_wrapper(f):
         if paths is not None:
             s += "/" + "/".join(paths)
         result = f(self, s, **kwargs)
-        assert 200 <= result.status_code < 300
+        assert 200 <= result.status_code < 300, result.content
         return result.content
     return inner
 
@@ -44,7 +44,13 @@ class HetsSession:
     def __init__(self, engine, *args, **kwargs):
         super(HetsSession, self).__init__(*args, **kwargs)
         self.engine = engine
-        self.folder = self.get(["folder"])
+        self.folder = self.get(["folder"]).decode("utf-8")[len("/tmp/"):]
+        self.files = []
+
+    def add_file(self, content):
+        f_name = "f%d"%len(self.files)
+        self.files.append(f_name)
+        return f_name
 
     @connection_wrapper
     def get(self, *args, **kwargs):
@@ -58,43 +64,42 @@ class HetsSession:
     def encode(path):
         return quote(path, safe="")
 
-    def upload(self, fp):
-        with open(fp) as fil:
-            self.post(["uploadFile", self.folder], data=fil.read())
-            return quote("/".join([self.folder, fp]), safe="")
+    def upload(self, name, content):
+        enc_folder = quote(self.folder, safe="")
+        enc_file = quote(name, safe="")
+        self.post(["uploadFile", enc_folder, enc_file], data=content)
+        return "%2F".join([enc_folder, enc_file])
+
 
 class HetsProve(BaseProverInterface):
-    def __init__(self, prover_interface: BaseProverInterface, *args, **kwargs):
+    def __init__(self, prover_interface: BaseProverInterface, session: HetsSession, *args, **kwargs):
         self._prover_dialect_cls = prover_interface._prover_dialect_cls
         super(HetsProve, self).__init__()
         self.session = session
 
     def _bootstrap_problem(self, problem: Problem):
-        with tempfile.NamedTemporaryFile(mode="w+") as tf:
-            problem_string = self.dialect.compile_problem(problem)
-            tf.write(problem_string)
-            return self.session.upload(tf.name)
+        problem_string = "\n".join(self.dialect.compile(l) for l in problem.premises)
+        problem_string += self.dialect.compile(problem.conjecture)
+        name = self.session.add_file(problem_string)
+        return self.session.upload(name, problem_string)
 
     def _submit_problem(self, problem_instance, *args, **kwargs):
-        response = self.session.post( "/".join("prove", problem_instance),
+        response = self.session.post(["prove", "%2Ftmp%2F" + problem_instance],
             json=dict(
                 format="json",
                 goals=[
                     dict(
-                        node=problem_instance,
-                        reasonerConfiguration=dict(timeLimit=100, reasoner="Vampire"),
+                        node="f0",
+                        reasonerConfiguration=dict(timeLimit=100, reasoner="EProver"),
                     )
                 ],
-            ),
+            )
         )
-        if response.status_code == 200:
-            jsn = json.loads(response.content.decode("utf-8"))[0]
-            assert "goals" in jsn
-            goals = jsn["goals"]
-            assert len(goals) == 1
-            return goals[0]["prover_output"]
-        else:
-            raise Exception(response.content)
+        jsn = json.loads(response.decode("utf-8"))["prover_output"][0]
+        assert "goals" in jsn
+        goals = jsn["goals"]
+        assert len(goals) == 1
+        return goals[0]["prover_output"]
 
     def _post_process_proof(self, raw_proof_result):
         return raw_proof_result

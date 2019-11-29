@@ -4,11 +4,15 @@ from gavel.logic import problem
 
 
 class TPTPCompiler(Compiler):
+    def visit_defined_constant(self, obj: fol.DefinedConstant):
+        if obj == fol.DefinedConstant.VERUM:
+            return "$true"
+
     def parenthesise(self, element: fol.LogicElement):
         if isinstance(element, str):
             return element
         result = self.visit(element)
-        if element.requires_parens:
+        if hasattr(element, "requires_parens") and element.requires_parens:
             return "(" + result + ")"
         else:
             return result

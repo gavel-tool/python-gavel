@@ -7,7 +7,7 @@ from gavel.prover.base.interface import BaseResultHandler
 
 @register_prover("vampire")
 class VampireInterface(BaseProverInterface):
-    _dialect_cls = TPTPDialect
+    _prover_dialect_cls = TPTPDialect
 
     def prove(self, problem: Problem, *args, **kwargs):
         """

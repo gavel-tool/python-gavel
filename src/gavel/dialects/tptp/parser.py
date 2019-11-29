@@ -3,7 +3,6 @@ import pickle as pkl
 import re
 import sys
 from typing import Iterable
-
 import requests
 
 try:
@@ -148,6 +147,10 @@ class TPTPParser(LogicParser, StringBasedParser):
     def visit_start(self, obj, **kwargs):
         assert len(obj.children) == 1
         return self.visit(obj.children[0], **kwargs)
+
+    def visit_include(self, obj):
+        assert len(obj.children) == 1
+        return problem.Import(os.path.join(settings.TPTP_ROOT, str(obj.children[0])))
 
     def visit_tptp_line(self, obj, **kwargs):
         return self.visit(obj.children[0], **kwargs)
