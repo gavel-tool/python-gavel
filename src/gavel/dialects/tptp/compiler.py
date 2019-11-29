@@ -240,7 +240,7 @@ class TPTPCompiler(Compiler):
         return variable.symbol
 
     def visit_distinct_object(self, variable: fol.DistinctObject):
-        return '"' + variable.symbol + '"'
+        return variable.symbol
 
     def visit_constant(self, variable: fol.Variable):
         return variable.symbol
