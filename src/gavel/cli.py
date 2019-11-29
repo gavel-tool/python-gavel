@@ -127,8 +127,6 @@ db.add_command(store_solutions)
 
 db.add_command(prove)
 
-db.add_command(select)
-
 cli = click.CommandCollection(sources=[db])
 
 main = cli
