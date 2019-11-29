@@ -8,6 +8,8 @@ from gavel.logic.problem import Problem
 from gavel.logic.problem import Sentence, Import
 from gavel.logic.proof import Proof
 
+import multiprocessing as mp
+
 Parseable = TypeVar("Parseable")
 Target = TypeVar("Target")
 
@@ -86,8 +88,9 @@ class StringBasedParser(Parser, ABC):
             return inp.readlines()
 
     def parse_from_file(self, file_path, *args, **kwargs) -> Iterable[Target]:
-        for line in self.load_many(self._unpack_file(file_path)):
-            yield self.parse(line, *args, **kwargs)
+        with mp.Pool() as pool:
+            for obj in pool.imap(self.parse_single_from_string, self.stream_formulas(file_path)):
+                yield obj
 
     def is_valid(self, inp: str) -> bool:
         """
@@ -116,9 +119,10 @@ class StringBasedParser(Parser, ABC):
     def load_many(
         self, lines: Iterable[str], *args, **kwargs
     ) -> Iterable[LogicElement]:
-        return map(
-            self.load_single_from_string, self.stream_formula_lines(lines, **kwargs)
-        )
+        #with mp.Pool() as pool:
+            return map(
+                self.load_single_from_string, self.stream_formula_lines(lines, **kwargs)
+            )
 
 
 class LogicParser(Parser[Parseable, LogicElement]):
@@ -134,17 +138,22 @@ class ProblemParser(Parser[Parseable, Problem]):
     def parse(self, inp, *args, **kwargs):
         premises = []
         conjectures = []
-        for s in map(self.logic_parser.parse_single_from_string, self.logic_parser.stream_formula_lines(inp)):
-            if isinstance(s, Sentence):
-                if s.is_conjecture():
-                    conjectures.append(s)
+        imports = []
+        with mp.Pool() as pool:
+            for s in pool.imap(self.logic_parser.parse_single_from_string, self.logic_parser.stream_formula_lines(inp)):
+                if isinstance(s, Sentence):
+                    if s.is_conjecture():
+                        conjectures.append(s)
+                    else:
+                        premises.append(s)
+                elif isinstance(s, Import):
+                    imports.append(s)
                 else:
-                    premises.append(s)
-            elif isinstance(s, Import):
-                for imported_premise in self.logic_parser.parse_from_file(s.path):
-                    premises.append(imported_premise)
-            else:
-                raise ParserException("Unknown element:" + str(s))
+                    raise ParserException("Unknown element:" + str(s))
+        for s in imports:
+            for imported_premise in self.logic_parser.parse_from_file(
+                s.path):
+                premises.append(imported_premise)
         for c in conjectures:
             yield Problem(premises, c)
 

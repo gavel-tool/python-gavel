@@ -70,7 +70,7 @@ _BINARY_CONNECTIVE_MAP = {
 }
 
 with open(os.path.join(os.path.dirname(__file__), "tptp.lark")) as gf:
-    lark_grammar = Lark(gf.read(), start=["start", "tptp_line"])
+    lark_grammar = Lark(gf.read(), start=["start", "tptp_line"], parser="lalr")
 
 
 def _balance_binary_tree(obj, skip_connective=True, **kwargs):
