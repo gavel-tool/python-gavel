@@ -41,7 +41,17 @@ functor_term: functor ["(" term ("," term)* ")"]
 ?single_quoted: /'([^']|\\')*(?<!\\)'/
 
 LOGIC: "thf" | "ttf" | "cnf" | "fof"
-annotation: "TODO"
+
+annotation: /([^)]|\)(?!\.))+/
+
+inference : "inference(" WORD "," "[" WORD ("," WORD )*  "]" "," "[" [ inference_parent ("," inference_parent)* ]"]" ")"
+inference_parent: annotation ("," annotation)*
+
+internal_source : "introduced(" intro_type [ "," WORD ] |
+intro_type: "definition" | "axiom_of_choice" | "tautology" | "assumption"
+
+external_source: "file(" single_quoted [ "," WORD ] ")"
+
 FORMULA_ROLE: "axiom" | "hypothesis" | "definition" | "assumption" | "lemma" | "theorem" | "corollary" | "conjecture" | "negated_conjecture" | "plain" | "type" | "fi_domain" | "fi_functors" | "fi_predicates" | "unknown"
 
 annotated_formula: LOGIC "(" ( WORD | single_quoted ) "," FORMULA_ROLE "," formula [ "," annotation ] ")."

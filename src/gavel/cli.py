@@ -112,8 +112,8 @@ def prove(p, f, s, plot, hets):
         if not plot:
             for s in proof.steps:
                 print(
-                    "{name}: {formula} [{source}]".format(
-                        name=s.name, formula=s.formula, source=s.render_source()
+                    "{name}: {formula}".format(
+                        name=s.name, formula=s.formula
                     )
                 )
         else:
