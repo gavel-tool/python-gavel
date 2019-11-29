@@ -104,10 +104,8 @@ def prove(p, f, s, plot, hets):
     compiler = TPTPCompiler()
     for problem in problems:
         if s is not None:
-            selector = Sine(
-                premises=problem.premises, conjecture=problem.conjecture, max_depth=10
-            )
-            problem = Problem(premises=selector.select(), conjecture=problem.conjecture)
+            selector = Sine()
+            problem = selector.select(problem)
         proof = prover_interface.prove(problem, compiler)
         if not plot:
             for s in proof.steps:
@@ -119,21 +117,6 @@ def prove(p, f, s, plot, hets):
         else:
             g = proof.get_graph()
             g.render()
-
-
-@click.command()
-@click.argument("f")
-def select(f):
-    processor = TPTPParser()
-    problem = list(processor.problem_processor(f))[0]
-    selector = Sine(
-        premises=problem.premises, conjecture=problem.conjecture, max_depth=10
-    )
-    smaller_problem = Problem(premises=selector.select(), conjecture=problem.conjecture)
-    for prem in list(smaller_problem.premises):
-        print(prem)
-    print(smaller_problem.conjecture)
-
 
 db.add_command(migrate_db)
 db.add_command(drop_db)
