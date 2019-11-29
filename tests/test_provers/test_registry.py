@@ -1,5 +1,4 @@
 from unittest import TestCase
-import pytest
 from gavel.logic import logic
 from gavel.prover.registry import register_prover, get_prover
 from gavel.prover.base.interface import BaseProverInterface
