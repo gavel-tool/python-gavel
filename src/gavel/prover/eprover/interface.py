@@ -4,7 +4,9 @@ from gavel.dialects.tptp.dialect import TPTPProofDialect
 from gavel.dialects.tptp.parser import SimpleTPTPProofParser
 from gavel.prover.base.interface import BaseProverInterface
 from gavel.prover.base.interface import BaseResultHandler
-
+import subprocess as sub
+import tempfile
+import os
 
 class EDialect(TPTPProofDialect):
     def parse(self, obj, *args, **kwargs):
@@ -16,13 +18,17 @@ class EDialect(TPTPProofDialect):
 class EProverInterface(BaseProverInterface):
     _prover_dialect_cls = EDialect
 
-    def prove(self, problem: Problem, *args, **kwargs):
-        """
-        Attempt to prove a problem specified in `file`
-        :param file:
-        :return:
-        """
+    def _bootstrap_problem(self, problem: Problem):
+        problem_string = "\n".join(self.dialect.compile(l) for l in problem.premises)
+        problem_string += self.dialect.compile(problem.conjecture)
+        return problem_string
 
+    def _submit_problem(self, problem_instance, *args, **kwargs):
+        with tempfile.NamedTemporaryFile() as tf:
+            tf.write(problem_instance.encode())
+            tf.seek(0)
+            result = sub.check_output([os.environ.get("EPROVER", "eprover"), "--output-level=2", "--tptp-in", "--tstp-out", tf.name]).decode("utf-8")
+        return result
 
 class ResultHandler(BaseResultHandler):
     def get_used_axioms(self):

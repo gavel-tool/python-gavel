@@ -97,7 +97,9 @@ def prove(p, f, s, plot, hets):
     if hets:
         hets_engine = HetsEngine(settings.HETS_HOST, port=settings.HETS_PORT)
         hets_session = HetsSession(hets_engine)
-        prover_interface = HetsProve(prover_interface, hets_session)
+        prover = HetsProve(prover_interface, hets_session)
+    else:
+        prover = prover_interface()
     processor = TPTPProblemParser()
     with open(f) as fp:
         problems = list(processor.parse(fp.readlines()))
@@ -106,7 +108,7 @@ def prove(p, f, s, plot, hets):
         if s is not None:
             selector = Sine()
             problem = selector.select(problem)
-        proof = prover_interface.prove(problem, compiler)
+        proof = prover.prove(problem, compiler)
         if not plot:
             for s in proof.steps:
                 print(
