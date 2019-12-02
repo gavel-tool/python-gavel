@@ -11,6 +11,11 @@ class Selector:
     """
 
     def select(self, problem: Problem, **kwargs) -> Problem:
+        """
+        Takes a problem instance and returns a (smaller) problem instance
+        :param problem:
+        :return:
+        """
         return problem
 
 
