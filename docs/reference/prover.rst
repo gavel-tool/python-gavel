@@ -86,6 +86,9 @@ format, you may want to implement a dialect and use it in :class:`YourProverInte
 Using existing Provers
 ======================
 
+In order to use the TPTP-library, you have to "download it":http://www.tptp.org/TPTP/Distribution/TPTP-v7.3.0.tgz and set the `TPTP_ROOT` environment variable
+to the root folder (i.e. the folder containing the 'Axioms' and 'Problems' folders). This has to be done because TPTP uses relative imports in it's problem files
+
 This is a list of all prover interface that ship with gavel:
 
 
