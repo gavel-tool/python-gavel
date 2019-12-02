@@ -44,6 +44,7 @@ class HetsSession:
     def __init__(self, engine, *args, **kwargs):
         super(HetsSession, self).__init__(*args, **kwargs)
         self.engine = engine
+        self.http_session = req.Session()
         self.folder = self.get(["folder"]).decode("utf-8")[len("/tmp/"):]
         self.files = []
 
@@ -54,11 +55,11 @@ class HetsSession:
 
     @connection_wrapper
     def get(self, *args, **kwargs):
-        return req.get(*args, **kwargs)
+        return self.http_session.get(*args, timeout=86400, **kwargs)
 
     @connection_wrapper
     def post(self, *args, **kwargs):
-        return req.post(*args, **kwargs)
+        return self.http_session.post(*args, timeout=86400, **kwargs)
 
     @staticmethod
     def encode(path):

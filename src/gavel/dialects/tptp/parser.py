@@ -436,11 +436,10 @@ class SimpleTPTPProofParser(ProofParser):
                         name=e.name,
                         introduction_type=e.annotation.intro_type,
                     )
-            elif e.role in [
-                FormulaRole.NEGATED_CONJECTURE,
-                FormulaRole.HYPOTHESIS]:
+                else:
+                    return ProofStep(formula=e.formula, name=e.name)
+            else:
                 return ProofStep(formula=e.formula, name=e.name)
-            raise ParserException(e)
         else:
             raise ParserException(e)
 
