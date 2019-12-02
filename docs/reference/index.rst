@@ -8,4 +8,5 @@ Reference
     logic*
     dialect*
     prover*
+    prover_interfaces/*
 

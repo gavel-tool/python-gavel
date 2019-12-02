@@ -78,3 +78,19 @@ in a prover interface. Simply implement a subclass of
 
 Note that `simple_prover` is accepting and returning the structures used by gavel. If your parser requires a different
 format, you may want to implement a dialect and use it in :class:`YourProverInterface._prover_dialect_cls`.
+
+Using existing Provers
+======================
+
+This is a list of all prover interface that ship with gavel:
+
+
+* :ref:`EProver<eprover_interface>`
+* :ref:`Hets<hets_interface>`
+
+If you want to use your own tools to alter the structure of the problem or solution,
+you may call the prover interfaces listed above on your own with a :class:`Problem`-instance:
+
+.. testcode::
+
+    proof = prover.prove(problem)
