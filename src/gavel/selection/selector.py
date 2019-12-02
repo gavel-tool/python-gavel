@@ -24,13 +24,15 @@ class Sine(Selector):
         symbols = set(
             chain(problem.conjecture.symbols(), *(p.symbols() for p in problem.premises))
         )
-        premise_symbols = {p: set(p.symbols()) for p in problem.premises}
+        premise_symbols = {p.name: set(p.symbols()) for p in problem.premises}
         commonness = {
             s: sum(1 for ps in premise_symbols.values() if s in ps)
             for s in symbols
         }
 
-        return self.calculate_triggers(problem, premise_symbols, commonness, max_depth)
+        return Problem(
+            premises=list(self.calculate_triggers(problem, premise_symbols, commonness, max_depth)),
+            conjecture=problem.conjecture)
 
     def trigger(self, symbol, sentence: LogicElement, commonness: Dict[str, int]) -> bool:
         return symbol in sentence.symbols() and all(
@@ -48,7 +50,7 @@ class Sine(Selector):
             untriggered_premises = []
             newer_symbols = set()
             for p in remaining_premises:
-                p_symbs = premise_symbols[p]
+                p_symbs = premise_symbols[p.name]
                 # If s is k-step triggered and s triggers A, then A is k + 1-step triggered
                 if any(self.trigger(s, p, commonness) for s in k_triggered_symbols):
                     newer_symbols = newer_symbols.union(p_symbs)
