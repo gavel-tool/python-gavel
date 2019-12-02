@@ -12,6 +12,7 @@ proof but unsuccessful attempt does not yield any information about the whole pr
     from gavel.prover.eprover.interface import EProverInterface
     prover = EProverInterface()
     prover.prove = lambda x: x
+    problem = None
 
 .. testcode::
 
