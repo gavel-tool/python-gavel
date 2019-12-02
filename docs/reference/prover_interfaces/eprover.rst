@@ -19,6 +19,7 @@ The EProver interface does not take any Parameters:
 
 .. testcode::
 
+    from gavel.prover.eprover.interface import EProverInterface
     prover = EProverInterface()
 
 

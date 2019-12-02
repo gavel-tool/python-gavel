@@ -40,10 +40,13 @@ EProver. In order to use any Proverinterface with hets, you have to pass it to t
 
 .. testcode::
 
-    internal_prover = ProverInterface() # Or any subclass or anything that quacks like ProverInterface
+    from gavel.prover.hets.interface import HetsEngine, HetsSession, HetsProve
+    from gavel.prover.eprover.interface import EProverInterface
+    internal_prover = EProverInterface()
+    # Or any  other subclass or anything that quacks like BaseProverInterface
     hets_engine = HetsEngine()
     hets_session = HetsSession(hets_engine)
-    prover = HetsProve(internal_prover)
+    prover = HetsProve(internal_prover, hets_session)
 
 .. autoclass:: HetsEngine
     :members:

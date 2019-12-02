@@ -21,10 +21,13 @@ of the premises - without any semantic insight.
 .. testsetup:: *
 
     from gavel.prover.base.interface import BaseProverInterface
+    from gavel.prover.eprover.interface import EProverInterface
     from gavel.prover.registry import register_prover, get_prover
     from gavel.logic import problem as prob
     from gavel.logic import logic
     from gavel.logic.proof import Proof, ProofStep
+
+    prover = EProverInterface()
 
 .. testcode::
 
