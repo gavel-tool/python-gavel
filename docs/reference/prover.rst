@@ -28,6 +28,7 @@ of the premises - without any semantic insight.
     from gavel.logic.proof import Proof, ProofStep
 
     prover = EProverInterface()
+    prover.prove = lambda x: x
 
 .. testcode::
 
