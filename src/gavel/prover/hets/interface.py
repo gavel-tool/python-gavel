@@ -13,13 +13,19 @@ from gavel.logic.problem import AnnotatedFormula
 from gavel.logic.problem import Problem
 from gavel.logic.proof import Proof
 from gavel.prover.base.interface import BaseProverInterface
-
+from gavel.config import settings
 
 class HetsEngine:
 
-    def __init__(self, url, port=80):
-        self.url = url
-        self.port = port
+    def __init__(self, url=None, port=None):
+        if url is None:
+            self.url = settings.HETS_HOST
+        else:
+            self.url = url
+        if port is None:
+            self.port = settings.HETS_PORT
+        else:
+            self.port = port
 
     @property
     def connection_string(self, path=None):

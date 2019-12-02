@@ -94,21 +94,20 @@ def clear_db(p):
 @click.option("--plot", is_flag=True, default=False)
 def prove(p, f, s, plot, hets):
     prover_interface = get_prover(p)
+    prover = prover_interface()
     if hets:
-        hets_engine = HetsEngine(settings.HETS_HOST, port=settings.HETS_PORT)
+        hets_engine = HetsEngine()
         hets_session = HetsSession(hets_engine)
-        prover = HetsProve(prover_interface, hets_session)
-    else:
-        prover = prover_interface()
+        prover = HetsProve(prover, hets_session)
+
     processor = TPTPProblemParser()
     with open(f) as fp:
         problems = list(processor.parse(fp.readlines()))
-    compiler = TPTPCompiler()
     for problem in problems:
         if s is not None:
             selector = Sine()
             problem = selector.select(problem)
-        proof = prover.prove(problem, compiler)
+        proof = prover.prove(problem)
         if not plot:
             for s in proof.steps:
                 print(
