@@ -7,6 +7,10 @@ class TPTPCompiler(Compiler):
     def visit_defined_constant(self, obj: fol.DefinedConstant):
         if obj == fol.DefinedConstant.VERUM:
             return "$true"
+        elif obj == fol.DefinedConstant.FALSUM:
+            return "$false"
+        else:
+            raise NotImplementedError
 
     def parenthesise(self, element: fol.LogicElement):
         if isinstance(element, str):
