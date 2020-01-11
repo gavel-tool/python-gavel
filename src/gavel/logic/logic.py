@@ -256,8 +256,7 @@ class PredicateExpression(LogicElement):
         return "%s(%s)" % (self.predicate, ", ".join(map(str, self.arguments)))
 
     def symbols(self):
-        yield self.predicate
-        return chain(*map(lambda x: x.symbols(), self.arguments))
+        return chain([self.predicate], *map(lambda x: x.symbols(), self.arguments))
 
 
 class TypedVariable(LogicElement):
