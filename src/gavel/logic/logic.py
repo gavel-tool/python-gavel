@@ -361,6 +361,12 @@ class DefinedConstant(Enum):
         elif self == DefinedConstant.FALSUM:
             return "$false"
 
+    def symbols(self):
+        if self == DefinedConstant.VERUM:
+            return {"$true"}
+        elif self == DefinedConstant.FALSUM:
+            return {"$false"}
+
 class Let(LogicElement):
 
     __visit_name__ = "let"
