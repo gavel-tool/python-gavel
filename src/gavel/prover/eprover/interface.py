@@ -17,6 +17,10 @@ class EDialect(TPTPProofDialect):
 @register_prover("eprover")
 class EProverInterface(BaseProverInterface):
     _prover_dialect_cls = EDialect
+    
+    def __init__(self, timeout=None, *args, **kwargs):
+        super(EProverInterface, self).__init__(*args, **kwargs)
+        self.timeout = timeout
 
     def _bootstrap_problem(self, problem: Problem):
         problem_string = "\n".join(self.dialect.compile(l) for l in problem.premises)
@@ -27,7 +31,8 @@ class EProverInterface(BaseProverInterface):
         with tempfile.NamedTemporaryFile() as tf:
             tf.write(problem_instance.encode())
             tf.seek(0)
-            result = sub.check_output([os.environ.get("EPROVER", "eprover"), "--output-level=2", "--tptp-in", "--tstp-out", tf.name]).decode("utf-8")
+            cmd = [os.environ.get("EPROVER", "eprover"), "--output-level=2", "--tptp-in", "--tstp-out", tf.name]
+            result = sub.check_output(cmd, timeout=self.timeout).decode("utf-8")
         return result
 
 class ResultHandler(BaseResultHandler):
