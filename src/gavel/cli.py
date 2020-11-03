@@ -18,21 +18,10 @@ Why does this file exist, and why not put this in __main__?
 import click
 import os
 
-import gavel.config.settings as settings
-
-from gavel.dialects.tptp.compiler import TPTPCompiler
-from gavel.dialects.tptp.parser import Problem
 from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
 from gavel.prover.hets.interface import HetsProve, HetsSession, HetsEngine
 from gavel.prover.registry import get_prover
 from gavel.selection.selector import Sine
-from alembic import command
-from alembic.config import Config
-
-ROOT_DIR = os.path.dirname(__file__)
-
-alembic_cfg = Config(os.path.join(ROOT_DIR, "alembic.ini"))
-alembic_cfg.set_main_option("script_location", os.path.join(ROOT_DIR, "alembic"))
 
 
 @click.group()
