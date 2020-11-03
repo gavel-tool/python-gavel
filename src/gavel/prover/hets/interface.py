@@ -15,6 +15,7 @@ from gavel.logic.proof import Proof
 from gavel.prover.base.interface import BaseProverInterface
 from gavel.config import settings
 
+
 class HetsEngine:
     def __init__(self, url=None, port=None):
         if url is None:
