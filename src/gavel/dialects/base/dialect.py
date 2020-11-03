@@ -10,7 +10,13 @@ class Dialect:
     _parser_cls = Parser
     _compiler_cls = Compiler
 
-    def __init__(self,  parser_args=None, parser_kwargs=None, compiler_args=None, compiler_kwargs=None):
+    def __init__(
+        self,
+        parser_args=None,
+        parser_kwargs=None,
+        compiler_args=None,
+        compiler_kwargs=None,
+    ):
         if compiler_args is None:
             compiler_args = []
         if compiler_kwargs is None:
@@ -30,7 +36,6 @@ class Dialect:
 
 
 class IdentityDialect(Dialect):
-
     def compile(self, obj: Problem, *args, **kwargs):
         return obj
 

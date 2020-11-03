@@ -89,7 +89,9 @@ class StringBasedParser(Parser, ABC):
 
     def parse_from_file(self, file_path, *args, **kwargs) -> Iterable[Target]:
         with mp.Pool() as pool:
-            for obj in pool.imap(self.parse_single_from_string, self.stream_formulas(file_path)):
+            for obj in pool.imap(
+                self.parse_single_from_string, self.stream_formulas(file_path)
+            ):
                 yield obj
 
     def is_valid(self, inp: str) -> bool:
@@ -119,10 +121,10 @@ class StringBasedParser(Parser, ABC):
     def load_many(
         self, lines: Iterable[str], *args, **kwargs
     ) -> Iterable[LogicElement]:
-        #with mp.Pool() as pool:
-            return map(
-                self.load_single_from_string, self.stream_formula_lines(lines, **kwargs)
-            )
+        # with mp.Pool() as pool:
+        return map(
+            self.load_single_from_string, self.stream_formula_lines(lines, **kwargs)
+        )
 
 
 class LogicParser(Parser[Parseable, LogicElement]):
@@ -140,7 +142,10 @@ class ProblemParser(Parser[Parseable, Problem]):
         conjectures = []
         imports = []
         with mp.Pool() as pool:
-            for s in pool.imap(self.logic_parser.parse_single_from_string, self.logic_parser.stream_formula_lines(inp)):
+            for s in pool.imap(
+                self.logic_parser.parse_single_from_string,
+                self.logic_parser.stream_formula_lines(inp),
+            ):
                 if isinstance(s, Sentence):
                     if s.is_conjecture():
                         conjectures.append(s)
@@ -151,8 +156,7 @@ class ProblemParser(Parser[Parseable, Problem]):
                 else:
                     raise ParserException("Unknown element:" + str(s))
         for s in imports:
-            for imported_premise in self.logic_parser.parse_from_file(
-                s.path):
+            for imported_premise in self.logic_parser.parse_from_file(s.path):
                 premises.append(imported_premise)
         for c in conjectures:
             yield Problem(premises, c)

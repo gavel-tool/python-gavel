@@ -16,7 +16,6 @@ from gavel.prover.base.interface import BaseProverInterface
 from gavel.config import settings
 
 class HetsEngine:
-
     def __init__(self, url=None, port=None):
         if url is None:
             self.url = settings.HETS_HOST
@@ -29,10 +28,7 @@ class HetsEngine:
 
     @property
     def connection_string(self, path=None):
-        return "http://{url}:{port}".format(
-            url=self.url,
-            port=self.port
-        )
+        return "http://{url}:{port}".format(url=self.url, port=self.port)
 
 
 def connection_wrapper(f):
@@ -43,6 +39,7 @@ def connection_wrapper(f):
         result = f(self, s, **kwargs)
         assert 200 <= result.status_code < 300, result.content
         return result.content
+
     return inner
 
 
@@ -51,11 +48,11 @@ class HetsSession:
         super(HetsSession, self).__init__(*args, **kwargs)
         self.engine = engine
         self.http_session = req.Session()
-        self.folder = self.get(["folder"]).decode("utf-8")[len("/tmp/"):]
+        self.folder = self.get(["folder"]).decode("utf-8")[len("/tmp/") :]
         self.files = []
 
     def add_file(self, content):
-        f_name = "f%d"%len(self.files)
+        f_name = "f%d" % len(self.files)
         self.files.append(f_name)
         return f_name
 
@@ -79,7 +76,13 @@ class HetsSession:
 
 
 class HetsProve(BaseProverInterface):
-    def __init__(self, prover_interface: BaseProverInterface, session: HetsSession, *args, **kwargs):
+    def __init__(
+        self,
+        prover_interface: BaseProverInterface,
+        session: HetsSession,
+        *args,
+        **kwargs
+    ):
         self._prover_dialect_cls = prover_interface._prover_dialect_cls
         super(HetsProve, self).__init__()
         self.session = session
@@ -92,21 +95,21 @@ class HetsProve(BaseProverInterface):
 
     def _submit_problem(self, problem_instance, *args, **kwargs):
         (folder_name, file_name), problem = problem_instance
-        response = self.session.post(["prove", "%2F".join(["", "tmp", folder_name, file_name])],
+        response = self.session.post(
+            ["prove", "%2F".join(["", "tmp", folder_name, file_name])],
             json=dict(
                 format="json",
                 goals=[
                     dict(
                         node="f0",
                         reasonerConfiguration=dict(timeLimit=100, reasoner="EProver"),
-                        useTheorems=False
+                        useTheorems=False,
                     )
                 ],
                 premiseSelection=dict(
-                    kind="manual",
-                    manualPremises=[a.name for a in problem.premises]
-                )
-            )
+                    kind="manual", manualPremises=[a.name for a in problem.premises]
+                ),
+            ),
         )
         jsn = json.loads(response.decode("utf-8"))["prover_output"][0]
         assert "goals" in jsn

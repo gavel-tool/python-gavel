@@ -11,6 +11,7 @@ class BaseProverInterface:
     """
     Base class for prover support
     """
+
     _prover_dialect_cls = IdentityDialect
     """
     A dialect class that is instantiated and used to compile to

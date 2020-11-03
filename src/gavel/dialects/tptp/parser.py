@@ -192,7 +192,7 @@ class TPTPParser(LogicParser, StringBasedParser):
                 else:
                     return logic.DefinedConstant(c0)
             else:
-                if c0[0] == "\"":
+                if c0[0] == '"':
                     return logic.DistinctObject(c0)
                 else:
                     return logic.Constant(c0)
@@ -316,6 +316,7 @@ class TPTPParser(LogicParser, StringBasedParser):
 
 
 if SUPPORTS_ANTLR:
+
     class TPTPAntlrParser(LogicParser, StringBasedParser):
         visitor = FOFFlatteningVisitor()
 

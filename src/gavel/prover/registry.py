@@ -9,7 +9,6 @@ def register_prover(name):
     :param name: Identifier for this prover
     """
 
-
     def register_class(cls):
         PROVERS[name] = cls
         return cls

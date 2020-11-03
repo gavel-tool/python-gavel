@@ -34,9 +34,11 @@ ROOT_DIR = os.path.dirname(__file__)
 alembic_cfg = Config(os.path.join(ROOT_DIR, "alembic.ini"))
 alembic_cfg.set_main_option("script_location", os.path.join(ROOT_DIR, "alembic"))
 
+
 @click.group()
 def base():
     pass
+
 
 @click.command()
 @click.argument("p")
@@ -62,14 +64,11 @@ def prove(p, f, s, plot, hets):
         proof = prover.prove(problem)
         if not plot:
             for s in proof.steps:
-                print(
-                    "{name}: {formula}".format(
-                        name=s.name, formula=s.formula
-                    )
-                )
+                print("{name}: {formula}".format(name=s.name, formula=s.formula))
         else:
             g = proof.get_graph()
             g.render()
+
 
 base.add_command(prove)
 

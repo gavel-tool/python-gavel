@@ -8,9 +8,12 @@ import subprocess as sub
 import tempfile
 import os
 
+
 class EDialect(TPTPProofDialect):
     def parse(self, obj, *args, **kwargs):
-        cleaned_obj = "\n".join(line for line in obj.split("\n") if not line.startswith("#"))
+        cleaned_obj = "\n".join(
+            line for line in obj.split("\n") if not line.startswith("#")
+        )
         return super(EDialect, self).parse(cleaned_obj, *args, **kwargs)
 
 
@@ -27,8 +30,17 @@ class EProverInterface(BaseProverInterface):
         with tempfile.NamedTemporaryFile() as tf:
             tf.write(problem_instance.encode())
             tf.seek(0)
-            result = sub.check_output([os.environ.get("EPROVER", "eprover"), "--output-level=2", "--tptp-in", "--tstp-out", tf.name]).decode("utf-8")
+            result = sub.check_output(
+                [
+                    os.environ.get("EPROVER", "eprover"),
+                    "--output-level=2",
+                    "--tptp-in",
+                    "--tstp-out",
+                    tf.name,
+                ]
+            ).decode("utf-8")
         return result
+
 
 class ResultHandler(BaseResultHandler):
     def get_used_axioms(self):

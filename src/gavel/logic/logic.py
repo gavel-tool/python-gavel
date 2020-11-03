@@ -205,6 +205,7 @@ class BinaryFormula(LogicElement):
         The formula on the right side
 
     """
+
     __visit_name__ = "binary_formula"
 
     requires_parens = True
@@ -361,6 +362,7 @@ class DefinedConstant(Enum):
             return "$true"
         elif self == DefinedConstant.FALSUM:
             return "$false"
+
 
 class Let(LogicElement):
 

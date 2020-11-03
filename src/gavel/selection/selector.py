@@ -17,23 +17,27 @@ class Selector:
 class Sine(Selector):
     def select(self, problem, max_depth=10):
         symbols = set(
-            chain(problem.conjecture.symbols(), *(p.symbols() for p in problem.premises))
+            chain(
+                problem.conjecture.symbols(), *(p.symbols() for p in problem.premises)
+            )
         )
         premise_symbols = {p: set(p.symbols()) for p in problem.premises}
         commonness = {
-            s: sum(1 for ps in premise_symbols.values() if s in ps)
-            for s in symbols
+            s: sum(1 for ps in premise_symbols.values() if s in ps) for s in symbols
         }
 
         return self.calculate_triggers(problem, premise_symbols, commonness, max_depth)
 
-    def trigger(self, symbol, sentence: LogicElement, commonness: Dict[str, int]) -> bool:
+    def trigger(
+        self, symbol, sentence: LogicElement, commonness: Dict[str, int]
+    ) -> bool:
         return symbol in sentence.symbols() and all(
-            commonness[symbol] <= commonness[symbol2]
-            for symbol2 in sentence.symbols()
+            commonness[symbol] <= commonness[symbol2] for symbol2 in sentence.symbols()
         )
 
-    def calculate_triggers(self, problem: Problem, premise_symbols, commonness, max_depth):
+    def calculate_triggers(
+        self, problem: Problem, premise_symbols, commonness, max_depth
+    ):
         remaining_premises = list(problem.premises)
         k_triggered_symbols = set(problem.conjecture.symbols())
         used_symbols = set()
