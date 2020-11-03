@@ -14,16 +14,11 @@ else:
     SUPPORTS_ANTLR = True
 
 import gavel.config.settings as settings
-import gavel.dialects.db.structures as db
 from gavel.config import settings as settings
 from gavel.dialects.base.parser import LogicParser, Parseable, Target, StringBasedParser
 from gavel.dialects.base.parser import ParserException
 from gavel.dialects.base.parser import ProblemParser
 from gavel.dialects.base.parser import ProofParser
-from gavel.dialects.db.compiler import DBCompiler
-from gavel.dialects.db.connection import get_or_create
-from gavel.dialects.db.connection import get_or_None
-from gavel.dialects.db.connection import with_session
 from gavel.dialects.tptp.sources import InferenceSource
 from gavel.dialects.tptp.sources import Input
 from gavel.dialects.tptp.sources import InternalSource

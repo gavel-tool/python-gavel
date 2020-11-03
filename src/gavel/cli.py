@@ -19,12 +19,8 @@ import click
 import os
 
 import gavel.config.settings as settings
-from gavel.dialects.db.structures import (
-    store_all,
-)
-import gavel.dialects.tptp.parser as build_tptp
+
 from gavel.dialects.tptp.compiler import TPTPCompiler
-from gavel.dialects.db.compiler import DBCompiler
 from gavel.dialects.tptp.parser import Problem
 from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
 from gavel.prover.hets.interface import HetsProve, HetsSession, HetsEngine
@@ -39,52 +35,8 @@ alembic_cfg = Config(os.path.join(ROOT_DIR, "alembic.ini"))
 alembic_cfg.set_main_option("script_location", os.path.join(ROOT_DIR, "alembic"))
 
 @click.group()
-def db():
+def base():
     pass
-
-
-@click.command()
-def migrate_db():
-    """Create tables for storage of formulas"""
-    command.upgrade(alembic_cfg, "head")
-
-
-@click.command()
-@click.argument("path", default=None)
-@click.option("-r", default=False)
-def store(path, r):
-    parser = TPTPParser()
-    compiler = DBCompiler()
-    store_all(path, parser, compiler)
-
-
-@click.command()
-@click.option("-p", default=settings.TPTP_ROOT)
-def store_problems(p):
-    settings.TPTP_ROOT = p
-    build_tptp.store_problems()
-
-
-@click.command()
-@click.option("-p", default=settings.TPTP_ROOT)
-def store_solutions(p):
-    """Drop tables created gy init-db"""
-    build_tptp.all_solution(p)
-
-
-@click.command()
-def drop_db():
-    """Drop tables created gy init-db"""
-    command.downgrade(alembic_cfg, "base")
-
-
-@click.command()
-@click.option("-p", default=settings.TPTP_ROOT)
-def clear_db(p):
-    """Drop tables created gy init-db and recreate them"""
-    command.downgrade(alembic_cfg, "base")
-    command.upgrade(alembic_cfg, "head")
-
 
 @click.command()
 @click.argument("p")
@@ -119,16 +71,10 @@ def prove(p, f, s, plot, hets):
             g = proof.get_graph()
             g.render()
 
-db.add_command(migrate_db)
-db.add_command(drop_db)
-db.add_command(clear_db)
-db.add_command(store_problems)
-db.add_command(store)
-db.add_command(store_solutions)
+base.add_command(prove)
 
-db.add_command(prove)
-
-cli = click.CommandCollection(sources=[db])
+cli = click.CommandCollection()
+cli.add_source(base)
 
 main = cli
 
