@@ -1,5 +1,9 @@
 .. module:: gavel.dialects.base
 
+.. testsetup:: *
+
+    from gavel.dialects.tptp.parser import TPTPParser
+
 Dialects
 ========
 
@@ -7,8 +11,24 @@ Parser
 ******
 
 
-Gavel comes with a collection of parsers for different logical frameworks. You can use these parsers to parse a
-single expression from a string:
+Gavel comes with a collection of parsers for different logical frameworks. You can use these parsers to parse expressions from a string:
+
+
+
+In most cases the exact structrue of the input is not known, e.g. it might contain several expressions. To extract all
+lines from a string use the `parse` which returns a generator of found expressions
+
+.. testcode::
+
+    string = "cnf(name, axiom, a | b).cnf(name, axiom, d | e)."
+    parser = TPTPParser()
+    for structure in parser.parse(string):
+        print(structure.formula)
+
+.. testoutput::
+
+    (a) | (b)
+    (d) | (e)
 
 .. testcode::
 
@@ -17,28 +37,12 @@ single expression from a string:
     parser = TPTPParser()
     string = "cnf(name, axiom, a | b)."
 
-    structure = parser.parse_single_from_string(string)
+    structure = parser.parse(string).pop()
     print(structure.formula)
 
 .. testoutput::
 
     (a) | (b)
-
-In most cases the exact structrue of the input is not known, e.g. it might contain several expressions. To extract all
-lines from a string use the `parse_single_from_string` which returns a generator of found expressions
-
-.. testcode::
-
-    string = "cnf(name, axiom, a | b).cnf(name, axiom, d | e)."
-
-    for line in parser.parse(string):
-        structure = parser.parse_single_from_string(line)
-        print(structure.formula)
-
-.. testoutput::
-
-    (a) | (b)
-    (d) | (e)
 
 If you want to parse a complete problem from a file, use the specific problem parser. As some reasoners (e.g. SPASS) do
 not accept problems that cotain multiple conjectures, :class:`ProblemParser.parse` returns a generator of problems,

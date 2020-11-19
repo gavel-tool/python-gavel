@@ -39,8 +39,8 @@ Hets is just a layer around a number of provers. The latest version of gavel onl
 EProver. In order to use any Proverinterface with hets, you have to pass it to the constructor:
 
 .. testcode::
-
-    internal_prover = ProverInterface() # Or any subclass or anything that quacks like ProverInterface
+    from gavel.prover.base.interface import BaseProverInterface
+    internal_prover = BaseProverInterface() # Or any subclass or anything that quacks like ProverInterface
     hets_engine = HetsEngine()
     hets_session = HetsSession(hets_engine)
     prover = HetsProve(internal_prover)

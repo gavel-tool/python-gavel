@@ -24,7 +24,7 @@ of the premises - without any semantic insight.
     from gavel.prover.registry import register_prover, get_prover
     from gavel.logic import problem as prob
     from gavel.logic import logic
-    from gavel.logic.proof import Proof, ProofStep
+    from gavel.logic.solution import Proof, ProofStep
 
 .. testcode::
 
@@ -32,7 +32,7 @@ of the premises - without any semantic insight.
         for premise in problem.premises:
             if premise.formula == problem.conjecture.formula:
                 # Create a proof structure
-                p = Proof(steps=[ProofStep(formula=premise.formula)])
+                p = Proof(steps=[premise])
                 return p
         return None
 
@@ -41,12 +41,12 @@ We can use this prover to prove really simple problems:
 .. testcode::
 
     problem = prob.Problem(
-        premises=[prob.AnnotatedFormula(logic="fof", name="axiom1", role=prob.FormulaRole.AXIOM, formula=logic.DefinedConstant.VERUM)],
-        conjecture=prob.AnnotatedFormula(logic="fof", name="conjecture", role=prob.FormulaRole.CONJECTURE, formula=logic.DefinedConstant.VERUM)
+        premises=[prob.AnnotatedFormula(logic="fof", name="axiom1", role=prob.FormulaRole.AXIOM, formula=logic.DefinedConstant(logic.PredefinedConstant.VERUM))],
+        conjecture=prob.AnnotatedFormula(logic="fof", name="conjecture", role=prob.FormulaRole.CONJECTURE, formula=logic.DefinedConstant(logic.PredefinedConstant.VERUM))
     )
     proof = simple_prover(problem)
     for step in proof.steps:
-        print(step.formula)
+        print(step.formula.value)
 
 .. testoutput::
 
@@ -69,7 +69,7 @@ in a prover interface. Simply implement a subclass of
     pi = YourProverInterface()
     proof = pi.prove(problem)
     for step in proof.steps:
-        print(step.formula)
+        print(step.formula.value)
 
 .. testoutput::
 
@@ -91,6 +91,6 @@ This is a list of all prover interface that ship with gavel:
 If you want to use your own tools to alter the structure of the problem or solution,
 you may call the prover interfaces listed above on your own with a :class:`Problem`-instance:
 
-.. testcode::
+.. code::
 
     proof = prover.prove(problem)

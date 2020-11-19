@@ -15,7 +15,7 @@ def simple_prover(problem):
 
 
 @register_prover("test")
-class TestProver(BaseProverInterface):
+class DummyTestProver(BaseProverInterface):
     def _submit_problem(self, problem_instance, *args, **kwargs):
         return Proof(
             premises=problem_instance.premises,
@@ -25,4 +25,4 @@ class TestProver(BaseProverInterface):
 
 class TestSimpleProver(TestCase):
     def test_registry(self):
-        self.assertEqual(get_prover("test"), TestProver)
+        self.assertEqual(get_prover("test"), DummyTestProver)
