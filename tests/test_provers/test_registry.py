@@ -19,12 +19,7 @@ class TestProver(BaseProverInterface):
     def _submit_problem(self, problem_instance, *args, **kwargs):
         return Proof(
             premises=problem_instance.premises,
-            steps=[
-                ProofStep(
-                    formula=logic.DefinedConstant.FALSUM,
-                    name="name"
-                )
-            ],
+            steps=[ProofStep(formula=logic.DefinedConstant.FALSUM, name="name")],
         )
 
 

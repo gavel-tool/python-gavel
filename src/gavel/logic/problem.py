@@ -63,14 +63,9 @@ class AnnotatedFormula(Sentence, ProofStep):
         return self.role in (FormulaRole.CONJECTURE, FormulaRole.NEGATED_CONJECTURE)
 
     def __str__(self):
-        return (
-            "{logic}({name},{role},{formula})".format(
-                logic=self.logic, name=self.name, role=self.role, formula=self.formula
-            )
-            + (("# " + str(self.annotation))
-            if self.annotation
-            else "")
-        )
+        return "{logic}({name},{role},{formula})".format(
+            logic=self.logic, name=self.name, role=self.role, formula=self.formula
+        ) + (("# " + str(self.annotation)) if self.annotation else "")
 
     def __eq__(self, other):
         return type(self) == type(other) and all(
@@ -109,6 +104,6 @@ class Problem:
         self.imports = imports or []
 
 
-class Annotation():
+class Annotation:
     def __init__(self):
         pass

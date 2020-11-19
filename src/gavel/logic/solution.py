@@ -18,6 +18,7 @@ class IntroductionType(Enum):
     TAUTOLOGY = 2
     ASSUMPTION = 3
 
+
 class Solution:
     def __init__(self, status: status.Status):
         self.status = status
@@ -32,7 +33,7 @@ class Proof:
         steps: List[ProofStep] = None,
         **kwargs
     ):
-        super(Proof, self).__init__(*args,**kwargs)
+        super(Proof, self).__init__(*args, **kwargs)
         self.premises = premises or []
         self.steps = steps or []
         self._used_axioms = None

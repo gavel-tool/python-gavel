@@ -113,7 +113,7 @@ setup(
         "pytest",
         "requests",
         "lxml",
-        "beautifulsoup4"
+        "beautifulsoup4",
     ],
     extras_require={
         # eg:

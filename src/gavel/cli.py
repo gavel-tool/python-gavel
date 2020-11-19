@@ -25,6 +25,7 @@ from gavel.prover.registry import get_prover
 from gavel.selection.selector import Sine
 from gavel import plugins
 
+
 @click.group()
 def base():
     pass

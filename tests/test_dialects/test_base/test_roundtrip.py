@@ -7,7 +7,6 @@ from gavel.dialects.base.compiler import Compiler
 from gavel.logic.problem import AnnotatedFormula
 
 
-
 class TestLogicRoundtrip(unittest.TestCase):
     _parser_cls = StringBasedParser
     _compiler_cls = Compiler
@@ -25,7 +24,11 @@ class TestLogicRoundtrip(unittest.TestCase):
         self.assertEqual(result, expected)
 
     def assertObjectEqual(self, result, expected):
-        self.assertTrue(isinstance(result, type(expected)) or isinstance(expected, type(result)), "Types do not math: (expected: %s, got: %s)" % (type(expected), type(result)))
+        self.assertTrue(
+            isinstance(result, type(expected)) or isinstance(expected, type(result)),
+            "Types do not math: (expected: %s, got: %s)"
+            % (type(expected), type(result)),
+        )
         if isinstance(result, LogicElement) or isinstance(result, AnnotatedFormula):
             for n in chain(result.__dict__.keys(), expected.__dict__.keys()):
                 self.assertObjectEqual(getattr(result, n), getattr(expected, n))
@@ -35,17 +38,16 @@ class TestLogicRoundtrip(unittest.TestCase):
         else:
             self.assertEqual(result, expected)
 
-def check_roundtrip_wrapper(logic="fof",name="name",role="plain"):
+
+def check_roundtrip_wrapper(logic="fof", name="name", role="plain"):
     def outer(f):
         def inner(self: TestLogicRoundtrip):
             formula = f(self)
             string = "{logic}({name},{role},{formula})".format(
-                logic=logic,
-                name=name,
-                role=role,
-                formula=formula
+                logic=logic, name=name, role=role, formula=formula
             )
             self.check_roundtrip(string)
-        return inner
-    return outer
 
+        return inner
+
+    return outer

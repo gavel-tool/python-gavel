@@ -31,7 +31,9 @@ class StatusSatisfiabilityPreserving(StatusSuccess):
     _description = "- F is satisfiable."
 
 
-class StatusEquiSatisfiable(StatusSatisfiabilityPreserving, StatusUnsatisfiabilityPreserving):
+class StatusEquiSatisfiable(
+    StatusSatisfiabilityPreserving, StatusUnsatisfiabilityPreserving
+):
     _name = "EquiSatisfiable"
     _abbreviation = "ESA"
     _description = "(un)satisfiable iff C is (un)satisfiable."
@@ -97,7 +99,9 @@ class StatusTautology(StatusEquivalent, StatusTautologousConclusion):
     _description = "- Possible dataforms are Proofs of Ax and of C."
 
 
-class StatusWeakerTautologousConclusion(StatusTautologousConclusion, StatusWeakerConclusion):
+class StatusWeakerTautologousConclusion(
+    StatusTautologousConclusion, StatusWeakerConclusion
+):
     _name = "WeakerTautologousConclusion"
     _abbreviation = "WTC"
     _description = "- See TautologousConclusion and WeakerConclusion."
@@ -133,10 +137,14 @@ class StatusSatisfiableConclusionContradictoryAxioms(StatusContradictoryAxioms):
     _description = "- See ContradictoryAxioms."
 
 
-class StatusTautologousConclusionContradictoryAxioms(StatusSatisfiableConclusionContradictoryAxioms):
+class StatusTautologousConclusionContradictoryAxioms(
+    StatusSatisfiableConclusionContradictoryAxioms
+):
     _name = "TautologousConclusionContradictoryAxioms"
     _abbreviation = "TCA"
-    _description = "- See TautologousConclusion and SatisfiableConclusionContradictoryAxioms."
+    _description = (
+        "- See TautologousConclusion and SatisfiableConclusionContradictoryAxioms."
+    )
 
 
 class StatusSatisfiableCounterConclusionContradictoryAxioms(StatusContradictoryAxioms):
@@ -145,8 +153,10 @@ class StatusSatisfiableCounterConclusionContradictoryAxioms(StatusContradictoryA
     _description = "- See ContradictoryAxioms."
 
 
-class StatusWeakerConclusionContradictoryAxioms(StatusSatisfiableConclusionContradictoryAxioms,
-                                                StatusSatisfiableCounterConclusionContradictoryAxioms):
+class StatusWeakerConclusionContradictoryAxioms(
+    StatusSatisfiableConclusionContradictoryAxioms,
+    StatusSatisfiableCounterConclusionContradictoryAxioms,
+):
     _name = "WeakerConclusionContradictoryAxioms"
     _abbreviation = "WCA"
     _description = "SatisfiableCounterConclusionContradictoryAxioms."
@@ -158,7 +168,9 @@ class StatusCounterUnsatisfiabilityPreserving(StatusSuccess):
     _description = "~C, i.e., if Ax is unsatisfiable then ~C is unsatisfiable."
 
 
-class StatusEquiCounterSatisfiable(StatusCounterUnsatisfiabilityPreserving, StatusCounterSatisfiabilityPreserving):
+class StatusEquiCounterSatisfiable(
+    StatusCounterUnsatisfiabilityPreserving, StatusCounterSatisfiabilityPreserving
+):
     _name = "EquiCounterSatisfiable"
     _abbreviation = "ECS"
     _description = "(un)satisfiable iff ~C is (un)satisfiable."
@@ -182,19 +194,25 @@ class StatusSatisfiableCounterTheorem(StatusCounterTheorem, StatusTheorem):
     _description = "- Possible dataforms are Models of Ax with Proofs of ~C from Ax."
 
 
-class StatusCounterEquivalent(StatusSatisfiableCounterTheorem, StatusCounterSatisfiable):
+class StatusCounterEquivalent(
+    StatusSatisfiableCounterTheorem, StatusCounterSatisfiable
+):
     _name = "CounterEquivalent"
     _abbreviation = "CEQ"
     _description = "- Possible dataforms are Proofs of ~C from Ax and of Ax from ~C."
 
 
-class StatusUnsatisfiableConclusion(StatusSatisfiableCounterTheorem, StatusCounterSatisfiable):
+class StatusUnsatisfiableConclusion(
+    StatusSatisfiableCounterTheorem, StatusCounterSatisfiable
+):
     _name = "UnsatisfiableConclusion"
     _abbreviation = "UNC"
     _description = "- Possible dataforms are Proofs of ~C."
 
 
-class StatusWeakerCounterConclusion(StatusSatisfiableCounterTheorem, StatusCounterSatisfiable):
+class StatusWeakerCounterConclusion(
+    StatusSatisfiableCounterTheorem, StatusCounterSatisfiable
+):
     _name = "WeakerCounterConclusion"
     _abbreviation = "WCC"
     _description = "- See CounterTheorem and CounterSatisfiable."
@@ -206,19 +224,27 @@ class StatusFinitelyUnsatisfiable(Status):
     _description = "(i.e., no finite interpretations are finite models of C)."
 
 
-class StatusEquivalentCounterTheorem(StatusCounterEquivalent, StatusFinitelyUnsatisfiable):
+class StatusEquivalentCounterTheorem(
+    StatusCounterEquivalent, StatusFinitelyUnsatisfiable
+):
     _name = "EquivalentCounterTheorem"
     _abbreviation = "ECT"
     _description = "- See CounterEquivalent."
 
 
-class StatusUnsatisfiable(StatusFinitelyUnsatisfiable, StatusCounterEquivalent, StatusUnsatisfiableConclusion):
+class StatusUnsatisfiable(
+    StatusFinitelyUnsatisfiable, StatusCounterEquivalent, StatusUnsatisfiableConclusion
+):
     _name = "Unsatisfiable"
     _abbreviation = "UNS"
-    _description = "- Possible dataforms are Proofs of Ax and of C, and Refutations of F."
+    _description = (
+        "- Possible dataforms are Proofs of Ax and of C, and Refutations of F."
+    )
 
 
-class StatusWeakerUnsatisfiableConclusion(StatusWeakerCounterConclusion, StatusUnsatisfiableConclusion):
+class StatusWeakerUnsatisfiableConclusion(
+    StatusWeakerCounterConclusion, StatusUnsatisfiableConclusion
+):
     _name = "WeakerUnsatisfiableConclusion"
     _abbreviation = "WUC"
     _description = "- See Unsatisfiable and WeakerCounterConclusion."
@@ -230,7 +256,9 @@ class StatusWeakerCounterTheorem(StatusWeakerCounterConclusion):
     _description = "- See CounterSatisfiable."
 
 
-class StatusUnsatisfiableConclusionContradictoryAxioms(StatusSatisfiableCounterConclusionContradictoryAxioms):
+class StatusUnsatisfiableConclusionContradictoryAxioms(
+    StatusSatisfiableCounterConclusionContradictoryAxioms
+):
     _name = "UnsatisfiableConclusionContradictoryAxioms"
     _abbreviation = "UCA"
     _description = "- SatisfiableCounterConclusionContradictoryAxioms."
@@ -263,7 +291,9 @@ class StatusUnknown(StatusNoSuccess):
 class StatusStopped(StatusUnknown):
     _name = "Stopped"
     _abbreviation = "STP"
-    _description = "Software attempted to process the data, and stopped without a success status."
+    _description = (
+        "Software attempted to process the data, and stopped without a success status."
+    )
 
 
 class StatusError(StatusStopped):
@@ -305,7 +335,9 @@ class StatusSemanticError(StatusInputError):
 class StatusTypeError(StatusSemanticError):
     _name = "TypeError"
     _abbreviation = "TYE"
-    _description = "Software stopped due to an input type error (for typed logical data)."
+    _description = (
+        "Software stopped due to an input type error (for typed logical data)."
+    )
 
 
 class StatusForced(StatusStopped):
@@ -371,4 +403,6 @@ class StatusInProgress(StatusUnknown):
 class StatusNotTriedYet(StatusNotTried):
     _name = "NotTriedYet"
     _abbreviation = "NTY"
-    _description = "Software has not tried to process the data yet, but might in the future."
+    _description = (
+        "Software has not tried to process the data yet, but might in the future."
+    )

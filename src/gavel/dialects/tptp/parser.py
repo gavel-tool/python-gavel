@@ -126,7 +126,7 @@ class TPTPParser(LogicParser, StringBasedParser):
         return meth(obj, **kwargs)
 
     def visit_file_source(self, obj):
-        file_name = self.visit(obj.children[0]).replace("'","")
+        file_name = self.visit(obj.children[0]).replace("'", "")
         return sources.FileSource(file_name, *map(self.visit, obj.children[1:]))
 
     def visit_inference_source(self, obj):
@@ -136,7 +136,9 @@ class TPTPParser(LogicParser, StringBasedParser):
         return sources.InternalSource(*map(self.visit, obj.children))
 
     def visit_generic_annotation(self, obj):
-        return sources.GenericSource(*map(lambda x:self.visit(x).strip(), obj.children))
+        return sources.GenericSource(
+            *map(lambda x: self.visit(x).strip(), obj.children)
+        )
 
     def visit_sources(self, obj, **kwargs):
         return [self.visit(s) for s in obj.children]
@@ -330,8 +332,7 @@ class SimpleTPTPProofParser(ProofParser):
     def parse(self, structure: str, *args, **kwargs):
         return LinearProof(
             steps=[
-                self._create_proof_step(s)
-                for s in self._tptp_parser.parse(structure)
+                self._create_proof_step(s) for s in self._tptp_parser.parse(structure)
             ]
         )
 
@@ -380,9 +381,7 @@ def _load_solution(domain, name):
         "http://www.tptp.org/cgi-bin/SeeTPTP?Category=Solutions"
         "&Domain={domain}"
         "&File={problem}"
-        "&System=E---2.5".format(
-            domain=domain, problem=name
-        )
+        "&System=E---2.5".format(domain=domain, problem=name)
     )
     raw_string = response.content.decode("utf-8")
     return "\n".join(_extract_pre(raw_string.split("\n")))
@@ -390,7 +389,9 @@ def _load_solution(domain, name):
 
 def parse_solution(prover_output):
     if prover_output:
-        soup = BeautifulSoup(prover_output)  # "".join(map(h.handle, prover_output.split("\n")))
+        soup = BeautifulSoup(
+            prover_output
+        )  # "".join(map(h.handle, prover_output.split("\n")))
         szs_status = re.search(r"SZS status (\w+)", soup.get_text())
         if szs_status:
             szs_status = status.get_status(szs_status.groups()[0])

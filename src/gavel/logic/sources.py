@@ -24,7 +24,12 @@ class InternalSource(Source):
 
 
 class InferenceSource(Source):
-    def __init__(self, rule, parents: Iterable[Source], info=None,):
+    def __init__(
+        self,
+        rule,
+        parents: Iterable[Source],
+        info=None,
+    ):
         self.rule = rule
         self.info = info
         self.parents = parents
