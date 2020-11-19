@@ -1,7 +1,7 @@
 import os
-import pickle as pkl
 import re
 import sys
+from bs4 import BeautifulSoup
 from typing import Iterable
 import requests
 
@@ -13,31 +13,21 @@ except:
 else:
     SUPPORTS_ANTLR = True
 
-import gavel.config.settings as settings
 from gavel.config import settings as settings
-from gavel.dialects.base.parser import LogicParser, Parseable, Target, StringBasedParser
+from gavel.dialects.base.parser import LogicParser, Target, StringBasedParser
 from gavel.dialects.base.parser import ParserException
 from gavel.dialects.base.parser import ProblemParser
 from gavel.dialects.base.parser import ProofParser
-from gavel.dialects.tptp.sources import InferenceSource
-from gavel.dialects.tptp.sources import Input
-from gavel.dialects.tptp.sources import InternalSource
-from gavel.logic import logic
-from gavel.logic import problem
+from gavel.logic import logic, sources
 from gavel.logic.logic import LogicElement
+from gavel.logic import problem
 from gavel.logic.problem import AnnotatedFormula
-from gavel.logic.problem import FormulaRole
-from gavel.logic.problem import Problem
-from gavel.logic.proof import Axiom
-from gavel.logic.proof import Inference
-from gavel.logic.proof import Introduction
-from gavel.logic.proof import LinearProof
-from gavel.logic.proof import ProofStep
+from gavel.logic.solution import LinearProof
+from gavel.logic.solution import ProofStep
+from gavel.logic import status
 
 if SUPPORTS_ANTLR:
-    from .antlr4.flattening import FOFFlatteningVisitor
-    from .antlr4.tptp_v7_0_0_0Lexer import tptp_v7_0_0_0Lexer
-    from .antlr4.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
+    pass
 
 from lark import Lark, Tree
 
@@ -65,7 +55,7 @@ _BINARY_CONNECTIVE_MAP = {
 }
 
 with open(os.path.join(os.path.dirname(__file__), "tptp.lark")) as gf:
-    lark_grammar = Lark(gf.read(), start=["start", "tptp_line"], parser="lalr")
+    lark_grammar = Lark(gf.read(), start=["start"], parser="lalr")
 
 
 def _balance_binary_tree(obj, skip_connective=True, **kwargs):
@@ -119,12 +109,8 @@ class TPTPParser(LogicParser, StringBasedParser):
     def is_valid(self, inp: str) -> bool:
         pass
 
-    def parse(self, structure: Parseable, *args, **kwargs) -> Target:
-        return self.visit(structure)
-
-    def load_single_from_string(self, string: str, *args, **kwargs):
-        r = lark_grammar.parse(string, start="tptp_line")
-        return r
+    def parse(self, structure: str, *args, **kwargs) -> Target:
+        return self.visit(lark_grammar.parse(structure))
 
     def visit(self, obj: Tree, **kwargs):
         if isinstance(obj, str):
@@ -139,23 +125,46 @@ class TPTPParser(LogicParser, StringBasedParser):
             )
         return meth(obj, **kwargs)
 
-    def visit_start(self, obj, **kwargs):
-        assert len(obj.children) == 1
+    def visit_file_source(self, obj):
+        file_name = self.visit(obj.children[0]).replace("'","")
+        return sources.FileSource(file_name, *map(self.visit, obj.children[1:]))
+
+    def visit_inference_source(self, obj):
+        return sources.InferenceSource(*map(self.visit, obj.children))
+
+    def visit_internal_source(self, obj):
+        return sources.InternalSource(*map(self.visit, obj.children))
+
+    def visit_generic_annotation(self, obj):
+        return sources.GenericSource(*map(lambda x:self.visit(x).strip(), obj.children))
+
+    def visit_sources(self, obj, **kwargs):
+        return [self.visit(s) for s in obj.children]
+
+    def visit_annotation(self, obj, **kwargs):
         return self.visit(obj.children[0], **kwargs)
 
+    def visit_start(self, obj, **kwargs):
+        return [self.visit(c) for c in obj.children]
+
     def visit_include(self, obj):
-        assert len(obj.children) == 1
+        if len(obj.children) > 1:
+            filter = [s for s in obj.children[1:]]
         return problem.Import(os.path.join(settings.TPTP_ROOT, str(obj.children[0])))
 
     def visit_tptp_line(self, obj, **kwargs):
         return self.visit(obj.children[0], **kwargs)
 
     def visit_annotated_formula(self, obj, **kwargs):
+        annotations = dict()
+        if len(obj.children) > 4:
+            annotations["annotation"] = self.visit(obj.children[4])
         return problem.AnnotatedFormula(
             logic=obj.children[0],
             name=obj.children[1],
             role=self._ROLE_MAP[obj.children[2]],
             formula=self.visit(obj.children[3], **kwargs),
+            **annotations
         )
 
     def visit_formula(self, obj, **kwargs):
@@ -186,16 +195,19 @@ class TPTPParser(LogicParser, StringBasedParser):
             assert len(obj.children) == 1 and isinstance(obj.children[0], str)
             if is_defined:
                 if c0 == "$true":
-                    return logic.DefinedConstant.VERUM
+                    return logic.DefinedConstant(logic.PredefinedConstant.VERUM)
                 elif c0 == "$false":
-                    return logic.DefinedConstant.FALSUM
+                    return logic.DefinedConstant(logic.PredefinedConstant.FALSUM)
                 else:
-                    return logic.DefinedConstant(c0)
+                    return logic.DefinedConstant(self.visit(c0))
             else:
                 if c0[0] == '"':
                     return logic.DistinctObject(c0)
                 else:
                     return logic.Constant(c0)
+
+    def visit_decimal_number(self, obj, **kwargs):
+        return logic.DefinedConstant(obj)
 
     def visit_quantified_formula(self, obj, **kwargs):
         if len(obj.children) == 1:
@@ -299,109 +311,15 @@ class TPTPParser(LogicParser, StringBasedParser):
         assert len(obj.children) == 1 and isinstance(obj.children[0], str)
         return logic.Variable(obj.children[0])
 
-    def stream_formula_lines(self, lines: Iterable[str], **kwargs):
-        buffer = ""
-        for line in lines:
-            if not line.startswith("%") and not line.startswith("\n"):
-                buffer += line.strip()
-                if buffer.endswith("."):
-                    yield buffer
-                    buffer = ""
-        if buffer:
-            raise Exception('Unprocessed input: """%s"""' % buffer)
+    def stream_items(self, lines: Iterable[str], **kwargs):
+        return ["\n".join(lines)]
 
     def visit_distinct_object(self, obj, **kwargs):
         assert len(obj.children) == 1 and isinstance(obj.children[0], str)
         return logic.DistinctObject(obj.children[0][1:-1])
 
 
-if SUPPORTS_ANTLR:
-
-    class TPTPAntlrParser(LogicParser, StringBasedParser):
-        visitor = FOFFlatteningVisitor()
-
-        def folder_processor(self, path, file_processor, *args, **kwargs):
-            for root, dirs, files in os.walk(path):
-                for file in files:
-                    if not file == "README":
-                        f = os.path.join(root, file)
-                        yield file_processor(f, *args, **kwargs)
-
-        def problemset_processor(self, *args, **kwargs):
-            tptp_root = kwargs.get("tptp_root", settings.TPTP_ROOT)
-            return self.folder_processor(
-                os.path.join(tptp_root, "Problems"), self.problem_processor
-            )
-
-        def axiomsets_processor(self, *args, **kwargs):
-            tptp_root = kwargs.get("tptp_root", settings.TPTP_ROOT)
-            return self.folder_processor(
-                os.path.join(tptp_root, "Axioms"), self.axiomset_processor
-            )
-
-        def axiomset_processor(self, path, *args, **kwargs):
-            for item in self.load_expressions_from_file(path):
-                yield self.formula_processor(item, *args, **kwargs)
-
-        def formula_processor(self, formula, *args, orig=None, **kwargs):
-            return formula
-
-        def stream_formula_lines(self, lines: Iterable[str], **kwargs):
-            buffer = ""
-            for line in lines:
-                if not line.startswith("%") and not line.startswith("\n"):
-                    buffer += line.strip()
-                    if buffer.endswith("."):
-                        yield buffer
-                        buffer = ""
-            if buffer:
-                raise Exception('Unprocessed input: """%s"""' % buffer)
-
-        def load_single_from_string(self, string: str, *args, **kwargs):
-            s = tptp_v7_0_0_0Parser(
-                CommonTokenStream(tptp_v7_0_0_0Lexer(InputStream(string)))
-            )
-            return s.tptp_input()
-
-        def load_expressions_from_file(
-            self, path, *args, **kwargs
-        ) -> Iterable[LogicElement]:
-            with open(path) as infile:
-                lines = infile.readlines()
-                for line in self.load_many(lines):
-                    yield self.parse(line)
-
-        def parse(self, tree, *args, **kwargs):
-            return self.visitor.visit(tree)
-
-        def problem_processor(self, path, *args, load_imports=False, **kwargs):
-            axioms = []
-            imports = []
-            conjectures = []
-            for raw_line in self.load_expressions_from_file(path, *args, **kwargs):
-                line = self.formula_processor(raw_line)
-                if isinstance(line, logic.Import):
-                    imports.append(line)
-                elif isinstance(line, AnnotatedFormula):
-                    if line.role in (
-                        FormulaRole.CONJECTURE,
-                        FormulaRole.NEGATED_CONJECTURE,
-                    ):
-                        conjectures.append(line)
-                    else:
-                        axioms.append(line)
-
-            for im in imports:
-                for imported_axiom in self.load_expressions_from_file(
-                    os.path.join(settings.TPTP_ROOT, im.path), *args, **kwargs
-                ):
-                    axioms.append(imported_axiom)
-
-            for conjecture in conjectures:
-                yield Problem(premises=axioms, imports=imports, conjecture=conjecture)
-
-
-class TPTPProblemParser(ProblemParser):
+class TPTPProblemParser(ProblemParser, StringBasedParser):
     logic_parser_cls = TPTPParser
 
 
@@ -412,30 +330,14 @@ class SimpleTPTPProofParser(ProofParser):
     def parse(self, structure: str, *args, **kwargs):
         return LinearProof(
             steps=[
-                self._create_proof_step(self._tptp_parser.parse(s))
-                for s in self._tptp_parser.load_many(structure.split("\n"))
+                self._create_proof_step(s)
+                for s in self._tptp_parser.parse(structure)
             ]
         )
 
     def _create_proof_step(self, e: LogicElement) -> ProofStep:
         if isinstance(e, AnnotatedFormula):
-            if e.role == FormulaRole.AXIOM:
-                return Axiom(formula=e.formula, name=e.name)
-            elif e.role == FormulaRole.PLAIN:
-                if isinstance(e.annotation, InferenceSource):
-                    return Inference(
-                        formula=e.formula, name=e.name, antecedents=e.annotation.parents
-                    )
-                elif isinstance(e.annotation, InternalSource):
-                    return Introduction(
-                        formula=e.formula,
-                        name=e.name,
-                        introduction_type=e.annotation.intro_type,
-                    )
-                else:
-                    return ProofStep(formula=e.formula, name=e.name)
-            else:
-                return ProofStep(formula=e.formula, name=e.name)
+            return e
         else:
             raise ParserException(e)
 
@@ -447,24 +349,54 @@ def get_all_files(path):
                 yield os.path.join(root, file)
 
 
-def all_problems(processor):
+def all_problems(processor: StringBasedParser):
     for f in get_all_files(os.path.join(settings.TPTP_ROOT, "Problems")):
-        print(f)
-        for problem in processor.problem_processor(f):
-            print("done")
+        with open(f, "r") as infile:
+            for problem in processor.parse(infile.readlines()):
+                yield f, problem
 
 
-def all_solution(path, system=""):
+def _extract_pre(strings):
+    capture = False
+    for line in strings:
+        if capture:
+            if "</pre>" in line:
+                capture = False
+            else:
+                yield line
+        if "<pre>" in line:
+            capture = True
+
+
+def all_available_problem_names(path, system=""):
     path = os.path.join(path, "Problems")
     files = get_all_files(path)
     for file in files:
-        domain, problem = os.path.normpath(file).split(os.sep)[-2:]
-        response = requests.get(
-            "http://www.tptp.org/cgi-bin/SeeTPTP?Category=Solutions"
-            "&Domain={domain}"
-            "&File={problem}"
-            "&System=Vampire---4.3.THM-Ref.s".format(
-                domain=domain, problem=problem[:-2]
-            )
+        yield os.path.normpath(file).split(os.sep)[-2:]
+
+
+def _load_solution(domain, name):
+    response = requests.get(
+        "http://www.tptp.org/cgi-bin/SeeTPTP?Category=Solutions"
+        "&Domain={domain}"
+        "&File={problem}"
+        "&System=E---2.5".format(
+            domain=domain, problem=name
         )
-        print(response)
+    )
+    raw_string = response.content.decode("utf-8")
+    return "\n".join(_extract_pre(raw_string.split("\n")))
+
+
+def parse_solution(prover_output):
+    if prover_output:
+        soup = BeautifulSoup(prover_output)  # "".join(map(h.handle, prover_output.split("\n")))
+        szs_status = re.search(r"SZS status (\w+)", soup.get_text())
+        if szs_status:
+            szs_status = status.get_status(szs_status.groups()[0])
+        else:
+            szs_status = status.StatusUnknown
+        if issubclass(szs_status, status.StatusSuccess):
+            parser = SimpleTPTPProofParser()
+            solution = parser.parse(soup.get_text())
+            return problem, solution

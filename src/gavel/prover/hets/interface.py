@@ -11,7 +11,7 @@ from gavel.dialects.tptp.dialect import TPTPProblemDialect
 from gavel.logic.logic import LogicElement
 from gavel.logic.problem import AnnotatedFormula
 from gavel.logic.problem import Problem
-from gavel.logic.proof import Proof
+from gavel.logic.solution import Proof
 from gavel.prover.base.interface import BaseProverInterface
 from gavel.config import settings
 

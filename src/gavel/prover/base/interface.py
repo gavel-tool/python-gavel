@@ -4,7 +4,7 @@ from gavel.dialects.base.dialect import Compiler
 from gavel.dialects.base.dialect import Dialect, IdentityDialect
 from gavel.dialects.base.dialect import Problem
 from gavel.logic.logic import LogicElement
-from gavel.logic.proof import Proof
+from gavel.logic.solution import Proof
 
 
 class BaseProverInterface:

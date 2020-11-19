@@ -17,12 +17,13 @@ Why does this file exist, and why not put this in __main__?
 
 import click
 import os
+import pkg_resources
 
 from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
 from gavel.prover.hets.interface import HetsProve, HetsSession, HetsEngine
 from gavel.prover.registry import get_prover
 from gavel.selection.selector import Sine
-
+from gavel import plugins
 
 @click.group()
 def base():
@@ -59,12 +60,22 @@ def prove(p, f, s, plot, hets):
             g.render()
 
 
+def add_source(source):
+    global cli
+    cli.add_source(source)
+
+
 base.add_command(prove)
 
 cli = click.CommandCollection()
-cli.add_source(base)
 
 main = cli
+
+
+cli.add_source(base)
+for entry_point in pkg_resources.iter_entry_points("cli"):
+    ep = entry_point.load()
+    cli.add_source(ep)
 
 if __name__ == "__main__":
     cli()

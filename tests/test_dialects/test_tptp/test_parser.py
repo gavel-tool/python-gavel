@@ -1,14 +1,10 @@
 from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser, SimpleTPTPProofParser
-from gavel.dialects.tptp.compiler import TPTPCompiler
 from gavel.logic import logic
 from gavel.logic import problem
-from gavel.logic import proof
+from gavel.logic import solution
+from gavel.logic import sources
+
 from ..test_base.test_parser import TestLogicParser, check_wrapper, TestProblemParser, TestProofParser
-from gavel.config.settings import TPTP_ROOT
-import os
-import unittest
-import multiprocessing as mp
-from unittest import skip
 
 
 class TestTPTPParser(TestLogicParser):
@@ -31,11 +27,11 @@ class TestTPTPParser(TestLogicParser):
                         predicate="aElement0", arguments=[logic.Variable("W0")]
                     ),
                     operator=logic.BinaryConnective.IMPLICATION,
-                    right=logic.DefinedConstant.VERUM,
+                    right=logic.DefinedConstant(logic.PredefinedConstant.VERUM),
                 ),
             ),
         )
-        self.check_parser(inp, result)
+        self.check_parser(inp, [result])
 
     def test_functor(self):
         inp = """cnf(and_definition1,axiom,( and(X,n0) = n0 ))."""
@@ -51,7 +47,7 @@ class TestTPTPParser(TestLogicParser):
                 right=logic.Constant("n0"),
             ),
         )
-        self.check_parser(inp, result)
+        self.check_parser(inp, [result])
 
     @check_wrapper()
     def test_single_quote(self):
@@ -65,7 +61,7 @@ class TestTPTPParser(TestLogicParser):
     def test_double_quote(self):
         inp = 'p("This is arbitrary text")'
         result = logic.PredicateExpression(
-            "p", [logic.DistinctObject('"This is arbitrary text"')]
+            "p", [logic.DistinctObject('This is arbitrary text')]
         )
         return inp, result
 
@@ -126,7 +122,7 @@ fof(c, conjecture, $false)."""
                                 predicate="q", arguments=[logic.Constant("a")]
                             ),
                             operator=logic.BinaryConnective.IMPLICATION,
-                            right=logic.DefinedConstant.FALSUM,
+                            right=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                         ),
                     ),
                     problem.AnnotatedFormula(
@@ -134,7 +130,7 @@ fof(c, conjecture, $false)."""
                         name="a3",
                         role=problem.FormulaRole.AXIOM,
                         formula=logic.BinaryFormula(
-                            left=logic.DefinedConstant.VERUM,
+                            left=logic.DefinedConstant(logic.PredefinedConstant.VERUM),
                             operator=logic.BinaryConnective.IMPLICATION,
                             right=logic.PredicateExpression(
                                 predicate="p", arguments=[logic.Constant("a")]
@@ -146,7 +142,7 @@ fof(c, conjecture, $false)."""
                     logic="fof",
                     name="c",
                     role=problem.FormulaRole.CONJECTURE,
-                    formula=logic.DefinedConstant.FALSUM,
+                    formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                 ),
             )
         ]
@@ -184,7 +180,7 @@ fof(c, conjecture, $false)."""
                                 ),
                             ),
                             operator=logic.BinaryConnective.IMPLICATION,
-                            right=logic.DefinedConstant.FALSUM,
+                            right=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                         ),
                     ),
                     problem.AnnotatedFormula(
@@ -196,7 +192,7 @@ fof(c, conjecture, $false)."""
                                 predicate="p", arguments=[logic.Constant("e")]
                             ),
                             operator=logic.BinaryConnective.IMPLICATION,
-                            right=logic.DefinedConstant.FALSUM,
+                            right=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                         ),
                     ),
                     problem.AnnotatedFormula(
@@ -222,7 +218,7 @@ fof(c, conjecture, $false)."""
                                 predicate="p", arguments=[logic.Constant("c")]
                             ),
                             operator=logic.BinaryConnective.IMPLICATION,
-                            right=logic.DefinedConstant.FALSUM,
+                            right=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                         ),
                     ),
                     problem.AnnotatedFormula(
@@ -244,7 +240,7 @@ fof(c, conjecture, $false)."""
                     logic="fof",
                     name="c",
                     role=problem.FormulaRole.CONJECTURE,
-                    formula=logic.DefinedConstant.FALSUM,
+                    formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                 ),
             )
         ]
@@ -282,7 +278,7 @@ fof(c, conjecture, $false)."""
                                 ),
                             ),
                             operator=logic.BinaryConnective.IMPLICATION,
-                            right=logic.DefinedConstant.FALSUM,
+                            right=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                         ),
                     ),
                     problem.AnnotatedFormula(
@@ -304,7 +300,7 @@ fof(c, conjecture, $false)."""
                         name="a3",
                         role=problem.FormulaRole.AXIOM,
                         formula=logic.BinaryFormula(
-                            left=logic.DefinedConstant.VERUM,
+                            left=logic.DefinedConstant(logic.PredefinedConstant.VERUM),
                             operator=logic.BinaryConnective.IMPLICATION,
                             right=logic.PredicateExpression(
                                 predicate="p", arguments=[logic.Constant("f")]
@@ -320,7 +316,7 @@ fof(c, conjecture, $false)."""
                                 predicate="p", arguments=[logic.Constant("a")]
                             ),
                             operator=logic.BinaryConnective.IMPLICATION,
-                            right=logic.DefinedConstant.FALSUM,
+                            right=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                         ),
                     ),
                     problem.AnnotatedFormula(
@@ -342,7 +338,7 @@ fof(c, conjecture, $false)."""
                         name="a6",
                         role=problem.FormulaRole.AXIOM,
                         formula=logic.BinaryFormula(
-                            left=logic.DefinedConstant.VERUM,
+                            left=logic.DefinedConstant(logic.PredefinedConstant.VERUM),
                             operator=logic.BinaryConnective.IMPLICATION,
                             right=logic.PredicateExpression(
                                 predicate="p", arguments=[logic.Constant("c")]
@@ -354,12 +350,11 @@ fof(c, conjecture, $false)."""
                     logic="fof",
                     name="c",
                     role=problem.FormulaRole.CONJECTURE,
-                    formula=logic.DefinedConstant.FALSUM,
+                    formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                 ),
             )
         ]
         self.check_parser(inp, result)
-
 
     def test_problems_4(self):
         inp = """fof(a1, axiom, (p(e) & p(b) & p(d)) => $false).
@@ -393,7 +388,7 @@ fof(c, conjecture, $false)."""
                                 ),
                             ),
                             operator=logic.BinaryConnective.IMPLICATION,
-                            right=logic.DefinedConstant.FALSUM,
+                            right=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                         ),
                     ),
                     problem.AnnotatedFormula(
@@ -415,7 +410,7 @@ fof(c, conjecture, $false)."""
                         name="a3",
                         role=problem.FormulaRole.AXIOM,
                         formula=logic.BinaryFormula(
-                            left=logic.DefinedConstant.VERUM,
+                            left=logic.DefinedConstant(logic.PredefinedConstant.VERUM),
                             operator=logic.BinaryConnective.IMPLICATION,
                             right=logic.PredicateExpression(
                                 predicate="p", arguments=[logic.Constant("b")]
@@ -431,7 +426,7 @@ fof(c, conjecture, $false)."""
                                 predicate="p", arguments=[logic.Constant("a")]
                             ),
                             operator=logic.BinaryConnective.IMPLICATION,
-                            right=logic.DefinedConstant.FALSUM,
+                            right=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                         ),
                     ),
                     problem.AnnotatedFormula(
@@ -453,7 +448,7 @@ fof(c, conjecture, $false)."""
                         name="a6",
                         role=problem.FormulaRole.AXIOM,
                         formula=logic.BinaryFormula(
-                            left=logic.DefinedConstant.VERUM,
+                            left=logic.DefinedConstant(logic.PredefinedConstant.VERUM),
                             operator=logic.BinaryConnective.IMPLICATION,
                             right=logic.PredicateExpression(
                                 predicate="p", arguments=[logic.Constant("c")]
@@ -465,7 +460,7 @@ fof(c, conjecture, $false)."""
                     logic="fof",
                     name="c",
                     role=problem.FormulaRole.CONJECTURE,
-                    formula=logic.DefinedConstant.FALSUM,
+                    formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                 ),
             )
         ]
@@ -504,7 +499,7 @@ fof(c, conjecture, $false)."""
                                 ),
                             ),
                             operator=logic.BinaryConnective.IMPLICATION,
-                            right=logic.DefinedConstant.FALSUM,
+                            right=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                         ),
                     ),
                     problem.AnnotatedFormula(
@@ -526,7 +521,7 @@ fof(c, conjecture, $false)."""
                         name="a3",
                         role=problem.FormulaRole.AXIOM,
                         formula=logic.BinaryFormula(
-                            left=logic.DefinedConstant.VERUM,
+                            left=logic.DefinedConstant(logic.PredefinedConstant.VERUM),
                             operator=logic.BinaryConnective.IMPLICATION,
                             right=logic.PredicateExpression(
                                 predicate="p", arguments=[logic.Constant("f")]
@@ -542,7 +537,7 @@ fof(c, conjecture, $false)."""
                                 predicate="p", arguments=[logic.Constant("a")]
                             ),
                             operator=logic.BinaryConnective.IMPLICATION,
-                            right=logic.DefinedConstant.FALSUM,
+                            right=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                         ),
                     ),
                     problem.AnnotatedFormula(
@@ -564,7 +559,7 @@ fof(c, conjecture, $false)."""
                         name="a6",
                         role=problem.FormulaRole.AXIOM,
                         formula=logic.BinaryFormula(
-                            left=logic.DefinedConstant.VERUM,
+                            left=logic.DefinedConstant(logic.PredefinedConstant.VERUM),
                             operator=logic.BinaryConnective.IMPLICATION,
                             right=logic.PredicateExpression(
                                 predicate="p", arguments=[logic.Constant("c")]
@@ -576,7 +571,7 @@ fof(c, conjecture, $false)."""
                         name="a7",
                         role=problem.FormulaRole.AXIOM,
                         formula=logic.BinaryFormula(
-                            left=logic.DefinedConstant.VERUM,
+                            left=logic.DefinedConstant(logic.PredefinedConstant.VERUM),
                             operator=logic.BinaryConnective.IMPLICATION,
                             right=logic.BinaryFormula(
                                 left=logic.Constant("f"),
@@ -590,7 +585,7 @@ fof(c, conjecture, $false)."""
                     logic="fof",
                     name="c",
                     role=problem.FormulaRole.CONJECTURE,
-                    formula=logic.DefinedConstant.FALSUM,
+                    formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                 ),
             )
         ]
@@ -611,7 +606,7 @@ fof(c, conjecture, $false)."""
                         name="a1",
                         role=problem.FormulaRole.AXIOM,
                         formula=logic.BinaryFormula(
-                            left=logic.DefinedConstant.VERUM,
+                            left=logic.DefinedConstant(logic.PredefinedConstant.VERUM),
                             operator=logic.BinaryConnective.IMPLICATION,
                             right=logic.BinaryFormula(
                                 left=logic.Constant("a"),
@@ -625,7 +620,7 @@ fof(c, conjecture, $false)."""
                         name="a2",
                         role=problem.FormulaRole.AXIOM,
                         formula=logic.BinaryFormula(
-                            left=logic.DefinedConstant.VERUM,
+                            left=logic.DefinedConstant(logic.PredefinedConstant.VERUM),
                             operator=logic.BinaryConnective.IMPLICATION,
                             right=logic.PredicateExpression(
                                 predicate="p",
@@ -634,8 +629,8 @@ fof(c, conjecture, $false)."""
                                     arguments=[logic.FunctorExpression(
                                         functor="f",
                                         arguments=[logic.Constant("a")]
-                                    ),logic.Constant("b")]
-                                ),]
+                                    ), logic.Constant("b")]
+                                ), ]
                             ),
                         ),
                     ),
@@ -644,7 +639,7 @@ fof(c, conjecture, $false)."""
                         name="a3",
                         role=problem.FormulaRole.AXIOM,
                         formula=logic.BinaryFormula(
-                            left=logic.DefinedConstant.VERUM,
+                            left=logic.DefinedConstant(logic.PredefinedConstant.VERUM),
                             operator=logic.BinaryConnective.IMPLICATION,
                             right=logic.BinaryFormula(
                                 left=logic.FunctorExpression(
@@ -661,7 +656,7 @@ fof(c, conjecture, $false)."""
                         name="a4",
                         role=problem.FormulaRole.AXIOM,
                         formula=logic.BinaryFormula(
-                            left=logic.DefinedConstant.VERUM,
+                            left=logic.DefinedConstant(logic.PredefinedConstant.VERUM),
                             operator=logic.BinaryConnective.IMPLICATION,
                             right=logic.BinaryFormula(
                                 left=logic.FunctorExpression(
@@ -682,7 +677,7 @@ fof(c, conjecture, $false)."""
                                 predicate="p", arguments=[logic.Constant("c")]
                             ),
                             operator=logic.BinaryConnective.IMPLICATION,
-                            right=logic.DefinedConstant.FALSUM,
+                            right=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                         ),
                     ),
                 ],
@@ -690,7 +685,7 @@ fof(c, conjecture, $false)."""
                     logic="fof",
                     name="c",
                     role=problem.FormulaRole.CONJECTURE,
-                    formula=logic.DefinedConstant.FALSUM,
+                    formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                 ),
             )
         ]
@@ -699,6 +694,7 @@ fof(c, conjecture, $false)."""
 
 class TestTPTPProofParser(TestProofParser):
     _parser_cls = SimpleTPTPProofParser
+
     def test_proof(self):
         inp = """
         cnf(a1, axiom,
@@ -758,31 +754,83 @@ class TestTPTPProofParser(TestProofParser):
                       [inference(rw, [status(thm)], [c_0_17, c_0_18])])).
         cnf(h7, hypothesis, ($false), inference(sr, [status(thm)], [
             inference(spm, [status(thm)], [c_0_9, c_0_19]), c_0_20]), ['proof'])."""
-        result = proof.LinearProof(steps=[
-            proof.Axiom(name="a1", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="a2", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="a3", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="a4", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="nc1", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="a5", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="a6", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="a7", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="h1", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="a8", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="h2", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="a9", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="nc2", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="a10", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="h3", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="a11", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="h4", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="nc3", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="h5", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="h6", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="nc4", formula=logic.DefinedConstant.FALSUM),
-            proof.Axiom(name="h7", formula=logic.DefinedConstant.FALSUM),
+        result = solution.LinearProof(steps=[
+            problem.AnnotatedFormula(name="a1", logic="cnf", role=problem.FormulaRole.AXIOM,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.FileSource('/tmp/./_prove_a_equals_aUa405201937553918865.tptp',
+                                                                   info="member_of_set2_is_member_of_union")),
+            problem.AnnotatedFormula(name="a2", logic="cnf", role=problem.FormulaRole.AXIOM,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.FileSource('/tmp/./_prove_a_equals_aUa405201937553918865.tptp',
+                                                                   info="a_union_a_is_aUa")),
+            problem.AnnotatedFormula(name="a3", logic="cnf", role=problem.FormulaRole.AXIOM,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.FileSource('/tmp/./_prove_a_equals_aUa405201937553918865.tptp',
+                                                                   info="subsets_axiom2")),
+            problem.AnnotatedFormula(name="a4", logic="cnf", role=problem.FormulaRole.AXIOM,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.FileSource('/tmp/./_prove_a_equals_aUa405201937553918865.tptp',
+                                                                   info="member_of_union_is_member_of_one_set")),
+            problem.AnnotatedFormula(name="nc1", logic="cnf", role=problem.FormulaRole.NEGATED_CONJECTURE,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.FileSource('/tmp/./_prove_a_equals_aUa405201937553918865.tptp',
+                                                                   info="prove_a_equals_aUa")),
+            problem.AnnotatedFormula(name="a5", logic="cnf", role=problem.FormulaRole.AXIOM,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.FileSource('/tmp/./_prove_a_equals_aUa405201937553918865.tptp',
+                                                                   info="subsets_are_set_equal_sets")),
+            problem.AnnotatedFormula(name="a6", logic="cnf", role=problem.FormulaRole.AXIOM,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.FileSource('/tmp/./_prove_a_equals_aUa405201937553918865.tptp',
+                                                                   info="subsets_axiom1")),
+            problem.AnnotatedFormula(name="a7", logic="cnf", role=problem.FormulaRole.AXIOM,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('member_of_set2_is_member_of_union')),
+            problem.AnnotatedFormula(name="h1", logic="cnf", role=problem.FormulaRole.HYPOTHESIS,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('a_union_a_is_aUa')),
+            problem.AnnotatedFormula(name="a8", logic="cnf", role=problem.FormulaRole.AXIOM,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('subsets_axiom2')),
+            problem.AnnotatedFormula(name="h2", logic="cnf", role=problem.FormulaRole.HYPOTHESIS,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('inference(spm, [status(thm)], [c_0_7, c_0_8])')),
+            problem.AnnotatedFormula(name="a9", logic="cnf", role=problem.FormulaRole.AXIOM,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('member_of_union_is_member_of_one_set')),
+            problem.AnnotatedFormula(name="nc2", logic="cnf", role=problem.FormulaRole.NEGATED_CONJECTURE,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('prove_a_equals_aUa')),
+            problem.AnnotatedFormula(name="a10", logic="cnf", role=problem.FormulaRole.AXIOM,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('subsets_are_set_equal_sets')),
+            problem.AnnotatedFormula(name="h3", logic="cnf", role=problem.FormulaRole.HYPOTHESIS,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('inference(spm, [status(thm)], [c_0_9, c_0_10])')),
+            problem.AnnotatedFormula(name="a11", logic="cnf", role=problem.FormulaRole.AXIOM,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('subsets_axiom1')),
+            problem.AnnotatedFormula(name="h4", logic="cnf", role=problem.FormulaRole.HYPOTHESIS,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('inference(spm, [status(thm)], [c_0_11, c_0_8])')),
+            problem.AnnotatedFormula(name="nc3", logic="cnf", role=problem.FormulaRole.NEGATED_CONJECTURE,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('inference(spm, [status(thm)], [c_0_12, c_0_13])')),
+            problem.AnnotatedFormula(name="h5", logic="cnf", role=problem.FormulaRole.HYPOTHESIS,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('inference(spm, [status(thm)], [c_0_14, c_0_15])')),
+            problem.AnnotatedFormula(name="h6", logic="cnf", role=problem.FormulaRole.HYPOTHESIS,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('inference(spm, [status(thm)], [c_0_16, c_0_15])')),
+            problem.AnnotatedFormula(name="nc4", logic="cnf", role=problem.FormulaRole.NEGATED_CONJECTURE,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('inference(cn, [status(thm)],\n                      [inference(rw, [status(thm)], [c_0_17, c_0_18])])')),
+            problem.AnnotatedFormula(name="h7", logic="cnf", role=problem.FormulaRole.HYPOTHESIS,
+                                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
+                                     annotation=sources.GenericSource('inference(sr, [status(thm)], [\n            inference(spm, [status(thm)], [c_0_9, c_0_19]), c_0_20]), [\'proof\']')),
         ])
         self.check_parser(inp, result)
+
 
 """
 class TestTHFParser(TestLogicParser):

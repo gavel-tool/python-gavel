@@ -3,7 +3,7 @@ from typing import Iterable
 from gavel.dialects.base.compiler import Compiler
 from gavel.dialects.base.parser import Parser
 from gavel.logic.problem import Problem
-from gavel.logic.proof import Proof
+from gavel.logic.solution import Proof
 
 
 class Dialect:

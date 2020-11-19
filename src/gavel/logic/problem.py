@@ -2,6 +2,7 @@ from enum import Enum
 from typing import Iterable
 
 from gavel.logic.logic import LogicElement
+from gavel.logic.solution import ProofStep
 
 
 class ProblemElement:
@@ -37,7 +38,7 @@ class FormulaRole(Enum):
         return self.name
 
 
-class AnnotatedFormula(Sentence):
+class AnnotatedFormula(Sentence, ProofStep):
 
     __visit_name__ = "annotated_formula"
 
@@ -66,9 +67,9 @@ class AnnotatedFormula(Sentence):
             "{logic}({name},{role},{formula})".format(
                 logic=self.logic, name=self.name, role=self.role, formula=self.formula
             )
-            + ("# " + str(self.annotation))
+            + (("# " + str(self.annotation))
             if self.annotation
-            else ""
+            else "")
         )
 
     def __eq__(self, other):
@@ -81,8 +82,9 @@ class Import(ProblemElement):
 
     __visit_name__ = "import"
 
-    def __init__(self, path):
+    def __init__(self, path, filter=None):
         self.path = path.replace("'", "")
+        self.filter = filter
 
 
 class Problem:
@@ -105,3 +107,8 @@ class Problem:
         self.premises = premises
         self.conjecture = conjecture
         self.imports = imports or []
+
+
+class Annotation():
+    def __init__(self):
+        pass

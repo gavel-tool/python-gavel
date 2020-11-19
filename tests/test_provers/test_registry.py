@@ -2,7 +2,7 @@ from unittest import TestCase
 from gavel.logic import logic
 from gavel.prover.registry import register_prover, get_prover
 from gavel.prover.base.interface import BaseProverInterface
-from gavel.logic.proof import Proof, ProofStep
+from gavel.logic.solution import Proof, ProofStep
 
 
 def simple_prover(problem):

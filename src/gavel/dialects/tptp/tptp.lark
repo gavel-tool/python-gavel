@@ -1,5 +1,6 @@
 %import common.WS
 %import common.SIGNED_NUMBER
+%import common.NUMBER
 %ignore WS
 
 DOLLAR_WORD: "$" WORD
@@ -10,7 +11,12 @@ LOWER: "a" .. "z"
 
 variable:  UPPER_WORD
 constant: LOWER_WORD
-?functor: LOWER_WORD | DOLLAR_WORD | SIGNED_NUMBER | single_quoted | distinct_object
+DECIMAL_NUMBER: SIGNED_NUMBER ("/" NUMBER)?
+
+distinct_object: /"([^"]|((?<=\\)"))+"/
+?single_quoted:  /'([^']|((?<=\\)'))+'/
+?any_word: single_quoted | WORD | DOLLAR_WORD
+?functor: LOWER_WORD | DOLLAR_WORD | single_quoted
 
 
 OBJECT_BINARY_OPERATOR: "=" | "!="
@@ -20,45 +26,51 @@ LOGIC_BINARY_OPERATOR: "=>" | "<=>" | "<=" | "<~>" | "~&" | "~|"
 UNARY_CONNECTIVE: "~"
 QUANTIFIER: "!" | "?"
 
-formula: disjunction
+?formula: disjunction
 
-disjunction: conjunction ("|" conjunction)*
-conjunction: logic_binary_formula ("&" logic_binary_formula)*
-logic_binary_formula: type_binary_formula (LOGIC_BINARY_OPERATOR type_binary_formula)*
-type_binary_formula: unary_formula (TYPE_BINARY_OPERATOR unary_formula)*
-unary_formula: (UNARY_CONNECTIVE unary_formula) | transition_formula
+?disjunction: conjunction ("|" conjunction)*
+?conjunction: logic_binary_formula ("&" logic_binary_formula)*
+?logic_binary_formula: type_binary_formula (LOGIC_BINARY_OPERATOR type_binary_formula)*
+?type_binary_formula: unary_formula (TYPE_BINARY_OPERATOR unary_formula)*
+?unary_formula: (UNARY_CONNECTIVE unary_formula) | transition_formula
 ?transition_formula: object_binary_formula | "(" formula ")" | quantified_formula
 quantified_formula: QUANTIFIER "[" (variable ("," variable)*) "]" ":" unary_formula
-object_binary_formula: term (OBJECT_BINARY_OPERATOR term)*
+?object_binary_formula: term (OBJECT_BINARY_OPERATOR term)*
 
-?term: functor_term | bottom
+?term: functor_term | bottom | DECIMAL_NUMBER | distinct_object
 functor_term: functor ["(" term ("," term)* ")"]
-?bottom: variable | "(" term ")"
-
-
-
-?distinct_object: /"([^"]|\\")*(?<!\\)"/
-?single_quoted: /'([^']|\\')*(?<!\\)'/
+?bottom: variable // | "(" term ")"
 
 LOGIC: "thf" | "ttf" | "cnf" | "fof"
 
-annotation: /([^)]|\)(?!\.))+/
+inference_rule: WORD "(" WORD ("," WORD )* ")"
 
-inference : "inference(" WORD "," "[" WORD ("," WORD )*  "]" "," "[" [ inference_parent ("," inference_parent)* ]"]" ")"
-inference_parent: annotation ("," annotation)*
+inference_item: WORD | inference_rule
 
-internal_source : "introduced(" intro_type [ "," WORD ] |
 intro_type: "definition" | "axiom_of_choice" | "tautology" | "assumption"
 
-external_source: "file(" single_quoted [ "," WORD ] ")"
+//inference_source: "inference(" WORD "," "[" inference_item ("," inference_item )*  "]"  "," "[" source "]" ")"
+//internal_source: "introduced(" WORD ( "," sources )? ")"
+//any_word ( "(" source ("," source )* ")" )? | ((any_word ":")?)
+//sources: "["  source ("," source)* "]"
+// ?source: file_source // | inference_source | internal_source |  sources | /(?!(inference|introduced|file))\w+/
+
+file_source: "file(" single_quoted [ "," WORD ] ")"
+generic_annotation: /(?!\s*file)(([^)]|\)(?!\.))+)/sx
+?source: file_source
+
+annotation: ( source ["," generic_annotation ] | generic_annotation )
 
 FORMULA_ROLE: "axiom" | "hypothesis" | "definition" | "assumption" | "lemma" | "theorem" | "corollary" | "conjecture" | "negated_conjecture" | "plain" | "type" | "fi_domain" | "fi_functors" | "fi_predicates" | "unknown"
 
 annotated_formula: LOGIC "(" ( WORD | single_quoted ) "," FORMULA_ROLE "," formula [ "," annotation ] ")."
-include: "include(" "'" /[^']+/ "'" ")."
+include: "include(" "'" /[^']+/ "'" ( "," "[" WORD ("," WORD)* "]" )? ")."
+
+%ignore COMMENT
+%ignore BLOCK_COMMENT
 
 COMMENT: /%[^\n]*\n/
-
-?tptp_line: annotated_formula | include | COMMENT
+BLOCK_COMMENT: /\/\*([^*]|\*(?!\/))*\*\//m
+?tptp_line: annotated_formula | include | COMMENT | BLOCK_COMMENT
 
 start: tptp_line*

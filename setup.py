@@ -112,6 +112,8 @@ setup(
         "graphviz",
         "pytest",
         "requests",
+        "lxml",
+        "beautifulsoup4"
     ],
     extras_require={
         # eg:
@@ -119,7 +121,7 @@ setup(
         #   ':python_version=="2.6"': ['argparse'],
         "dev": ["black", "isort", "pre-commit", "sphinx-click"]
     },
-    entry_points={"console_scripts": ["gavel = gavel.cli:main"]},
+    entry_points={},
     cmdclass={"build_ext": optional_build_ext},
     ext_modules=[
         Extension(

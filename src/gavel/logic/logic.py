@@ -350,18 +350,28 @@ class DistinctObject(LogicElement):
         return {self.symbol}
 
 
-class DefinedConstant(Enum):
+class DefinedConstant(LogicElement):
 
     __visit_name__ = "defined_constant"
+
+    def __init__(self, value):
+        self.value = value
+
+
+class PredefinedConstant(Enum):
+
+    __visit_name__ = "predefined_constant"
 
     VERUM = 0
     FALSUM = 1
 
     def __str__(self):
-        if self == DefinedConstant.VERUM:
+        if self == PredefinedConstant.VERUM:
             return "$true"
-        elif self == DefinedConstant.FALSUM:
+        elif self == PredefinedConstant.FALSUM:
             return "$false"
+        else:
+            return self.value
 
 
 class Let(LogicElement):

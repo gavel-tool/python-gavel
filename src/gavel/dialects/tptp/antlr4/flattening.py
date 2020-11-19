@@ -1,5 +1,5 @@
 # Generated from tptp_v7_0_0_0.g4 by ANTLR 4.5.1
-import gavel.dialects.tptp.sources as sources
+import gavel.logic.sources as sources
 from gavel.dialects.tptp.antlr4.tptp_v7_0_0_0Parser import tptp_v7_0_0_0Parser
 from gavel.dialects.tptp.antlr4.tptp_v7_0_0_0Visitor import tptp_v7_0_0_0Visitor
 from gavel.logic import logic

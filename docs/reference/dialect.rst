@@ -31,7 +31,7 @@ lines from a string use the `parse_single_from_string` which returns a generator
 
     string = "cnf(name, axiom, a | b).cnf(name, axiom, d | e)."
 
-    for line in parser.stream_formula_lines(string):
+    for line in parser.stream_items(string):
         structure = parser.parse_single_from_string(line)
         print(structure.formula)
 
