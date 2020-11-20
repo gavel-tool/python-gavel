@@ -5,24 +5,20 @@ env:
   global:
     - LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
     - SEGFAULT_SIGNALS=all
-    - OEP_DB_USER="postgres" GAVEL_DB_PASSWORD="postgres" GAVEL_DB_NAME="postgres" TPTP_ROOT="$HOME/TPTP"
+    - TPTP_ROOT="$HOME/TPTP"
   matrix:
     - TOXENV=check
 matrix:
   include:
-    - python: '3.5'
+    - python: '3.8'
       env:
-        - TOXENV=py35,report,codecov
-    - python: '3.6'
+        - TOXENV=py3
+    -   python: '3.9'
       env:
-        - TOXENV=py36,report,codecov
-    - python: '3.7'
-      dist: xenial
-      env:
-        - TOXENV=py37,report,codecov
+        - TOXENV=py3
     - python: 'pypy3'
       env:
-        - TOXENV=pypy3,report,codecov
+        - TOXENV=pypy3
 before_install:
   - python --version
   - uname -a
