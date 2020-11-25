@@ -96,6 +96,8 @@ class Problem:
         The conjecture that should be proven`
     """
 
+    __visit_name__ = "problem"
+
     def __init__(
         self, premises: Iterable[Sentence], conjecture: Sentence, imports=None
     ):
