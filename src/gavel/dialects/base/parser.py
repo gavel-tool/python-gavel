@@ -14,7 +14,7 @@ Parseable = TypeVar("Parseable")
 Target = TypeVar("Target")
 
 
-class Parser(Generic[Parseable]):
+class Parser(Generic[Parseable, Target]):
     def parse(self, structure: Parseable, *args, **kwargs) -> Iterable[Target]:
         """
         Transforms the input structure into metadata as used by the

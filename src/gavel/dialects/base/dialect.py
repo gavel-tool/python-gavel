@@ -7,6 +7,7 @@ from gavel.logic.solution import Proof
 
 _DIALECT_REGISTRY = {}
 
+
 class Dialect:
     _parser_cls = Parser
     _compiler_cls = Compiler
@@ -30,7 +31,7 @@ class Dialect:
         self._compiler = self._compiler_cls(*compiler_args, **compiler_kwargs)
 
     def __init_subclass__(cls, **kwargs):
-        _DIALECT_REGISTRY[cls.__identifier()] = cls
+        _DIALECT_REGISTRY[cls._identifier()] = cls
 
     def compile(self, obj, *args, **kwargs):
         return self._compiler.visit(obj, *args, **kwargs)
@@ -39,7 +40,7 @@ class Dialect:
         return self._parser.parse(obj, *args, **kwargs)
 
     @classmethod
-    def __identifier(cls) -> str:
+    def _identifier(cls) -> str:
         raise NotImplementedError
 
 
@@ -50,5 +51,10 @@ class IdentityDialect(Dialect):
     def parse(self, obj, *args, **kwargs):
         return obj
 
-    def __identifier(cls) -> str:
+    @classmethod
+    def _identifier(cls) -> str:
         return "id"
+
+
+def get_dialect(identifier) -> Dialect:
+    return _DIALECT_REGISTRY[identifier]
