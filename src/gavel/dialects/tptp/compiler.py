@@ -5,8 +5,7 @@ from gavel.logic import problem
 
 class TPTPCompiler(Compiler):
     def visit_defined_constant(self, obj: fol.DefinedConstant):
-        if obj == fol.DefinedConstant.VERUM:
-            return "$true"
+        return self.visit(obj.value)
 
     def parenthesise(self, element: fol.LogicElement):
         if isinstance(element, str):
@@ -240,7 +239,7 @@ class TPTPCompiler(Compiler):
         return variable.symbol
 
     def visit_distinct_object(self, variable: fol.DistinctObject):
-        return variable.symbol
+        return "\"" + variable.symbol + "\""
 
     def visit_constant(self, variable: fol.Variable):
         return variable.symbol
