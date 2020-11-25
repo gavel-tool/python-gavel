@@ -23,6 +23,7 @@ from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
 from gavel.prover.hets.interface import HetsProve, HetsSession, HetsEngine
 from gavel.prover.registry import get_prover
 from gavel.selection.selector import Sine
+from gavel.dialects.base.dialect import get_dialect
 from gavel import plugins
 
 
@@ -61,12 +62,28 @@ def prove(p, f, s, plot, hets):
             g.render()
 
 
+@click.command()
+@click.argument("frm")
+@click.argument("to")
+@click.argument("path")
+def translate(frm, to, path):
+    input_dialect = get_dialect(frm)
+    output_dialect = get_dialect(to)
+
+    parser = input_dialect._parser_cls()
+    compiler = output_dialect._compiler_cls()
+    with open(path, "r") as finp:
+        for entry in parser.parse(finp.read()):
+            print(compiler.visit(entry))
+
+
 def add_source(source):
     global cli
     cli.add_source(source)
 
 
 base.add_command(prove)
+base.add_command(translate)
 
 cli = click.CommandCollection()
 
