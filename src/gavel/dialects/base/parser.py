@@ -14,7 +14,7 @@ Parseable = TypeVar("Parseable")
 Target = TypeVar("Target")
 
 
-class Parser(Generic[Parseable, Target]):
+class Parser(Generic[Parseable]):
     def parse(self, structure: Parseable, *args, **kwargs) -> Iterable[Target]:
         """
         Transforms the input structure into metadata as used by the
@@ -63,13 +63,17 @@ class StringBasedParser(Parser[str, Target], ABC):
         bool:
             Indicated whether this object is parsable or not
         """
-        raise NotImplementedError
+        try:
+            self.parse(inp)
+        except:
+            return False
+        return True
 
     def is_file_valid(self, *args, **kwargs):
         return self.is_valid(self._unpack_file(*args, **kwargs))  #
 
 
-class LogicParser(Parser[Parseable, LogicElement]):
+class LogicParser(Parser[Parseable, LogicElement], ABC):
     pass
 
 
