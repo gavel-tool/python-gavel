@@ -97,7 +97,7 @@ class Problem:
     """
 
     def __init__(
-        self, premises: Iterable[Sentence], conjecture: Iterable[Sentence], imports=None
+        self, premises: Iterable[Sentence], conjecture: Sentence, imports=None
     ):
         self.premises = premises
         self.conjecture = conjecture
