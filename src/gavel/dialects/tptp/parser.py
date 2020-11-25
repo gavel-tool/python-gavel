@@ -29,9 +29,7 @@ from gavel.logic import status
 if SUPPORTS_ANTLR:
     pass
 
-from lark import Lark, Tree
-
-sys.setrecursionlimit(10000)
+from lark import Lark, Tree, Transformer
 
 form_expression = re.compile(r"^(?!%|\n)(?P<logic>[^(]*)\([^.]*\)\.\S*$")
 
@@ -53,10 +51,6 @@ _BINARY_CONNECTIVE_MAP = {
     ":=": logic.BinaryConnective.ASSIGN,
     ">": logic.BinaryConnective.ARROW,
 }
-
-with open(os.path.join(os.path.dirname(__file__), "tptp.lark")) as gf:
-    lark_grammar = Lark(gf.read(), start=["start"], parser="lalr")
-
 
 def _balance_binary_tree(obj, skip_connective=True, **kwargs):
     if len(obj.children) > 2:
@@ -87,7 +81,6 @@ def _balance_binary_tree(obj, skip_connective=True, **kwargs):
     else:
         return obj
 
-
 def _recursive_binary(skip_connective=True):
     def wrapper(f):
         def inner(self, obj, **kwargs):
@@ -105,12 +98,10 @@ def _recursive_binary(skip_connective=True):
     return wrapper
 
 
-class TPTPParser(LogicParser, StringBasedParser):
-    def is_valid(self, inp: str) -> bool:
-        pass
+class TPTPTransformer(Transformer):
 
-    def parse(self, structure: str, *args, **kwargs) -> Target:
-        return self.visit(lark_grammar.parse(structure))
+    def transform(self, tree):
+        pass
 
     def visit(self, obj: Tree, **kwargs):
         if isinstance(obj, str):
@@ -319,6 +310,30 @@ class TPTPParser(LogicParser, StringBasedParser):
     def visit_distinct_object(self, obj, **kwargs):
         assert len(obj.children) == 1 and isinstance(obj.children[0], str)
         return logic.DistinctObject(obj.children[0][1:-1])
+
+    def start(self, obj):
+        for c in obj:
+            yield self.visit(c)
+
+lark_grammar = Lark.open(
+    os.path.join(os.path.dirname(__file__), "tptp.lark"),
+    start=["start"],
+    parser="lalr",
+    debug=True,
+    transformer=TPTPTransformer())
+
+
+class TPTPParser(LogicParser, StringBasedParser):
+    def __init__(self):
+        sys.setrecursionlimit(100000)
+        self.visitor = TPTPTransformer()
+
+    def is_valid(self, inp: str) -> bool:
+        pass
+
+    def parse(self, structure: str, *args, **kwargs) -> Target:
+        for s in lark_grammar.parse(structure):
+            yield s
 
 
 class TPTPProblemParser(ProblemParser, StringBasedParser):
