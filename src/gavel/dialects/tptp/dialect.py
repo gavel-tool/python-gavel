@@ -9,6 +9,9 @@ class TPTPProblemDialect(Dialect):
     _parser_cls = TPTPProblemParser
     _compiler_cls = TPTPCompiler
 
+    def __identifier(self):
+        return "tptp"
+
 
 # For legacy code
 TPTPDialect = TPTPProblemDialect
@@ -17,3 +20,6 @@ TPTPDialect = TPTPProblemDialect
 class TPTPProofDialect(Dialect):
     _parser_cls = SimpleTPTPProofParser
     _compiler_cls = TPTPCompiler
+
+    def __identifier(cls) -> str:
+        return "tptp-proof"

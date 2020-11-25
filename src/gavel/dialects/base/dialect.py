@@ -5,6 +5,7 @@ from gavel.dialects.base.parser import Parser
 from gavel.logic.problem import Problem
 from gavel.logic.solution import Proof
 
+_DIALECT_REGISTRY = {}
 
 class Dialect:
     _parser_cls = Parser
@@ -28,11 +29,18 @@ class Dialect:
         self._parser = self._parser_cls(*parser_args, **parser_kwargs)
         self._compiler = self._compiler_cls(*compiler_args, **compiler_kwargs)
 
+    def __init_subclass__(cls, **kwargs):
+        _DIALECT_REGISTRY[cls.__identifier()] = cls
+
     def compile(self, obj, *args, **kwargs):
         return self._compiler.visit(obj, *args, **kwargs)
 
     def parse(self, obj, *args, **kwargs):
         return self._parser.parse(obj, *args, **kwargs)
+
+    @classmethod
+    def __identifier(cls) -> str:
+        raise NotImplementedError
 
 
 class IdentityDialect(Dialect):
@@ -41,3 +49,6 @@ class IdentityDialect(Dialect):
 
     def parse(self, obj, *args, **kwargs):
         return obj
+
+    def __identifier(cls) -> str:
+        return "id"
