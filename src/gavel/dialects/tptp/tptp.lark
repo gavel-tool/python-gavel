@@ -69,8 +69,8 @@ include: "include(" "'" /[^']+/ "'" ( "," "[" WORD ("," WORD)* "]" )? ")."
 %ignore COMMENT
 %ignore BLOCK_COMMENT
 
-COMMENT: /%[^\n]*\n/
+COMMENT: /%[^\n]*(\n|$)/
 BLOCK_COMMENT: /\/\*([^*]|\*(?!\/))*\*\//m
 ?tptp_line: annotated_formula | include | COMMENT | BLOCK_COMMENT
 
-start: tptp_line+
+start: tptp_line*
