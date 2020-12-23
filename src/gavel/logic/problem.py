@@ -39,7 +39,6 @@ class FormulaRole(Enum):
 
 
 class AnnotatedFormula(Sentence, ProofStep):
-
     __visit_name__ = "annotated_formula"
 
     def __init__(
@@ -72,6 +71,10 @@ class AnnotatedFormula(Sentence, ProofStep):
             getattr(self, n) == getattr(other, n) for n in self.__dict__
         )
 
+    def is_axiom(self):
+        return self.role == FormulaRole.AXIOM
+
+
 
 class Import(ProblemElement):
 
@@ -99,10 +102,10 @@ class Problem:
     __visit_name__ = "problem"
 
     def __init__(
-        self, premises: Iterable[Sentence], conjecture: Sentence, imports=None
+        self, premises: Iterable[Sentence], conjectures: Iterable[Sentence], imports=None
     ):
         self.premises = premises
-        self.conjecture = conjecture
+        self.conjectures = conjectures
         self.imports = imports or []
 
 
