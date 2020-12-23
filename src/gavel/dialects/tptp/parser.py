@@ -5,14 +5,6 @@ from bs4 import BeautifulSoup
 from typing import Iterable
 import requests
 
-try:
-    from antlr4 import CommonTokenStream
-    from antlr4 import InputStream
-except:
-    SUPPORTS_ANTLR = False
-else:
-    SUPPORTS_ANTLR = True
-
 from gavel.config import settings as settings
 from gavel.dialects.base.parser import LogicParser, Target, StringBasedParser
 from gavel.dialects.base.parser import ParserException
@@ -25,9 +17,6 @@ from gavel.logic.problem import AnnotatedFormula
 from gavel.logic.solution import LinearProof
 from gavel.logic.solution import ProofStep
 from gavel.logic import status
-
-if SUPPORTS_ANTLR:
-    pass
 
 from lark import Lark, Tree, Transformer
 
@@ -159,6 +148,21 @@ class TPTPTransformer(Transformer):
             formula=self.visit(obj.children[3], **kwargs),
             **annotations
         )
+
+    def visit_constant(self, obj):
+        return logic.Constant(self.visit(obj.children[0]))
+
+    def visit_typed_constant(self, obj, **kwargs):
+        return logic.TypedConstant(self.visit(obj.children[0]), self.visit(obj.children[1]))
+
+    def visit_type(self, obj, **kwargs):
+        return logic.Type(self.visit(obj.children[0]))
+
+    def visit_defined_type(self, obj, **kwargs):
+        return logic.Type(self.visit(obj.children[0]))
+
+    def visit_type_expression(self, obj):
+        raise NotImplementedError
 
     def visit_formula(self, obj, **kwargs):
         return self.visit(obj.children[0], **kwargs)

@@ -485,6 +485,10 @@ class Type(LogicElement):
         self.name = name
 
 
+class DefinedType(LogicElement):
+    __visit_name__ = "defined_type"
+
+
 class QuantifiedType(LogicElement):
 
     __visit_name__ = "quantified_type"

@@ -9,8 +9,18 @@ UPPER_WORD: ("A" .. "Z") WORD?
 LOWER_WORD: LOWER WORD?
 LOWER: "a" .. "z"
 
+defined_type: DOLLAR_WORD
+type: WORD
+
+type_expression: ( defined_type | type) [ "(" type_expression ("," type_expression )* ")" ]
+
 variable:  UPPER_WORD
 constant: LOWER_WORD
+
+typed_constant: constant ":" type_expression
+typed_variable: constant ":" type_expression
+
+
 DECIMAL_NUMBER: SIGNED_NUMBER ("/" NUMBER)?
 
 distinct_object: /"([^"]|((?<=\\)"))+"/
@@ -32,7 +42,7 @@ QUANTIFIER: "!" | "?"
 ?conjunction: logic_binary_formula ("&" logic_binary_formula)*
 ?logic_binary_formula: type_binary_formula (LOGIC_BINARY_OPERATOR type_binary_formula)*
 ?type_binary_formula: unary_formula (TYPE_BINARY_OPERATOR unary_formula)*
-?unary_formula: (UNARY_CONNECTIVE unary_formula) | transition_formula
+?unary_formula: (UNARY_CONNECTIVE unary_formula) | transition_formula | typed_constant
 ?transition_formula: object_binary_formula | "(" formula ")" | quantified_formula
 quantified_formula: QUANTIFIER "[" (variable ("," variable)*) "]" ":" unary_formula
 ?object_binary_formula: term (OBJECT_BINARY_OPERATOR term)*
@@ -41,7 +51,7 @@ quantified_formula: QUANTIFIER "[" (variable ("," variable)*) "]" ":" unary_form
 functor_term: functor ["(" term ("," term)* ")"]
 ?bottom: variable // | "(" term ")"
 
-LOGIC: "thf" | "ttf" | "cnf" | "fof"
+LOGIC: "thf" | "tff" | "cnf" | "fof"
 
 inference_rule: WORD "(" WORD ("," WORD )* ")"
 
