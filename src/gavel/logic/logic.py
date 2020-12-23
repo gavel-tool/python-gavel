@@ -1,15 +1,36 @@
+from abc import ABC
 from enum import Enum
 from itertools import chain
 from typing import Iterable
+import re
 
 
-class LogicElement:
+class LogicElement(ABC):
     __visit_name__ = "undefined"
 
     requires_parens = False
 
     def symbols(self) -> Iterable:
         return []
+
+    def is_logical_expression(self):
+        return False
+
+    def is_term_expression(self):
+        return False
+
+    def is_valid(self):
+        raise NotImplementedError
+
+
+class LogicExpression(LogicElement, ABC):
+    def is_logical_expression(self):
+        return True
+
+
+class TermExpression(LogicElement, ABC):
+    def is_term_expression(self):
+        return True
 
 
 class Quantifier(Enum):
@@ -133,134 +154,6 @@ class UnaryConnective(Enum):
             return "~"
 
 
-class UnaryFormula(LogicElement):
-    """
-    Attributes
-    ----------
-
-    connective:
-        A unary connective
-    formula:
-        A formula
-
-    """
-
-    __visit_name__ = "unary_formula"
-
-    def __init__(self, connective, formula: LogicElement):
-        self.connective = connective
-        self.formula = formula
-
-    def __str__(self):
-        return "%s(%s)" % (repr(self.connective), self.formula)
-
-    def symbols(self):
-        return self.formula.symbols()
-
-
-class QuantifiedFormula(LogicElement):
-    """
-    Attributes
-    ----------
-
-    quantifier:
-        A quantier (existential or universal)
-    variables:
-        A list of variables bound by the quantifier
-    formula
-        A logical formula
-    """
-
-    __visit_name__ = "quantified_formula"
-
-    def __init__(self, quantifier, variables, formula):
-        self.quantifier = quantifier
-        self.variables = variables
-        self.formula = formula
-
-    def __str__(self):
-        return "%s[%s]: %s" % (
-            repr(self.quantifier),
-            ", ".join(map(str, self.variables)),
-            self.formula,
-        )
-
-    def symbols(self):
-        variables = {
-            symbol for variable in self.variables for symbol in variable.symbols()
-        }
-        return set(self.formula.symbols()).difference(variables)
-
-
-class BinaryFormula(LogicElement):
-
-    """
-    Attributes
-    ----------
-    oparator
-        A binary operator
-    left
-        The formula on the left side
-    right
-        The formula on the right side
-
-    """
-
-    __visit_name__ = "binary_formula"
-
-    requires_parens = True
-
-    def __init__(self, left: LogicElement, operator, right: LogicElement):
-        self.left = left
-        self.right = right
-        self.operator = operator
-
-    def __str__(self):
-        return "(%s) %s (%s)" % (str(self.left), repr(self.operator), str(self.right))
-
-    def symbols(self):
-        return chain(self.left.symbols(), self.right.symbols())
-
-
-class FunctorExpression(LogicElement):
-
-    __visit_name__ = "functor_expression"
-
-    def __init__(self, functor, arguments: Iterable[LogicElement]):
-        self.functor = functor
-        self.arguments = arguments
-
-    def __str__(self):
-        return "%s(%s)" % (self.functor, ", ".join(map(str, self.arguments)))
-
-    def symbols(self):
-        yield self.functor
-        for argument in self.arguments:
-            if isinstance(argument, LogicElement):
-                for s in argument.symbols():
-                    yield s
-            elif isinstance(argument, str):
-                yield argument
-            else:
-                raise NotImplementedError
-
-
-class PredicateExpression(LogicElement):
-
-    __visit_name__ = "predicate_expression"
-
-    def __init__(self, predicate, arguments):
-        self.predicate = predicate
-        self.arguments = arguments
-
-    def __str__(self):
-        return "%s(%s)" % (self.predicate, ", ".join(map(str, self.arguments)))
-
-    def symbols(self):
-        yield self.predicate
-        return chain(*map(lambda x: x.symbols(), self.arguments))
-
-
 class TypedVariable(LogicElement):
 
     __visit_name__ = "typed_variable"
@@ -271,6 +164,18 @@ class TypedVariable(LogicElement):
 
     def symbols(self):
         yield self.name
+
+
+class TypedConstant(LogicElement):
+
+    __visit_name__ = "typed_variable"
+
+    def __init__(self, constant, ctype):
+        self.constant = constant
+        self.ctype = ctype
+
+    def symbols(self):
+        return [self.constant, self.ctype]
 
 
 class TypeFormula(LogicElement):
@@ -308,7 +213,7 @@ class Conditional(LogicElement):
         )
 
 
-class Variable(LogicElement):
+class Variable(TermExpression):
 
     __visit_name__ = "variable"
 
@@ -321,8 +226,11 @@ class Variable(LogicElement):
     def symbols(self):
         return set()
 
+    def is_valid(self):
+        return re.match("[A-Z]\w*", self.symbol)
 
-class Constant(LogicElement):
+
+class Constant(TermExpression):
 
     __visit_name__ = "constant"
 
@@ -335,8 +243,11 @@ class Constant(LogicElement):
     def symbols(self):
         return {self.symbol}
 
+    def is_valid(self):
+        _matches_functor(self.symbol)
 
-class DistinctObject(LogicElement):
+
+class DistinctObject(TermExpression):
 
     __visit_name__ = "distinct_object"
 
@@ -349,16 +260,20 @@ class DistinctObject(LogicElement):
     def symbols(self):
         return {self.symbol}
 
+    def is_valid(self):
+        return re.match('"([\40-\41\43-\133\135-\176]|\\")+"', self.symbol)
 
-class DefinedConstant(LogicElement):
+
+class DefinedConstant(Constant):
 
     __visit_name__ = "defined_constant"
 
-    def __init__(self, value):
-        self.value = value
+    @property
+    def value(self):
+        return self.symbol
 
     def __eq__(self, other):
-        return self.value == other.value
+        return self.symbol == other.symbol
 
 
 class PredefinedConstant(Enum):
@@ -375,6 +290,170 @@ class PredefinedConstant(Enum):
             return "$false"
         else:
             return self.value
+
+
+class UnaryFormula(LogicExpression):
+    """
+    Attributes
+    ----------
+
+    connective:
+        A unary connective
+    formula:
+        A formula
+
+    """
+
+    __visit_name__ = "unary_formula"
+
+    def __init__(self, connective: UnaryConnective, formula: LogicExpression):
+        self.connective = connective
+        self.formula = formula
+
+    def __str__(self):
+        return "%s(%s)" % (repr(self.connective), self.formula)
+
+    def symbols(self):
+        return self.formula.symbols()
+
+    def is_valid(self):
+        return (
+            self.formula.is_logical_expression()
+            and self.formula.is_valid()
+            and isinstance(self.connective, UnaryConnective)
+        )
+
+
+class QuantifiedFormula(LogicExpression):
+    """
+    Attributes
+    ----------
+
+    quantifier:
+        A quantier (existential or universal)
+    variables:
+        A list of variables bound by the quantifier
+    formula
+        A logical formula
+    """
+
+    __visit_name__ = "quantified_formula"
+
+    def __init__(
+        self, quantifier, variables: Iterable[Variable], formula: LogicExpression
+    ):
+        self.quantifier = quantifier
+        self.variables = variables
+        self.formula = formula
+
+    def __str__(self):
+        return "%s[%s]: %s" % (
+            repr(self.quantifier),
+            ", ".join(map(str, self.variables)),
+            self.formula,
+        )
+
+    def symbols(self):
+        variables = {
+            symbol for variable in self.variables for symbol in variable.symbols()
+        }
+        return set(self.formula.symbols()).difference(variables)
+
+    def is_valid(self):
+        return (
+            all(isinstance(v, Variable) and v.is_valid() for v in self.variables)
+            and self.formula.is_logical_expression()
+            and self.formula.is_valid()
+            and isinstance(self.quantifier, Quantifier)
+        )
+
+
+class BinaryFormula(LogicExpression):
+
+    """
+    Attributes
+    ----------
+    oparator
+        A binary operator
+    left
+        The formula on the left side
+    right
+        The formula on the right side
+
+    """
+
+    __visit_name__ = "binary_formula"
+
+    requires_parens = True
+
+    def __init__(self, left: LogicExpression, operator, right: LogicExpression):
+        self.left = left
+        self.right = right
+        self.operator = operator
+
+    def __str__(self):
+        return "(%s) %s (%s)" % (str(self.left), repr(self.operator), str(self.right))
+
+    def symbols(self):
+        return chain(self.left.symbols(), self.right.symbols())
+
+    def is_valid(self):
+        return (
+            self.left.is_logical_expression()
+            and self.right.is_logical_expression()
+            and isinstance(self.operator, BinaryConnective)
+        )
+
+
+class FunctorExpression(TermExpression):
+
+    __visit_name__ = "functor_expression"
+
+    def __init__(self, functor, arguments: Iterable[TermExpression]):
+        self.functor = functor
+        self.arguments = arguments
+
+    def __str__(self):
+        return "%s(%s)" % (self.functor, ", ".join(map(str, self.arguments)))
+
+    def symbols(self):
+        yield self.functor
+        for argument in self.arguments:
+            if isinstance(argument, LogicElement):
+                for s in argument.symbols():
+                    yield s
+            elif isinstance(argument, str):
+                yield argument
+            else:
+                raise NotImplementedError
+
+    def is_valid(self):
+        return all(
+            arg.is_term_expression() and arg.is_valid() for arg in self.arguments
+        ) and _matches_functor(self.functor)
+
+
+class PredicateExpression(LogicExpression):
+
+    __visit_name__ = "predicate_expression"
+
+    def __init__(self, predicate, arguments: Iterable[TermExpression]):
+        self.predicate = predicate
+        self.arguments = arguments
+
+    def __str__(self):
+        return "%s(%s)" % (self.predicate, ", ".join(map(str, self.arguments)))
+
+    def symbols(self):
+        yield self.predicate
+        for a in self.arguments:
+            for s in a.symbols():
+                yield s
+
+    def is_valid(self):
+        return all(
+            arg.is_term_expression() and arg.is_valid() for arg in self.arguments
+        ) and _matches_functor(self.predicate)
 
 
 class Let(LogicElement):
@@ -415,14 +494,6 @@ class QuantifiedType(LogicElement):
         self.vtype = vtype
 
 
-class Import(LogicElement):
-
-    __visit_name__ = "import"
-
-    def __init__(self, path):
-        self.path = path.replace("'", "")
-
-
 class MappingType(LogicElement):
 
     __visit_name__ = "mapping_type"
@@ -430,3 +501,7 @@ class MappingType(LogicElement):
     def __init__(self, left, right):
         self.left = left
         self.right = right
+
+
+def _matches_functor(x):
+    return re.match("(\w+)|'([\40-\46\50-\133\135-\176]|\\')+'", x)
