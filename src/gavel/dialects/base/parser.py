@@ -98,8 +98,7 @@ class ProblemParser(Parser[Parseable, Problem]):
                 imports.append(s)
             else:
                 raise ParserException("Unknown element:" + str(s))
-        for conjecture in conjectures:
-            yield Problem(premises, conjecture, imports)
+        return Problem(premises, conjectures, imports)
 
 
 class ParserException(Exception):

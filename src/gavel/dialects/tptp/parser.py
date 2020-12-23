@@ -4,6 +4,7 @@ import sys
 from bs4 import BeautifulSoup
 from typing import Iterable
 import requests
+import multiprocessing as mp
 
 from gavel.config import settings as settings
 from gavel.dialects.base.parser import LogicParser, Target, StringBasedParser
@@ -12,7 +13,7 @@ from gavel.dialects.base.parser import ProblemParser
 from gavel.dialects.base.parser import ProofParser
 from gavel.logic import logic, sources
 from gavel.logic.logic import LogicElement
-from gavel.logic import problem
+from gavel.logic import problem as tptp_problem
 from gavel.logic.problem import AnnotatedFormula
 from gavel.logic.solution import LinearProof
 from gavel.logic.solution import ProofStep
@@ -40,6 +41,7 @@ _BINARY_CONNECTIVE_MAP = {
     ":=": logic.BinaryConnective.ASSIGN,
     ">": logic.BinaryConnective.ARROW,
 }
+
 
 def _balance_binary_tree(obj, skip_connective=True, **kwargs):
     if len(obj.children) > 2:
@@ -69,6 +71,7 @@ def _balance_binary_tree(obj, skip_connective=True, **kwargs):
             return Tree(data=obj.data, children=[l, connective, r])
     else:
         return obj
+
 
 def _recursive_binary(skip_connective=True):
     def wrapper(f):
@@ -132,7 +135,7 @@ class TPTPTransformer(Transformer):
     def visit_include(self, obj):
         if len(obj.children) > 1:
             filter = [s for s in obj.children[1:]]
-        return problem.Import(os.path.join(settings.TPTP_ROOT, str(obj.children[0])))
+        return tptp_problem.Import(os.path.join(settings.TPTP_ROOT, str(obj.children[0])))
 
     def visit_tptp_line(self, obj, **kwargs):
         return self.visit(obj.children[0], **kwargs)
@@ -141,7 +144,7 @@ class TPTPTransformer(Transformer):
         annotations = dict()
         if len(obj.children) > 4:
             annotations["annotation"] = self.visit(obj.children[4])
-        return problem.AnnotatedFormula(
+        return tptp_problem.AnnotatedFormula(
             logic=obj.children[0],
             name=obj.children[1],
             role=self._ROLE_MAP[obj.children[2]],
@@ -266,21 +269,21 @@ class TPTPTransformer(Transformer):
         return self.visit_binary_formula(obj, **kwargs)
 
     _ROLE_MAP = {
-        "axiom": problem.FormulaRole.AXIOM,
-        "hypothesis": problem.FormulaRole.HYPOTHESIS,
-        "definition": problem.FormulaRole.DEFINITION,
-        "assumption": problem.FormulaRole.ASSUMPTION,
-        "lemma": problem.FormulaRole.LEMMA,
-        "theorem": problem.FormulaRole.THEOREM,
-        "corollary": problem.FormulaRole.COROLLARY,
-        "conjecture": problem.FormulaRole.CONJECTURE,
-        "negated_conjecture": problem.FormulaRole.NEGATED_CONJECTURE,
-        "plain": problem.FormulaRole.PLAIN,
-        "type": problem.FormulaRole.TYPE,
-        "fi_domain": problem.FormulaRole.FINITE_INTERPRETATION_DOMAIN,
-        "fi_functors": problem.FormulaRole.FINITE_INTERPRETATION_FUNCTORS,
-        "fi_predicates": problem.FormulaRole.FINITE_INTERPRETATION_PREDICATES,
-        "unknown": problem.FormulaRole.UNKNOWN,
+        "axiom": tptp_problem.FormulaRole.AXIOM,
+        "hypothesis": tptp_problem.FormulaRole.HYPOTHESIS,
+        "definition": tptp_problem.FormulaRole.DEFINITION,
+        "assumption": tptp_problem.FormulaRole.ASSUMPTION,
+        "lemma": tptp_problem.FormulaRole.LEMMA,
+        "theorem": tptp_problem.FormulaRole.THEOREM,
+        "corollary": tptp_problem.FormulaRole.COROLLARY,
+        "conjecture": tptp_problem.FormulaRole.CONJECTURE,
+        "negated_conjecture": tptp_problem.FormulaRole.NEGATED_CONJECTURE,
+        "plain": tptp_problem.FormulaRole.PLAIN,
+        "type": tptp_problem.FormulaRole.TYPE,
+        "fi_domain": tptp_problem.FormulaRole.FINITE_INTERPRETATION_DOMAIN,
+        "fi_functors": tptp_problem.FormulaRole.FINITE_INTERPRETATION_FUNCTORS,
+        "fi_predicates": tptp_problem.FormulaRole.FINITE_INTERPRETATION_PREDICATES,
+        "unknown": tptp_problem.FormulaRole.UNKNOWN,
     }
 
     _DEFINED_PREDICATE_MAP = {
@@ -323,21 +326,51 @@ lark_grammar = Lark.open(
     os.path.join(os.path.dirname(__file__), "tptp.lark"),
     start=["start"],
     parser="lalr",
-    debug=True,
     transformer=TPTPTransformer())
 
+
+def do(string):
+    try:
+        return list(lark_grammar.parse(string))
+    except Exception as e:
+        raise Exception(str(e))
 
 class TPTPParser(LogicParser, StringBasedParser):
     def __init__(self):
         sys.setrecursionlimit(100000)
         self.visitor = TPTPTransformer()
+        part = r"^(\w+\(([\sA-z0-9_,!?[:()='\"&|$\/\]]|(?<!\)).)+\)\.)"
+        full = f"(%[^\n]*\s*(\s|$))|{part}\s*"
+        self._re_full = re.compile(f"({full})+", flags=re.X)
+        self._re_part = re.compile(part)
 
     def is_valid(self, inp: str) -> bool:
         pass
 
+    def stream_lines(self, string):
+        buff = ""
+        newline = True
+        comment = False
+        for x in string:
+            if not comment and x == "." and buff[-1] == ")":
+                yield buff + "."
+                buff = ""
+            else:
+                if newline and x == "%":
+                    comment = True
+                elif x == "\n":
+                    comment = False
+                    newline = True
+                buff += x
+        yield buff
+
+
     def parse(self, structure: str, *args, **kwargs) -> Target:
-        for s in lark_grammar.parse(structure):
-            yield s
+        inputs = self.stream_lines(structure)
+        with mp.Pool() as pool:
+            for result in pool.imap_unordered(do, inputs):
+                for s in result:
+                    yield s
 
 
 class TPTPProblemParser(ProblemParser, StringBasedParser):
@@ -419,4 +452,4 @@ def parse_solution(prover_output):
         if issubclass(szs_status, status.StatusSuccess):
             parser = SimpleTPTPProofParser()
             solution = parser.parse(soup.get_text())
-            return problem, solution
+            return solution
