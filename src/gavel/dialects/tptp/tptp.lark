@@ -12,13 +12,18 @@ LOWER: "a" .. "z"
 defined_type: DOLLAR_WORD
 type: WORD
 
-type_expression: ( defined_type | type) [ "(" type_expression ("," type_expression )* ")" ]
+
+?product_type: "(" type_expression ("*" type_expression)* ")"
+
+type_expression: variable | product_type |  ( defined_type | type) [ "(" type_expression ("," type_expression )* ")" ]
+
+
 
 variable:  UPPER_WORD
 constant: LOWER_WORD
 
 typed_constant: constant ":" type_expression
-typed_variable: constant ":" type_expression
+typed_variable: variable ":" type_expression
 
 
 DECIMAL_NUMBER: SIGNED_NUMBER ("/" NUMBER)?
@@ -44,7 +49,7 @@ QUANTIFIER: "!" | "?"
 ?type_binary_formula: unary_formula (TYPE_BINARY_OPERATOR unary_formula)*
 ?unary_formula: (UNARY_CONNECTIVE unary_formula) | transition_formula | typed_constant
 ?transition_formula: object_binary_formula | "(" formula ")" | quantified_formula
-quantified_formula: QUANTIFIER "[" (variable ("," variable)*) "]" ":" unary_formula
+quantified_formula: QUANTIFIER "[" typed_variable ("," typed_variable)* "]" ":" unary_formula
 ?object_binary_formula: term (OBJECT_BINARY_OPERATOR term)*
 
 ?term: functor_term | bottom | DECIMAL_NUMBER | distinct_object

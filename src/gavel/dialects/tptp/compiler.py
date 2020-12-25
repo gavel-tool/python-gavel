@@ -92,8 +92,6 @@ class TPTPCompiler(Compiler):
             return "!="
         elif connective == fol.BinaryConnective.APPLY:
             return "@"
-        elif connective == fol.BinaryConnective.MAPPING:
-            return ":"
         elif connective == fol.BinaryConnective.PRODUCT:
             return "*"
         elif connective == fol.BinaryConnective.UNION:
@@ -197,8 +195,17 @@ class TPTPCompiler(Compiler):
             ",".join(map(self.visit, expression.arguments)),
         )
 
+    def visit_type(self, t: fol.Type):
+        return "{}".format(t.name)
+
+    def visit_defined_type(self, t: fol.Type):
+        return "${}".format(t.name)
+
     def visit_typed_variable(self, variable: fol.TypedVariable):
-        return "{}:{}".format(variable.name, self.visit(variable.vtype))
+        return "{}:{}".format(self.visit(variable.name), self.visit(variable.vtype))
+
+    def visit_typed_constant(self, variable: fol.TypedConstant):
+        return "{}:{}".format(self.visit(variable.constant), self.visit(variable.ctype))
 
     def visit_type_formula(self, formula: fol.TypeFormula):
         return "({}):{}".format(self.visit(formula.name), self.visit(formula.type))
@@ -229,8 +236,8 @@ class TPTPCompiler(Compiler):
             self.visit(expression.vtype),
         )
 
-    def visit_import(self, imp: fol.Import):
-        return "import(%s)" % imp.path
+    def visit_product_type(self, prod: fol.ProductType):
+        return "(" + (" * ".join(self.visit(t) for t in prod.product)) + ")"
 
     def visit_mapping_type(self, expression: fol.Subtype):
         return "{}>{}".format(self.visit(expression.left), self.visit(expression.right))
@@ -245,6 +252,5 @@ class TPTPCompiler(Compiler):
         return variable.symbol
 
     def visit_problem(self, problem: problem.Problem):
-        L = [self.visit(axiom) for axiom in problem.premises]
-        L.append(self.visit(problem.conjecture))
+        L = [self.visit(axiom) for axiom in problem.premises] + [self.visit(c) for c in problem.conjectures]
         return "\n".join(L)

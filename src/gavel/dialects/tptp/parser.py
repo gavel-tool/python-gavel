@@ -158,14 +158,24 @@ class TPTPTransformer(Transformer):
     def visit_typed_constant(self, obj, **kwargs):
         return logic.TypedConstant(self.visit(obj.children[0]), self.visit(obj.children[1]))
 
+    def visit_typed_variable(self, obj, **kwargs):
+        return logic.TypedVariable(self.visit(obj.children[0]), self.visit(obj.children[1]))
+
     def visit_type(self, obj, **kwargs):
         return logic.Type(self.visit(obj.children[0]))
 
     def visit_defined_type(self, obj, **kwargs):
-        return logic.Type(self.visit(obj.children[0]))
+        t = self.visit(obj.children[0])
+        return logic.DefinedType(t[1:])
+
+    def visit_product_type(self, obj, **kwargs):
+        return logic.ProductType([self.visit(p) for p in obj.children])
 
     def visit_type_expression(self, obj):
-        raise NotImplementedError
+        if len(obj.children) > 1:
+            return logic.TypeFormula(self.visit(obj.children[0]), [self.visit(c) for c in obj.children[1:]])
+        else:
+            return self.visit(obj.children[0])
 
     def visit_formula(self, obj, **kwargs):
         return self.visit(obj.children[0], **kwargs)

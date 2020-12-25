@@ -67,9 +67,6 @@ class Compiler:
     def visit_quantified_type(self, expression: fol.QuantifiedType):
         raise NotImplementedError
 
-    def visit_import(self, imp: fol.Import):
-        raise NotImplementedError
-
     def visit_mapping_type(self, expression: fol.Subtype):
         raise NotImplementedError
 
@@ -80,6 +77,9 @@ class Compiler:
         raise NotImplementedError
 
     def visit_problem(self, problem: problem.Problem):
+        raise NotImplementedError
+
+    def visit_product_type(self, prod: fol.ProductType):
         raise NotImplementedError
 
     def visit_type(self, problem: fol.Type):

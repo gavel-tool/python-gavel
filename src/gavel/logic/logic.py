@@ -154,42 +154,6 @@ class UnaryConnective(Enum):
             return "~"
 
 
-class TypedVariable(LogicElement):
-
-    __visit_name__ = "typed_variable"
-
-    def __init__(self, name, vtype):
-        self.name = name
-        self.vtype = vtype
-
-    def symbols(self):
-        yield self.name
-
-
-class TypedConstant(LogicElement):
-
-    __visit_name__ = "typed_variable"
-
-    def __init__(self, constant, ctype):
-        self.constant = constant
-        self.ctype = ctype
-
-    def symbols(self):
-        return [self.constant, self.ctype]
-
-
-class TypeFormula(LogicElement):
-
-    __visit_name__ = "type_formula"
-
-    def __init__(self, name, type_expression):
-        self.name = name
-        self.type = type_expression
-
-    def symbols(self):
-        yield self.name
-
-
 class Conditional(LogicElement):
 
     __visit_name__ = "conditional"
@@ -485,7 +449,7 @@ class Type(LogicElement):
         self.name = name
 
 
-class DefinedType(LogicElement):
+class DefinedType(Type):
     __visit_name__ = "defined_type"
 
 
@@ -496,6 +460,50 @@ class QuantifiedType(LogicElement):
     def __init__(self, variables, vtype):
         self.variables = variables
         self.vtype = vtype
+
+
+
+class TypedVariable(LogicElement):
+
+    __visit_name__ = "typed_variable"
+
+    def __init__(self, name, vtype):
+        self.name = name
+        self.vtype = vtype
+
+    def symbols(self):
+        yield self.name
+
+
+class TypedConstant(LogicElement):
+
+    __visit_name__ = "typed_constant"
+
+    def __init__(self, constant, ctype):
+        self.constant = constant
+        self.ctype = ctype
+
+    def symbols(self):
+        return [self.constant, self.ctype]
+
+
+class TypeFormula(LogicElement):
+
+    __visit_name__ = "type_formula"
+
+    def __init__(self, name, type_expression):
+        self.name = name
+        self.type = type_expression
+
+    def symbols(self):
+        yield self.name
+
+
+class ProductType(LogicElement):
+    __visit_name__ = "product_type"
+
+    def __init__(self, product: Iterable[TypeFormula]):
+        self.product = product
 
 
 class MappingType(LogicElement):

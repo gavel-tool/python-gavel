@@ -73,8 +73,8 @@ def translate(frm, to, path):
     parser = input_dialect._parser_cls()
     compiler = output_dialect._compiler_cls()
     with open(path, "r") as finp:
-        for entry in parser.parse(finp.read()):
-            print(compiler.visit(entry))
+        entry = parser.parse(finp.read())
+        print(compiler.visit(entry))
 
 
 def add_source(source):
