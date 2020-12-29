@@ -242,6 +242,8 @@ class TPTPCompiler(Compiler):
         return variable.symbol
 
     def visit_problem(self, problem: problem.Problem):
-        L = [self.visit(axiom) for axiom in problem.premises]
-        L.append(self.visit(problem.conjecture))
+        L = [self.visit(i) for i in problem.imports] + [self.visit(axiom) for axiom in problem.premises] + [self.visit(c) for c in problem.conjectures]
         return "\n".join(L)
+
+    def visit_import(self, imp: problem.Import):
+        return "import(%s)" % imp.path

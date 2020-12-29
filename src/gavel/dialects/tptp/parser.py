@@ -346,16 +346,23 @@ class TPTPParser(LogicParser, StringBasedParser):
         buff = ""
         newline = True
         comment = False
+        quoted = False
         for x in string:
-            if not comment and x == "." and buff[-1] == ")":
+            if not quoted and not comment and x == "." and buff[-1] == ")":
                 yield buff + "."
                 buff = ""
             else:
                 if newline and x == "%":
                     comment = True
-                elif x == "\n":
-                    comment = False
-                    newline = True
+                else:
+                    if x == "\n":
+                        comment = False
+                        newline = True
+                    elif not comment:
+                        if quoted and x == quoted and buff[-1] != "\\":
+                            quoted = False
+                        elif x == "'" or x =='"':
+                            quoted = x
                 buff += x
         yield buff
 
