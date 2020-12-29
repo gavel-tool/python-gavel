@@ -245,5 +245,13 @@ class TPTPCompiler(Compiler):
         L = [self.visit(i) for i in problem.imports] + [self.visit(axiom) for axiom in problem.premises] + [self.visit(c) for c in problem.conjectures]
         return "\n".join(L)
 
+    def visit_predefined_constant(self, obj: fol.PredefinedConstant):
+        if obj == fol.PredefinedConstant.FALSUM:
+            return "$false"
+        elif obj == fol.PredefinedConstant.FALSUM:
+            return "$true"
+        else:
+            raise NotImplementedError
+
     def visit_import(self, imp: problem.Import):
         return "import(%s)" % imp.path

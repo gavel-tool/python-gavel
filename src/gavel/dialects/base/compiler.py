@@ -87,3 +87,6 @@ class Compiler:
 
     def visit_defined_constant(self, obj: fol.DefinedConstant):
         raise NotImplementedError
+
+    def visit_predefined_constant(self, obj: fol.PredefinedConstant):
+        raise NotImplementedError
