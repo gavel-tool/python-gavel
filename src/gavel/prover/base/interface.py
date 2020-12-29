@@ -20,6 +20,7 @@ class BaseProverInterface:
 
     def __init__(self, *args, **kwargs):
         super(BaseProverInterface, self).__init__(*args, **kwargs)
+        self.flags = []
         self.dialect = self._prover_dialect_cls()
 
     def prove(self, problem: Problem, *args, **kwargs) -> Proof:
