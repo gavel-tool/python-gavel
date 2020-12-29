@@ -229,9 +229,6 @@ class TPTPCompiler(Compiler):
             self.visit(expression.vtype),
         )
 
-    def visit_import(self, imp: fol.Import):
-        return "import(%s)" % imp.path
-
     def visit_mapping_type(self, expression: fol.Subtype):
         return "{}>{}".format(self.visit(expression.left), self.visit(expression.right))
 
