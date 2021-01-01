@@ -55,7 +55,7 @@ intro_type: "definition" | "axiom_of_choice" | "tautology" | "assumption"
 //sources: "["  source ("," source)* "]"
 // ?source: file_source // | inference_source | internal_source |  sources | /(?!(inference|introduced|file))\w+/
 
-file_source: "file(" single_quoted [ "," WORD ] ")"
+file_source: "file(" single_quoted [ "," (WORD | single_quoted) ] ")"
 generic_annotation: /(?!\s*file\()(([^)]|\)(?!\.))+)/sx
 ?source: file_source
 
