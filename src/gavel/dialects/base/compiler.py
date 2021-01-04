@@ -6,15 +6,17 @@ class Compiler:
     def visit(self, obj, *args, **kwargs):
         if isinstance(obj, str):
             return obj
-        meth = getattr(self, "visit_%s" % obj.__visit_name__, None)
-
+        if hasattr(obj, "__visit_name__"):
+            meth = getattr(self, "visit_%s" % obj.__visit_name__, None)
+        else:
+            raise Exception(f"{obj} has no visitor name")
         if meth is None:
             raise Exception(
                 "Compiler '{name}' not found for {cls}".format(
                     name=obj.__visit_name__, cls=type(obj)
                 )
             )
-        return meth(obj)
+        return meth(obj, **kwargs)
 
     def visit_quantifier(self, quantifier: fol.Quantifier):
         raise NotImplementedError
