@@ -72,7 +72,7 @@ class AnnotatedFormula(Sentence, ProofStep):
         )
 
     def is_axiom(self):
-        return self.role == FormulaRole.AXIOM
+        return self.role in [FormulaRole.AXIOM, FormulaRole.HYPOTHESIS, FormulaRole.ASSUMPTION]
 
 
 
