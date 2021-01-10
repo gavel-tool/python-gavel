@@ -358,6 +358,8 @@ class TPTPParser(LogicParser, StringBasedParser):
                     if x == "\n":
                         comment = False
                         newline = True
+                    elif newline:
+                        newline = False
                     elif not comment:
                         if quoted and x == quoted and buff[-1] != "\\":
                             quoted = False
