@@ -248,7 +248,7 @@ class TPTPCompiler(Compiler):
     def visit_predefined_constant(self, obj: fol.PredefinedConstant):
         if obj == fol.PredefinedConstant.FALSUM:
             return "$false"
-        elif obj == fol.PredefinedConstant.FALSUM:
+        elif obj == fol.PredefinedConstant.VERUM:
             return "$true"
         else:
             raise NotImplementedError
