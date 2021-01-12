@@ -238,7 +238,7 @@ class Constant(TermExpression):
         self.symbol = symbol
 
     def __str__(self):
-        return self.symbol
+        return str(self.symbol)
 
     def symbols(self):
         return {self.symbol}

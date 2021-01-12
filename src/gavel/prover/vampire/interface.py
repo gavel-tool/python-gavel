@@ -1,7 +1,7 @@
 from gavel.prover.registry import register_prover
 from gavel.logic.logic import PredefinedConstant
 from gavel.dialects.base.dialect import Problem
-from gavel.dialects.tptp.dialect import TPTPProblemDialect
+from gavel.dialects.tptp.dialect import TPTPProofDialect
 from gavel.prover.base.interface import BaseProverInterface
 from gavel.prover.base.interface import BaseResultHandler
 import subprocess as sub
@@ -10,7 +10,7 @@ import os
 
 @register_prover("vampire")
 class VampireInterface(BaseProverInterface):
-    _prover_dialect_cls = TPTPProblemDialect
+    _prover_dialect_cls = TPTPProofDialect
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
