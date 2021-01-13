@@ -149,7 +149,7 @@ class TPTPCompiler(Compiler):
 
     def visit_unary_formula(self, formula: fol.UnaryFormula):
         return "{}{}".format(
-            self.visit(formula.connective), self.visit(formula.formula)
+            self.visit(formula.connective), self.parenthesise(formula.formula)
         )
 
     def visit_quantified_formula(self, formula: fol.QuantifiedFormula):
