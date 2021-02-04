@@ -31,11 +31,13 @@ class Proof:
         *args,
         premises: Iterable[LogicElement] = None,
         steps: List[ProofStep] = None,
+        status: status.Status,
         **kwargs
     ):
         super(Proof, self).__init__(*args, **kwargs)
         self.premises = premises or []
         self.steps = steps or []
+        self.status = status
         self._used_axioms = None
 
     @property
