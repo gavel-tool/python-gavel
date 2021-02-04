@@ -389,7 +389,7 @@ class SimpleTPTPProofParser(ProofParser):
         szs_status = re.search(r"SZS status (\w+)", structure)
         if szs_status:
             try:
-                szs_status = status.get_status(szs_status.groups()[0])
+                szs_status = status.get_status(szs_status.groups()[0])()
             except:
                 print("Warning: Could not process proof status:", szs_status)
                 szs_status = None
