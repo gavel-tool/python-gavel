@@ -1,6 +1,7 @@
 import gavel.logic.logic as fol
 from gavel.dialects.base.compiler import Compiler
 from gavel.logic import problem
+import re
 
 
 class TPTPCompiler(Compiler):
@@ -187,13 +188,13 @@ class TPTPCompiler(Compiler):
 
     def visit_functor_expression(self, expression: fol.FunctorExpression):
         return "{}({})".format(
-            self.visit(expression.functor),
+            self.visit("f" + re.sub("[^A-z_0-9]", "_", expression.functor)),
             ",".join(map(self.visit, expression.arguments)),
         )
 
     def visit_predicate_expression(self, expression: fol.PredicateExpression):
         return "{}({})".format(
-            self.visit(expression.predicate),
+            self.visit("P" + re.sub("[^A-z_0-9]", "_", expression.predicate)),
             ",".join(map(self.visit, expression.arguments)),
         )
 
@@ -233,13 +234,13 @@ class TPTPCompiler(Compiler):
         return "{}>{}".format(self.visit(expression.left), self.visit(expression.right))
 
     def visit_variable(self, variable: fol.Variable):
-        return variable.symbol
+        return "V" + re.sub("[^A-z_0-9]", "_", variable.symbol)
 
     def visit_distinct_object(self, variable: fol.DistinctObject):
         return "\"" + variable.symbol + "\""
 
     def visit_constant(self, variable: fol.Variable):
-        return variable.symbol
+        return "c" + re.sub("[^A-z_0-9]", "_", variable.symbol)
 
     def visit_problem(self, problem: problem.Problem):
         L = [self.visit(i) for i in problem.imports] + [self.visit(axiom) for axiom in problem.premises] + [self.visit(c) for c in problem.conjectures]
