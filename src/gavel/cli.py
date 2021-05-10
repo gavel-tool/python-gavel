@@ -65,14 +65,22 @@ def prove(p, f, s, plot, hets):
 @click.argument("frm")
 @click.argument("to")
 @click.argument("path")
-def translate(frm, to, path):
+@click.option("--save", default="")
+def translate(frm, to, path, save):
     input_dialect = get_dialect(frm)
     output_dialect = get_dialect(to)
 
     parser = input_dialect._parser_cls()
     compiler = output_dialect._compiler_cls()
-    with open(path, "r") as finp:
-        print(compiler.visit(parser.parse(finp.read())))
+    #if the parameter save is specified, the translation gets saved as a file with that name
+    if save != "":
+        with open(str(save) + '.txt', 'w') as file:
+            with open(path, "r") as finp:
+                file.write(compiler.visit(parser.parse(finp.read())))
+    else:
+        with open(path, "r") as finp:
+            print(compiler.visit(parser.parse(finp.read())))
+
 
 
 def add_source(source):
