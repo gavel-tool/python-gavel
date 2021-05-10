@@ -61,12 +61,16 @@ def prove(p, f, s, plot, hets):
             g.render()
 
 
-@click.command()
+@click.command(name='translate', context_settings=dict(
+    ignore_unknown_options=True,
+    allow_extra_args=True,
+))
 @click.argument("frm")
 @click.argument("to")
-@click.argument("path")
-@click.option("--save", default="")
-def translate(frm, to, path, save):
+@click.argument("path")@click.option("--save", default="")
+@click.pass_context
+def translate(ctx, frm, to, path, save):
+    kwargs= {ctx.args[i].strip('-'): ctx.args[i+1] for i in range(0, len(ctx.args), 2)}
     input_dialect = get_dialect(frm)
     output_dialect = get_dialect(to)
 
@@ -76,11 +80,10 @@ def translate(frm, to, path, save):
     if save != "":
         with open(str(save) + '.txt', 'w') as file:
             with open(path, "r") as finp:
-                file.write(compiler.visit(parser.parse(finp.read())))
+                file.write(compiler.visit(parser.parse(finp.read(), **kwargs)))
     else:
         with open(path, "r") as finp:
-            print(compiler.visit(parser.parse(finp.read())))
-
+            print(compiler.visit(parser.parse(finp.read(), **kwargs)))
 
 
 def add_source(source):
