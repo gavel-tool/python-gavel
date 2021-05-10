@@ -67,17 +67,23 @@ def prove(p, f, s, plot, hets):
 ))
 @click.argument("frm")
 @click.argument("to")
-@click.argument("path")
+@click.argument("path")@click.option("--save", default="")
 @click.pass_context
-def translate(ctx, frm, to, path):
+def translate(ctx, frm, to, path, save):
     kwargs= {ctx.args[i].strip('-'): ctx.args[i+1] for i in range(0, len(ctx.args), 2)}
     input_dialect = get_dialect(frm)
     output_dialect = get_dialect(to)
 
     parser = input_dialect._parser_cls()
     compiler = output_dialect._compiler_cls()
-    with open(path, "r") as finp:
-        print(compiler.visit(parser.parse(finp.read(), **kwargs)))
+    #if the parameter save is specified, the translation gets saved as a file with that name
+    if save != "":
+        with open(str(save) + '.txt', 'w') as file:
+            with open(path, "r") as finp:
+                file.write(compiler.visit(parser.parse(finp.read(), **kwargs)))
+    else:
+        with open(path, "r") as finp:
+            print(compiler.visit(parser.parse(finp.read(), **kwargs)))
 
 
 def add_source(source):
