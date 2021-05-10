@@ -67,7 +67,8 @@ def prove(p, f, s, plot, hets):
 ))
 @click.argument("frm")
 @click.argument("to")
-@click.argument("path")@click.option("--save", default="")
+@click.argument("path")
+@click.option("--save", default="")
 @click.pass_context
 def translate(ctx, frm, to, path, save):
     kwargs= {ctx.args[i].strip('-'): ctx.args[i+1] for i in range(0, len(ctx.args), 2)}
