@@ -1,3 +1,5 @@
+import re
+
 from gavel.prover.registry import register_prover
 from gavel.logic.logic import PredefinedConstant
 from gavel.dialects.base.dialect import Problem
@@ -46,6 +48,12 @@ class VampireInterface(BaseProverInterface):
                 raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
         return result
 
+    def _post_process_proof(self, raw_proof_result):
+        match = re.search(r"\%\s*\#?\s*SZS\soutput\sstart[^\n]*\n(?P<proof_text>(.|\n)*)\%\s*\#?\s*SZS\soutput\send", raw_proof_result)
+        if match:
+            return match.group("proof_text")
+        else:
+            return raw_proof_result
 
 class ResultHandler(BaseResultHandler):
     def get_used_axioms(self):
