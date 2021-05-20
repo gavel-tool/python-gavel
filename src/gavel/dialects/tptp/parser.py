@@ -178,7 +178,7 @@ class TPTPTransformer(Transformer):
                     ],
                 )
             else:
-                p = self._DEFINED_PREDICATE_MAP[c0] if is_defined else c0
+                p = self._DEFINED_PREDICATE_MAP.get(c0, c0) if is_defined else c0
                 return logic.PredicateExpression(
                     predicate=p,
                     arguments=[
@@ -306,6 +306,9 @@ class TPTPTransformer(Transformer):
         assert len(obj.children) == 1 and isinstance(obj.children[0], str)
         return logic.Variable(obj.children[0])
 
+    def visit_typed_variable(self, obj, **kwargs):
+        return logic.TypedVariable(self.visit(obj.children[0]), self.visit(obj.children[1]))
+
     def stream_items(self, lines: Iterable[str], **kwargs):
         return ["\n".join(lines)]
 
@@ -370,11 +373,10 @@ class TPTPParser(LogicParser, StringBasedParser):
 
 
     def parse(self, structure: str, *args, **kwargs) -> Target:
-        inputs = self.stream_lines(structure)
-        with mp.Pool() as pool:
-            for result in pool.imap(do, inputs):
-                for s in result:
-                    yield s
+        inputs = list(self.stream_lines(structure))
+        for result in map(do, inputs):
+            for s in result:
+                yield s
 
 
 class TPTPProblemParser(ProblemParser, StringBasedParser):
