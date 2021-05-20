@@ -373,10 +373,11 @@ class TPTPParser(LogicParser, StringBasedParser):
 
 
     def parse(self, structure: str, *args, **kwargs) -> Target:
-        inputs = list(self.stream_lines(structure))
-        for result in map(do, inputs):
-            for s in result:
-                yield s
+        inputs = self.stream_lines(structure)
+        with mp.Pool() as pool:
+            for result in pool.imap(do, inputs):
+                for s in result:
+                    yield s
 
 
 class TPTPProblemParser(ProblemParser, StringBasedParser):
