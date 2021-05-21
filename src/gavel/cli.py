@@ -80,11 +80,9 @@ def translate(ctx, frm, to, path, save):
     #if the parameter save is specified, the translation gets saved as a file with that name
     if save != "":
         with open(str(save) + '.txt', 'w') as file:
-            with open(path, "r") as finp:
-                file.write(compiler.visit(parser.parse(finp.read(), **kwargs)))
+            file.write(compiler.visit(parser.parse_from_file(path, **kwargs)))
     else:
-        with open(path, "r") as finp:
-            print(compiler.visit(parser.parse(finp.read(), **kwargs)))
+        print(compiler.visit(parser.parse_from_file(path, **kwargs)))
 
 
 def add_source(source):
