@@ -389,10 +389,20 @@ class SimpleTPTPProofParser(ProofParser):
         self._tptp_parser = TPTPParser()
 
     def parse(self, structure: str, *args, **kwargs):
+        szs_status = re.search(r"SZS status (\w+)", structure)
+        if szs_status:
+            try:
+                szs_status = status.get_status(szs_status.groups()[0])()
+            except:
+                print("Warning: Could not process proof status:", szs_status)
+                szs_status = None
+        if not szs_status:
+            szs_status = status.StatusUnknown()
         return LinearProof(
             steps=[
                 self._create_proof_step(s) for s in self._tptp_parser.parse(structure)
-            ]
+            ],
+            status=szs_status
         )
 
     def _create_proof_step(self, e: LogicElement) -> ProofStep:
