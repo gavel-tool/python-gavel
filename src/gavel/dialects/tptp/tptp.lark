@@ -4,11 +4,12 @@
 %ignore WS
 
 DOLLAR_WORD: "$" WORD
-WORD: /\w+/
+WORD: /(\w|\$)+/
 UPPER_WORD: ("A" .. "Z") WORD?
 LOWER_WORD: LOWER WORD?
 LOWER: "a" .. "z"
 
+?typed_variable: variable [":"  type_binary_formula ]
 variable:  UPPER_WORD
 constant: LOWER_WORD
 DECIMAL_NUMBER: SIGNED_NUMBER ("/" NUMBER)?
@@ -34,14 +35,14 @@ QUANTIFIER: "!" | "?"
 ?type_binary_formula: unary_formula (TYPE_BINARY_OPERATOR unary_formula)*
 ?unary_formula: (UNARY_CONNECTIVE unary_formula) | transition_formula
 ?transition_formula: object_binary_formula | "(" formula ")" | quantified_formula
-quantified_formula: QUANTIFIER "[" (variable ("," variable)*) "]" ":" unary_formula
+quantified_formula: QUANTIFIER "[" (typed_variable ("," typed_variable)*) "]" ":" unary_formula
 ?object_binary_formula: term (OBJECT_BINARY_OPERATOR term)*
 
 ?term: functor_term | bottom | DECIMAL_NUMBER | distinct_object
-functor_term: functor ["(" term ("," term)* ")"]
-?bottom: variable // | "(" term ")"
+functor_term: functor ["(" term ("," term)* ")"] [":"  type_binary_formula ]
+?bottom: variable
 
-LOGIC: "thf" | "ttf" | "cnf" | "fof"
+LOGIC: "thf" | "tff" | "ttf" | "cnf" | "fof"
 
 inference_rule: WORD "(" WORD ("," WORD )* ")"
 
