@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from typing import Iterable
 import requests
 import multiprocessing as mp
+from itertools import chain
 try:
     from antlr4 import CommonTokenStream
     from antlr4 import InputStream
@@ -374,18 +375,8 @@ class TPTPParser(LogicParser, StringBasedParser):
 
     def parse(self, structure: str, *args, **kwargs) -> Target:
         inputs = self.stream_lines(structure)
-        pool= mp.Pool()
-        it = pool.imap(do, inputs)
-        while True:
-            try:
-                for s in it.next():
-                    yield s
-            except mp.TimeoutError:
-                raise
-            except StopIteration:
-                break
-        pool.close()
-        pool.join()
+        with mp.get_context("spawn").Pool() as pool:
+            return list(chain(*pool.imap(do, inputs)))
 
 
 class TPTPProblemParser(ProblemParser, StringBasedParser):
