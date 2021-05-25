@@ -51,7 +51,7 @@ class VampireInterface(BaseProverInterface):
     def _post_process_proof(self, raw_proof_result):
         match = re.search(r"\%\s+SZS\s+status[^\n]*\n\%\s*\#?\s*SZS\soutput\sstart[^\n]*\n(?P<proof_text>(.|\n)*)\%\s*\#?\s*SZS\soutput\send", raw_proof_result)
         if match:
-            return match.group("proof_text")
+            return match.group(0)
         else:
             return raw_proof_result
 
