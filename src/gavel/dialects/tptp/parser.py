@@ -374,10 +374,18 @@ class TPTPParser(LogicParser, StringBasedParser):
 
     def parse(self, structure: str, *args, **kwargs) -> Target:
         inputs = self.stream_lines(structure)
-        with mp.Pool() as pool:
-            for result in pool.imap(do, inputs):
-                for s in result:
+        pool= mp.Pool()
+        it = pool.imap(do, inputs)
+        while True:
+            try:
+                for s in it.next():
                     yield s
+            except mp.TimeoutError:
+                raise
+            except StopIteration:
+                break
+        pool.close()
+        pool.join()
 
 
 class TPTPProblemParser(ProblemParser, StringBasedParser):
@@ -470,3 +478,7 @@ def parse_solution(prover_output):
             parser = SimpleTPTPProofParser()
             solution = parser.parse(soup.get_text())
             return solution
+
+
+if __name__=="__main__":
+    pass
