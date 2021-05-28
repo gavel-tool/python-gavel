@@ -68,7 +68,7 @@ def prove(p, f, s, plot, hets):
 @click.argument("frm")
 @click.argument("to")
 @click.argument("path")
-@click.option("--save", envvar="SAVE_PATH", default="", help="If set, saves the translation to SAVE_PATH")
+@click.option("--save", metavar="SAVE_PATH", default="", help="If set, saves the translation to SAVE_PATH")
 @click.pass_context
 def translate(ctx, frm, to, path, save):
     """
