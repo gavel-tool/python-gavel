@@ -23,7 +23,7 @@ from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
 from gavel.prover.hets.interface import HetsProve, HetsSession, HetsEngine
 from gavel.prover.registry import get_prover
 from gavel.selection.selector import Sine
-from gavel.dialects.base.dialect import get_dialect
+from gavel.dialects.base.dialect import get_dialect, _DIALECT_REGISTRY
 from gavel import plugins
 
 
@@ -68,9 +68,18 @@ def prove(p, f, s, plot, hets):
 @click.argument("frm")
 @click.argument("to")
 @click.argument("path")
-@click.option("--save", default="")
+@click.option("--save", envvar="SAVE_PATH", default="", help="If set, saves the translation to SAVE_PATH")
 @click.pass_context
 def translate(ctx, frm, to, path, save):
+    """
+    Translates the file at PATH from the dialect specified by FRM to the dialect TO. You can get a list of all available dialects via the `dialects` command.
+
+    Example usage:
+
+        python -m gavel translate --save=my-output tptp tptp my-input-file.tptp
+
+        This will parse a given TPTP-file into gavels internal logic and save a new equivalent TPTP theory in my-output.txt.
+    """
     kwargs= {ctx.args[i].strip('-'): ctx.args[i+1] for i in range(0, len(ctx.args), 2)}
     input_dialect = get_dialect(frm)
     output_dialect = get_dialect(to)
@@ -84,6 +93,11 @@ def translate(ctx, frm, to, path, save):
     else:
         print(compiler.visit(parser.parse_from_file(path, **kwargs)))
 
+@click.command()
+def dialects():
+    for key in _DIALECT_REGISTRY.keys():
+        print(key)
+
 
 def add_source(source):
     global cli
@@ -92,6 +106,7 @@ def add_source(source):
 
 base.add_command(prove)
 base.add_command(translate)
+base.add_command(dialects)
 
 cli = click.CommandCollection()
 
