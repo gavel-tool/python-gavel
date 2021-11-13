@@ -188,15 +188,15 @@ class TPTPCompiler(Compiler):
 
     def visit_functor_expression(self, expression: fol.FunctorExpression):
         return "{}({})".format(
-            self.visit(re.sub("[^A-z_0-9]", "_", expression.functor[:1].lower()
-                                                 + expression.functor[1:] if expression.functor else "")),
+            "'" + re.sub("[^A-z_0-9]", "_", expression.functor[:1].lower()
+                                                 + expression.functor[1:] if expression.functor else "") + "'",
             ",".join(map(self.visit, expression.arguments)),
         )
 
     def visit_predicate_expression(self, expression: fol.PredicateExpression):
         return "{}({})".format(
-            self.visit(re.sub("[^A-z_0-9]", "_", expression.predicate[:1].lower()
-                                                 + expression.predicate[1:] if expression.predicate else "")),
+            "'" + re.sub("[^A-z_0-9]", "_", expression.predicate[:1].lower()
+                                                 + expression.predicate[1:] if expression.predicate else "") + "'",
             ",".join(map(self.visit, expression.arguments)),
         )
 
@@ -243,8 +243,8 @@ class TPTPCompiler(Compiler):
         return "\"" + variable.symbol + "\""
 
     def visit_constant(self, variable: fol.Variable):
-        return re.sub("[^A-z_0-9]", "_", variable.symbol[:1].lower()
-                                                 + variable.symbol[1:] if variable.symbol else "")
+        return "'" + re.sub("[^A-z_0-9]", "_", variable.symbol[:1].lower()
+                                                 + variable.symbol[1:] if variable.symbol else "") + "'"
 
     def visit_problem(self, problem: problem.Problem):
         L = [self.visit(i) for i in problem.imports] + [self.visit(axiom) for axiom in problem.premises] + [self.visit(c) for c in problem.conjectures]
