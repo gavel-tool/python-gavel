@@ -161,8 +161,8 @@ class TPTPCompiler(Compiler):
         )
 
     def visit_annotated_formula(self, anno: problem.AnnotatedFormula):
-        return "{}({},{},({})).".format(
-            anno.logic, anno.name, self.visit(anno.role), self.visit(anno.formula)
+        return "% {}\n{}({},{},({})).".format(
+            anno.annotation, anno.logic, anno.name, self.visit(anno.role), self.visit(anno.formula)
         )
 
     def visit_binary_formula(self, formula: fol.BinaryFormula, parent_operand=None):
