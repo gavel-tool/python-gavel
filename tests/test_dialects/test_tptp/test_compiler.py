@@ -44,3 +44,9 @@ class TestTPTPCompiler(TestCompiler):
             "% Annotation\nfof(test_axiom,axiom,('pred'('c')))."
         )
 
+    def test_annotated_formulas_no_annotation(self):
+        self.assert_compiler(
+            problem.AnnotatedFormula('fof', 'test_axiom', problem.FormulaRole.AXIOM, logic.PredicateExpression("pred", [logic.Constant('c')])),
+            "fof(test_axiom,axiom,('pred'('c')))."
+        )
+

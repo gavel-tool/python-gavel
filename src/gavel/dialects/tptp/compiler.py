@@ -161,6 +161,10 @@ class TPTPCompiler(Compiler):
         )
 
     def visit_annotated_formula(self, anno: problem.AnnotatedFormula):
+        if (anno.annotation is None):
+            return "{}({},{},({})).".format(
+                anno.logic, anno.name, self.visit(anno.role), self.visit(anno.formula)
+            )
         return "% {}\n{}({},{},({})).".format(
             anno.annotation.replace("\n", "\n% "), anno.logic, anno.name, self.visit(anno.role), self.visit(anno.formula)
         )
