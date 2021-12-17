@@ -22,7 +22,8 @@ class EProverInterface(BaseProverInterface):
 
     def _bootstrap_problem(self, problem: Problem):
         problem_string = "\n".join(self.dialect.compile(l) for l in problem.premises)
-        problem_string += self.dialect.compile(problem.conjectures)
+        for conjecture in problem.conjectures:
+            problem_string += self.dialect.compile(conjecture)
         return problem_string
 
     def _submit_problem(self, problem_instance, *args, **kwargs):
