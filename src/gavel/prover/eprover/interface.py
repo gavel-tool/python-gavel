@@ -1,7 +1,6 @@
 from gavel.prover.registry import register_prover
 from gavel.dialects.base.dialect import Problem
 from gavel.dialects.tptp.dialect import TPTPProofDialect
-from gavel.dialects.tptp.parser import SimpleTPTPProofParser
 from gavel.prover.base.interface import BaseProverInterface
 from gavel.prover.base.interface import BaseResultHandler
 import subprocess as sub
@@ -23,7 +22,7 @@ class EProverInterface(BaseProverInterface):
 
     def _bootstrap_problem(self, problem: Problem):
         problem_string = "\n".join(self.dialect.compile(l) for l in problem.premises)
-        problem_string += self.dialect.compile(problem.conjecture)
+        problem_string += self.dialect.compile(problem.conjectures)
         return problem_string
 
     def _submit_problem(self, problem_instance, *args, **kwargs):
