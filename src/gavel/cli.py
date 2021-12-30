@@ -18,6 +18,7 @@ Why does this file exist, and why not put this in __main__?
 import click
 import os
 import pkg_resources
+from gavel.dialects.tptp.dialect import TPTPDialect
 
 from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
 from gavel.prover.hets.interface import HetsProve, HetsSession, HetsEngine
@@ -68,9 +69,10 @@ def prove(p, f, s, plot, hets):
 @click.argument("frm")
 @click.argument("to")
 @click.argument("path")
-@click.option("--save", metavar="SAVE_PATH", default="", help="If set, saves the translation to SAVE_PATH")
+@click.option("--save", "-s", metavar="SAVE_PATH", default="", help="If set, saves the translation to SAVE_PATH")
+@click.option("--shorten-names", "-n", is_flag=True, help="Shorten names in output language (only for TPTP)")
 @click.pass_context
-def translate(ctx, frm, to, path, save):
+def translate(ctx, frm, to, path, save, shorten_names):
     """
     Translates the file at PATH from the dialect specified by FRM to the dialect TO. You can get a list of all available dialects via the `dialects` command.
 
@@ -85,7 +87,7 @@ def translate(ctx, frm, to, path, save):
     output_dialect = get_dialect(to)
 
     parser = input_dialect._parser_cls()
-    compiler = output_dialect._compiler_cls()
+    compiler = output_dialect._compiler_cls(shorten_names=(to == TPTPDialect._identifier() and shorten_names))
     #if the parameter save is specified, the translation gets saved as a file with that name
     if save != "":
         with open(str(save) + '.txt', 'w') as file:
