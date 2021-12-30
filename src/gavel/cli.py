@@ -82,7 +82,7 @@ def translate(ctx, frm, to, path, save, shorten_names):
 
         This will parse a given TPTP-file into gavels internal logic and save a new equivalent TPTP theory in my-output.txt.
     """
-    kwargs= {ctx.args[i].strip('-'): ctx.args[i+1] for i in range(0, len(ctx.args), 2)}
+    kwargs = {ctx.args[i].strip('-'): ctx.args[i+1] for i in range(0, len(ctx.args), 2)}
     input_dialect = get_dialect(frm)
     output_dialect = get_dialect(to)
 

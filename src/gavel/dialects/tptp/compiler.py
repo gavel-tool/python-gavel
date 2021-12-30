@@ -284,7 +284,7 @@ class TPTPCompiler(Compiler):
             hashtag_pos = name[:-3].rfind("#")
             if slash_pos > 0:
                 cut_position = slash_pos + 1
-            if hashtag_pos < slash_pos:
+            if hashtag_pos > slash_pos:
                 cut_position = hashtag_pos + 1
 
         return name[cut_position:]
