@@ -71,8 +71,9 @@ def prove(p, f, s, plot, hets):
 @click.argument("path")
 @click.option("--save", "-s", metavar="SAVE_PATH", default="", help="If set, saves the translation to SAVE_PATH")
 @click.option("--shorten-names", "-n", is_flag=True, help="Shorten names in output language (only for TPTP)")
+@click.option("--no-annotations", "-a", is_flag=True, help="Remove annotations in output dialect")
 @click.pass_context
-def translate(ctx, frm, to, path, save, shorten_names):
+def translate(ctx, frm, to, path, save, shorten_names, no_annotations):
     """
     Translates the file at PATH from the dialect specified by FRM to the dialect TO. You can get a list of all available dialects via the `dialects` command.
 
@@ -102,7 +103,8 @@ def translate(ctx, frm, to, path, save, shorten_names):
     output_dialect = get_dialect(to)
 
     parser = input_dialect._parser_cls()
-    compiler = output_dialect._compiler_cls(shorten_names=(to == TPTPDialect._identifier() and shorten_names))
+    compiler = output_dialect._compiler_cls(shorten_names=(to == TPTPDialect._identifier() and shorten_names),
+                                            keep_annotations=not no_annotations)
     #if the parameter save is specified, the translation gets saved as a file with that name
     if save != "":
         with open(str(save), 'w') as file:

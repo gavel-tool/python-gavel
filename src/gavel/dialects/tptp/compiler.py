@@ -6,8 +6,9 @@ import re
 
 class TPTPCompiler(Compiler):
 
-    def __init__(self, shorten_names=False):
+    def __init__(self, shorten_names=False, keep_annotations=True):
         self.shorten_names = shorten_names
+        self.keep_annotations = keep_annotations
 
     def visit_defined_constant(self, obj: fol.DefinedConstant):
         return self.visit(obj.value)
@@ -165,7 +166,7 @@ class TPTPCompiler(Compiler):
         )
 
     def visit_annotated_formula(self, anno: problem.AnnotatedFormula):
-        if (anno.annotation is None):
+        if anno.annotation is None or not self.keep_annotations:
             return "{}({},{},({})).".format(
                 anno.logic, anno.name, self.visit(anno.role), self.visit(anno.formula)
             )
