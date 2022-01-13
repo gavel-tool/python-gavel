@@ -78,11 +78,26 @@ def translate(ctx, frm, to, path, save, shorten_names):
 
     Example usage:
 
-        python -m gavel translate --save=my-output tptp tptp my-input-file.tptp
+        python -m gavel translate --save=my-output.p tptp tptp my-input-file.tptp
 
         This will parse a given TPTP-file into gavels internal logic and save a new equivalent TPTP theory in my-output.txt.
     """
-    kwargs = {ctx.args[i].strip('-'): ctx.args[i+1] for i in range(0, len(ctx.args), 2)}
+    # allow for arguments with variable number of values
+    index = 0
+    kwargs = {}
+    while index < len(ctx.args):
+        if (ctx.args[index].startswith('-')):
+            command = ctx.args[index].strip('-')
+            values = []
+            index += 1
+            while index < len(ctx.args) and not ctx.args[index].startswith('-'):
+                values.append(ctx.args[index])
+                index += 1
+
+            kwargs[command] = values
+        else:
+            index += 1
+
     input_dialect = get_dialect(frm)
     output_dialect = get_dialect(to)
 
@@ -90,7 +105,7 @@ def translate(ctx, frm, to, path, save, shorten_names):
     compiler = output_dialect._compiler_cls(shorten_names=(to == TPTPDialect._identifier() and shorten_names))
     #if the parameter save is specified, the translation gets saved as a file with that name
     if save != "":
-        with open(str(save) + '.txt', 'w') as file:
+        with open(str(save), 'w') as file:
             file.write(compiler.visit(parser.parse_from_file(path, **kwargs)))
     else:
         print(compiler.visit(parser.parse_from_file(path, **kwargs)))
