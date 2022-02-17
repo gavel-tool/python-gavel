@@ -9,6 +9,8 @@ class TPTPCompiler(Compiler):
     def __init__(self, shorten_names=False, keep_annotations=True):
         self.shorten_names = shorten_names
         self.keep_annotations = keep_annotations
+        # maps symbols used in internal Gavel to symbols in TPTP output
+        self.name_mapping = {}
 
     def visit_defined_constant(self, obj: fol.DefinedConstant):
         return self.visit(obj.value)
@@ -200,14 +202,18 @@ class TPTPCompiler(Compiler):
         if expression.functor:
             name = self.shorten_name(expression.functor)
             name = name[:1].lower() + name[1:]
-        return "'{}'({})".format(re.sub("[^A-z_0-9]", "_", name), ",".join(map(self.visit, expression.arguments)))
+            name = re.sub("[^A-z_0-9]", "_", name)
+            self.name_mapping[expression.functor] = name
+        return "'{}'({})".format(name, ",".join(map(self.visit, expression.arguments)))
 
     def visit_predicate_expression(self, expression: fol.PredicateExpression):
         name = ""
         if expression.predicate:
             name = self.shorten_name(expression.predicate)
             name = name[:1].lower() + name[1:]
-        return "'{}'({})".format(re.sub("[^A-z_0-9]", "_", name), ",".join(map(self.visit, expression.arguments)))
+            name = re.sub("[^A-z_0-9]", "_", name)
+            self.name_mapping[expression.predicate] = name
+        return "'{}'({})".format(name, ",".join(map(self.visit, expression.arguments)))
 
     def visit_typed_variable(self, variable: fol.TypedVariable):
         return "{}:{}".format(variable.name, self.visit(variable.vtype))
@@ -249,17 +255,21 @@ class TPTPCompiler(Compiler):
         if variable.symbol:
             name = self.shorten_name(variable.symbol)
             name = name[:1].upper() + name[1:]
-        return re.sub("[^A-z_0-9]", "_", name)
+            name = re.sub("[^A-z_0-9]", "_", name)
+            self.name_mapping[variable.symbol] = name
+        return name
 
     def visit_distinct_object(self, variable: fol.DistinctObject):
         return "\"" + variable.symbol + "\""
 
-    def visit_constant(self, variable: fol.Variable):
-        constant = ""
-        if variable.symbol:
-            constant = self.shorten_name(variable.symbol)
-            constant = constant[:1].lower() + constant[1:]
-        return f"'{re.sub('[^A-z_0-9]', '_', constant)}'"
+    def visit_constant(self, constant: fol.Constant):
+        name = ""
+        if constant.symbol:
+            name = self.shorten_name(constant.symbol)
+            name = name[:1].lower() + name[1:]
+            name = re.sub('[^A-z_0-9]', '_', name)
+            self.name_mapping[constant.symbol] = name
+        return f"'{name}'"
 
     def visit_problem(self, problem: problem.Problem):
         L = [self.visit(i) for i in problem.imports] + [self.visit(axiom) for axiom in problem.premises] + [self.visit(c) for c in problem.conjectures]
@@ -279,7 +289,7 @@ class TPTPCompiler(Compiler):
     def shorten_name(self, name):
         cut_position = 0
         # shorten name by taking only part after last / or # (but at least 3 characters)
-        # i.e. http://example.org/part_of -> part_of
+        # e.g. http://example.org/part_of -> part_of
         if self.shorten_names and len(name) > 2:
             slash_pos = name[:-3].rfind("/")
             hashtag_pos = name[:-3].rfind("#")

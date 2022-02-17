@@ -6,7 +6,7 @@ Why does this file exist, and why not put this in __main__?
   You might be tempted to import things from __main__ later, but that will cause
   problems: the code will get executed twice:
 
-  - When you run `python -mgavel` python will execute
+  - When you run `python -m gavel` python will execute
     ``__main__.py`` as a script. That means there won't be any
     ``gavel.__main__`` in ``sys.modules``.
   - When you import __main__ it will get executed again (as a module) because
@@ -87,7 +87,7 @@ def translate(ctx, frm, to, path, save, shorten_names, no_annotations):
     index = 0
     kwargs = {}
     while index < len(ctx.args):
-        if (ctx.args[index].startswith('-')):
+        if ctx.args[index].startswith('-'):
             command = ctx.args[index].strip('-')
             values = []
             index += 1
@@ -105,12 +105,59 @@ def translate(ctx, frm, to, path, save, shorten_names, no_annotations):
     parser = input_dialect._parser_cls()
     compiler = output_dialect._compiler_cls(shorten_names=(to == TPTPDialect._identifier() and shorten_names),
                                             keep_annotations=not no_annotations)
-    #if the parameter save is specified, the translation gets saved as a file with that name
+
+    # if the parameter save is specified, the translation gets saved as a file with that name
+    translation = compiler.visit(parser.parse_from_file(path, **kwargs))
     if save != "":
         with open(str(save), 'w') as file:
-            file.write(compiler.visit(parser.parse_from_file(path, **kwargs)))
+            file.write(translation)
     else:
-        print(compiler.visit(parser.parse_from_file(path, **kwargs)))
+        print(translation)
+
+    if frm == "annotated-owl" and to == TPTPDialect._identifier() and "save-dol" in kwargs:
+        parser_mapping = parser.name_mapping
+        compiler_mapping = compiler.name_mapping
+
+        dol_text = f'logic OWL\n' \
+                   f'ontology OWL_ontology = \n' \
+            # f'\t<{parser.ontology_iri}>\n' \
+
+        with open(path, 'r') as file:
+            for line in file.readlines():
+                dol_text += f'\t\t{line}'
+
+        dol_text += f'\n\nend\n' \
+                    f'\n' \
+                    f'ontology TPTP_ontology = \n' \
+                    f'\t OWL_ontology with \n'
+        for i, key in enumerate(parser_mapping):
+            dol_text += '\t\t'
+            if key in compiler_mapping:
+                dol_text += f'\'{parser_mapping[key]}\' |-> \'{compiler_mapping[key]}\''
+            else:
+                dol_text += f'{parser_mapping[key]} |-> {key}'
+
+            if i < len(parser_mapping) - 1:
+                dol_text += ',\n'
+            else:
+                dol_text += '\n'
+
+        dol_text += '\twith translation OWL22CASL, translation CASL2TPTP_FOF\n' \
+                    '\tthen logic TPTP :\n'
+        annot_axioms = translation.splitlines()
+        i = 0
+        while i < len(annot_axioms):
+            i += 1
+            line = annot_axioms[i]
+            i += 1
+            if not (line.startswith('fof(annotation_axiom') or line.startswith('%')):
+                break
+            dol_text += f'\t\t{line}\n'
+        dol_text += 'end'
+
+        with open(kwargs["save-dol"][0], 'w') as file:
+            file.write(dol_text)
+
 
 @click.command()
 def dialects():
@@ -130,7 +177,6 @@ base.add_command(dialects)
 cli = click.CommandCollection()
 
 main = cli
-
 
 cli.add_source(base)
 for entry_point in pkg_resources.iter_entry_points("cli"):
