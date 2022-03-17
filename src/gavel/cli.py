@@ -115,6 +115,7 @@ def translate(ctx, frm, to, path, save, shorten_names, no_annotations):
         print(translation)
 
     if frm == "annotated-owl" and to == TPTPDialect._identifier() and "save-dol" in kwargs:
+        ontology_text = parser.ontology_text_dol
         parser_mapping = parser.name_mapping
         compiler_mapping = compiler.name_mapping
 
@@ -122,9 +123,10 @@ def translate(ctx, frm, to, path, save, shorten_names, no_annotations):
                    f'ontology OWL_ontology = \n' \
             # f'\t<{parser.ontology_iri}>\n' \
 
-        with open(path, 'r') as file:
-            for line in file.readlines():
-                dol_text += f'\t\t{line}'
+        dol_text += ontology_text
+        #with open(path, 'r') as file:
+        #    for line in file.readlines():
+        #        dol_text += f'\t\t{line}'
 
         dol_text += f'\n\nend\n' \
                     f'\n' \
@@ -133,7 +135,7 @@ def translate(ctx, frm, to, path, save, shorten_names, no_annotations):
         for i, key in enumerate(parser_mapping):
             dol_text += '\t\t'
             if key in compiler_mapping:
-                dol_text += f'\'{parser_mapping[key]}\' |-> \'{compiler_mapping[key]}\''
+                dol_text += f'{parser_mapping[key]} |-> {compiler_mapping[key]}'
             else:
                 dol_text += f'{parser_mapping[key]} |-> {key}'
 
