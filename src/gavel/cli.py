@@ -119,6 +119,16 @@ def translate(ctx, frm, to, path, save, shorten_names, no_annotations):
         parser_mapping = parser.name_mapping
         compiler_mapping = compiler.name_mapping
 
+        owl_reserved = ['string', 'integer', 'decimal', 'float', 'Datatype', 'Class', 'ObjectProperty', 'DataProperty',
+                        'AnnotationProperty', 'NamedIndividual', 'Annotations', 'Prefix', 'Ontology', 'Import',
+                        'inverse', 'or', 'and', 'not', 'length', 'minLength', 'maxLength', 'pattern', 'langRange', '<=',
+                        '<', '>=', '>', 'some', 'that', 'only', 'value', 'Self', 'min', 'max', 'exactly',
+                        'EquivalentTo', 'SubClassOf', 'DisjointWith', 'DisjointUnionOf', 'HasKey', 'Domain', 'Range',
+                        'Characteristics', 'SubPropertyOf', 'InverseOf', 'SubPropertyChain', 'Functional',
+                        'InverseFunctional', 'Reflexive', 'Irreflexive', 'Symmetric', 'Asymmetric', 'Transitive',
+                        'Types', 'Facets', 'SameAs', 'DifferentFrom', 'EquivalentClasses', 'DisjointClasses',
+                        'EquivalentProperties', 'DisjointProperties', 'SameIndividual', 'DifferentIndividuals']
+
         dol_text = f'logic OWL\n' \
                    f'ontology OWL_ontology = \n' \
             # f'\t<{parser.ontology_iri}>\n' \
@@ -133,16 +143,20 @@ def translate(ctx, frm, to, path, save, shorten_names, no_annotations):
                     f'ontology TPTP_ontology = \n' \
                     f'\t OWL_ontology with \n'
         for i, key in enumerate(parser_mapping):
-            dol_text += '\t\t'
+            tptp_name = key
             if key in compiler_mapping:
-                dol_text += f'{parser_mapping[key]} |-> {compiler_mapping[key]}'
-            else:
-                dol_text += f'{parser_mapping[key]} |-> {key}'
-
-            if i < len(parser_mapping) - 1:
-                dol_text += ',\n'
-            else:
-                dol_text += '\n'
+                tptp_name = compiler_mapping[key]
+            if tptp_name != parser_mapping[key]:
+                dol_text += '\t\t'
+                # comment out lines containing reserved words
+                if tptp_name in owl_reserved:
+                    dol_text += '%%'
+                    print(f'[Warning] "{tptp_name}" is a reserved OWL keyword '
+                          f'and has been commented out in the DOL file.')
+                dol_text += f'{parser_mapping[key]} |-> {tptp_name},\n'
+        # remove last comma
+        split = dol_text.rsplit(',', 1)
+        dol_text = ''.join(split)
 
         dol_text += '\twith translation OWL22CASL, translation CASL2TPTP_FOF\n' \
                     '\tthen logic TPTP :\n'
@@ -156,6 +170,9 @@ def translate(ctx, frm, to, path, save, shorten_names, no_annotations):
                 break
             dol_text += f'\t\t{line}\n'
         dol_text += 'end'
+
+        if len(kwargs["save-dol"]) == 0:
+            raise Exception('You have to provide a file name for the --save-dol option')
 
         with open(kwargs["save-dol"][0], 'w') as file:
             file.write(dol_text)
