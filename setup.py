@@ -64,7 +64,7 @@ class optional_build_ext(build_ext):
 
 setup(
     name="gavel",
-    version="0.1.3",
+    version="0.1.3.dev0",
     license="AGPL",
     description="A toolset for prover independent premise selection. Template generated with cookiecutter-pylibrary.",
     long_description="%s\n%s"
