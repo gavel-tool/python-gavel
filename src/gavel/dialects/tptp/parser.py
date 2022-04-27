@@ -334,6 +334,7 @@ def do(string):
     except Exception as e:
         raise Exception(str(e))
 
+
 class TPTPParser(LogicParser, StringBasedParser):
     def __init__(self):
         sys.setrecursionlimit(100000)
@@ -371,7 +372,6 @@ class TPTPParser(LogicParser, StringBasedParser):
                             quoted = x
                 buff += x
         yield buff
-
 
     def parse(self, structure: str, *args, **kwargs) -> Target:
         inputs = self.stream_lines(structure)
