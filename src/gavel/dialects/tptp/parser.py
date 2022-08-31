@@ -375,8 +375,7 @@ class TPTPParser(LogicParser, StringBasedParser):
 
     def parse(self, structure: str, *args, **kwargs) -> Target:
         inputs = self.stream_lines(structure)
-        with mp.get_context("spawn").Pool() as pool:
-            return list(chain(*pool.imap(do, inputs)))
+        return list(chain(*map(do, inputs)))
 
 
 class TPTPProblemParser(ProblemParser, StringBasedParser):
