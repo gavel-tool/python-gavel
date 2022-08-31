@@ -16,7 +16,10 @@ class VampireInterface(BaseProverInterface):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.flags = ["-t 300", "-p tptp"]
+        flags = kwargs.get("flags", [])
+        if not flags:
+            flags = ["-p tptp", "-t 300"]
+        self.flags = flags
 
     def _bootstrap_problem(self, problem: Problem):
         problem_string = "\n".join(self.dialect.compile(l) for l in problem.premises)
