@@ -18,7 +18,7 @@ class VampireInterface(BaseProverInterface):
         super().__init__(*args, **kwargs)
         flags = kwargs.get("flags", [])
         if not flags:
-            flags = ["-p tptp", "-t 300"]
+            flags = ["-p tptp", "--input_syntax tptp", "-t 300"]
         self.flags = flags
 
     def _bootstrap_problem(self, problem: Problem):
@@ -48,7 +48,10 @@ class VampireInterface(BaseProverInterface):
                         tf.name,
                     ]), shell=True).decode("utf-8")
             except sub.CalledProcessError as e:
-                raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
+                if not re.search(r"SZS status (\w+)", e):
+                    raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
+                result = e
+
         return result
 
     def _post_process_proof(self, raw_proof_result):
