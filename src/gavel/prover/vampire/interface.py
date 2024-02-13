@@ -48,9 +48,9 @@ class VampireInterface(BaseProverInterface):
                         tf.name,
                     ]), shell=True).decode("utf-8")
             except sub.CalledProcessError as e:
-                if not re.search(r"SZS status (\w+)", e):
+                if not re.search(r"SZS status (\w+)", e.output.decode("utf-8")):
                     raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
-                result = e
+                result = e.output.decode("utf-8")
 
         return result
 
