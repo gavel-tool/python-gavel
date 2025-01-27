@@ -15,10 +15,10 @@ def binary_to_nary(
     if isinstance(formula, logic.BinaryFormula) and formula.operator == connective:
         return logic.NaryFormula(
             connective,
-            itertools.chain(
+            list(itertools.chain(
                 binary_to_nary(formula.left, connective).formulae,
                 binary_to_nary(formula.right, connective).formulae,
-            ),
+            )),
         )
     if isinstance(formula, logic.NaryFormula) and formula.operator == connective:
         return logic.NaryFormula(
@@ -48,6 +48,7 @@ def get_vars_in_formula(formula: logic.LogicElement) -> Set[logic.Variable]:
         return get_vars_in_formula(formula.formula)
     elif isinstance(formula, logic.NaryFormula):
         variables = [get_vars_in_formula(f) for f in formula.formulae]
+        variables = [v for v in variables if v is not None]
         if len(variables) > 0:
             try:
                 return set.union(*variables)
