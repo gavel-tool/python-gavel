@@ -64,7 +64,7 @@ class optional_build_ext(build_ext):
 
 setup(
     name="gavel",
-    version="0.1.5",
+    version="0.1.7",
     license="AGPL",
     description="A toolset for prover independent premise selection. Template generated with cookiecutter-pylibrary.",
     long_description="%s\n%s"
@@ -76,7 +76,7 @@ setup(
     ),
     author="Martin Glauer",
     author_email="martin.glauer@ovgu.de",
-    url="https://github.com/MGlauer/python-gavel",
+    url="https://github.com/gavel-tool/python-gavel",
     packages=find_packages("src"),
     package_dir={"": "src"},
     py_modules=[splitext(basename(path))[0] for path in glob("src/*.py")],
