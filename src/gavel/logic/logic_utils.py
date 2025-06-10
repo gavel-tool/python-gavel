@@ -311,8 +311,8 @@ def convert_to_cnf(formula: logic.LogicExpression) -> logic.NaryFormula:
             # nested conjunctions: resolve
             if clause.operator == logic.BinaryConnective.CONJUNCTION:
                 if isinstance(clause, logic.BinaryFormula):
-                    unprocessed_clauses.put(formula.left)
-                    unprocessed_clauses.put(formula.right)
+                    unprocessed_clauses.put(clause.left)
+                    unprocessed_clauses.put(clause.right)
                 else:
                     assert isinstance(clause, logic.NaryFormula)
                     for f in clause.formulae:
