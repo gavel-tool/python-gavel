@@ -244,6 +244,8 @@ class Variable(TermExpression):
         return re.match("[A-Z]\w*", self.symbol)
 
     def __eq__(self, other):
+        if not isinstance(other, Variable):
+            return False
         return self.symbol == other.symbol
 
     def __hash__(self):
