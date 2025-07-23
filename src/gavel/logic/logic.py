@@ -450,6 +450,8 @@ class NaryFormula(LogicExpression):
     """Shortcut for a chain of binary formulas with the same, associative operator"""
     __visit_name__ = "nary_formula"
 
+    requires_parens = True
+
     def __init__(self, operator: BinaryConnective, formulae: Iterable[LogicExpression]):
         assert operator.is_associative()
         self.operator = operator
