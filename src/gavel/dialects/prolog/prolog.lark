@@ -32,7 +32,7 @@ predicate: atom ["(" term_list ")"]
 term_list: term ("," term)*
 
 // A term can be a number, atom, variable, or structure (functor with args)
-?term: number | atom | variable | structure | list_term
+?term: number | constant | variable | structure | list_term
 
 // A structure is like a predicate (functor with arguments)
 structure: atom "(" term_list ")"
@@ -40,6 +40,9 @@ structure: atom "(" term_list ")"
 // List notation
 list_term: "[" [list_elements] "]"
 list_elements: term ("," term)* ["|" term]  // e.g., [H|T]
+
+// Constants
+constant: atom
 
 // Atoms: lowercase starting identifier or quoted string
 atom: ATOM_IDENTIFIER | QUOTED_ATOM

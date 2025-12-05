@@ -265,13 +265,18 @@ class PrologTransformer(Transformer):
         return result
     
     def atom(self, items):
-        """Process an atom (constant symbol)."""
+        """Process an atom (constant / predicate name)."""
         atom_str = str(items[0])
         # Remove quotes if it's a quoted atom
         if atom_str.startswith("'") and atom_str.endswith("'"):
             atom_str = atom_str[1:-1]
         return atom_str
     
+    def constant(self, items):
+        """Process a constant."""
+        const = items[0]
+        return logic.Constant(const) 
+      
     def variable(self, items):
         """Process a variable."""
         var_name = str(items[0])
@@ -384,13 +389,12 @@ class PrologParser(LogicParser, StringBasedParser):
         except:
             return False
 
+
 if __name__ == "__main__":
     parser = PrologParser()
     prolog_program = """
     father(tom, bob).
-    parent(X,Y) :- father(X,Y).
-    ?- parent(tom, Y).
     """
     results = parser.parse(prolog_program)
-    for formula in results:
-        print(formula)
+    for res in results:
+        print(res)
