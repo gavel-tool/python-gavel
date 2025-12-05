@@ -172,6 +172,15 @@ class PrologTransformer(Transformer):
             formula=formula
         )
     
+    def visit_predicate_extended(self, items):
+        return items.children[0]
+    
+    def negated_predicate(self, items):
+        return logic.UnaryFormula(
+            connective=logic.UnaryConnective.NEGATION,
+            formula=items[0]
+        )
+
     def predicate_list(self, items):
         """Process a list of predicates (conjunction in body or query)."""
         return [self.visit(item) if isinstance(item, Tree) else item for item in items]
@@ -199,6 +208,18 @@ class PrologTransformer(Transformer):
                 predicate=atom_name,
                 arguments=terms
             )
+    
+    def inequality(self, items):
+        """
+        Process an inequality predicate: term1 != term2
+        """
+        left_term = items[0]
+        right_term = items[1]
+        return logic.BinaryFormula(
+            left=left_term,
+            operator=logic.BinaryConnective.NEQ,
+            right=right_term
+        )
     
     def term_list(self, items):
         """Process a list of terms."""

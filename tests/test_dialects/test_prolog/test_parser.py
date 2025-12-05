@@ -78,3 +78,70 @@ class TestPrologParser(TestLogicParser):
             )
         )
         self.check_parser(inp, [result])
+
+    def test_parse_inequality(self):
+        prolog_program = """
+        unequal(X, Y) :- X != Y.
+        """
+        inp = prolog_program
+        result = AnnotatedFormula(
+            logic="fol",
+            name="rule_1",
+            role=FormulaRole.AXIOM,
+            formula=logic.QuantifiedFormula(
+                quantifier=logic.Quantifier.UNIVERSAL,
+                variables=[logic.Variable("X"), logic.Variable("Y")],
+                formula=logic.BinaryFormula(
+                    left=logic.BinaryFormula(
+                        left=logic.Variable("X"),
+                        operator=logic.BinaryConnective.NEQ,
+                        right=logic.Variable("Y")
+                    ),
+                    operator=logic.BinaryConnective.IMPLICATION,
+                    right=logic.PredicateExpression(
+                        predicate="unequal",
+                        arguments=[
+                            logic.Variable("X"),
+                            logic.Variable("Y")
+                        ]
+                    )
+                )
+            )
+        )
+        self.check_parser(inp, [result])
+
+    def test_negation(self):
+        prolog_program = """
+        uncyclic(X, Y) :- not cyclic(X, Y).
+        """
+        inp = prolog_program
+        result = AnnotatedFormula(
+            logic="fol",
+            name="rule_1",
+            role=FormulaRole.AXIOM,
+            formula=logic.QuantifiedFormula(
+                quantifier=logic.Quantifier.UNIVERSAL,
+                variables=[logic.Variable("X"), logic.Variable("Y")],
+                formula=logic.BinaryFormula(
+                    left=logic.UnaryFormula(
+                        connective=logic.UnaryConnective.NEGATION,
+                        formula=logic.PredicateExpression(
+                            predicate="cyclic",
+                            arguments=[
+                                logic.Variable("X"),
+                                logic.Variable("Y")
+                            ]
+                        )
+                    ),
+                    operator=logic.BinaryConnective.IMPLICATION,
+                    right=logic.PredicateExpression(
+                        predicate="uncyclic",
+                        arguments=[
+                            logic.Variable("X"),
+                            logic.Variable("Y")
+                        ]
+                    )
+                )
+            )
+        )
+        self.check_parser(inp, [result])

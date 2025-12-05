@@ -1,6 +1,6 @@
 // Prolog grammar 
-// based on BNF https://github.com/simonkrenger/ch.bfh.bti7064.w2013.PrologParser/blob/2c06e5a221c1cc51ba766304250749a7f0caed8c/doc/prolog-bnf-grammar.txt
-// by Ivan Sukin on June 9, 2012
+// based on BNF https://github.com/simonkrenger/ch.bfh.bti7064.w2013.PrologParser/blob/2c06e5a221c1cc51ba766304250749a7f0caed8c/doc/prolog-bnf-grammar.txt (modified)
+// original author: Ivan Sukin on June 9, 2012
 
 %import common.WS
 %import common.SIGNED_NUMBER
@@ -23,10 +23,17 @@ rule: predicate ":-" predicate_list "."
 query: "?-" predicate_list "."
 
 // Predicate list is a comma-separated list of predicates (conjunction)
-predicate_list: predicate ("," predicate)*
+predicate_list: predicate_extended ("," predicate_extended)*
+
+predicate_extended: negated_predicate | predicate | inequality
+
+negated_predicate: "not" predicate
 
 // A predicate is an atom optionally followed by arguments
 predicate: atom ["(" term_list ")"]
+
+inequality: term "!=" term
+
 
 // Term list is comma-separated terms
 term_list: term ("," term)*
