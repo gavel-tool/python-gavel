@@ -330,6 +330,9 @@ class PrologTransformer(Transformer):
         elif isinstance(element, logic.BinaryFormula):
             variables.update(self._collect_variables(element.left))
             variables.update(self._collect_variables(element.right))
+        elif isinstance(element, logic.NaryFormula):
+            for f in element.formulae:
+                variables.update(self._collect_variables(f))
         elif isinstance(element, logic.UnaryFormula):
             variables.update(self._collect_variables(element.formula))
         elif isinstance(element, logic.QuantifiedFormula):
