@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Iterable
+from typing import Iterable, Optional
 
 from gavel.logic.logic import LogicElement
 from gavel.logic.solution import ProofStep
@@ -102,10 +102,10 @@ class Problem:
     __visit_name__ = "problem"
 
     def __init__(
-        self, premises: Iterable[Sentence], conjectures: Iterable[Sentence], imports=None
+        self, premises: Iterable[Sentence], conjectures: Optional[Iterable[Sentence]] = None, conjecture: Optional[Sentence] = None, imports=None
     ):
         self.premises = premises
-        self.conjectures = conjectures
+        self.conjectures = conjectures or [] + ([conjecture] if conjecture is not None else [])
         self.imports = imports or []
 
 

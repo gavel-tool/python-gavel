@@ -5,7 +5,7 @@ from gavel.dialects.base.parser import LogicElement, Problem
 from gavel.dialects.base.parser import LogicParser, ProblemParser
 from gavel.logic.problem import AnnotatedFormula, FormulaRole
 from gavel.logic.solution import Proof, ProofStep
-from gavel.logic import sources
+from gavel.logic import sources, status
 
 
 class TestLogicParser(unittest.TestCase):
@@ -28,6 +28,7 @@ class TestLogicParser(unittest.TestCase):
             or isinstance(result, Proof)
             or isinstance(result, ProofStep)
             or isinstance(result, sources.Source)
+            or isinstance(result, status.Status)
         ):
             for n in chain(result.__dict__.keys(), expected.__dict__.keys()):
                 self.assertObjectEqual(getattr(result, n), getattr(expected, n))
@@ -52,7 +53,7 @@ class TestProblemParser(TestLogicParser):
     _parser_cls = ProblemParser
 
     def check_parser(self, parser_input, expected):
-        r = list(self.parser.parse(parser_input))
+        r = self.parser.parse(parser_input)
         self.assertObjectEqual(r, expected)
 
 
