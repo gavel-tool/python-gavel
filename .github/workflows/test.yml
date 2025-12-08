@@ -30,7 +30,7 @@ jobs:
           pip freeze
 
       - name: Run Unit Tests
-        run: python -m unittest discover -s tests/unit -v
+        run: python -m unittest discover -s tests -v
         env:
           ACTIONS_STEP_DEBUG: true  # Enable debug logs
           ACTIONS_RUNNER_DEBUG: true # Additional debug logs from Github Actions itself
