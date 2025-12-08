@@ -19,6 +19,7 @@ import click
 import os
 import pkg_resources
 from gavel.dialects.tptp.dialect import TPTPDialect
+from gavel.dialects.prolog.dialect import PrologDialect
 
 from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
 from gavel.prover.hets.interface import HetsProve, HetsSession, HetsEngine
