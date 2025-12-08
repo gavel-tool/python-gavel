@@ -17,7 +17,12 @@ Why does this file exist, and why not put this in __main__?
 
 import click
 import os
-import pkg_resources
+try:
+    from importlib.metadata import entry_points
+except ImportError:
+    # Python < 3.8
+    from importlib_metadata import entry_points
+
 from gavel.dialects.tptp.dialect import TPTPDialect
 from gavel.dialects.prolog.dialect import PrologDialect
 
@@ -199,7 +204,7 @@ cli = click.CommandCollection()
 main = cli
 
 cli.add_source(base)
-for entry_point in pkg_resources.iter_entry_points("cli"):
+for entry_point in entry_points(group="cli"):
     ep = entry_point.load()
     cli.add_source(ep)
 

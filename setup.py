@@ -112,6 +112,7 @@ setup(
         "requests",
         "lxml",
         "beautifulsoup4",
+        "importlib-metadata>=1.0; python_version<'3.8'",
     ],
     extras_require={
         # eg:

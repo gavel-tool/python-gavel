@@ -1,4 +1,9 @@
-import pkg_resources
+try:
+    from importlib.metadata import entry_points
+except ImportError:
+    # Python < 3.8
+    from importlib_metadata import entry_points
 
-for entry_point in pkg_resources.iter_entry_points("gavel.plugins"):
+# Load all gavel plugins
+for entry_point in entry_points(group="gavel.plugins"):
     entry_point.load()
