@@ -24,7 +24,7 @@ except ImportError:
     from importlib_metadata import entry_points
 
 from gavel.dialects.tptp.dialect import TPTPDialect
-from gavel.dialects.prolog.dialect import PrologDialect
+from gavel.dialects.logic_programs.dialect import LogicProgramDialect
 
 from gavel.dialects.tptp.parser import TPTPParser, TPTPProblemParser
 from gavel.prover.hets.interface import HetsProve, HetsSession, HetsEngine

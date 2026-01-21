@@ -1,16 +1,16 @@
-from gavel.dialects.prolog.parser import PrologParser
+from gavel.dialects.logic_programs.parser import LogicProgramParser
 from gavel.logic import logic
 from gavel.logic.problem import AnnotatedFormula, FormulaRole
 from tests.test_dialects.test_base.test_parser import TestLogicParser
 
-class TestPrologParser(TestLogicParser):
-    _parser_cls = PrologParser
+class TestLogicProgramParser(TestLogicParser):
+    _parser_cls = LogicProgramParser
 
     def test_parse_fact(self):
-        prolog_program = """
+        logic_program = """
         father(tom, bob).
         """
-        inp = prolog_program
+        inp = logic_program
 
         result = AnnotatedFormula(
             logic="fol",
@@ -28,10 +28,10 @@ class TestPrologParser(TestLogicParser):
         self.check_parser(inp, [result])
 
     def test_parse_rule(self):
-        prolog_program = """
+        logic_program = """
         parent(X, Y) :- father(X, Y).
         """
-        inp = prolog_program
+        inp = logic_program
         result = AnnotatedFormula(
             logic="fol",
             name="rule_1",
@@ -61,10 +61,10 @@ class TestPrologParser(TestLogicParser):
         self.check_parser(inp, [result])
 
     def test_parse_query(self):
-        prolog_program = """
+        logic_program = """
         ?- parent(tom, bob).
         """
-        inp = prolog_program
+        inp = logic_program
         result = AnnotatedFormula(
             logic="fol",
             name="query_1",
@@ -80,10 +80,10 @@ class TestPrologParser(TestLogicParser):
         self.check_parser(inp, [result])
 
     def test_parse_inequality(self):
-        prolog_program = """
+        logic_program = """
         unequal(X, Y) :- X != Y.
         """
-        inp = prolog_program
+        inp = logic_program
         result = AnnotatedFormula(
             logic="fol",
             name="rule_1",
@@ -111,10 +111,10 @@ class TestPrologParser(TestLogicParser):
         self.check_parser(inp, [result])
 
     def test_negation(self):
-        prolog_program = """
+        logic_program = """
         uncyclic(X, Y) :- not cyclic(X, Y).
         """
-        inp = prolog_program
+        inp = logic_program
         result = AnnotatedFormula(
             logic="fol",
             name="rule_1",

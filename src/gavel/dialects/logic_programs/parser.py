@@ -1,10 +1,11 @@
 """
-Prolog to First-Order Logic Parser
+Logic Program to First-Order Logic Parser
 
-This module provides a parser that converts Prolog syntax to First-Order Logic (FOL)
+This module provides a parser that converts logic programs in Prolog syntax (extended by the `not` operator) to First-Order Logic (FOL)
 formulas using the Lark parsing library.
+Note that this parser does not cover all features of logic programs.
 
-Prolog clauses are translated to FOL as follows:
+Logic program clauses are translated to FOL as follows:
 - Facts: p(X) --> p(X) (simple predicate)
 - Rules: p(X) :- q(X), r(X) --> forall X: (q(X) & r(X)) => p(X)
 - Queries: ?- p(X) --> exists X: p(X) (treated as conjectures)
@@ -22,11 +23,11 @@ from gavel.logic import logic
 from gavel.logic.problem import AnnotatedFormula, FormulaRole, Import
 
 
-class PrologTransformer(Transformer):
+class LogicProgramTransformer(Transformer):
     """
-    Transformer that converts Prolog parse trees to FOL LogicElement objects.
+    Transformer that converts logic program parse trees to FOL LogicElement objects.
     
-    This follows the standard Prolog to FOL translation:
+    This follows the standard logic program to FOL translation:
     - A fact 'p(a).' becomes the FOL formula p(a)
     - A rule 'p(X) :- q(X), r(X).' becomes ∀X: (q(X) ∧ r(X)) → p(X)
     - A query '?- p(X).' becomes ∃X: p(X) (conjecture)
@@ -344,36 +345,36 @@ class PrologTransformer(Transformer):
         return variables
 
 
-class PrologParser(LogicParser, StringBasedParser):
+class LogicProgramParser(LogicParser, StringBasedParser):
     """
-    Parser for Prolog programs that converts them to First-Order Logic.
+    Parser for logic programs that converts them to First-Order Logic.
     
-    This parser uses a Lark grammar to parse Prolog syntax and a transformer
+    This parser uses a Lark grammar to parse logic program syntax and a transformer
     to convert the parsed structure into FOL formulas represented as LogicElement objects.
     
     Usage:
-        parser = PrologParser()
+        parser = LogicProgramParser()
         results = parser.parse("father(john, mary). ?- father(X, mary).")
     """
     
     def __init__(self):
-        """Initialize the parser with the Prolog grammar."""
+        """Initialize the parser with the logic program grammar."""
         grammar_path = os.path.join(os.path.dirname(__file__), "prolog.lark")
         self.lark_parser = Lark.open(
             grammar_path,
             start=["start"],
             parser="lalr",
-            transformer=PrologTransformer()
+            transformer=LogicProgramTransformer()
         )
     
     def parse(self, structure: str, *args, **kwargs) -> Iterable[logic.LogicElement]:
         """
-        Parse a Prolog program string into FOL formulas.
+        Parse a logic program string into FOL formulas.
         
         Parameters
         ----------
         structure : str
-            A Prolog program as a string
+            A logic program as a string
             
         Returns
         -------
@@ -382,7 +383,7 @@ class PrologParser(LogicParser, StringBasedParser):
             
         Examples
         --------
-        >>> parser = PrologParser()
+        >>> parser = LogicProgramParser()
         >>> results = parser.parse("parent(tom, bob). parent(bob, ann).")
         >>> len(results)
         2
@@ -395,7 +396,7 @@ class PrologParser(LogicParser, StringBasedParser):
     
     def is_valid(self, inp: str) -> bool:
         """
-        Check if a string is valid Prolog syntax.
+        Check if a string is valid logic program syntax.
         
         Parameters
         ----------
@@ -405,7 +406,7 @@ class PrologParser(LogicParser, StringBasedParser):
         Returns
         -------
         bool
-            True if the input is valid Prolog, False otherwise
+            True if the input is valid logic program, False otherwise
         """
         try:
             self.parse(inp)
@@ -415,10 +416,10 @@ class PrologParser(LogicParser, StringBasedParser):
 
 
 if __name__ == "__main__":
-    parser = PrologParser()
-    prolog_program = """
+    parser = LogicProgramParser()
+    logic_program = """
     father(tom, bob).
     """
-    results = parser.parse(prolog_program)
+    results = parser.parse(logic_program)
     for res in results:
         print(res)
