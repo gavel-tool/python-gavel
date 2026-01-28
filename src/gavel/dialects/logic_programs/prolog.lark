@@ -1,0 +1,74 @@
+// Prolog grammar 
+// based on BNF https://github.com/simonkrenger/ch.bfh.bti7064.w2013.PrologParser/blob/2c06e5a221c1cc51ba766304250749a7f0caed8c/doc/prolog-bnf-grammar.txt (modified)
+// original author: Ivan Sukin on June 9, 2012
+
+%import common.WS
+%import common.SIGNED_NUMBER
+%import common.NUMBER
+%ignore WS
+
+// A Prolog program consists of clauses and optionally queries
+start: (clause | query | comment)*
+
+// A clause is either a fact or a rule
+clause: fact | rule
+
+// A fact is a predicate followed by a period
+fact: predicate "."
+
+// A rule is head :- body
+rule: predicate ":-" predicate_list "."
+
+// A query starts with ?-
+query: "?-" predicate_list "."
+
+// Predicate list is a comma-separated list of predicates (conjunction)
+predicate_list: predicate_extended ("," predicate_extended)*
+
+predicate_extended: negated_predicate | predicate | inequality
+
+negated_predicate: "not" predicate
+
+// A predicate is an atom optionally followed by arguments
+predicate: atom ["(" term_list ")"]
+
+inequality: term "!=" term
+
+
+// Term list is comma-separated terms
+term_list: term ("," term)*
+
+// A term can be a number, atom, variable, or structure (functor with args)
+?term: number | constant | variable | structure | list_term
+
+// A structure is like a predicate (functor with arguments)
+structure: atom "(" term_list ")"
+
+// List notation
+list_term: "[" [list_elements] "]"
+list_elements: term ("," term)* ["|" term]  // e.g., [H|T]
+
+// Constants
+constant: atom
+
+// Atoms: lowercase starting identifier or quoted string
+atom: ATOM_IDENTIFIER | QUOTED_ATOM
+
+// Variables: uppercase starting identifier or underscore
+variable: VARIABLE_IDENTIFIER
+
+// Numbers
+number: SIGNED_NUMBER | NUMBER
+
+// Lexer rules
+ATOM_IDENTIFIER: ("a".."z") ("a".."z"|"A".."Z"|"0".."9"|"_")*
+VARIABLE_IDENTIFIER: (("A".."Z"|"_") ("a".."z"|"A".."Z"|"0".."9"|"_")*) | "_"
+QUOTED_ATOM: "'" /([^'\\]|\\.)*/ "'"
+
+// Comments
+comment: LINE_COMMENT | BLOCK_COMMENT
+LINE_COMMENT: /%.*/
+BLOCK_COMMENT: /\/\*([^*]|\*(?!\/))*\*\//
+
+%ignore LINE_COMMENT
+%ignore BLOCK_COMMENT

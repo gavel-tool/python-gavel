@@ -105,8 +105,7 @@ class TestTPTPProblemParser(TestProblemParser):
 fof(a2, axiom, q(a) => $false).
 fof(a3, axiom, $true => p(a)).
 fof(c, conjecture, $false)."""
-        result = [
-            problem.Problem(
+        result = problem.Problem(
                 premises=[
                     problem.AnnotatedFormula(
                         logic="fof",
@@ -156,7 +155,7 @@ fof(c, conjecture, $false)."""
                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                 ),
             )
-        ]
+        
 
         self.check_parser(inp, result)
 
@@ -167,8 +166,7 @@ fof(a3, axiom, p(c) => p(a)).
 fof(a4, axiom, p(c)   => $false).
 fof(a5, axiom, p(a) => p(d)).
 fof(c, conjecture, $false)."""
-        result = [
-            problem.Problem(
+        result = problem.Problem(
                 premises=[
                     problem.AnnotatedFormula(
                         logic="fof",
@@ -260,7 +258,7 @@ fof(c, conjecture, $false)."""
                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                 ),
             )
-        ]
+        
         self.check_parser(inp, result)
 
     def test_problems_3(self):
@@ -271,8 +269,7 @@ fof(a4, axiom, p(a) => $false).
 fof(a5, axiom, p(c) => p(e)).
 fof(a6, axiom, $true => p(c)).
 fof(c, conjecture, $false)."""
-        result = [
-            problem.Problem(
+        result = problem.Problem(
                 premises=[
                     problem.AnnotatedFormula(
                         logic="fof",
@@ -374,7 +371,7 @@ fof(c, conjecture, $false)."""
                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                 ),
             )
-        ]
+        
         self.check_parser(inp, result)
 
     def test_problems_4(self):
@@ -385,8 +382,7 @@ fof(a4, axiom, p(a) => $false).
 fof(a5, axiom, p(c) => p(e)).
 fof(a6, axiom, $true => p(c)).
 fof(c, conjecture, $false)."""
-        result = [
-            problem.Problem(
+        result = problem.Problem(
                 premises=[
                     problem.AnnotatedFormula(
                         logic="fof",
@@ -488,7 +484,7 @@ fof(c, conjecture, $false)."""
                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                 ),
             )
-        ]
+        
         self.check_parser(inp, result)
 
     def test_problems_2_1(self):
@@ -500,8 +496,7 @@ fof(a5, axiom, p(c) => p(e)).
 fof(a6, axiom, $true => p(c)).
 fof(a7, axiom, $true => (f=b)).
 fof(c, conjecture, $false)."""
-        result = [
-            problem.Problem(
+        result = problem.Problem(
                 premises=[
                     problem.AnnotatedFormula(
                         logic="fof",
@@ -617,7 +612,7 @@ fof(c, conjecture, $false)."""
                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                 ),
             )
-        ]
+        
         self.check_parser(inp, result)
 
     def test_problems_2_2(self):
@@ -627,8 +622,7 @@ fof(a3, axiom, $true => f(d)=b).
 fof(a4, axiom, $true => g(b,b)=c).
 fof(a5, axiom, p(c) => $false).
 fof(c, conjecture, $false)."""
-        result = [
-            problem.Problem(
+        result = problem.Problem(
                 premises=[
                     problem.AnnotatedFormula(
                         logic="fof",
@@ -726,7 +720,7 @@ fof(c, conjecture, $false)."""
                     formula=logic.DefinedConstant(logic.PredefinedConstant.FALSUM),
                 ),
             )
-        ]
+        
         self.check_parser(inp, result)
 
 
@@ -792,7 +786,9 @@ class TestTPTPProofParser(TestProofParser):
                       [inference(rw, [status(thm)], [c_0_17, c_0_18])])).
         cnf(h7, hypothesis, ($false), inference(sr, [status(thm)], [
             inference(spm, [status(thm)], [c_0_9, c_0_19]), c_0_20]), ['proof'])."""
+        from gavel.logic import status
         result = solution.LinearProof(
+            status= status.StatusUnknown(),
             steps=[
                 problem.AnnotatedFormula(
                     name="a1",

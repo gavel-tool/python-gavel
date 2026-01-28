@@ -340,7 +340,7 @@ class TPTPParser(LogicParser, StringBasedParser):
         sys.setrecursionlimit(100000)
         self.visitor = TPTPTransformer()
         part = r"^(\w+\(([\sA-z0-9_,!?[:()='\"&|$\/\]]|(?<!\)).)+\)\.)"
-        full = f"(%[^\n]*\s*(\s|$))|{part}\s*"
+        full = r"(%[^\n]*\s*(\s|$))|" + f"{part}" + r"\s*"
         self._re_full = re.compile(f"({full})+", flags=re.X)
         self._re_part = re.compile(part)
 
