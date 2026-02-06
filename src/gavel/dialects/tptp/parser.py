@@ -189,18 +189,26 @@ class TPTPTransformer(Transformer):
                 )
         else:
             assert len(obj.children) == 1 and isinstance(obj.children[0], str)
-            if is_defined:
-                if c0 == "$true":
-                    return logic.DefinedConstant(logic.PredefinedConstant.VERUM)
-                elif c0 == "$false":
-                    return logic.DefinedConstant(logic.PredefinedConstant.FALSUM)
+            if term_level:
+                if is_defined:
+                    if c0 == "$true":
+                        return logic.DefinedConstant(logic.PredefinedConstant.VERUM)
+                    elif c0 == "$false":
+                        return logic.DefinedConstant(logic.PredefinedConstant.FALSUM)
+                    else:
+                        return logic.DefinedConstant(self.visit(c0))
                 else:
-                    return logic.DefinedConstant(self.visit(c0))
+                
+                    if c0[0] == '"':
+                        return logic.DistinctObject(c0)
+                    else:
+                        return logic.Constant(c0)
             else:
-                if c0[0] == '"':
-                    return logic.DistinctObject(c0)
-                else:
-                    return logic.Constant(c0)
+                p = self._DEFINED_PREDICATE_MAP.get(c0, c0) if is_defined else c0
+                return logic.PredicateExpression(
+                    predicate=p,
+                    arguments=[],
+                )
 
     def visit_decimal_number(self, obj, **kwargs):
         return logic.DefinedConstant(obj)
